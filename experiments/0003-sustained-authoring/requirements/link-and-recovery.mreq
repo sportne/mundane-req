@@ -69,6 +69,20 @@ rationale:
 source: SRC-DESIGN-001
 end requirement
 
+requirement SYS-010
+title: Loss-of-link operator notification
+allocation: Operator interface
+statement:
+  Within 500 ms after the command link is declared unavailable, the mission-control system shall
+  present the authorized operator with a notification identifying the active vehicle and the
+  link-loss declaration time.
+rationale:
+  Prompt, unambiguous notification allows the responsible operator to recognize the transition
+  to safe recovery and correlate it with the affected vehicle.
+source: SRC-SAFETY-001, revision B
+decomposes: OPS-004
+end requirement
+
 requirement GCA-002
 title: Valid-message timestamp
 allocation: Ground-control adapter
