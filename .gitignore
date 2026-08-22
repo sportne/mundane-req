@@ -7,21 +7,11 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Python tooling (likely useful for future prototypes)
-__pycache__/
-*.py[cod]
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.venv/
-venv/
-
 # Build/generated output
 build/
 dist/
 out/
 site/
-*.egg-info/
 
 # Local environment/configuration
 .env

@@ -58,6 +58,12 @@ Those responsibilities belong to separate tools, analogous to parsers, compilers
 
 A project-specific renderer, semantic diff viewer, IDE integration, or traceability browser may substantially improve usability, but raw source must remain useful without them.
 
+### Record syntax, field content, and rendering are distinct
+
+Plain text is a property of the authoritative source, not a commitment to Markdown or another general-purpose markup language. The syntax that identifies requirement objects, fields, and relationships may be separate from notations embedded within field content.
+
+For example, a mathematical requirement may contain an explicitly delimited LaTeX-style expression whose formatted rendering is derived. The canonical expression, its boundaries, and its interpretation must remain visible in source; rendering must not own the requirement or depend on hidden state.
+
 ### Prefer iteration over speculative completeness
 
 The project should establish a minimal usable source representation, exercise it in real Git workflows, and add tooling in response to observed friction rather than designing a complete ecosystem before use.
