@@ -219,6 +219,8 @@ For each candidate:
 
 A parser is not initially required. If deterministic interpretation cannot be judged confidently by inspection, the smallest possible parsing probe may be justified as a later experiment.
 
+Initial merge result: [Experiment 0001's concurrent-edit review](../experiments/0001-source-representations/concurrent-edit-merge-review.md) records clean independent edits, readable competing-value conflicts, and a move-versus-edit conflict caused by Candidate C's coupling of authoritative records to Markdown document position.
+
 ## Evaluation rubric
 
 | Dimension | Question |

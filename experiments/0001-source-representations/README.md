@@ -31,7 +31,7 @@ The current files represent Baseline B, identified by the annotated tag 'experim
 
 Both tag messages state that their snapshots are illustrative and experimental and do not indicate requirements approval, certification, or engineering suitability.
 
-The ordinary source-diff review and its correction are recorded in [Baseline A-to-B review](baseline-a-to-b-review.md).
+The ordinary source-diff review and its correction are recorded in [Baseline A-to-B review](baseline-a-to-b-review.md). The follow-up [concurrent-edit and merge review](concurrent-edit-merge-review.md) tests independent edits, conflicting normative values, and movement concurrent with content editing.
 
 ## Fixture conventions
 
@@ -51,4 +51,4 @@ No parser, renderer, generated index, or hidden metadata is part of this fixture
 - All three candidates contain byte-identical record bodies, the same 21 decomposition relationships, and the same mathematical payload.
 - The separate view is not needed to understand an individual requirement. Its only demonstrated purpose so far is to preserve authored grouping and order independently of record storage.
 - Candidate C's standard fenced blocks remain readable in generic Markdown, but they render as code rather than polished requirement prose. Richer presentation would require an additive renderer or a different Markdown extension.
-- The Baseline B change supplies initial diff and navigation evidence, but one change is not enough to select a representation. Merge behavior remains a separate experiment.
+- The Baseline B change and merge scenarios provide initial comparative evidence. A synthesis is still needed before selecting or revising a representation.
