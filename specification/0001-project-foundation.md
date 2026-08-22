@@ -70,7 +70,7 @@ The project should establish a minimal usable source representation, exercise it
 
 ## Experiment-supported direction
 
-Experiment 0001 provides enough evidence to narrow the next specification phase without freezing a production language. [Research 0007](../research/0007-provisional-source-representation-decision.md) records the evidence and rationale in detail.
+Experiment 0001 provides enough evidence to narrow the next specification phase without freezing a production language. [Research 0007](../research/0007-provisional-source-representation-decision.md) records the representation evidence and rationale. Experiments 0002 and 0003 subsequently confirm deterministic interpretation and sustained use on the small UAS corpus.
 
 The current direction is:
 
@@ -81,16 +81,17 @@ The current direction is:
 - Do not use a Markdown document containing authoritative embedded records as the initial storage representation.
 - Rely on ordinary Git merging; the experiment does not justify semantic merge machinery.
 - Treat Git commits and annotated tags as the initial baseline mechanism rather than adding intrinsic baseline or per-requirement revision fields.
+- Keep review status, approval, retirement state, timestamps, and change justification outside requirement records unless later workflows demonstrate durable requirement semantics.
+- Treat decomposition completeness as policy analysis rather than universal syntax validity.
 
 These are provisional language and model decisions supported by the experiment. [Specification 0002](0002-minimum-source-language-and-model.md) makes the minimum grammar, discovery, cardinality, validation, and mathematical-content rules precise enough to test; they are not yet a compatibility promise.
 
 ## Open questions
 
-- Should machine identity and human-facing IDs be distinct?
-- How are authoritative source files discovered without making their directory layout semantic?
-- Which fields are required, optional, or repeatable?
-- Which metadata belongs inside a requirement versus in relationships, repository policy, review records, or external evidence?
-- What exact relationship semantics and validation rules belong in the minimum model?
+- Does correction of a human-facing ID require separate durable machine identity or an explicit continuity mechanism?
+- How should verification planning and coverage relate to requirement source and particular repository revisions?
+- When do allocation labels need referential identity or a controlled vocabulary?
+- Does an opaque external-source value preserve enough locator and revision fidelity on another corpus?
+- Which trace-completeness policies are reusable without becoming universal language rules?
 - Does the first specification need an authored view at all?
 - What constrained mathematical-content profile, if any, should the source language promise?
-- What is the smallest parser and validator needed to test the source-language concept?

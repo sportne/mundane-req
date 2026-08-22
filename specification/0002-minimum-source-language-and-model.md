@@ -1,6 +1,6 @@
 # Specification 0002: Minimum Source Language and Model
 
-Status: Provisional; deterministic interpretation confirmed by Experiment 0002
+Status: Provisional; deterministic interpretation and sustained use confirmed by Experiments 0002 and 0003
 
 ## Purpose
 
@@ -15,6 +15,8 @@ The design has three priorities:
 The evidence and candidate disposition are recorded in [Research 0007](../research/0007-provisional-source-representation-decision.md).
 
 [Experiment 0002](../experiments/0002-deterministic-interpretation/README.md) implements these rules in a dependency-free GraalVM native Java probe. Its module and one-record-per-file fixtures produce identical semantic inventories, and its focused invalid fixtures produce source-positioned diagnostics. This confirms deterministic interpretation for the tested corpus; it does not establish a compatibility-stable language version.
+
+[Experiment 0003](../experiments/0003-sustained-authoring/README.md) exercises addition, splitting, relationship retargeting, coordinated normative change, reallocation, file movement, retirement, and formal model-pressure workflows. All committed states remain valid without grammar changes. The result supports this minimum model for continued experiment while identifying verification planning and identity continuity across ID correction as unresolved questions.
 
 ## Status of decisions
 
@@ -42,6 +44,8 @@ The selection mechanism is not part of requirement identity or the semantic mode
 **Model decision:** A source file contains one or more complete requirement records. File boundaries do not create modules, namespaces, hierarchy, ownership, allocation, or authored order.
 
 Small subject files and one-requirement-per-file layouts are both valid. A repository may adopt a consistent local convention. Moving an unchanged record between files does not change the requirement.
+
+Experiment 0003 confirms this rule directly: moving SYS-008 from a larger subject module into its own timing module preserved the normalized semantic inventory exactly.
 
 ### Text encoding
 
@@ -99,11 +103,15 @@ Keeping it distinct from `decomposes` preserves the difference between origins o
 
 **Hypothesis:** `allocation` remains a plain label. Its presence is optional so that an otherwise valid requirement can exist before allocation. Modeling components or allocations as relationship objects is deferred.
 
+Experiment 0003 found that a reallocation is a clear one-line change, but also confirmed that a label cannot provide referential component identity, controlled vocabulary, or rename semantics. The hypothesis remains unchanged pending another corpus.
+
 ### Revisions and baselines
 
 **Model decision:** A requirement revision is the state of a requirement object in a repository snapshot. It has no source field or independently incremented revision number.
 
 A baseline is initially a repository snapshot identified by an ordinary Git commit, usually given a durable name and scope through an annotated tag or project convention. Approval, authority, and certification meaning are not inferred from the tag merely existing.
+
+Experiment 0003 confirms that addition, editing, movement, and deletion are recoverable between annotated baselines without intrinsic revision, status, or retirement fields. Required change justification and baseline authority remain review or project-policy concerns.
 
 ## Record syntax
 
@@ -164,7 +172,7 @@ After removing the two structural spaces:
 
 Additional leading spaces after the structural indentation are preserved as content. A column-zero structural line ends the body; a field-looking line that remains indented is prose.
 
-This folding rule is a **hypothesis**: it improves manual wrapping and diffs, but the experiment must confirm that authors understand the difference between physical lines and semantic paragraphs.
+This folding rule remains a **hypothesis** beyond the current corpus. Experiments 0002 and 0003 found deterministic interpretation and no misleading semantic change during manual edits, but broader authoring evidence is still needed.
 
 ## Mathematical content
 
@@ -241,13 +249,13 @@ This omission is deliberate. It can be revisited when a concrete workflow requir
 
 ReqIF round-tripping remains future roadmap work. This source language should not imitate ReqIF's storage model before interchange requirements are studied.
 
-## Questions the next experiment must answer
+## Open questions after initial interpretation and use
 
-1. Can an independent parser recover the specified IDs, fields, paragraphs, math payloads, and relationships reproducibly from the corpus?
-2. Are fixed field order and two-space body indentation obvious during ordinary editing?
-3. Does prose folding surprise reviewers or create misleading raw diffs?
-4. Are source-set selection and duplicate-ID diagnostics understandable in both module and one-file-per-requirement layouts?
-5. Are the required diagnostics precise enough to fix malformed source without specialized editor support?
-6. Does treating `source` as opaque preserve useful traceability without prematurely defining an external-artifact model?
+1. Does verification planning belong partly in requirement source, in a separate verification-plan source, or entirely in relationships to external artifacts?
+2. Is Git history sufficient for rare human-facing ID corrections, or does cross-baseline and interchange continuity justify a separate identity concept?
+3. Does an opaque `source` value preserve adequate locator and revision fidelity on a corpus not designed for mundane-req?
+4. When do allocation labels need referential identity or a controlled vocabulary?
+5. Do prose folding, fixed field order, and source discovery remain comfortable at larger scale and with independent authors?
+6. Which trace-completeness rules are common enough for reusable policy analysis without becoming universal language validity rules?
 
-The result should either confirm this small language for further use or identify the few rules that need revision. It should not be used as a pretext for a production compiler architecture.
+The next experiment should pressure these questions with another corpus rather than expanding the grammar speculatively.

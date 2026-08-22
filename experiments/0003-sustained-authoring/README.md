@@ -1,8 +1,10 @@
 # Experiment 0003: Sustained Authoring and Model Pressure
 
-Status: In progress; starting corpus established
+Status: Completed through formal model-pressure review
 
 Plan date: 2026-08-22
+
+Reproducible result: annotated tag `experiment-0003-result`
 
 ## Question
 
@@ -14,7 +16,7 @@ Experiment 0001 tested selected diffs and merges. Experiment 0002 tested determi
 
 The working corpus is a dedicated copy of Experiment 0001 Candidate A at Baseline B. It uses small subject modules because that layout provides useful reading context while still exercising multiple records per file. The one-record-per-file corpus remains an equivalent conformance fixture rather than the working layout.
 
-The starting corpus contains 20 requirements and 22 decomposition relationships. It will be identified by the annotated tag `experiment-0003-baseline-a` after the dedicated copy is committed.
+The starting corpus contains 20 requirements and 22 decomposition relationships and is identified by annotated tag `experiment-0003-baseline-a`. The end state is identified by annotated tag `experiment-0003-baseline-b` and contains 21 requirements and 25 relationships in four files.
 
 Experiment 0002 is preserved independently by annotated tag `experiment-0002-result`.
 
@@ -130,3 +132,12 @@ Stop and revise the specification before continuing if:
 - a diff, trace-impact, and authoring-friction review;
 - a formal model-pressure assessment;
 - any resulting specification and roadmap decisions.
+
+## Results
+
+All six scenarios were completed as independent commits between the two annotated baselines. Every committed corpus passed the Experiment 0002 native validator.
+
+- [Authoring and change review](authoring-review.md) records diff behavior, trace impact, baseline comparison, and repeated friction.
+- [Formal model-pressure review](model-pressure-review.md) assigns workflow responsibilities and records the remaining verification-planning and identity-continuity questions.
+
+The experiment retains Specification 0002 without grammar changes. It identifies reverse trace navigation as the clearest focused tooling opportunity, while verification planning and human-facing ID correction require further model evidence before implementation.

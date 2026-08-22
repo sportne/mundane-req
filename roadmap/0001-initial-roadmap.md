@@ -123,6 +123,48 @@ Possible later experiments include formatting, rendering, traceability queries, 
 
 **Learning milestone:** Add tooling only in response to observed problems and revise the specification when use contradicts current hypotheses.
 
+Result: [Experiment 0003](../experiments/0003-sustained-authoring/README.md) exercises six independently committed authoring changes and a [formal model-pressure review](../experiments/0003-sustained-authoring/model-pressure-review.md). The language remained usable without grammar changes. Incoming trace navigation was the only repeated focused-tool opportunity; verification planning and identity continuity across ID correction remain unresolved model questions.
+
+## Phase 7 — Test transferability
+
+**Question:** Does the minimum model work on requirements that were not designed around it?
+
+Find a suitably licensed public requirements corpus and document its provenance. If no adequate corpus can be redistributed, create a second original corpus informed by the observed structure without copying protected text.
+
+Encode a bounded subset and include explicit pressure cases for:
+
+- verification planning and coverage;
+- identifier correction or replacement;
+- external-source locator and revision fidelity;
+- allocation vocabulary;
+- relationship and coverage policy.
+
+**Learning milestone:** Decide whether the current minimum model transfers, requires a small revision, or is overfitted to the UAS corpus.
+
+## Phase 8 — Add one evidence-driven tool
+
+**Question:** Which repeated source-level task most benefits from focused tooling?
+
+Choose one observed friction point after transferability testing. The current leading candidate is an incoming and transitive trace query over the existing semantic model. Keep the tool independent of source ownership and avoid refactoring the probe into a general platform unless the experiment requires it.
+
+**Learning milestone:** Demonstrate that a focused tool adds useful capability while plain source and Git remain authoritative.
+
+## Phase 9 — Consolidate a provisional 0.1 contract
+
+**Question:** Is the accumulated evidence coherent enough for independent trial use?
+
+Reconcile the project brief, mission, principles, conceptual model, source-language specification, conformance fixtures, diagnostics, compatibility policy, native packaging, and CI validation guidance.
+
+**Learning milestone:** Publish a small provisional contract that another implementation or engineering team can evaluate without inheriting experimental accidents.
+
+## Phase 10 — Investigate ReqIF interchange
+
+**Question:** Can mundane-req exchange requirements without allowing the interchange format to own the source model?
+
+Study the applicable ReqIF standard and real implementations, define an explicit fidelity mapping, then test bounded export, import, and eventually round-tripping. Record preserved, transformed, and unrepresentable information.
+
+**Learning milestone:** Determine whether useful ReqIF interoperability is possible and which interchange concerns, if any, justify changes to the core model.
+
 ## Near-term success criterion
 
 A small formally traced requirements set can be:
@@ -134,3 +176,5 @@ A small formally traced requirements set can be:
 - merged and understood later from the repository alone.
 
 Passing this criterion would justify continued language and toolchain work. It would not demonstrate a complete requirements-management product.
+
+Current result: Experiments 0001 through 0003 meet this criterion for the small synthetic UAS corpus. Transferability to independently structured requirements remains unproven.
