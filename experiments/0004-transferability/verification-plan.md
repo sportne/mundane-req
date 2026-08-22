@@ -2,7 +2,7 @@
 
 Status: Planned activities only; no execution evidence
 
-Applies to requirements baseline: `experiment-0004-baseline-a`
+Applies to requirements baseline: `experiment-0004-baseline-b`
 
 ## Purpose
 
@@ -32,7 +32,7 @@ Coverage here means that a requirement is assigned to at least one planned activ
 | `LPC_KIAS_KGS` | `AN-LPC-REALIZABILITY`, `AN-LPC-STATE-MODEL` |
 | `LPC_KIAS_DERIVATIVE` | `AN-LPC-REALIZABILITY`, `AN-LPC-STATE-MODEL` |
 | `LPC_INIT_HOVER_MODE` | `AN-LPC-REALIZABILITY`, `AN-LPC-STATE-MODEL`, `TST-LPC-INITIALIZATION` |
-| `LPC_KIAS_0` | `AN-LPC-REALIZABILITY`, `AN-LPC-STATE-MODEL` |
+| `LPC_KIAS_NONNEGATIVE` | `AN-LPC-REALIZABILITY`, `AN-LPC-STATE-MODEL` |
 | `LPC_REACH_HOVER_06` | `AN-LPC-REALIZABILITY`, `AN-LPC-STATE-MODEL`, `TST-LPC-REACHABILITY` |
 | `LPC_REACH_HOVER_12` | `AN-LPC-REALIZABILITY`, `AN-LPC-STATE-MODEL`, `TST-LPC-REACHABILITY` |
 | `LPC_TB_STAY_ON_NEXT` | `AN-LPC-REALIZABILITY`, `AN-LPC-STATE-MODEL`, `TST-LPC-TRANSITIONS` |
@@ -46,7 +46,7 @@ Coverage here means that a requirement is assigned to at least one planned activ
 | `LPC_SWB_STAY_ON_NEXT` | `AN-LPC-REALIZABILITY`, `AN-LPC-STATE-MODEL`, `TST-LPC-TRANSITIONS` |
 | `LPC_WB_STAY_ON_NEXT` | `AN-LPC-REALIZABILITY`, `AN-LPC-STATE-MODEL`, `TST-LPC-TRANSITIONS` |
 
-## Baseline-A coverage result
+## Baseline-B coverage result
 
 - Requirements in baseline: 19
 - Requirements assigned to at least one planned activity: 19

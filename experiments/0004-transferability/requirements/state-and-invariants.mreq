@@ -47,7 +47,7 @@ statement:
 source: Adapted from NASA-SW-VnV/fret@cf0f913cc15c41705e803593297e89cd6056b839:caseStudies/LiftPlusCruise/LPC_mini_reqts_and_vars.json#reqid=LPC_INIT_HOVER_MODE
 end requirement
 
-requirement LPC_KIAS_0
+requirement LPC_KIAS_NONNEGATIVE
 title: Nonnegative indicated airspeed
 allocation: vehicle
 statement:
