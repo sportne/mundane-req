@@ -4,6 +4,8 @@ Status: Completed
 
 Result date: 2026-08-22
 
+Reproducible result: annotated tag `experiment-0002-result`
+
 ## Question
 
 Can the minimum source language in [Specification 0002](../../specification/0002-minimum-source-language-and-model.md) be parsed and validated reproducibly by a small independent tool without weakening its standalone readability?
