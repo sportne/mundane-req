@@ -62,7 +62,7 @@ title: Monotonic safety timing
 allocation: Timing service
 statement:
   The mission-control system shall use a monotonic time source with resolution no greater than
-  10 ms for every elapsed-time comparison that determines command-link availability or a
+  5 ms for every elapsed-time comparison that determines command-link availability or a
   safe-recovery response deadline.
 rationale:
   Wall-clock correction must not shorten or extend safety-related elapsed-time decisions.
@@ -88,7 +88,7 @@ title: Valid-message timestamp
 allocation: Ground-control adapter
 statement:
   The ground-control adapter shall publish the monotonic receipt time of each valid message from
-  the active vehicle with resolution no greater than 10 ms.
+  the active vehicle with resolution no greater than 5 ms.
 rationale:
   SYS-006 requires an identity-checked last-message time on the same monotonic basis used for
   evaluation.
