@@ -276,10 +276,14 @@ The experiment may conclude that no candidate is yet adequate.
 - electronic signatures or certification claims;
 - cross-repository configuration management.
 
-## Questions to settle before encoding
+## Questions carried into deterministic interpretation
 
-Research 0003 resolves the prior-art set, revised candidate slate, and direct granularity comparison. Research 0004 adopts the provisional decomposition, source, and allocation meanings and applies them to the semantic corpus. Research 0005 selects the shared Candidate A/B record form for the experiment. Research 0006 supplies a working view fixture without making it a product decision. The remaining questions are:
+Research 0003 resolves the prior-art set, revised candidate slate, and direct granularity comparison. Research 0004 defines the semantic corpus. Research 0005 selects the shared Candidate A/B record form for the experiment. Research 0006 supplies a working view fixture without making it a product decision. Experiment 0001 exercises the candidates through source review and merging. [Research 0007](0007-provisional-source-representation-decision.md) records the resulting provisional decision, and [Specification 0002](../specification/0002-minimum-source-language-and-model.md) makes the next language hypotheses precise enough to test.
 
-1. Which constrained LaTeX-style mathematical profile should all candidates use?
-2. Which concurrent edits and moves will provide the smallest realistic merge experiment?
-3. Which additional navigation observations are necessary before comparing the candidates fairly?
+The deterministic-interpretation experiment must now determine:
+
+1. whether explicit file and directory inputs select source predictably;
+2. whether the selected field cardinalities and fixed order work without ambiguity;
+3. whether prose folding and mathematical de-indentation preserve the meaning visible to authors;
+4. whether an opaque `latex` payload is sufficient before a supported notation profile is defined;
+5. whether source-positioned diagnostics make every invalid test fixture repairable in an ordinary editor.

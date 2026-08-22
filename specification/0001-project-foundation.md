@@ -22,7 +22,7 @@ The requirements source format should eventually support, at minimum:
 2. Human-facing requirement identifiers.
 3. Requirement title and normative statement.
 4. Optional rationale.
-5. Structured attributes such as verification method or status-like engineering metadata where appropriate.
+5. Only durable structured attributes demonstrated to belong to a requirement; review and workflow state are not presumed intrinsic.
 6. Explicit typed relationships between requirements.
 7. Human readability without specialized tooling.
 8. Clean and comprehensible ordinary Git diffs.
@@ -68,12 +68,29 @@ For example, a mathematical requirement may contain an explicitly delimited LaTe
 
 The project should establish a minimal usable source representation, exercise it in real Git workflows, and add tooling in response to observed friction rather than designing a complete ecosystem before use.
 
+## Experiment-supported direction
+
+Experiment 0001 provides enough evidence to narrow the next specification phase without freezing a production language. [Research 0007](../research/0007-provisional-source-representation-decision.md) records the evidence and rationale in detail.
+
+The current direction is:
+
+- Continue with the purpose-built, keyword-based requirement record form tested in Candidates A and B.
+- Carry the authoritative human-facing ID inside the record.
+- Permit one or more complete records per source file while treating filenames, paths, file counts, and record positions as non-semantic.
+- Preserve the separation between requirement objects and authored order or composition, without yet selecting a view language.
+- Do not use a Markdown document containing authoritative embedded records as the initial storage representation.
+- Rely on ordinary Git merging; the experiment does not justify semantic merge machinery.
+- Treat Git commits and annotated tags as the initial baseline mechanism rather than adding intrinsic baseline or per-requirement revision fields.
+
+These are provisional language and model decisions supported by the experiment. [Specification 0002](0002-minimum-source-language-and-model.md) makes the minimum grammar, discovery, cardinality, validation, and mathematical-content rules precise enough to test; they are not yet a compatibility promise.
+
 ## Open questions
 
-- What syntax best balances readability, structure, and clean Git diffs?
 - Should machine identity and human-facing IDs be distinct?
-- Which metadata belongs inside a requirement versus in relationships or external evidence?
-- How should typed relationships be represented?
-- How should collections or document views be represented without making document position part of identity?
-- Which existing open-source projects provide useful prior art without becoming dependencies?
+- How are authoritative source files discovered without making their directory layout semantic?
+- Which fields are required, optional, or repeatable?
+- Which metadata belongs inside a requirement versus in relationships, repository policy, review records, or external evidence?
+- What exact relationship semantics and validation rules belong in the minimum model?
+- Does the first specification need an authored view at all?
+- What constrained mathematical-content profile, if any, should the source language promise?
 - What is the smallest parser and validator needed to test the source-language concept?

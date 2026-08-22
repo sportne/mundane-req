@@ -100,4 +100,4 @@ That benefit could come from a minimal authored ID list, a generated composition
 - Navigation and authoring effort were observed informally but not yet measured systematically.
 - Moving a requirement between Candidate A modules remains to be tested separately from moving it in authored order.
 
-The next useful step is to synthesize the Baseline A-to-B diff evidence and these merge results into a provisional representation decision, identifying any narrower experiment still needed before full language specification.
+The synthesis is recorded in [Research 0007](../../research/0007-provisional-source-representation-decision.md). It continues the shared Candidate A/B record language, treats file granularity as a non-semantic repository convention, preserves model/view separation, and rejects Candidate C as the initial authoritative layout.

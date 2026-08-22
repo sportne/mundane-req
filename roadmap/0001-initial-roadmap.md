@@ -72,6 +72,8 @@ Initial result: [Research 0005](../research/0005-purpose-built-record-syntax-ske
 
 Merge result: [the concurrent-edit review](../experiments/0001-source-representations/concurrent-edit-merge-review.md) shows that all candidates handle separated edits and expose readable same-statement conflicts, while model/view separation prevents the move-versus-edit conflict seen in the Markdown-coupled candidate.
 
+Decision: [Research 0007](../research/0007-provisional-source-representation-decision.md) continues with the purpose-built record language, makes file boundaries non-semantic, preserves model/view separation without selecting the experiment's view syntax, and rejects document-coupled Markdown as the initial authoritative layout.
+
 ## Phase 4 — Define the minimum language and model
 
 **Question:** Which concepts did the experiment demonstrate are necessary?
@@ -90,6 +92,8 @@ Avoid macros, inheritance, generalized metamodeling, configurable grammars, exec
 
 **Learning milestone:** Publish a small language specification that clearly distinguishes decisions, current hypotheses, alternatives, deferred topics, and open questions.
 
+Initial draft: [Specification 0002](../specification/0002-minimum-source-language-and-model.md) defines the minimum source set, record model, grammar, and diagnostics to test. It deliberately leaves authored views, configurable metadata, semantic merge, and ReqIF machinery outside the first interpretation experiment.
+
 ## Phase 5 — Test deterministic interpretation
 
 **Question:** Can the selected source be interpreted and diagnosed reliably by an independent tool?
@@ -106,6 +110,8 @@ Implement the smallest useful parsing and validation experiment. It may include:
 Do not begin a production compiler architecture. The implementation exists to test the language decision.
 
 **Learning milestone:** Determine whether the language is both pleasant source and a sufficiently deterministic interface for independent tools.
+
+Planned experiment: [Experiment 0002](../experiments/0002-deterministic-interpretation/README.md) will compare the semantic interpretation of the module and one-record-per-file layouts and exercise focused invalid fixtures. Its implementation remains pending explicit agreement to begin the first code experiment.
 
 ## Phase 6 — Use and learn
 

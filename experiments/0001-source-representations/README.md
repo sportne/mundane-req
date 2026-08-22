@@ -33,6 +33,8 @@ Both tag messages state that their snapshots are illustrative and experimental a
 
 The ordinary source-diff review and its correction are recorded in [Baseline A-to-B review](baseline-a-to-b-review.md). The follow-up [concurrent-edit and merge review](concurrent-edit-merge-review.md) tests independent edits, conflicting normative values, and movement concurrent with content editing.
 
+[Research 0007](../../research/0007-provisional-source-representation-decision.md) synthesizes that evidence into the provisional decision to continue with the purpose-built record language, keep file boundaries non-semantic, preserve model/view separation, and reject document-coupled Markdown as the initial authoritative layout.
+
 ## Fixture conventions
 
 The file extensions '.mreq' and '.mview' are provisional experiment labels, not language decisions.

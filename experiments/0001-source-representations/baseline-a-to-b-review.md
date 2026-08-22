@@ -71,4 +71,8 @@ All three representations remain viable enough for further experiment. This sing
 - Candidate B favors object-level change isolation;
 - Candidate C favors direct authored reading but creates larger diffs when document placement changes.
 
-These observations do not yet justify selecting a representation. A realistic concurrent-edit and merge experiment remains necessary.
+At this review stage, these observations did not yet justify selecting a representation. A realistic concurrent-edit and merge experiment was still necessary.
+
+# Follow-up decision
+
+[Research 0007](../../research/0007-provisional-source-representation-decision.md) combines this review with the concurrent-edit evidence and records the provisional source-representation decision.
