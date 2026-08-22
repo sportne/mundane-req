@@ -38,7 +38,7 @@ end requirement
 
 requirement SYS-004
 title: Flight-plan authorization binding
-allocation: Flight-plan manager
+allocation: Authorization service
 statement:
   The mission-control system shall mark a flight-plan revision as authorized only when an
   authorized operator approves that revision for the active vehicle and current mission.
