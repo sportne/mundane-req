@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.ArrayDeque;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -63,6 +64,8 @@ public final class Probe {
 
     record Result(List<Requirement> requirements, List<Diagnostic> diagnostics, int fileCount) {}
 
+    record TraceHit(String id, List<String> path) {}
+
     private record Decoded(String text, List<Diagnostic> diagnostics) {}
 
     private record BodyLine(String text, int lineIndex) {}
@@ -79,20 +82,38 @@ public final class Probe {
 
     static int run(String[] args, PrintStream out, PrintStream err) {
         boolean inventory = false;
+        String incomingTarget = null;
         List<Path> inputs = new ArrayList<>();
-        for (String argument : args) {
+        for (int index = 0; index < args.length; index++) {
+            String argument = args[index];
             if (argument.equals("--inventory")) {
                 inventory = true;
+            } else if (argument.equals("--incoming")) {
+                if (index + 1 >= args.length) {
+                    err.println("--incoming requires a requirement ID");
+                    err.println(usage());
+                    return 2;
+                }
+                incomingTarget = args[++index];
             } else if (argument.equals("--help") || argument.equals("-h")) {
-                out.println("Usage: mundanereq [--inventory] FILE_OR_DIRECTORY...");
+                out.println(usage());
                 return 0;
+            } else if (argument.startsWith("-")) {
+                err.println("unknown option: " + argument);
+                err.println(usage());
+                return 2;
             } else {
                 inputs.add(Path.of(argument));
             }
         }
 
+        if (inventory && incomingTarget != null) {
+            err.println("--inventory and --incoming cannot be used together");
+            err.println(usage());
+            return 2;
+        }
         if (inputs.isEmpty()) {
-            err.println("Usage: mundanereq [--inventory] FILE_OR_DIRECTORY...");
+            err.println(usage());
             return 2;
         }
 
@@ -104,6 +125,19 @@ public final class Probe {
 
         if (inventory) {
             out.print(normalizedInventory(result.requirements()));
+        } else if (incomingTarget != null) {
+            if (!ID_PATTERN.matcher(incomingTarget).matches()) {
+                err.println("query: invalid requirement ID '" + incomingTarget + "'");
+                return 2;
+            }
+            String queryTarget = incomingTarget;
+            boolean targetExists = result.requirements().stream()
+                    .anyMatch(requirement -> requirement.id().equals(queryTarget));
+            if (!targetExists) {
+                err.println("query: requirement '" + incomingTarget + "' does not exist in the selected source set");
+                return 1;
+            }
+            out.print(formatIncomingTrace(incomingTarget, incomingTrace(result.requirements(), incomingTarget)));
         } else {
             int relationships = result.requirements().stream()
                     .mapToInt(requirement -> requirement.decomposes().size())
@@ -113,6 +147,53 @@ public final class Probe {
                     result.requirements().size(), relationships, result.fileCount());
         }
         return 0;
+    }
+
+    private static String usage() {
+        return "Usage: mundanereq [--inventory | --incoming ID] FILE_OR_DIRECTORY...";
+    }
+
+    static List<TraceHit> incomingTrace(List<Requirement> requirements, String target) {
+        Map<String, List<String>> incoming = new HashMap<>();
+        for (Requirement requirement : requirements) {
+            for (String parent : requirement.decomposes()) {
+                incoming.computeIfAbsent(parent, ignored -> new ArrayList<>()).add(requirement.id());
+            }
+        }
+        incoming.values().forEach(children -> children.sort(String::compareTo));
+
+        List<TraceHit> hits = new ArrayList<>();
+        Set<String> visited = new HashSet<>();
+        ArrayDeque<TraceHit> pending = new ArrayDeque<>();
+        visited.add(target);
+        pending.add(new TraceHit(target, List.of(target)));
+        while (!pending.isEmpty()) {
+            TraceHit current = pending.removeFirst();
+            for (String child : incoming.getOrDefault(current.id(), List.of())) {
+                if (!visited.add(child)) continue;
+                List<String> path = new ArrayList<>();
+                path.add(child);
+                path.addAll(current.path());
+                TraceHit hit = new TraceHit(child, List.copyOf(path));
+                hits.add(hit);
+                pending.addLast(hit);
+            }
+        }
+        return List.copyOf(hits);
+    }
+
+    static String formatIncomingTrace(String target, List<TraceHit> hits) {
+        StringBuilder output = new StringBuilder("Incoming decomposition trace for ")
+                .append(target)
+                .append(":\n");
+        if (hits.isEmpty()) return output.append("(none)\n").toString();
+        for (TraceHit hit : hits) {
+            output.append(hit.path().size() - 1)
+                    .append(' ')
+                    .append(String.join(" -> ", hit.path()))
+                    .append('\n');
+        }
+        return output.toString();
     }
 
     static Result interpretInputs(List<Path> inputs) {

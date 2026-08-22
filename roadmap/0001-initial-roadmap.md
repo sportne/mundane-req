@@ -151,6 +151,8 @@ Choose one observed friction point after transferability testing. The leading ca
 
 **Learning milestone:** Demonstrate that a focused tool adds useful capability while plain source and Git remain authoritative.
 
+Result: [Experiment 0005](../experiments/0005-incoming-trace-query/README.md) adds one `--incoming ID` query to the GraalVM native probe. It builds a disposable in-memory reverse index and emits deterministic shortest child-to-parent paths. The UAS query exposes six direct and four second-level incoming requirements for `OPS-001` without source changes or persistent state. The dependency-free harness now passes 12 grouped tests.
+
 ## Phase 9 — Consolidate a provisional 0.1 contract
 
 **Question:** Is the accumulated evidence coherent enough for independent trial use?

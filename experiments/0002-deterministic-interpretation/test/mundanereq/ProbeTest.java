@@ -40,6 +40,7 @@ public final class ProbeTest {
                 new TestCase("record and field diagnostics", ProbeTest::recordAndFieldDiagnostics),
                 new TestCase("math diagnostics", ProbeTest::mathDiagnostics),
                 new TestCase("identity and relationship diagnostics", ProbeTest::identityAndRelationshipDiagnostics),
+                new TestCase("incoming trace query", ProbeTest::incomingTraceQuery),
                 new TestCase("command interface", ProbeTest::commandInterface));
 
         int passed = 0;
@@ -251,6 +252,35 @@ public final class ProbeTest {
                 "invalid-reference-id");
     }
 
+    private static void incomingTraceQuery() {
+        String source = String.join("\n\n",
+                record("TOP"),
+                record("LEFT", "TOP"),
+                record("RIGHT", "TOP"),
+                record("LEAF", "LEFT", "RIGHT"),
+                record("OTHER")) + "\n";
+        Probe.Result result = interpretText(source);
+        assertEquals(List.of(), result.diagnostics(), "trace fixture diagnostics");
+        assertEquals(
+                List.of(
+                        new Probe.TraceHit("LEFT", List.of("LEFT", "TOP")),
+                        new Probe.TraceHit("RIGHT", List.of("RIGHT", "TOP")),
+                        new Probe.TraceHit("LEAF", List.of("LEAF", "LEFT", "TOP"))),
+                Probe.incomingTrace(result.requirements(), "TOP"),
+                "breadth-first shortest trace paths");
+        assertEquals(
+                "Incoming decomposition trace for TOP:\n"
+                        + "1 LEFT -> TOP\n"
+                        + "1 RIGHT -> TOP\n"
+                        + "2 LEAF -> LEFT -> TOP\n",
+                Probe.formatIncomingTrace("TOP", Probe.incomingTrace(result.requirements(), "TOP")),
+                "trace output");
+        assertEquals(
+                "Incoming decomposition trace for OTHER:\n(none)\n",
+                Probe.formatIncomingTrace("OTHER", Probe.incomingTrace(result.requirements(), "OTHER")),
+                "empty trace output");
+    }
+
     private static void commandInterface() throws Exception {
         ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
         ByteArrayOutputStream errorBytes = new ByteArrayOutputStream();
@@ -263,6 +293,32 @@ public final class ProbeTest {
                     outputBytes.toString(StandardCharsets.UTF_8),
                     "summary output");
             assertEquals("", errorBytes.toString(StandardCharsets.UTF_8), "summary errors");
+        }
+
+        outputBytes.reset();
+        errorBytes.reset();
+        try (PrintStream output = new PrintStream(outputBytes, true, StandardCharsets.UTF_8);
+                PrintStream error = new PrintStream(errorBytes, true, StandardCharsets.UTF_8)) {
+            int status = Probe.run(new String[] {"--incoming", "OPS-001", CANDIDATE_A.toString()}, output, error);
+            assertEquals(0, status, "incoming query status");
+            assertTrue(
+                    outputBytes.toString(StandardCharsets.UTF_8).startsWith(
+                            "Incoming decomposition trace for OPS-001:\n1 SYS-002 -> OPS-001\n"),
+                    "incoming query output");
+            assertEquals("", errorBytes.toString(StandardCharsets.UTF_8), "incoming query errors");
+        }
+
+        outputBytes.reset();
+        errorBytes.reset();
+        try (PrintStream output = new PrintStream(outputBytes, true, StandardCharsets.UTF_8);
+                PrintStream error = new PrintStream(errorBytes, true, StandardCharsets.UTF_8)) {
+            int status = Probe.run(new String[] {"--incoming", "MISSING", CANDIDATE_A.toString()}, output, error);
+            assertEquals(1, status, "missing query target status");
+            assertEquals("", outputBytes.toString(StandardCharsets.UTF_8), "missing query target output");
+            assertEquals(
+                    "query: requirement 'MISSING' does not exist in the selected source set\n",
+                    errorBytes.toString(StandardCharsets.UTF_8),
+                    "missing query target error");
         }
 
         outputBytes.reset();
@@ -313,6 +369,17 @@ public final class ProbeTest {
                 "statement:",
                 "  The system shall provide the required behavior.",
                 "end requirement");
+    }
+
+    private static String record(String id, String... parents) {
+        List<String> lines = new ArrayList<>();
+        lines.add("requirement " + id);
+        lines.add("title: " + id);
+        lines.add("statement:");
+        lines.add("  The system shall provide the required behavior.");
+        for (String parent : parents) lines.add("decomposes: " + parent);
+        lines.add("end requirement");
+        return String.join("\n", lines);
     }
 
     private static String mathRecord(String... body) {

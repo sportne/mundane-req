@@ -150,7 +150,7 @@ The native executable accepts explicit files or directories:
 
 ## Results
 
-The dependency-free test harness passes 11 grouped tests covering:
+The dependency-free test harness initially passed 11 grouped tests covering:
 
 - semantic equality between Candidate A's three modules and Candidate B's 20 individual files;
 - prose folding and exact opaque math-payload preservation;
@@ -170,6 +170,8 @@ Both JVM execution and the GraalVM native executable report:
 The normalized inventories emitted by the native executable are identical. They exclude source locations and traversal order and sort the semantically unordered decomposition targets.
 
 The native build completed without reflection configuration or fallback mode. The generated Linux executable is disposable and is not committed.
+
+Experiment 0005 subsequently adds a twelfth grouped test and a focused `--incoming ID` query over the same parsed semantic model. That extension does not change the deterministic-interpretation result or the source grammar; its evidence is recorded separately in [Experiment 0005](../0005-incoming-trace-query/README.md).
 
 ## Findings
 
