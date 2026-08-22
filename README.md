@@ -23,4 +23,4 @@ The source representation is the foundation. A requirements file should be under
 - `experiments/` — concrete source fixtures and recorded experimental results.
 - `roadmap/` — development strategy, experiments, and sequencing.
 
-There is intentionally no implementation code yet. The initial phase is focused on defining and testing the project concept and source representation.
+Implementation remains deliberately experimental. The first code is a small [deterministic-interpretation probe](experiments/0002-deterministic-interpretation/README.md) used to test the provisional source language; it is not yet a production tool or architecture commitment.

@@ -111,7 +111,7 @@ Do not begin a production compiler architecture. The implementation exists to te
 
 **Learning milestone:** Determine whether the language is both pleasant source and a sufficiently deterministic interface for independent tools.
 
-Planned experiment: [Experiment 0002](../experiments/0002-deterministic-interpretation/README.md) will compare the semantic interpretation of the module and one-record-per-file layouts and exercise focused invalid fixtures. Its implementation remains pending explicit agreement to begin the first code experiment.
+Result: [Experiment 0002](../experiments/0002-deterministic-interpretation/README.md) implements a dependency-free GraalVM native Java probe. Its 11 grouped tests confirm equal semantic inventories for the module and one-record-per-file layouts, deterministic prose and math handling, and source-positioned rejection of the planned invalid cases. No production architecture or additional language machinery was needed.
 
 ## Phase 6 — Use and learn
 

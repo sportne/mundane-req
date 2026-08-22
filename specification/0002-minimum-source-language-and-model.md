@@ -1,6 +1,6 @@
 # Specification 0002: Minimum Source Language and Model
 
-Status: Draft for the deterministic-interpretation experiment
+Status: Provisional; deterministic interpretation confirmed by Experiment 0002
 
 ## Purpose
 
@@ -13,6 +13,8 @@ The design has three priorities:
 3. independent tools can interpret the same source deterministically.
 
 The evidence and candidate disposition are recorded in [Research 0007](../research/0007-provisional-source-representation-decision.md).
+
+[Experiment 0002](../experiments/0002-deterministic-interpretation/README.md) implements these rules in a dependency-free GraalVM native Java probe. Its module and one-record-per-file fixtures produce identical semantic inventories, and its focused invalid fixtures produce source-positioned diagnostics. This confirms deterministic interpretation for the tested corpus; it does not establish a compatibility-stable language version.
 
 ## Status of decisions
 

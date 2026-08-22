@@ -1,6 +1,8 @@
 # Experiment 0002: Deterministic Interpretation
 
-Status: Planned; implementation requires explicit agreement
+Status: Completed
+
+Result date: 2026-08-22
 
 ## Question
 
@@ -35,7 +37,15 @@ If authorized, build one disposable parsing and validation probe that:
 
 It should not include a database, server, plugin system, renderer, view parser, formatter, semantic merge, ReqIF support, or production compiler framework.
 
-The implementation language is deliberately not selected by this plan. That choice should be based on the smallest clear probe and should not become a product-language commitment.
+The probe is implemented in Java 21 and compiled to a native executable with GraalVM Native Image. This was an explicit experiment choice, not a product-language commitment. It uses only the Java standard library and introduces no package manager or third-party dependency.
+
+The implementation consists of:
+
+- `src/mundanereq/Probe.java` — source discovery, parsing, semantic indexing, validation, diagnostics, normalized inventory, and command-line entry point;
+- `test/mundanereq/ProbeTest.java` — a dependency-free test harness;
+- `Makefile` — JVM test and native-image build commands.
+
+Generated classes and the native executable remain disposable under the ignored `build/` directory.
 
 ## Positive tests
 
@@ -117,11 +127,69 @@ Stop and revise the specification rather than adding general machinery if the pr
 
 ## Deliverables
 
-Once implementation is authorized:
-
 - the smallest parser and validator needed for the tests;
 - positive and negative fixtures;
 - automated checks of expected interpretation and diagnostics;
 - a short result record describing confirmed rules, revisions, and remaining questions.
 
 No production architecture decision should be inferred merely from the probe's implementation language or directory structure.
+
+## Execution
+
+With the SDKMAN GraalVM Java selected:
+
+    make test
+    make native
+
+The native executable accepts explicit files or directories:
+
+    build/mundanereq ../0001-source-representations/candidate-a-modules
+    build/mundanereq --inventory ../0001-source-representations/candidate-b-one-per-file/requirements
+
+## Results
+
+The dependency-free test harness passes 11 grouped tests covering:
+
+- semantic equality between Candidate A's three modules and Candidate B's 20 individual files;
+- prose folding and exact opaque math-payload preservation;
+- optional fields and LF/CRLF equivalence;
+- recursive `.mreq` discovery, explicit files, `.git` exclusion, symlink exclusion, and input deduplication;
+- byte-order marks, invalid UTF-8, NUL bytes, tabs, control characters, invalid line endings, and missing final line endings;
+- record boundaries, field presence, uniqueness, order, form, and indentation;
+- empty, malformed, and unterminated math blocks;
+- duplicate identities, duplicate relationships, invalid relationship IDs, and dangling relationships;
+- summary, inventory, and diagnostic command-line behavior.
+
+Both JVM execution and the GraalVM native executable report:
+
+    Candidate A: 20 requirements, 22 decomposition relationships, 3 files
+    Candidate B: 20 requirements, 22 decomposition relationships, 20 files
+
+The normalized inventories emitted by the native executable are identical. They exclude source locations and traversal order and sort the semantically unordered decomposition targets.
+
+The native build completed without reflection configuration or fallback mode. The generated Linux executable is disposable and is not committed.
+
+## Findings
+
+1. Specification 0002 is deterministic enough to implement without hidden state or a generalized parsing framework.
+2. File boundaries are demonstrably non-semantic for the tested model: materially different layouts produce equal inventories.
+3. Fixed field order and explicit record boundaries make malformed forms locally diagnosable.
+4. Prose folding reproduces the intended single paragraphs in the corpus.
+5. Removing only the two additional math-payload spaces preserves the intended LaTeX-style characters and line breaks.
+6. Repository-wide identity and relationship validation needs only an in-memory ID index for this experiment.
+7. The probe found no need for a view parser, database, formatter, semantic merge engine, configurable grammar, or LaTeX parser.
+
+No rule required expansion during implementation. Specification 0002 should remain provisional until the format is manually authored and changed beyond this synthetic corpus.
+
+## Limitations
+
+- This is one independent implementation, not a cross-implementation compatibility test.
+- The corpus remains small and synthetic.
+- Invalid fixtures are constructed by the test harness rather than maintained as a large conformance suite.
+- The parser intentionally stops after the first syntax error in a file, although it reports source-set errors across files.
+- Performance and memory behavior at organizational scale were not studied.
+- The experiment tests deterministic interpretation, not whether repeated manual authoring will reveal ergonomic problems.
+
+## Disposition
+
+Experiment 0002 succeeds against its stated criteria. Retain Specification 0002 as the provisional minimum language and move to use-oriented experiments. The next work should exercise ordinary authoring, change, review, and traceability on another small corpus or sustained evolution of the existing one before adding language features.
