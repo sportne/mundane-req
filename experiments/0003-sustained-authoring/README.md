@@ -1,6 +1,6 @@
 # Experiment 0003: Sustained Authoring and Model Pressure
 
-Status: Planned
+Status: In progress; starting corpus established
 
 Plan date: 2026-08-22
 
