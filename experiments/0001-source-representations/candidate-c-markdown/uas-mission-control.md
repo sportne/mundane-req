@@ -182,6 +182,20 @@ end requirement
 ## Command-link monitoring
 
 ```mundane-req
+requirement SYS-008
+title: Monotonic safety timing
+allocation: Timing service
+statement:
+  The mission-control system shall use a monotonic time source with resolution no greater than
+  10 ms for every elapsed-time comparison that determines command-link availability or a
+  safe-recovery response deadline.
+rationale:
+  Wall-clock correction must not shorten or extend safety-related elapsed-time decisions.
+source: SRC-DESIGN-001
+end requirement
+```
+
+```mundane-req
 requirement SYS-006
 title: Command-link loss determination
 allocation: Link monitor
@@ -230,33 +244,18 @@ decomposes: SYS-008
 end requirement
 ```
 
-```mundane-req
-requirement SYS-008
-title: Monotonic safety timing
-allocation: Timing service
-statement:
-  The mission-control system shall use a monotonic time source with resolution no greater than
-  10 ms for every elapsed-time comparison that determines command-link availability or a
-  safe-recovery response deadline.
-rationale:
-  Wall-clock correction must not shorten or extend safety-related elapsed-time decisions.
-source: SRC-DESIGN-001
-end requirement
-```
-
 ## Loss-of-link response
 
 ```mundane-req
 requirement SYS-007
-title: Loss-of-link response and record
+title: Loss-of-link response
 allocation: Mission-control coordinator
 statement:
-  Within 250 ms after the command link is declared unavailable, the mission-control system shall
+  Within 100 ms after the command link is declared unavailable, the mission-control system shall
   cause the ground-control adapter to begin the first transmission attempt of a safe-recovery
-  command for the active vehicle and shall record the link-loss declaration time, active vehicle
-  identifier, and command identifier.
+  command for the active vehicle.
 rationale:
-  Safe recovery must begin promptly, and the response must be reconstructable after the event.
+  Prompt initiation of safe recovery limits continued operation without a usable command link.
 source: SRC-SAFETY-001
 decomposes: OPS-001
 decomposes: OPS-004
@@ -278,6 +277,35 @@ end requirement
 ```
 
 ```mundane-req
+requirement GCA-004
+title: Recovery transmission deadline allocation
+allocation: Ground-control adapter
+statement:
+  The ground-control adapter shall begin the first transmission attempt of a safe-recovery command
+  within 50 ms after receiving the safe-recovery request.
+rationale:
+  Allocating half of the system response budget to the adapter leaves time for detection
+  notification, request construction, and dispatch.
+decomposes: SYS-007
+end requirement
+```
+
+```mundane-req
+requirement SYS-009
+title: Loss-of-link audit record
+allocation: Event recorder
+statement:
+  Within 1 s after the command link is declared unavailable, the mission-control system shall
+  record the link-loss declaration time, active vehicle identifier, and safe-recovery command
+  identifier.
+rationale:
+  Audit recording supports event reconstruction but must not obscure the timing or identity of
+  the primary safety action.
+source: SRC-SAFETY-001, revision B
+end requirement
+```
+
+```mundane-req
 requirement MCS-001
 title: Loss-of-link event persistence
 allocation: Event recorder
@@ -286,7 +314,7 @@ statement:
   safe-recovery command identifier within 100 ms after receiving the event-record request.
 rationale:
   Prompt persistence supports reconstruction even if later mission-control processing fails.
-decomposes: SYS-007
+decomposes: SYS-009
 end requirement
 ```
 

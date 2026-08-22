@@ -68,7 +68,7 @@ A parser is not initially required. Build a minimal parsing probe only if it ans
 
 **Learning milestone:** Reject inadequate candidates, record the tradeoffs of viable candidates, and decide whether evidence supports selecting or revising a representation.
 
-Initial result: [Research 0005](../research/0005-purpose-built-record-syntax-sketches.md) selects explicit keyword records with indented fields for the shared Candidate A/B experiment grammar. [Research 0006](../research/0006-non-markdown-view-notation.md) supplies a disposable flat view fixture rather than a language decision. [Experiment 0001](../experiments/0001-source-representations/README.md) encodes Baseline A in all three candidates for direct inspection.
+Initial result: [Research 0005](../research/0005-purpose-built-record-syntax-sketches.md) selects explicit keyword records with indented fields for the shared Candidate A/B experiment grammar. [Research 0006](../research/0006-non-markdown-view-notation.md) supplies a disposable flat view fixture rather than a language decision. [Experiment 0001](../experiments/0001-source-representations/README.md) records Baselines A and B in all three candidates; its [ordinary-diff review](../experiments/0001-source-representations/baseline-a-to-b-review.md) captures the first comparative evidence and a review correction.
 
 ## Phase 4 — Define the minimum language and model
 

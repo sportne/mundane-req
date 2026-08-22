@@ -1,6 +1,6 @@
 # Experiment 0001: Source Representations
 
-Status: Baseline A
+Status: Baseline B
 
 ## Purpose
 
@@ -12,23 +12,26 @@ This directory encodes the syntax-neutral corpus from [Research 0004](../../rese
 
 Candidate A and Candidate B use the minimal view fixture sketched in [Research 0006](../../research/0006-non-markdown-view-notation.md). The fixture exists to test ordering and view-only movement; it is not a proposed view language specification.
 
-## Current baseline state
+## Baseline states
 
-The files currently represent Baseline A:
+Baseline A is identified by the annotated Git tag 'experiment-0001-baseline-a' and contains:
 
 - 18 requirements;
 - 21 outgoing decomposition relationships;
 - one self-derived requirement;
 - one requirement containing a LaTeX-style mathematical fragment.
 
-Baseline A is identified by the annotated Git tag 'experiment-0001-baseline-a'. Its tag message states that the snapshot is illustrative and experimental and does not indicate requirements approval, certification, or engineering suitability.
+The current files represent Baseline B, identified by the annotated tag 'experiment-0001-baseline-b', and contain:
 
-The remaining experimental sequence is:
+- 20 requirements;
+- 22 outgoing decomposition relationships;
+- two self-derived requirements;
+- the unchanged LaTeX-style mathematical fragment;
+- the reviewed safety-driven change defined in Research 0004.
 
-1. apply the exact semantic change defined in Research 0004;
-2. inspect ordinary diffs and merge behavior;
-3. correct issues discovered during review;
-4. commit and tag the accepted Baseline B fixtures.
+Both tag messages state that their snapshots are illustrative and experimental and do not indicate requirements approval, certification, or engineering suitability.
+
+The ordinary source-diff review and its correction are recorded in [Baseline A-to-B review](baseline-a-to-b-review.md).
 
 ## Fixture conventions
 
@@ -48,4 +51,4 @@ No parser, renderer, generated index, or hidden metadata is part of this fixture
 - All three candidates contain byte-identical record bodies, the same 21 decomposition relationships, and the same mathematical payload.
 - The separate view is not needed to understand an individual requirement. Its only demonstrated purpose so far is to preserve authored grouping and order independently of record storage.
 - Candidate C's standard fenced blocks remain readable in generic Markdown, but they render as code rather than polished requirement prose. Richer presentation would require an additive renderer or a different Markdown extension.
-- No meaningful representation conclusion should be drawn before applying the Baseline B change and inspecting actual diffs, navigation, and merge behavior.
+- The Baseline B change supplies initial diff and navigation evidence, but one change is not enough to select a representation. Merge behavior remains a separate experiment.

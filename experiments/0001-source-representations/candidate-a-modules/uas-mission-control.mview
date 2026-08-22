@@ -28,13 +28,15 @@ requirement: SYS-005
 requirement: GCA-001
 
 section: Command-link monitoring
+requirement: SYS-008
 requirement: SYS-006
 requirement: GCA-002
-requirement: SYS-008
 
 section: Loss-of-link response
 requirement: SYS-007
 requirement: GCA-003
+requirement: GCA-004
+requirement: SYS-009
 requirement: MCS-001
 
 section: Traceability orientation

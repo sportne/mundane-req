@@ -6,5 +6,5 @@ statement:
   safe-recovery command identifier within 100 ms after receiving the event-record request.
 rationale:
   Prompt persistence supports reconstruction even if later mission-control processing fails.
-decomposes: SYS-007
+decomposes: SYS-009
 end requirement

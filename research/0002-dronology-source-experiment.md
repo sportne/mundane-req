@@ -68,6 +68,8 @@ Baseline A will contain a coherent reviewed set. It will be identified by a Git 
 
 The tag demonstrates snapshot mechanics only. It must not be described as proof of organizational approval or certification.
 
+Initial result: Baseline A is recorded by annotated tag `experiment-0001-baseline-a` at commit `8ea6e5f`.
+
 ### Proposed change
 
 A synthetic change request will introduce a safety-driven communication-loss response. It should exercise several kinds of source change:
@@ -85,6 +87,8 @@ The numeric threshold and domain facts will be invented for the experiment and c
 ### Baseline B — accepted changed capability
 
 After review corrections, the changed corpus will be committed and tagged as Baseline B. The comparison from A to B must be understandable using ordinary Git tools.
+
+Initial result: [Experiment 0001's review](../experiments/0001-source-representations/baseline-a-to-b-review.md) records the ordinary-diff observations, human impact disposition, and one title correction accepted before the Baseline B tag.
 
 ## Workflows under test
 
@@ -179,7 +183,7 @@ Initial record-syntax result: [Research 0005](0005-purpose-built-record-syntax-s
 
 Initial view-notation result: [Research 0006](0006-non-markdown-view-notation.md) supplies a deliberately disposable flat view fixture with ID-only requirement references. Its value and friction will be observed during full-corpus use rather than treated as a language-design prerequisite.
 
-Initial encoding result: [Experiment 0001](../experiments/0001-source-representations/README.md) encodes Baseline A in all three candidates. Candidates A and B contain byte-identical record bodies at different file granularities; Candidate C places those same bodies in explicit fenced blocks within a Markdown-authored specification.
+Initial encoding result: [Experiment 0001](../experiments/0001-source-representations/README.md) encodes Baselines A and B in all three candidates. Candidates A and B contain byte-identical record bodies at different file granularities; Candidate C places those same bodies in explicit fenced blocks within a Markdown-authored specification.
 
 The comparison should include coherent candidates representing:
 
@@ -275,5 +279,5 @@ The experiment may conclude that no candidate is yet adequate.
 Research 0003 resolves the prior-art set, revised candidate slate, and direct granularity comparison. Research 0004 adopts the provisional decomposition, source, and allocation meanings and applies them to the semantic corpus. Research 0005 selects the shared Candidate A/B record form for the experiment. Research 0006 supplies a working view fixture without making it a product decision. The remaining questions are:
 
 1. Which constrained LaTeX-style mathematical profile should all candidates use?
-2. What information belongs in the annotated experimental baseline tag versus repository source?
-3. Which friction observed in the Baseline A encodings should be corrected before recording experimental history?
+2. Which concurrent edits and moves will provide the smallest realistic merge experiment?
+3. Which additional navigation observations are necessary before comparing the candidates fairly?

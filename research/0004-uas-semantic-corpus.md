@@ -349,6 +349,8 @@ The proposed branch applies these exact semantic changes.
 
 Preserve SYS-007 identity for the primary safety behavior.
 
+Change its title to `Loss-of-link response` so the title no longer claims ownership of the separated recording behavior.
+
 Replace its statement with:
 
 > Within 100 ms after the command link is declared unavailable, the mission-control system shall cause the ground-control adapter to begin the first transmission attempt of a safe-recovery command for the active vehicle.
