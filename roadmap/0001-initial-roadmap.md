@@ -161,6 +161,8 @@ Reconcile the project brief, mission, principles, conceptual model, source-langu
 
 **Learning milestone:** Publish a small provisional contract that another implementation or engineering team can evaluate without inheriting experimental accidents.
 
+Result: [Specification 0003](../specification/0003-provisional-0.1-contract.md) consolidates mission, audience, authoritative source behavior, baselines, verification concept ownership, conformance, diagnostics, optional trace querying, native reference use, CI trial guidance, compatibility boundaries, exclusions, and a trial checklist. The [`conformance/0.1`](../conformance/0.1/README.md) fixtures provide a normative valid interpretation example and representative invalid cases. Annotated tag `provisional-0.1` identifies the complete contract baseline.
+
 ## Phase 10 — Investigate ReqIF interchange
 
 **Question:** Can mundane-req exchange requirements without allowing the interchange format to own the source model?

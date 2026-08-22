@@ -1,0 +1,5 @@
+requirement DUPLICATE
+title: Second duplicate
+statement:
+  The system shall provide the second behavior.
+end requirement

@@ -4,6 +4,8 @@
 
 `mundanereq` explores a simple idea: requirements should be human-readable source files stored in ordinary Git repositories, with requirements-specific tooling layered on top in the same way compilers, linters, renderers, IDEs, and CI systems are layered on top of software source code.
 
+Its mission is to make requirements durable, human-readable source artifacts that work naturally with ordinary Git workflows and independent, composable tools.
+
 The source representation is the foundation. A requirements file should be understandable and reviewable directly in a text editor or standard Git forge diff without requiring a proprietary application or custom renderer.
 
 ## Project principles
@@ -19,8 +21,11 @@ The source representation is the foundation. A requirements file should be under
 ## Repository layout
 
 - `specification/` — project and language specifications.
+- `conformance/` — independently runnable examples for provisional source contracts.
 - `research/` — surveys, experiments, evidence, and unresolved design questions.
 - `experiments/` — concrete source fixtures and recorded experimental results.
 - `roadmap/` — development strategy, experiments, and sequencing.
 
-Implementation remains deliberately experimental. The first code is a small [deterministic-interpretation probe](experiments/0002-deterministic-interpretation/README.md) used to test the provisional source language; it is not yet a production tool or architecture commitment. The latest completed study [transfers the minimum model](experiments/0004-transferability/README.md) to a licensed NASA FRET case-study corpus and records where requirements source, formal-tool semantics, and verification planning separate.
+The current written interface is the [provisional 0.1 contract](specification/0003-provisional-0.1-contract.md). It is an evidence-backed trial contract, not a stable release promise.
+
+Implementation remains deliberately experimental. The first code is a small [deterministic-interpretation probe](experiments/0002-deterministic-interpretation/README.md) used to test the provisional source language; it is not yet a production architecture commitment. Later experiments [transfer the minimum model](experiments/0004-transferability/README.md) to a licensed NASA FRET case-study corpus and add one [focused incoming trace query](experiments/0005-incoming-trace-query/README.md) without changing authoritative source.

@@ -1,0 +1,6 @@
+requirement CHILD
+title: Dangling child
+statement:
+  The subsystem shall provide the required behavior.
+decomposes: MISSING
+end requirement

@@ -706,6 +706,7 @@ public final class Probe {
                             .forEach(target -> output.append("decomposes ").append(escape(target)).append('\n'));
                     output.append("end requirement\n\n");
                 });
+        if (!output.isEmpty()) output.setLength(output.length() - 1);
         return output.toString();
     }
 
