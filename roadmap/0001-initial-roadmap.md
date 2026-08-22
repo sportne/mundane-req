@@ -141,11 +141,13 @@ Encode a bounded subset and include explicit pressure cases for:
 
 **Learning milestone:** Decide whether the current minimum model transfers, requires a small revision, or is overfitted to the UAS corpus.
 
+Result: [Experiment 0004](../experiments/0004-transferability/README.md) transfers all 19 requirements from NASA FRET's Lift-Plus-Cruise mini case at a pinned Apache-2.0 revision. Both annotated baselines validate without grammar changes. A [baseline-bound verification plan](../experiments/0004-transferability/verification-plan.md) separates planned coverage from execution and results, while the [transferability review](../experiments/0004-transferability/transferability-review.md) confirms source-locator fidelity, records a controlled ID correction, and distinguishes requirement-source preservation from lossless FRET interchange. The minimum requirement model transfers; verification planning receives a conceptual refinement but no source syntax yet.
+
 ## Phase 8 — Add one evidence-driven tool
 
 **Question:** Which repeated source-level task most benefits from focused tooling?
 
-Choose one observed friction point after transferability testing. The current leading candidate is an incoming and transitive trace query over the existing semantic model. Keep the tool independent of source ownership and avoid refactoring the probe into a general platform unless the experiment requires it.
+Choose one observed friction point after transferability testing. The leading candidates are an incoming/transitive decomposition query and a baseline-bound verification-coverage query. Prefer the smaller query that exercises existing model information without prematurely defining the whole verification-plan language. Keep the tool independent of source ownership and avoid refactoring the probe into a general platform unless the experiment requires it.
 
 **Learning milestone:** Demonstrate that a focused tool adds useful capability while plain source and Git remain authoritative.
 
@@ -177,4 +179,4 @@ A small formally traced requirements set can be:
 
 Passing this criterion would justify continued language and toolchain work. It would not demonstrate a complete requirements-management product.
 
-Current result: Experiments 0001 through 0003 meet this criterion for the small synthetic UAS corpus. Transferability to independently structured requirements remains unproven.
+Current result: Experiments 0001 through 0003 meet this criterion for the small synthetic UAS corpus. Experiment 0004 shows that the minimum requirement model also transfers to an independently structured 19-requirement FRET case study without grammar changes. Operational scale and independent-team authoring remain unproven.

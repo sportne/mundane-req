@@ -1,6 +1,6 @@
 # Specification 0002: Minimum Source Language and Model
 
-Status: Provisional; deterministic interpretation and sustained use confirmed by Experiments 0002 and 0003
+Status: Provisional; deterministic interpretation, sustained use, and transferability confirmed by Experiments 0002 through 0004
 
 ## Purpose
 
@@ -17,6 +17,8 @@ The evidence and candidate disposition are recorded in [Research 0007](../resear
 [Experiment 0002](../experiments/0002-deterministic-interpretation/README.md) implements these rules in a dependency-free GraalVM native Java probe. Its module and one-record-per-file fixtures produce identical semantic inventories, and its focused invalid fixtures produce source-positioned diagnostics. This confirms deterministic interpretation for the tested corpus; it does not establish a compatibility-stable language version.
 
 [Experiment 0003](../experiments/0003-sustained-authoring/README.md) exercises addition, splitting, relationship retargeting, coordinated normative change, reallocation, file movement, retirement, and formal model-pressure workflows. All committed states remain valid without grammar changes. The result supports this minimum model for continued experiment while identifying verification planning and identity continuity across ID correction as unresolved questions.
+
+[Experiment 0004](../experiments/0004-transferability/README.md) transfers 19 requirements from NASA's independently structured FRET Lift-Plus-Cruise case study. The records validate without grammar changes. A precise upstream commit/path/record locator fits in the opaque `source` scalar, while a separate baseline-bound verification plan demonstrates why activity identity, coverage, execution, and results should not be collapsed into requirement fields.
 
 ## Status of decisions
 
@@ -63,6 +65,8 @@ A source set denotes a collection of requirement objects and directed decomposit
 
 Changing the ID denotes replacement of one identity with another unless later tooling or explicit change records provide additional evidence. A separate hidden or machine identity is deferred.
 
+Experiment 0004 confirms this behavior across an adjacent consumer: correcting `LPC_KIAS_0` to `LPC_KIAS_NONNEGATIVE` and updating its verification-plan reference is clear in an atomic Git diff, but semantic snapshot comparison still sees removal and addition. The unchanged upstream source locator supplies provenance, not an identity-continuity assertion.
+
 For this experiment an ID:
 
 - begins with an ASCII letter or digit;
@@ -99,11 +103,15 @@ The minimum validator checks that every target exists in the selected source set
 
 Keeping it distinct from `decomposes` preserves the difference between origins outside the requirement model and relationships among managed requirements.
 
+Experiment 0004 demonstrates that an opaque value can preserve a precise Git commit, file path, and upstream record ID without language-defined locator structure. The repetition is visible but does not yet justify aliases, resolver configuration, or a universal provenance schema.
+
 ### Allocation
 
 **Hypothesis:** `allocation` remains a plain label. Its presence is optional so that an otherwise valid requirement can exist before allocation. Modeling components or allocations as relationship objects is deferred.
 
 Experiment 0003 found that a reallocation is a clear one-line change, but also confirmed that a label cannot provide referential component identity, controlled vocabulary, or rename semantics. The hypothesis remains unchanged pending another corpus.
+
+Experiment 0004 maps FRET's single `vehicle` component label directly and readably, but the one-value vocabulary provides no evidence about heterogeneous target types or rename behavior. A repository policy may constrain allowed labels without changing the core model.
 
 ### Revisions and baselines
 
@@ -112,6 +120,14 @@ Experiment 0003 found that a reallocation is a clear one-line change, but also c
 A baseline is initially a repository snapshot identified by an ordinary Git commit, usually given a durable name and scope through an annotated tag or project convention. Approval, authority, and certification meaning are not inferred from the tag merely existing.
 
 Experiment 0003 confirms that addition, editing, movement, and deletion are recoverable between annotated baselines without intrinsic revision, status, or retirement fields. Required change justification and baseline authority remain review or project-policy concerns.
+
+### Verification planning and evidence
+
+**Model decision:** Planned verification is not an intrinsic scalar property of a timeless requirement object. Planning coverage relates a particular requirement revision, usually through a declared baseline, to a separately identified verification activity. An execution of that activity may later produce configuration, evidence, and a result; planning coverage, execution, and passing are distinct facts.
+
+Experiment 0004 represents five planned activities and 19-of-19 planning coverage in a separate baseline-bound text artifact while recording zero executions. Repeating activity definitions or pass/fail state in requirement records would duplicate information and bind revision-specific workflow state to requirement identity.
+
+**Deferred:** The source syntax and semantic model for verification activities, coverage links, executions, and evidence. The experiment establishes conceptual ownership, not a second language.
 
 ## Record syntax
 
@@ -251,11 +267,11 @@ ReqIF round-tripping remains future roadmap work. This source language should no
 
 ## Open questions after initial interpretation and use
 
-1. Does verification planning belong partly in requirement source, in a separate verification-plan source, or entirely in relationships to external artifacts?
-2. Is Git history sufficient for rare human-facing ID corrections, or does cross-baseline and interchange continuity justify a separate identity concept?
-3. Does an opaque `source` value preserve adequate locator and revision fidelity on a corpus not designed for mundane-req?
-4. When do allocation labels need referential identity or a controlled vocabulary?
+1. What minimum source model should identify verification activities, coverage links, executions, and evidence without coupling them to requirement storage?
+2. Is Git history sufficient for rare human-facing ID corrections, or does cross-baseline and interchange continuity justify an explicit continuity record or separate identity concept?
+3. When do allocation labels need referential identity or a controlled vocabulary?
+4. How should project vocabulary and formal symbol definitions remain independently readable without turning the requirement language into an executable expression framework?
 5. Do prose folding, fixed field order, and source discovery remain comfortable at larger scale and with independent authors?
 6. Which trace-completeness rules are common enough for reusable policy analysis without becoming universal language validity rules?
 
-The next experiment should pressure these questions with another corpus rather than expanding the grammar speculatively.
+The next experiment should add one focused, evidence-driven query over the existing model rather than expanding the grammar speculatively. ID continuity should receive another focused test before ReqIF round-trip work.

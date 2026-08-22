@@ -23,4 +23,4 @@ The source representation is the foundation. A requirements file should be under
 - `experiments/` — concrete source fixtures and recorded experimental results.
 - `roadmap/` — development strategy, experiments, and sequencing.
 
-Implementation remains deliberately experimental. The first code is a small [deterministic-interpretation probe](experiments/0002-deterministic-interpretation/README.md) used to test the provisional source language; it is not yet a production tool or architecture commitment.
+Implementation remains deliberately experimental. The first code is a small [deterministic-interpretation probe](experiments/0002-deterministic-interpretation/README.md) used to test the provisional source language; it is not yet a production tool or architecture commitment. The latest completed study [transfers the minimum model](experiments/0004-transferability/README.md) to a licensed NASA FRET case-study corpus and records where requirements source, formal-tool semantics, and verification planning separate.

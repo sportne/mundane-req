@@ -1,8 +1,12 @@
 # Experiment 0004: Transferability
 
-Status: In progress; corpus-selection and initial-encoding baseline
+Status: Completed
 
 Plan date: 2026-08-22
+
+Result date: 2026-08-22
+
+Reproducible result: annotated tag `experiment-0004-result`
 
 ## Question
 
@@ -45,6 +49,14 @@ The exact upstream revision, path, license, adaptations, and exclusions are reco
 ## Starting observations
 
 The transfer is deliberately asymmetric. The minimum mundane-req model preserves the independently readable normative records and their provenance, but it does not claim to preserve FRET's temporal-logic interpretation, variable declarations, generated formulas, or realizability-analysis configuration. Those losses matter for interchange; they do not automatically belong in requirements source.
+
+## Results
+
+All 19 selected requirements parse successfully in two files at both annotated baselines. Baseline A preserves the upstream IDs; Baseline B contains one controlled local ID correction and a correspondingly updated verification-plan reference.
+
+The [verification plan](verification-plan.md) exercises baseline-bound planning coverage without adding fields to requirement records. The [transferability review](transferability-review.md) records the mapping, losses, five required pressure cases, and final decisions.
+
+The minimum requirement grammar transfers without change. Verification planning is best treated as a separate relationship model bound to requirement revisions; its syntax remains deferred. ID correction remains visible and reviewable in Git but does not preserve semantic identity across snapshots.
 
 ## Deliverables
 
