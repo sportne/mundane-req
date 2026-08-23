@@ -50,8 +50,8 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 | [TC-0301](task-0301-implement-the-validator-executable.md) | `mundanereq-validate` implementation | Complete | TC-0204 |
 | [TC-0302](task-0302-verify-validator-behavior.md) | Validator conformance and CI evidence | Complete | TC-0301 |
 | [TC-0303](task-0303-publish-the-validator-trial-contract.md) | Maintained validator trial release | Complete | TC-0302 |
-| [TC-0401](task-0401-run-the-formatting-policy-experiment.md) | Selected conservative formatting policy | Planned | TC-0203 |
-| [TC-0402](task-0402-implement-the-formatter-executable.md) | `mundanereq-format` implementation | Planned | TC-0401, TC-0204 |
+| [TC-0401](task-0401-run-the-formatting-policy-experiment.md) | Selected conservative formatting policy | Complete | TC-0203 |
+| [TC-0402](task-0402-implement-the-formatter-executable.md) | `mundanereq-format` implementation | Ready | TC-0401, TC-0204 |
 | [TC-0403](task-0403-verify-formatter-safety-properties.md) | Semantic-preservation and idempotence evidence | Planned | TC-0402 |
 | [TC-0404](task-0404-publish-the-formatter-trial-contract.md) | Maintained formatter trial release | Planned | TC-0403 |
 | [TC-0501](task-0501-define-the-first-trace-interface.md) | Bounded trace questions and output semantics | Planned | TC-0203 |

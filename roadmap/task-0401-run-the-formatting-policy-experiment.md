@@ -1,6 +1,6 @@
 # Task TC-0401: Run the Formatting Policy Experiment
 
-Status: Planned
+Status: Complete
 
 Roadmap stage: 4
 
@@ -44,6 +44,24 @@ A recorded comparison selects or rejects conservative structural formatting, pro
 ## Completion decision
 
 Select the smallest policy that creates material consistency. If only a narrow subset is clearly safe, ship a narrow formatter rather than expanding comment or source semantics.
+
+## Result
+
+[Experiment 0008](../experiments/0008-formatting-policy/README.md) compares a
+conservative structural policy with prose reflow over conforming source that
+combines CRLF, blank-line variation, comments, multiple records, repeated
+relationships, wrapped prose, and opaque LaTeX.
+
+Both candidates preserve the semantic inventory, but prose reflow creates
+unrelated unified-diff churn and requires substantially more interpretation.
+The selected first policy therefore normalizes line endings to LF and collapses
+comment-free inter-record blank-line runs to exactly one line. It preserves
+all nonblank text and order and leaves every other blank line unchanged. Check,
+context-aware single-file standard-output, and explicit per-file safe-replacement
+write modes are selected.
+
+This is the smallest policy found to provide material consistency without
+inventing comment attachment, prose-width, ordering, or math semantics.
 
 ## References
 
