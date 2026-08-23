@@ -6,11 +6,11 @@ import java.nio.file.Path;
 import java.util.List;
 import mundanereq.source.SourceDocument;
 
-/** Temporary migration evidence against the audited experimental interpreter. */
-public final class OracleSemanticConversionTest {
+/** Normative semantic conversion checks for the maintained interpreter. */
+public final class SemanticConversionTest {
     private static final Path ROOT = Path.of("").toAbsolutePath().normalize();
 
-    private OracleSemanticConversionTest() {}
+    private SemanticConversionTest() {}
 
     public static void run() throws Exception {
         String plain = inventoryThroughConcreteSource("conformance/0.1/valid/requirements.mreq");
@@ -30,10 +30,11 @@ public final class OracleSemanticConversionTest {
     private static String inventoryThroughConcreteSource(String relativePath) throws Exception {
         Path path = ROOT.resolve(relativePath);
         SourceDocument document = SourceDocument.read(path.toString(), Files.readAllBytes(path));
-        Probe.Result result = Probe.interpretSources(List.of(new Probe.Source(path.toString(), document.renderedBytes())));
+        Interpreter.Result result = Interpreter.interpretSources(
+                List.of(new Interpreter.Source(path.toString(), document.renderedBytes())));
         if (!result.diagnostics().isEmpty()) {
             throw new AssertionError("oracle rejected concrete source: " + result.diagnostics());
         }
-        return Probe.normalizedInventory(result.requirements());
+        return Interpreter.normalizedInventory(result.requirements());
     }
 }

@@ -35,12 +35,11 @@ general token tree: TC-0203 will interpret the small line-oriented grammar
 directly from the ordered lines.
 
 The comment-free and commented conformance fixtures have equal sequences of
-potentially semantic content lines. A temporary test-only adapter passes each
-losslessly reproduced `SourceDocument` to the audited experimental interpreter;
+potentially semantic content lines. Maintained semantic interpretation now
+passes each losslessly reproduced `SourceDocument` through the same parser;
 both produce the same normative semantic inventory. The concrete prototype also
 reproduces the commented source exactly while exposing its twelve comments
-separately. TC-0203 will replace this migration oracle with maintained semantic
-interpretation; the inventory text is evidence, not an interchange API.
+separately. The inventory text is evidence, not an interchange API.
 
 ## Consumers
 

@@ -1,6 +1,6 @@
 # Task TC-0204: Port Tests and Prove Native Tool Boundaries
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 2
 

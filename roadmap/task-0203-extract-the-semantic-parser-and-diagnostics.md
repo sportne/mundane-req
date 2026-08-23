@@ -1,6 +1,6 @@
 # Task TC-0203: Extract the Semantic Parser and Diagnostics
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 2
 
@@ -43,6 +43,19 @@ Maintained components perform source discovery, parsing, semantic conversion, so
 ## Completion decision
 
 If a shared component is used by only one executable and adds abstraction rather than consistency, keep it local to that executable.
+
+## Result
+
+The audited 0.2 interpretation logic now exists as a maintained, dependency-free
+`Interpreter` rather than as an executable concern. It consumes the shared
+`SourceDocument`, performs deterministic explicit-input discovery, produces
+structured diagnostics and semantic requirement values, and exposes identity
+and outgoing-relationship indexes. CLI parsing, diagnostic presentation,
+formatting, and reverse trace queries remain outside this component.
+
+Maintained tests match the normative 0.1 and 0.2 inventories, exercise the
+representative 20-requirement corpus and its 22 relationships, verify
+input-order independence, and assert Unicode-scalar diagnostic coordinates.
 
 ## References
 

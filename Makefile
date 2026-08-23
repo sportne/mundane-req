@@ -5,11 +5,10 @@ CLASS_DIR := $(BUILD_ROOT)/classes
 NATIVE_SMOKE := $(BUILD_ROOT)/native-smoke
 MAIN_SOURCES := $(shell find src/main/java -type f -name '*.java' -print | LC_ALL=C sort)
 TEST_SOURCES := $(shell find src/test/java -type f -name '*.java' -print | LC_ALL=C sort)
-MIGRATION_ORACLE_SOURCE := experiments/0002-deterministic-interpretation/src/mundanereq/Probe.java
 
 test:
 	mkdir -p $(CLASS_DIR)
-	javac --release 21 -Xlint:all -Werror -d $(CLASS_DIR) $(MAIN_SOURCES) $(TEST_SOURCES) $(MIGRATION_ORACLE_SOURCE)
+	javac --release 21 -Xlint:all -Werror -d $(CLASS_DIR) $(MAIN_SOURCES) $(TEST_SOURCES)
 	java -ea -cp $(CLASS_DIR) mundanereq.test.MaintainedTestSuite
 
 native-smoke: test
