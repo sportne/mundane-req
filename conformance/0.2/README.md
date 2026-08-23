@@ -28,10 +28,22 @@ normative example that comments have no semantic value.
 | `invalid/comment-before-body.mreq` | `empty-body` | A comment cannot occur between a prose-field label and its body. |
 | `invalid/comment-splits-prose.mreq` | `malformed-record` | A comment cannot interrupt a prose body. |
 | `invalid/comment-splits-math.mreq` | `unterminated-math` | A comment cannot occur within a math block. |
+| `invalid/prohibited-c1-control.mreq` | `control-character` at line 2, column 10 | U+0080 is prohibited physical-source content. |
+| `invalid/leading-non-ascii-whitespace.mreq` | `empty-or-padded-scalar` at the title-value boundary | U+00A0 cannot begin a scalar value. |
+| `invalid/trailing-non-ascii-whitespace.mreq` | `empty-or-padded-scalar` at the title-value boundary | U+00A0 cannot end a scalar value. |
+| `invalid/supplementary-scalar-column.mreq` | `control-character` at line 2, column 10 | The prohibited U+007F follows U+1F600, which advances the source column by one Unicode scalar value. |
 
 Diagnostic code strings are reference-probe behavior rather than standardized
 cross-implementation identifiers. Each conforming interpreter must reject the
 underlying violation at a useful source position.
+
+The control and whitespace characters in the last four fixtures are
+intentionally present as UTF-8 source characters. Their escaped descriptions
+above make the otherwise invisible data reviewable. In
+`supplementary-scalar-column.mreq`, the title prefix occupies columns 1
+through 7, `A` is column 8, U+1F600 is column 9, and U+007F is column 10.
+An implementation that counts UTF-16 code units would incorrectly report
+column 11.
 
 The 0.1 fixtures remain unchanged. A strict 0.1 interpreter rejects comment
 syntax; every comment-free conforming 0.1 source set is also conforming 0.2

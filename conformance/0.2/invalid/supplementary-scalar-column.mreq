@@ -1,0 +1,5 @@
+requirement REQ-001
+title: A😀
+statement:
+  The system shall count source columns in Unicode scalar values.
+end requirement

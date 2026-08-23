@@ -1,6 +1,6 @@
 # Task TC-0102: Correct Reference Parser Conformance
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 1
 

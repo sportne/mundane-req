@@ -1,6 +1,6 @@
 # Task TC-0101: Strengthen Unicode Conformance Fixtures
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 1
 
@@ -41,6 +41,21 @@ The 0.2 conformance corpus contains focused fixtures for every known Unicode edg
 ## Completion decision
 
 If a normative rule cannot be represented or reviewed reliably in a conformance fixture, reopen that rule explicitly. Otherwise use the fixtures as the acceptance boundary for TC-0102.
+
+## Result
+
+Completed with four focused invalid fixtures:
+
+- standalone prohibited C1 control U+0080;
+- leading and trailing U+00A0 scalar-boundary whitespace;
+- a prohibited U+007F after U+1F600, with the normative diagnostic position
+  recorded as line 2, column 10.
+
+The 0.2 conformance README records the literal code points and expected
+behavior so the intentional invisible characters remain reviewable. The
+pre-repair reference probe accepts the first three fixtures and reports column
+11 rather than column 10 for the fourth, demonstrating that the fixtures
+distinguish the known nonconforming behavior.
 
 ## References
 
