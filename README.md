@@ -99,6 +99,11 @@ Check or explicitly rewrite a complete selected source set:
     build/maintained/mundanereq-format --check requirements/
     build/maintained/mundanereq-format --write requirements/
 
+Check mode returns `0` when every selected file is already formatted, `1`
+when valid files would change, and `2` when invocation or source-set failure
+prevents the check. Standard-output and write modes return `0` on success and
+`2` on invocation, source-set, output, or replacement failure.
+
 To write one formatted file to standard output while validating relationships
 against its wider source context:
 

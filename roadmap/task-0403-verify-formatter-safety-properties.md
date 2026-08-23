@@ -1,6 +1,6 @@
 # Task TC-0403: Verify Formatter Safety Properties
 
-Status: Planned
+Status: Complete
 
 Roadmap stage: 4
 
@@ -44,6 +44,25 @@ Automated property checks and recorded Git-diff reviews establish the formatter'
 ## Completion decision
 
 Any semantic change, non-idempotence, or unexplained comment movement blocks publication. Narrow the formatting contract before adding recovery machinery.
+
+## Result
+
+[Research 0015](../research/0015-formatter-verification.md) records the
+automated property matrix and ordinary Git-diff review. Nine maintained source
+sets spanning both language versions, both layout experiments, both sustained
+corpora, CRLF/LF, comments, prose, and multiline math retain equal requirement
+and relationship semantics after formatting and produce byte-identical second
+results.
+
+All nonblank physical text, comment order, and opaque math lines are compared
+exactly. Standard-output, check, write, invalid-input, and context-input results
+agree between the JVM and no-fallback native executable. Existing focused tests
+cover output and replacement failures, permission bits, cleanup, and
+prevalidation.
+
+No semantic change, non-idempotence, comment movement, math rewrite, or
+JVM/native disagreement was found. Advance the unchanged two-rule formatter to
+a trial contract.
 
 ## References
 
