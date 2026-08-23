@@ -58,8 +58,8 @@ The initial feasibility investigation is complete. The project is between a vali
 
 ### What has not yet been established
 
-- The experiment probe is not a maintained first implementation of the standard.
-- Three narrow Unicode conformance discrepancies identified during formalization remain to be repaired and tested.
+- The corrected experiment probe is not a maintained first implementation of the standard.
+- No audited 0.2 discrepancy remains in the reference probe, but an independent maintained interpretation has not yet been extracted.
 - Parsing, validation, inventory output, and one trace query currently coexist in an experimental class rather than in deliberate reusable components.
 - There is no formatter or formatting contract.
 - There is no independently packaged traceability executable.
@@ -130,7 +130,7 @@ Experiments 0001 through 0007 and the provisional 0.2 contract answer yes for th
 
 ## Stage 1 — Establish an exact 0.2 implementation baseline
 
-Status: Next
+Status: Completed
 
 **Question:** Can the formal 0.2 standard and conformance suite serve as an unambiguous contract for the first maintained implementation?
 
@@ -152,7 +152,7 @@ If formal rules prove unreasonable in real source handling, revise the provision
 
 ## Stage 2 — Extract the smallest shared foundation
 
-Status: Planned
+Status: Next
 
 **Question:** What code genuinely needs to be shared by validation, formatting, and trace analysis?
 
@@ -443,9 +443,9 @@ Publish 1.0 only if it represents a small demonstrated foundation that the proje
 
 The next concrete work should proceed in this order:
 
-1. close the three known 0.2 conformance gaps and strengthen fixtures;
-2. specify only the cross-tool behaviors needed for predictable native command-line use;
-3. extract the smallest shared concrete-syntax, semantic-model, parsing, diagnostic, and indexing foundation;
+1. establish the maintained dependency-free Java and GraalVM build boundary;
+2. extract the smallest shared concrete-syntax, semantic-model, parsing, diagnostic, and indexing foundation;
+3. prove three independent native entry-point boundaries against the audited experiment behavior;
 4. ship `mundanereq-validate` as the first maintained executable;
 5. run the formatting-policy experiment and ship `mundanereq-format` only after semantic preservation and comment behavior are settled;
 6. extract the existing incoming-query evidence into `mundanereq-trace` and broaden it only through trace workflows;

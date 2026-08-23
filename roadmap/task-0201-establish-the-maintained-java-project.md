@@ -1,6 +1,6 @@
 # Task TC-0201: Establish the Maintained Java Project
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 2
 
