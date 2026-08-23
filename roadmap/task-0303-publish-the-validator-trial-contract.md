@@ -1,6 +1,6 @@
 # Task TC-0303: Publish the Validator Trial Contract
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 3
 
@@ -42,6 +42,21 @@ The repository documents, versions, and identifies a trial release of `mundanere
 ## Completion decision
 
 Publish as a trial tool only if its supported behavior and limitations can be stated more simply than the experiment it replaces.
+
+## Result
+
+The [validator trial contract 0.1](../specification/0007-validator-trial-contract-0.1.md)
+states the complete supported invocation, selection, diagnostic, and exit
+behavior and separates source-language, command-line, and Java compatibility.
+The interface is deliberately smaller than the historical experiment probe:
+it validates explicit source selections and performs no inventory, formatting,
+trace, policy, or interchange work.
+
+`make validator-verify` remains the reproducible evidence gate. The
+`validator-trial-0.1` Git tag identifies the reviewed source baseline, while
+the executable remains a disposable native build product. The supported
+behavior and limitations are sufficiently bounded to publish this as a
+maintained trial, without making a stable 1.0 promise.
 
 ## References
 

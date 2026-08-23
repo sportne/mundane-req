@@ -9,6 +9,7 @@ import mundanereq.Interpreter;
 
 /** Focused command-line validator for the provisional 0.2 source contract. */
 public final class ValidatorMain {
+    static final String TOOL_VERSION = "trial-0.1";
     static final String SOURCE_CONTRACT = "mundanereq-source-0.2";
 
     private ValidatorMain() {}
@@ -23,7 +24,7 @@ public final class ValidatorMain {
             return 0;
         }
         if (arguments.length == 1 && arguments[0].equals("--version")) {
-            out.printf("mundanereq-validate; source contract %s%n", SOURCE_CONTRACT);
+            out.printf("mundanereq-validate %s; source contract %s%n", TOOL_VERSION, SOURCE_CONTRACT);
             return 0;
         }
 

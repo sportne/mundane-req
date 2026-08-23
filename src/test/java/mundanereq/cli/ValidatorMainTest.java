@@ -63,6 +63,7 @@ public final class ValidatorMainTest {
 
         Invocation version = invoke("--version");
         assertEquals(0, version.status(), "version status");
+        assertContains(version.out(), ValidatorMain.TOOL_VERSION, "tool version");
         assertContains(version.out(), ValidatorMain.SOURCE_CONTRACT, "version contract");
     }
 

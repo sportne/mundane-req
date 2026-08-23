@@ -49,7 +49,7 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 | [TC-0204](task-0204-port-tests-and-prove-native-tool-boundaries.md) | Regression coverage and three native boundaries | Complete | TC-0203 |
 | [TC-0301](task-0301-implement-the-validator-executable.md) | `mundanereq-validate` implementation | Complete | TC-0204 |
 | [TC-0302](task-0302-verify-validator-behavior.md) | Validator conformance and CI evidence | Complete | TC-0301 |
-| [TC-0303](task-0303-publish-the-validator-trial-contract.md) | Maintained validator trial release | Ready | TC-0302 |
+| [TC-0303](task-0303-publish-the-validator-trial-contract.md) | Maintained validator trial release | Complete | TC-0302 |
 | [TC-0401](task-0401-run-the-formatting-policy-experiment.md) | Selected conservative formatting policy | Planned | TC-0203 |
 | [TC-0402](task-0402-implement-the-formatter-executable.md) | `mundanereq-format` implementation | Planned | TC-0401, TC-0204 |
 | [TC-0403](task-0403-verify-formatter-safety-properties.md) | Semantic-preservation and idempotence evidence | Planned | TC-0402 |

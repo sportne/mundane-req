@@ -30,7 +30,7 @@ The source representation is the foundation. A requirements file should be under
 
 The current written interface consists of the [provisional 0.2 contract](specification/0006-provisional-0.2-contract.md) and the normative [mundanereq Source Language Specification 0.2](specification/0005-mundanereq-source-language-0.2.md). Version 0.2 adds only [nonsemantic full-line author comments](research/0009-nonsemantic-source-comments.md) to the 0.1 language. The 0.1 contract and standard remain available as the prior version. These are evidence-backed trial contracts, not stable release promises.
 
-The first code is a small [deterministic-interpretation probe](experiments/0002-deterministic-interpretation/README.md) used to test the provisional source language. It remains historical evidence rather than production architecture. The [maintained implementation lineage](research/0011-maintained-implementation-lineage.md) now has a separate dependency-free Java 21 source area containing a lossless concrete source representation and shared semantic interpreter; product-tool entry points remain later roadmap work. Earlier experiments [transfer the minimum model](experiments/0004-transferability/README.md) to a licensed NASA FRET case-study corpus and add one [focused incoming trace query](experiments/0005-incoming-trace-query/README.md) without changing authoritative source.
+The first code was a small [deterministic-interpretation probe](experiments/0002-deterministic-interpretation/README.md) used to test the provisional source language. It remains historical evidence rather than production architecture. The [maintained implementation lineage](research/0011-maintained-implementation-lineage.md) now provides a dependency-free Java 21 source area containing a lossless concrete source representation, shared semantic interpreter, and the first focused product tool. Earlier experiments [transfer the minimum model](experiments/0004-transferability/README.md) to a licensed NASA FRET case-study corpus and add one [focused incoming trace query](experiments/0005-incoming-trace-query/README.md) without changing authoritative source.
 
 A bounded [ReqIF 1.2 interchange experiment](experiments/0006-reqif-interchange/README.md) demonstrates schema-valid semantic self-roundtrips while keeping ReqIF derived and outside the source-language contract. [Experiment 0007](experiments/0007-source-comments/README.md) confirms that 0.2 author comments do not enter that semantic interchange model.
 
@@ -71,6 +71,12 @@ source, `1` for source nonconformance, and `2` when invocation or input failure
 prevents validation. `--help` and `--version` describe the small current
 interface. The command performs no project-policy, formatting, trace, or ReqIF
 work.
+
+The [validator trial contract](specification/0007-validator-trial-contract-0.1.md)
+defines the complete `trial-0.1` interface, installation procedure,
+compatibility boundaries, and known omissions. The Git tag
+`validator-trial-0.1` identifies its reproducible source baseline. This is a
+maintained trial interface, not a stable 1.0 compatibility promise.
 
 `make validator-verify` runs the complete JVM/native validator evidence set,
 including all conformance selections, maintained corpora, source-selection
