@@ -26,7 +26,7 @@ The source representation is the foundation. A requirements file should be under
 - `experiments/` — concrete source fixtures and recorded experimental results.
 - `roadmap/` — development strategy, experiments, and sequencing.
 
-The current written interface is the [provisional 0.1 contract](specification/0003-provisional-0.1-contract.md). It is an evidence-backed trial contract, not a stable release promise.
+The current written interface consists of the [provisional 0.1 contract](specification/0003-provisional-0.1-contract.md) and the normative [mundanereq Source Language Specification 0.1](specification/0004-mundanereq-source-language-0.1.md). Together they form an evidence-backed trial contract, not a stable release promise.
 
 Implementation remains deliberately experimental. The first code is a small [deterministic-interpretation probe](experiments/0002-deterministic-interpretation/README.md) used to test the provisional source language; it is not yet a production architecture commitment. Later experiments [transfer the minimum model](experiments/0004-transferability/README.md) to a licensed NASA FRET case-study corpus and add one [focused incoming trace query](experiments/0005-incoming-trace-query/README.md) without changing authoritative source.
 

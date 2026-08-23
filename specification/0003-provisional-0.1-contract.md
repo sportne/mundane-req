@@ -22,7 +22,7 @@ It is not yet a claim of operational scale, certification suitability, ReqIF com
 
 ### Authoritative requirement source
 
-The `.mreq` source language, source-set selection, semantic model, and validity rules are defined by [Specification 0002](0002-minimum-source-language-and-model.md). For the 0.1 contract:
+The `.mreq` source language, source-set selection, semantic model, and validity rules are normatively defined by the [mundanereq Source Language Specification 0.1](0004-mundanereq-source-language-0.1.md). [Specification 0002](0002-minimum-source-language-and-model.md) remains the design record and rationale. For the 0.1 contract:
 
 - complete requirement records are authoritative;
 - the human-facing ID is the only requirement identity;
@@ -31,7 +31,7 @@ The `.mreq` source language, source-set selection, semantic model, and validity 
 - `allocation`, `rationale`, and `source` are optional;
 - zero or more `decomposes` relationships may point from a lower-level requirement to a higher-level requirement;
 - mathematical `latex` payloads are opaque field content;
-- a source set must pass the physical, syntactic, identity, and referential rules in Specification 0002.
+- a source set must pass the physical, syntactic, identity, and referential rules in the language standard.
 
 No renderer, database, index, manifest, or repository configuration is needed to understand or select explicitly supplied source.
 
@@ -57,7 +57,7 @@ Reverse links are derived and must not be copied into authoritative requirement 
 
 ### Conforming source set
 
-A source set conforms to `mundanereq-source-0.1` when it satisfies Specification 0002 exactly. Conformance does not assert prose quality, allocation-vocabulary validity, decomposition completeness, approval, or verification coverage.
+A source set conforms to `mundanereq-source-0.1` when it satisfies the mundanereq Source Language Specification 0.1 exactly. Conformance does not assert prose quality, allocation-vocabulary validity, decomposition completeness, approval, or verification coverage.
 
 The fixtures under [`conformance/0.1`](../conformance/0.1/README.md) provide a small independently runnable example. The valid fixture and expected normalized inventory are normative examples of semantic interpretation. Invalid fixtures are representative rather than an exhaustive replacement for the specification.
 
@@ -66,11 +66,11 @@ The fixtures under [`conformance/0.1`](../conformance/0.1/README.md) provide a s
 A conforming 0.1 interpreter must:
 
 1. accept every conforming source set;
-2. reject every nonconforming source set covered by Specification 0002;
+2. reject every source set that violates the language standard;
 3. produce the specified semantic values independently of file traversal order and LF/CRLF choice;
 4. reject duplicate identities and dangling decomposition targets across the complete selected set;
 5. report a source file, one-based line and column, and understandable failure category for each reported diagnostic;
-6. preserve opaque mathematical payload bytes after the specified structural de-indentation;
+6. preserve opaque mathematical payload characters and line-break structure after CRLF normalization and the specified structural de-indentation;
 7. expose enough semantic output to compare the conformance inventory, whether or not it uses the reference textual inventory format.
 
 Diagnostic code strings and exact wording are not standardized in 0.1. A tool may stop after the first syntax diagnostic in a file, but source-set diagnostics should not depend on hidden repository state.

@@ -1,6 +1,6 @@
 # mundanereq 0.1 Conformance Fixtures
 
-These fixtures exercise the provisional `mundanereq-source-0.1` contract in [Specification 0003](../../specification/0003-provisional-0.1-contract.md).
+These fixtures exercise the provisional `mundanereq-source-0.1` contract in [Specification 0003](../../specification/0003-provisional-0.1-contract.md) and the normative [mundanereq Source Language Specification 0.1](../../specification/0004-mundanereq-source-language-0.1.md).
 
 ## Valid fixture
 
@@ -25,4 +25,4 @@ Its `--inventory` output must equal [`valid/expected.inventory`](valid/expected.
 
 The code strings are reference-probe behavior rather than standardized cross-implementation identifiers. Each conforming interpreter must reject the underlying violation with a useful source position and understandable category.
 
-These fixtures are intentionally small. The Experiment 0002 test harness covers the broader physical-source, record-boundary, field-order, indentation, identity, and source-discovery matrix required by Specification 0002.
+These fixtures are intentionally small. The Experiment 0002 test harness covers the broader physical-source, record-boundary, field-order, indentation, identity, and source-discovery matrix required by the language standard.
