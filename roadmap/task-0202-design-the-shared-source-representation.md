@@ -1,6 +1,6 @@
 # Task TC-0202: Design the Shared Source Representation
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 2
 
@@ -43,6 +43,20 @@ A deliberately small physical and concrete source representation preserves requi
 ## Completion decision
 
 If faithful formatting needs inferred attachment or generalized token machinery, narrow the formatter hypothesis before broadening the representation.
+
+## Result
+
+[Research 0012](../research/0012-shared-source-representation.md) selects an
+ordered physical-line representation retaining exact UTF-8 bytes, decoded line
+text, original LF/CRLF spelling, Unicode-scalar spans, and only blank, comment,
+or content classification. The prototype reproduces the commented 0.2 fixture
+byte for byte while keeping all comments outside semantic-bearing content.
+
+The commented and comment-free fixtures pass through the concrete representation
+and audited interpreter to produce equal normative semantic inventories. Every retained
+property has an identified parser, diagnostic, or conservative-formatter
+consumer. No token framework, comment attachment, generalized syntax tree,
+formatter policy, or stable Java API was introduced.
 
 ## References
 

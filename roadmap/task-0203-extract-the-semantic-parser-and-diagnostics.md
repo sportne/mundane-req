@@ -1,6 +1,6 @@
 # Task TC-0203: Extract the Semantic Parser and Diagnostics
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 2
 
