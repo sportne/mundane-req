@@ -1,6 +1,6 @@
 # Task TC-0104: Select the Maintained Implementation Lineage
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 1
 

@@ -48,3 +48,9 @@ column 11.
 The 0.1 fixtures remain unchanged. A strict 0.1 interpreter rejects comment
 syntax; every comment-free conforming 0.1 source set is also conforming 0.2
 source with the same semantic value.
+
+The shared record grammar and semantic-model failures under
+[`../0.1/invalid`](../0.1/invalid) remain invalid under 0.2 and are part of the
+maintained 0.2 evidence baseline. This directory adds only fixtures specific
+to comments and the Unicode edge conditions exposed during formalization; it
+does not duplicate every inherited invalid input.

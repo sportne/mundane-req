@@ -271,6 +271,16 @@ public final class ProbeTest {
         for (Object[] testCase : cases) {
             assertHasCode(interpretBytes((byte[]) testCase[0]), (String) testCase[1]);
         }
+
+        byte[] malformedAfterMultibyte = new byte[] {
+            'x', '\n', 'A',
+            (byte) 0xf0, (byte) 0x9f, (byte) 0x98, (byte) 0x80,
+            'B', (byte) 0xc3, '('
+        };
+        Probe.Diagnostic malformed = diagnosticWithCode(
+                interpretBytes(malformedAfterMultibyte), "invalid-utf8");
+        assertEquals(2, malformed.line(), "malformed UTF-8 line");
+        assertEquals(7, malformed.column(), "malformed UTF-8 raw-byte column");
     }
 
     private static void unicodeConformanceEdges() {
@@ -378,6 +388,16 @@ public final class ProbeTest {
                 interpretText(minimalRecord("REQ-001").replace(
                         "end requirement", "decomposes: BAD ID\nend requirement")),
                 "invalid-reference-id");
+
+        String cycles = String.join("\n\n",
+                record("SELF", "SELF"),
+                record("A", "B"),
+                record("B", "C"),
+                record("C", "A")) + "\n";
+        Probe.Result cyclic = interpretText(cycles);
+        assertEquals(List.of(), cyclic.diagnostics(), "cyclic decomposition diagnostics");
+        assertEquals(4, cyclic.requirements().size(), "cyclic decomposition requirement count");
+        assertEquals(4, relationshipCount(cyclic), "cyclic decomposition relationship count");
     }
 
     private static void incomingTraceQuery() {

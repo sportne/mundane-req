@@ -1,6 +1,6 @@
 # Task TC-0103: Audit the 0.2 Conformance Baseline
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 1
 
@@ -42,6 +42,21 @@ A written audit maps normative rule areas to positive or negative evidence and r
 ## Completion decision
 
 Proceed only if the audit finds no unresolved ambiguity that could make two conforming implementations assign different semantic values.
+
+## Result
+
+[Research 0010](../research/0010-source-0.2-conformance-audit.md) maps every
+normative rule area to fixtures, probe tests, adjacent-consumer evidence, or
+an explicit gap disposition. It confirms comments are absent from both the
+semantic inventory and derived ReqIF and separates normative interpretation
+from accidental probe CLI, inventory, diagnostic-string, and Java API
+behavior.
+
+No unresolved semantic ambiguity was found. The audit identifies a required
+preservation set for TC-0204, seven useful cross-implementation cases that do
+not block extraction, and concerns intentionally outside source conformance.
+The original 0.1 and 0.2 annotated contract tags remain unchanged and
+reproducible.
 
 ## References
 
