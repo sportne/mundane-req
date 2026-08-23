@@ -1,6 +1,6 @@
 # Task TC-0103: Audit the 0.2 Conformance Baseline
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 1
 

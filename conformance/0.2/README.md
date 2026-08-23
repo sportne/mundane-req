@@ -29,8 +29,8 @@ normative example that comments have no semantic value.
 | `invalid/comment-splits-prose.mreq` | `malformed-record` | A comment cannot interrupt a prose body. |
 | `invalid/comment-splits-math.mreq` | `unterminated-math` | A comment cannot occur within a math block. |
 | `invalid/prohibited-c1-control.mreq` | `control-character` at line 2, column 10 | U+0080 is prohibited physical-source content. |
-| `invalid/leading-non-ascii-whitespace.mreq` | `empty-or-padded-scalar` at the title-value boundary | U+00A0 cannot begin a scalar value. |
-| `invalid/trailing-non-ascii-whitespace.mreq` | `empty-or-padded-scalar` at the title-value boundary | U+00A0 cannot end a scalar value. |
+| `invalid/leading-non-ascii-whitespace.mreq` | `empty-or-padded-scalar` at line 2, column 8 | U+00A0 cannot begin a scalar value. |
+| `invalid/trailing-non-ascii-whitespace.mreq` | `empty-or-padded-scalar` at line 2, column 36 | U+00A0 cannot end a scalar value. |
 | `invalid/supplementary-scalar-column.mreq` | `control-character` at line 2, column 10 | The prohibited U+007F follows U+1F600, which advances the source column by one Unicode scalar value. |
 
 Diagnostic code strings are reference-probe behavior rather than standardized

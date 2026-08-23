@@ -1,6 +1,6 @@
 # Task TC-0102: Correct Reference Parser Conformance
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 1
 
@@ -42,6 +42,21 @@ The three known parser deviations are repaired and all old and new conformance t
 ## Completion decision
 
 If a repair requires a semantic change, stop and return to the provisional standard. Otherwise record the probe as behaviorally aligned with 0.2 for the audited cases.
+
+## Result
+
+The reference probe now:
+
+- rejects the complete U+007F through U+009F prohibited range;
+- applies the specification's enumerated scalar-boundary whitespace set to
+  both ends of scalar values;
+- computes decoded-text columns by Unicode scalar value rather than UTF-16
+  code unit.
+
+Four conformance fixtures have exact regression assertions. All pre-existing
+semantic inventories remain unchanged, the dependency-free harness passes 14
+grouped tests, and both the JVM and GraalVM native executable produce the
+documented results. No dependency or source-language change was introduced.
 
 ## References
 

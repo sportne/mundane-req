@@ -41,6 +41,7 @@ public final class ProbeTest {
                 new TestCase("source discovery", ProbeTest::sourceDiscovery),
                 new TestCase("explicit file discovery", ProbeTest::explicitFileDiscovery),
                 new TestCase("physical source diagnostics", ProbeTest::physicalSourceDiagnostics),
+                new TestCase("Unicode conformance edges", ProbeTest::unicodeConformanceEdges),
                 new TestCase("record and field diagnostics", ProbeTest::recordAndFieldDiagnostics),
                 new TestCase("math diagnostics", ProbeTest::mathDiagnostics),
                 new TestCase("identity and relationship diagnostics", ProbeTest::identityAndRelationshipDiagnostics),
@@ -270,6 +271,34 @@ public final class ProbeTest {
         for (Object[] testCase : cases) {
             assertHasCode(interpretBytes((byte[]) testCase[0]), (String) testCase[1]);
         }
+    }
+
+    private static void unicodeConformanceEdges() {
+        Path invalid = CONFORMANCE_02_ROOT.resolve("invalid");
+
+        Probe.Diagnostic c1 = diagnosticWithCode(
+                Probe.interpretInputs(List.of(invalid.resolve("prohibited-c1-control.mreq"))),
+                "control-character");
+        assertEquals(2, c1.line(), "C1 control line");
+        assertEquals(10, c1.column(), "C1 control column");
+
+        Probe.Diagnostic leading = diagnosticWithCode(
+                Probe.interpretInputs(List.of(invalid.resolve("leading-non-ascii-whitespace.mreq"))),
+                "empty-or-padded-scalar");
+        assertEquals(2, leading.line(), "leading whitespace line");
+        assertEquals(8, leading.column(), "leading whitespace column");
+
+        Probe.Diagnostic trailing = diagnosticWithCode(
+                Probe.interpretInputs(List.of(invalid.resolve("trailing-non-ascii-whitespace.mreq"))),
+                "empty-or-padded-scalar");
+        assertEquals(2, trailing.line(), "trailing whitespace line");
+        assertEquals(36, trailing.column(), "trailing whitespace column");
+
+        Probe.Diagnostic supplementary = diagnosticWithCode(
+                Probe.interpretInputs(List.of(invalid.resolve("supplementary-scalar-column.mreq"))),
+                "control-character");
+        assertEquals(2, supplementary.line(), "supplementary scalar line");
+        assertEquals(10, supplementary.column(), "supplementary scalar column");
     }
 
     private static void recordAndFieldDiagnostics() {
@@ -502,17 +531,21 @@ public final class ProbeTest {
     }
 
     private static void assertHasCode(Probe.Result result, String code) {
-        Probe.Diagnostic diagnostic = result.diagnostics().stream()
+        Probe.Diagnostic diagnostic = diagnosticWithCode(result, code);
+        assertTrue(!diagnostic.file().isEmpty(), code + " file");
+        assertTrue(diagnostic.line() >= 1, code + " line");
+        assertTrue(diagnostic.column() >= 1, code + " column");
+        assertTrue(!diagnostic.message().isEmpty(), code + " message");
+    }
+
+    private static Probe.Diagnostic diagnosticWithCode(Probe.Result result, String code) {
+        return result.diagnostics().stream()
                 .filter(candidate -> candidate.code().equals(code))
                 .findFirst()
                 .orElseThrow(() -> new AssertionError(
                         "expected %s; received %s".formatted(code, result.diagnostics().stream()
                                 .map(Probe.Diagnostic::code)
                                 .toList())));
-        assertTrue(!diagnostic.file().isEmpty(), code + " file");
-        assertTrue(diagnostic.line() >= 1, code + " line");
-        assertTrue(diagnostic.column() >= 1, code + " column");
-        assertTrue(!diagnostic.message().isEmpty(), code + " message");
     }
 
     private static void assertEquals(Object expected, Object actual, String description) {

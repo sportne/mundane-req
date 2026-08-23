@@ -361,8 +361,8 @@ public final class Probe {
         }
 
         if (text != null) {
-            for (int offset = 0; offset < text.length(); offset++) {
-                char character = text.charAt(offset);
+            for (int offset = 0; offset < text.length(); ) {
+                int character = text.codePointAt(offset);
                 if (character == '\t') {
                     int[] position = textPosition(text, offset);
                     diagnostics.add(diagnostic(source.file(), position[0], position[1], "tab", "tabs are not allowed"));
@@ -375,6 +375,7 @@ public final class Probe {
                     diagnostics.add(diagnostic(
                             source.file(), position[0], position[1], "line-ending", "a carriage return must be followed by a line feed"));
                 }
+                offset += Character.charCount(character);
             }
             if (!text.endsWith("\n")) {
                 int[] position = textPosition(text, text.length());
@@ -387,12 +388,12 @@ public final class Probe {
         return new Decoded(text.replace("\r\n", "\n"), List.of());
     }
 
-    private static boolean isDisallowedControl(char character) {
+    private static boolean isDisallowedControl(int character) {
         return (character >= 0x01 && character <= 0x08)
                 || character == 0x0b
                 || character == 0x0c
                 || (character >= 0x0e && character <= 0x1f)
-                || character == 0x7f;
+                || (character >= 0x7f && character <= 0x9f);
     }
 
     private static int[] bytePosition(byte[] bytes, int offset) {
@@ -412,15 +413,31 @@ public final class Probe {
     private static int[] textPosition(String text, int offset) {
         int line = 1;
         int column = 1;
-        for (int index = 0; index < offset; index++) {
-            if (text.charAt(index) == '\n') {
+        for (int index = 0; index < offset; ) {
+            int character = text.codePointAt(index);
+            if (character == '\n') {
                 line++;
                 column = 1;
             } else {
                 column++;
             }
+            index += Character.charCount(character);
         }
         return new int[] {line, column};
+    }
+
+    private static boolean isScalarBoundaryWhitespace(int character) {
+        return (character >= 0x09 && character <= 0x0d)
+                || character == 0x20
+                || character == 0x85
+                || character == 0x00a0
+                || character == 0x1680
+                || (character >= 0x2000 && character <= 0x200a)
+                || character == 0x2028
+                || character == 0x2029
+                || character == 0x202f
+                || character == 0x205f
+                || character == 0x3000;
     }
 
     private static final class Parser {
@@ -561,8 +578,15 @@ public final class Probe {
                 fail(index, 1, "field-form", "%s must use '%svalue' on one line".formatted(name, prefix));
             }
             String value = valueLine.substring(prefix.length());
-            if (value.isEmpty() || value.startsWith(" ") || !value.equals(value.stripTrailing())) {
+            if (value.isEmpty()) {
                 fail(index, prefix.length() + 1, "empty-or-padded-scalar", "%s must contain a nonempty value without leading or trailing whitespace".formatted(name));
+            }
+            if (isScalarBoundaryWhitespace(value.codePointAt(0))) {
+                fail(index, prefix.length() + 1, "empty-or-padded-scalar", "%s must contain a nonempty value without leading or trailing whitespace".formatted(name));
+            }
+            if (isScalarBoundaryWhitespace(value.codePointBefore(value.length()))) {
+                int column = prefix.codePointCount(0, prefix.length()) + value.codePointCount(0, value.length());
+                fail(index, column, "empty-or-padded-scalar", "%s must contain a nonempty value without leading or trailing whitespace".formatted(name));
             }
             index++;
             return new Scalar(value);

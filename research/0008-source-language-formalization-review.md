@@ -100,3 +100,12 @@ and experiment records to understand rationale, product scope, and evidence.
 Before calling the reference probe a conforming implementation of the formal
 standard, add conformance cases for the three Unicode edge conditions and make
 the narrow implementation corrections they expose.
+
+## Subsequent resolution
+
+Task TC-0102 corrects all three discrepancies in the Experiment 0002 probe.
+The 0.2 conformance corpus now contains focused C1-control, Unicode scalar
+boundary-whitespace, and supplementary-scalar coordinate fixtures. The probe
+rejects them at the documented source positions in both JVM and GraalVM native
+execution without changing the language standard or existing semantic
+inventories.
