@@ -48,5 +48,7 @@ with one command:
 
 `make test` runs the maintained JVM regression suite. `make native-smoke` builds and runs a
 test-only executable with `--no-fallback`. Generated classes and native output
-are disposable under `build/maintained`; no validator, formatter, or trace
-product executable exists yet.
+are disposable under `build/maintained`. `make boundary-isolation` builds three
+temporary standalone native boundaries and proves that none requires either of
+the other executables at runtime. These are architecture checks; product
+validator, formatter, and trace behavior remains on the roadmap.

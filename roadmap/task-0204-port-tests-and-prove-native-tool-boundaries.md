@@ -1,6 +1,6 @@
 # Task TC-0204: Port Tests and Prove Native Tool Boundaries
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 2
 
@@ -43,6 +43,16 @@ Existing regression evidence runs against maintained code, and minimal validator
 ## Completion decision
 
 Proceed to product tools only if shared behavior remains identical and the separate native boundaries do not require duplicated parsing.
+
+## Result
+
+[Research 0013](../research/0013-maintained-interpreter-migration-closeout.md)
+records byte-identical maintained/probe inventories over all six valid project
+corpora and the transfer of twelve audited interpreter test groups. The three
+temporary executable boundaries build separately with GraalVM Native Image
+without fallback, start independently, and contain no validator, formatter, or
+trace behavior ahead of their product cards. Stage 2 can therefore close
+without retaining the historical probe in the maintained build.
 
 ## References
 

@@ -46,8 +46,8 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 | [TC-0201](task-0201-establish-the-maintained-java-project.md) | Maintained Java/GraalVM project skeleton | Complete | TC-0104 |
 | [TC-0202](task-0202-design-the-shared-source-representation.md) | Shared physical and concrete source model | Complete | TC-0201 |
 | [TC-0203](task-0203-extract-the-semantic-parser-and-diagnostics.md) | Shared semantic parser, discovery, and diagnostics | Complete | TC-0202 |
-| [TC-0204](task-0204-port-tests-and-prove-native-tool-boundaries.md) | Regression coverage and three native boundaries | Ready | TC-0203 |
-| [TC-0301](task-0301-implement-the-validator-executable.md) | `mundanereq-validate` implementation | Planned | TC-0204 |
+| [TC-0204](task-0204-port-tests-and-prove-native-tool-boundaries.md) | Regression coverage and three native boundaries | Complete | TC-0203 |
+| [TC-0301](task-0301-implement-the-validator-executable.md) | `mundanereq-validate` implementation | Ready | TC-0204 |
 | [TC-0302](task-0302-verify-validator-behavior.md) | Validator conformance and CI evidence | Planned | TC-0301 |
 | [TC-0303](task-0303-publish-the-validator-trial-contract.md) | Maintained validator trial release | Planned | TC-0302 |
 | [TC-0401](task-0401-run-the-formatting-policy-experiment.md) | Selected conservative formatting policy | Planned | TC-0203 |

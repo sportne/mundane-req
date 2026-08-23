@@ -42,7 +42,7 @@ The project should prefer several small tools with clear contracts over one comm
 
 ## Where the project is now
 
-The initial feasibility investigation is complete. The project is between a validated language prototype and its first usable tool suite.
+The initial feasibility investigation and shared-foundation extraction are complete. The project is beginning its first usable tool suite.
 
 ### Evidence already earned
 
@@ -58,9 +58,7 @@ The initial feasibility investigation is complete. The project is between a vali
 
 ### What has not yet been established
 
-- The corrected experiment probe is not a maintained first implementation of the standard.
-- No audited 0.2 discrepancy remains in the reference probe, but an independent maintained interpretation has not yet been extracted.
-- Parsing, validation, inventory output, and one trace query currently coexist in an experimental class rather than in deliberate reusable components.
+- The maintained interpreter is not yet exposed through a usable product executable.
 - There is no formatter or formatting contract.
 - There is no independently packaged traceability executable.
 - Separate tools have not yet been exercised together in a normal edit-review-CI workflow.
@@ -152,7 +150,7 @@ If formal rules prove unreasonable in real source handling, revise the provision
 
 ## Stage 2 — Extract the smallest shared foundation
 
-Status: Next
+Status: Completed
 
 **Question:** What code genuinely needs to be shared by validation, formatting, and trace analysis?
 

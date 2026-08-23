@@ -1,6 +1,6 @@
 # Task TC-0301: Implement the Validator Executable
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 3
 

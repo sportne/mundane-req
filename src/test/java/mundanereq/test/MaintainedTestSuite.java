@@ -1,6 +1,7 @@
 package mundanereq.test;
 
 import mundanereq.InterpreterTest;
+import mundanereq.InterpreterRegressionTest;
 import mundanereq.SemanticConversionTest;
 import mundanereq.smoke.MaintainedBuildTest;
 import mundanereq.source.SourceDocumentTest;
@@ -18,6 +19,7 @@ public final class MaintainedTestSuite {
         System.out.println("PASS concrete-to-semantic conversion");
         InterpreterTest.run();
         System.out.println("PASS maintained semantic interpretation");
-        System.out.println("Passed 4 maintained test groups.");
+        InterpreterRegressionTest.main(arguments);
+        System.out.println("Passed 5 maintained test groups.");
     }
 }
