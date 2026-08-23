@@ -1,6 +1,6 @@
 # Task TC-0201: Establish the Maintained Java Project
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 2
 
@@ -42,6 +42,21 @@ A maintained source and test area exists outside the historical experiments, wit
 ## Completion decision
 
 Retain the build arrangement only if it is simpler than the tool code it supports and can produce independent executables without duplicated semantic implementations.
+
+## Result
+
+The repository now has conventional maintained roots at `src/main/java` and
+`src/test/java`, a dependency-free root `Makefile`, and disposable output under
+the already ignored `build/maintained` tree. `make test` compiles with Java 21
+warnings treated as errors and runs the JVM skeleton. `make native-smoke`
+builds and runs the same test-only entry point with GraalVM Native Image and
+`--no-fallback`; `make verify` performs both checks.
+
+No parser behavior, product executable, third-party dependency, database,
+server, plugin system, or compatibility promise was introduced. Historical
+experiment source and Makefiles remain unchanged. Separate future entry points
+can be added under the maintained source root while sharing only the code that
+the validator, formatter, and trace tools actually have in common.
 
 ## References
 

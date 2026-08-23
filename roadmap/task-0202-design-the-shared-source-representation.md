@@ -1,6 +1,6 @@
 # Task TC-0202: Design the Shared Source Representation
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 2
 

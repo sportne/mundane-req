@@ -43,8 +43,8 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 | [TC-0102](task-0102-correct-reference-parser-conformance.md) | Known parser deviations repaired | Complete | TC-0101 |
 | [TC-0103](task-0103-audit-the-0.2-conformance-baseline.md) | Audited 0.2 implementation baseline | Complete | TC-0101, TC-0102 |
 | [TC-0104](task-0104-select-the-maintained-implementation-lineage.md) | Probe-evolution decision | Complete | TC-0103 |
-| [TC-0201](task-0201-establish-the-maintained-java-project.md) | Maintained Java/GraalVM project skeleton | Ready | TC-0104 |
-| [TC-0202](task-0202-design-the-shared-source-representation.md) | Shared physical and concrete source model | Planned | TC-0201 |
+| [TC-0201](task-0201-establish-the-maintained-java-project.md) | Maintained Java/GraalVM project skeleton | Complete | TC-0104 |
+| [TC-0202](task-0202-design-the-shared-source-representation.md) | Shared physical and concrete source model | Ready | TC-0201 |
 | [TC-0203](task-0203-extract-the-semantic-parser-and-diagnostics.md) | Shared semantic parser, discovery, and diagnostics | Planned | TC-0202 |
 | [TC-0204](task-0204-port-tests-and-prove-native-tool-boundaries.md) | Regression coverage and three native boundaries | Planned | TC-0203 |
 | [TC-0301](task-0301-implement-the-validator-executable.md) | `mundanereq-validate` implementation | Planned | TC-0204 |
