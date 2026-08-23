@@ -50,9 +50,9 @@ with one command:
 test-only executable with `--no-fallback`. Generated classes and native output
 are disposable under `build/maintained`. `make boundary-isolation` builds three
 temporary standalone native boundaries and proves that none requires either of
-the other executables at runtime. These are architecture checks; product
-formatter and trace behavior remains on the roadmap; the validator boundary is
-now implemented as the first product tool.
+the other executables at runtime. The validator and formatter boundaries are
+now focused product tools; trace remains a temporary boundary pending its
+roadmap stage.
 
 ## Validator
 
@@ -81,3 +81,36 @@ maintained trial interface, not a stable 1.0 compatibility promise.
 `make validator-verify` runs the complete JVM/native validator evidence set,
 including all conformance selections, maintained corpora, source-selection
 cases, and representative editor repairs.
+
+## Formatter
+
+`mundanereq-format` is the second independent native tool. It implements the
+narrow policy selected by [Experiment 0008](experiments/0008-formatting-policy/README.md):
+normalize LF line endings and collapse comment-free inter-record blank-line
+runs to one line. It does not reflow prose, reorder source, alter comments, or
+interpret opaque math.
+
+Build the development executable with:
+
+    make native-formatter
+
+Check or explicitly rewrite a complete selected source set:
+
+    build/maintained/mundanereq-format --check requirements/
+    build/maintained/mundanereq-format --write requirements/
+
+To write one formatted file to standard output while validating relationships
+against its wider source context:
+
+    build/maintained/mundanereq-format requirements/child.mreq requirements/
+
+Formatting validates the complete selected source set before producing output
+or replacing files. The maintained trial contract and full safety evidence are
+the next roadmap cards; the current executable identifies itself as a
+development interface.
+
+On filesystems with a POSIX permission view, write mode preserves the file's
+read, write, and execute permission bits. Replacement does not promise to
+preserve ownership, ACLs, extended attributes, or hard-link identity. Teams
+that depend on those properties should use check or standard-output mode until
+a broader metadata contract is justified.

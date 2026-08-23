@@ -74,6 +74,18 @@ public final class Interpreter {
         }
     }
 
+    /** Deterministically selected physical sources or diagnostics preventing selection. */
+    public record Selection(List<Source> sources, List<Diagnostic> diagnostics) {
+        public Selection {
+            sources = List.copyOf(sources);
+            diagnostics = List.copyOf(diagnostics);
+        }
+
+        public boolean valid() {
+            return diagnostics.isEmpty();
+        }
+    }
+
     public record Result(
             List<Requirement> requirements,
             Map<String, Requirement> byId,
@@ -109,18 +121,26 @@ public final class Interpreter {
     }
 
     public static Result interpretInputs(List<Path> inputs) {
+        Selection selection = selectInputs(inputs);
+        if (!selection.valid()) {
+            return emptyResult(selection.diagnostics(), selection.sources().size());
+        }
+        return interpretSources(selection.sources());
+    }
+
+    public static Selection selectInputs(List<Path> inputs) {
         List<Diagnostic> diagnostics = new ArrayList<>();
         TreeSet<Path> files = new TreeSet<>();
         for (Path input : inputs) {
             discover(input.toAbsolutePath().normalize(), true, files, diagnostics);
         }
         sortDiagnostics(diagnostics);
-        if (!diagnostics.isEmpty()) return emptyResult(diagnostics, 0);
+        if (!diagnostics.isEmpty()) return new Selection(List.of(), diagnostics);
         if (files.isEmpty()) {
             String input = inputs.isEmpty() ? "." : inputs.getFirst().toString();
-            return emptyResult(
-                    List.of(diagnostic(input, 1, 1, "no-source-files", "no .mreq source files were selected")),
-                    0);
+            return new Selection(
+                    List.of(),
+                    List.of(diagnostic(input, 1, 1, "no-source-files", "no .mreq source files were selected")));
         }
 
         List<Source> sources = new ArrayList<>();
@@ -133,9 +153,9 @@ public final class Interpreter {
         }
         if (!diagnostics.isEmpty()) {
             sortDiagnostics(diagnostics);
-            return emptyResult(diagnostics, sources.size());
+            return new Selection(sources, diagnostics);
         }
-        return interpretSources(sources);
+        return new Selection(sources, List.of());
     }
 
     private static void discover(

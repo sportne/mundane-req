@@ -1,6 +1,6 @@
 # Task TC-0402: Implement the Formatter Executable
 
-Status: Planned
+Status: Complete
 
 Roadmap stage: 4
 
@@ -43,6 +43,26 @@ Can the selected formatting policy be implemented as an independent native tool 
 ## Completion decision
 
 If implementation requires semantics not selected by TC-0401, stop and revise the policy rather than infer behavior from proximity or formatting convention.
+
+## Result
+
+`mundanereq-format` now implements exactly the two rewrites selected by
+[Experiment 0008](../experiments/0008-formatting-policy/README.md) through
+context-aware standard-output, check, and explicit write modes. The shared
+interpreter exposes deterministic physical source selection so the formatter
+can validate one complete source set once, while formatter-local
+`SourceFormatter` rewrites only retained concrete lines.
+
+The real formatter replaces the temporary `FormatBoundary` and builds as its
+own no-fallback GraalVM native image. Boundary isolation starts it successfully
+while each sibling executable is absent. Invalid input is reported with shared
+diagnostics before output or replacement, and multi-file standard-output use
+can name context inputs without writing them.
+
+Focused JVM tests cover the Experiment 0008 golden result, context-resolved
+relationships, check/write behavior, all-input prevalidation, and invocation.
+The broader semantic-preservation, idempotence, comment/math, line-ending, mode,
+and JVM/native matrix remains the purpose of TC-0403.
 
 ## References
 

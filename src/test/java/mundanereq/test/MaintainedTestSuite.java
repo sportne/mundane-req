@@ -6,6 +6,8 @@ import mundanereq.SemanticConversionTest;
 import mundanereq.smoke.MaintainedBuildTest;
 import mundanereq.source.SourceDocumentTest;
 import mundanereq.cli.ValidatorMainTest;
+import mundanereq.cli.FormatterMainTest;
+import mundanereq.format.SourceFormatterTest;
 
 /** Dependency-free maintained JVM test suite. */
 public final class MaintainedTestSuite {
@@ -23,6 +25,10 @@ public final class MaintainedTestSuite {
         InterpreterRegressionTest.main(arguments);
         ValidatorMainTest.run();
         System.out.println("PASS validator command interface");
-        System.out.println("Passed 6 maintained test groups.");
+        SourceFormatterTest.run();
+        System.out.println("PASS conservative source formatter");
+        FormatterMainTest.run();
+        System.out.println("PASS formatter command interface");
+        System.out.println("Passed 8 maintained test groups.");
     }
 }
