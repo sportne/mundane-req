@@ -114,6 +114,8 @@ The JVM harness passes five grouped tests:
 - the FRET transfer corpus round-trips with 19 requirements and zero invented relationships;
 - deterministic output, profile rejection, hexadecimal transport IDs, and all three CLI operations behave as specified.
 
+Experiment 0007 subsequently extends the conformance round-trip group with the commented 0.2 fixture. Its inventory is equal to the 0.1 fixture, its comments are absent from exported ReqIF, and its semantic round-trip succeeds without changing the ReqIF profile.
+
 The GraalVM CE Java 21.0.2 native executable builds without fallback and independently reports the same three successful semantic round trips.
 
 Exports for all three corpora validate against the official ReqIF 1.2 schema set. The downloaded normative OMG artifacts used for the recorded check were:

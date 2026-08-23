@@ -12,7 +12,8 @@ import java.util.List;
 /** Dependency-free tests for the bounded ReqIF profile. */
 public final class ReqifProbeTest {
     private static final Path REPOSITORY_ROOT = Path.of("../..").toAbsolutePath().normalize();
-    private static final Path CONFORMANCE = REPOSITORY_ROOT.resolve("conformance/0.1/valid");
+    private static final Path CONFORMANCE_01 = REPOSITORY_ROOT.resolve("conformance/0.1/valid");
+    private static final Path CONFORMANCE_02 = REPOSITORY_ROOT.resolve("conformance/0.2/valid");
     private static final Path UAS = REPOSITORY_ROOT.resolve("experiments/0003-sustained-authoring/requirements");
     private static final Path FRET = REPOSITORY_ROOT.resolve("experiments/0004-transferability/requirements");
 
@@ -48,10 +49,20 @@ public final class ReqifProbeTest {
     }
 
     private static void conformanceRoundtrip() throws Exception {
-        Probe.Result source = valid(CONFORMANCE);
+        Probe.Result source = valid(CONFORMANCE_01);
+        Probe.Result commented = valid(CONFORMANCE_02);
         assertEquals(3, source.requirements().size(), "conformance requirement count");
         assertEquals(3, relationshipCount(source.requirements()), "conformance relationship count");
+        assertEquals(
+                Probe.normalizedInventory(source.requirements()),
+                Probe.normalizedInventory(commented.requirements()),
+                "0.1 and commented 0.2 semantic inventories");
         assertRoundtrip(source.requirements(), "conformance");
+        assertRoundtrip(commented.requirements(), "commented conformance");
+        String commentedXml = new String(
+                ReqifProbe.exportReqif(commented.requirements(), ReqifProbe.FIXED_ROUNDTRIP_TIME),
+                StandardCharsets.UTF_8);
+        assertTrue(!commentedXml.contains("File-level author comment"), "comments absent from ReqIF");
     }
 
     private static void uasRoundtrip() throws Exception {
@@ -81,7 +92,7 @@ public final class ReqifProbeTest {
     }
 
     private static void profileBehavior() throws Exception {
-        Probe.Result source = valid(CONFORMANCE);
+        Probe.Result source = valid(CONFORMANCE_01);
         byte[] first = ReqifProbe.exportReqif(source.requirements(), "2026-08-22T12:34:56Z");
         byte[] second = ReqifProbe.exportReqif(source.requirements(), "2026-08-22T12:34:56Z");
         assertEquals(new String(first, StandardCharsets.UTF_8), new String(second, StandardCharsets.UTF_8),
@@ -113,7 +124,7 @@ public final class ReqifProbeTest {
                 "safe temporary path");
         try {
             Path output = temporary.resolve("requirements.reqif");
-            CommandResult exported = run("export", "2026-08-22T12:34:56Z", output.toString(), CONFORMANCE.toString());
+            CommandResult exported = run("export", "2026-08-22T12:34:56Z", output.toString(), CONFORMANCE_01.toString());
             assertEquals(0, exported.status, "export status");
             assertTrue(exported.output.contains("Exported 3 requirements and 3 decomposition relationships"),
                     "export output");
@@ -123,7 +134,7 @@ public final class ReqifProbeTest {
             CommandResult imported = run("import-inventory", output.toString());
             assertEquals(0, imported.status, "import status");
             assertEquals(
-                    Probe.normalizedInventory(valid(CONFORMANCE).requirements()),
+                    Probe.normalizedInventory(valid(CONFORMANCE_01).requirements()),
                     imported.output,
                     "import inventory");
 

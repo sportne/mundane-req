@@ -18,6 +18,9 @@ public final class ProbeTest {
             "experiments/0001-source-representations/candidate-a-modules");
     private static final Path CANDIDATE_B = REPOSITORY_ROOT.resolve(
             "experiments/0001-source-representations/candidate-b-one-per-file/requirements");
+    private static final Path CONFORMANCE_01 = REPOSITORY_ROOT.resolve("conformance/0.1/valid");
+    private static final Path CONFORMANCE_02_ROOT = REPOSITORY_ROOT.resolve("conformance/0.2");
+    private static final Path CONFORMANCE_02 = CONFORMANCE_02_ROOT.resolve("valid");
 
     private record TestCase(String name, CheckedRunnable action) {}
 
@@ -33,6 +36,7 @@ public final class ProbeTest {
                 new TestCase("equivalent layouts", ProbeTest::equivalentLayouts),
                 new TestCase("prose and math interpretation", ProbeTest::proseAndMathInterpretation),
                 new TestCase("optional fields", ProbeTest::optionalFields),
+                new TestCase("source comments", ProbeTest::sourceComments),
                 new TestCase("line-ending equivalence", ProbeTest::lineEndingEquivalence),
                 new TestCase("source discovery", ProbeTest::sourceDiscovery),
                 new TestCase("explicit file discovery", ProbeTest::explicitFileDiscovery),
@@ -109,6 +113,101 @@ public final class ProbeTest {
         assertEquals(null, requirement.rationale(), "optional rationale");
         assertEquals(null, requirement.source(), "optional source");
         assertEquals(List.of(), requirement.decomposes(), "optional relationships");
+    }
+
+    private static void sourceComments() {
+        String source = lines(
+                "# file header author comment",
+                "requirement REQ-001",
+                "# comment after opener",
+                "title: Hash # remains scalar content",
+                "# comment between scalar fields",
+                "allocation: System",
+                "# comment before prose field",
+                "statement:",
+                "  The system shall preserve # as prose content.",
+                "# comment after statement body",
+                "rationale:",
+                "  # at body indentation remains rationale content.",
+                "# comment before source",
+                "source: SOURCE#1",
+                "# comment before relationship",
+                "decomposes: REQ-002",
+                "# comment before record end",
+                "end requirement",
+                "# this comment alone separates records",
+                "requirement REQ-002",
+                "title: Mathematical hash content",
+                "statement:",
+                "  math latex",
+                "    x_{#} = 1",
+                "  end math",
+                "end requirement",
+                "# trailing author comment");
+
+        Probe.Result result = interpretText(source);
+        assertEquals(List.of(), result.diagnostics(), "commented source diagnostics");
+        assertEquals(2, result.requirements().size(), "commented requirement count");
+
+        Probe.Requirement first = requirement(result, "REQ-001");
+        assertEquals("Hash # remains scalar content", first.title(), "hash in scalar content");
+        assertEquals("SOURCE#1", first.source(), "hash in source scalar");
+        assertEquals(
+                "The system shall preserve # as prose content.",
+                ((Probe.ProseBlock) first.statement().getFirst()).text(),
+                "hash in statement prose");
+        assertEquals(
+                "# at body indentation remains rationale content.",
+                ((Probe.ProseBlock) first.rationale().getFirst()).text(),
+                "hash in rationale prose");
+
+        Probe.MathBlock math = (Probe.MathBlock) requirement(result, "REQ-002").statement().getFirst();
+        assertEquals("x_{#} = 1", math.payload(), "hash in math payload");
+        assertTrue(
+                !Probe.normalizedInventory(result.requirements()).contains("author comment"),
+                "comments absent from semantic inventory");
+
+        Probe.Result conformance01 = Probe.interpretInputs(List.of(CONFORMANCE_01));
+        Probe.Result conformance02 = Probe.interpretInputs(List.of(CONFORMANCE_02));
+        assertEquals(List.of(), conformance01.diagnostics(), "0.1 conformance diagnostics");
+        assertEquals(List.of(), conformance02.diagnostics(), "0.2 conformance diagnostics");
+        assertEquals(
+                Probe.normalizedInventory(conformance01.requirements()),
+                Probe.normalizedInventory(conformance02.requirements()),
+                "0.1 and commented 0.2 conformance inventories");
+
+        assertHasCode(
+                interpretText(lines(
+                        "requirement REQ-001",
+                        "title: Split prose",
+                        "statement:",
+                        "  First line.",
+                        "# a comment cannot interrupt a prose body",
+                        "  Second line.",
+                        "end requirement")),
+                "malformed-record");
+        assertHasCode(
+                interpretText(lines(
+                        "requirement REQ-001",
+                        "title: Empty statement",
+                        "statement:",
+                        "# a comment cannot replace body content",
+                        "end requirement")),
+                "empty-body");
+        assertHasCode(interpretText(lines("# comment-only files remain invalid")), "empty-source-file");
+
+        assertHasCode(
+                Probe.interpretInputs(List.of(CONFORMANCE_02_ROOT.resolve("invalid/comment-only.mreq"))),
+                "empty-source-file");
+        assertHasCode(
+                Probe.interpretInputs(List.of(CONFORMANCE_02_ROOT.resolve("invalid/comment-before-body.mreq"))),
+                "empty-body");
+        assertHasCode(
+                Probe.interpretInputs(List.of(CONFORMANCE_02_ROOT.resolve("invalid/comment-splits-prose.mreq"))),
+                "malformed-record");
+        assertHasCode(
+                Probe.interpretInputs(List.of(CONFORMANCE_02_ROOT.resolve("invalid/comment-splits-math.mreq"))),
+                "unterminated-math");
     }
 
     private static void lineEndingEquivalence() {

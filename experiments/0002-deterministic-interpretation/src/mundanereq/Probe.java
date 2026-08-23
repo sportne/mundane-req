@@ -25,7 +25,7 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/** Disposable parser and validator probe for Specification 0002. */
+/** Reference parser and validator probe for the provisional source language. */
 public final class Probe {
     private static final Pattern ID_PATTERN = Pattern.compile("[A-Za-z0-9][A-Za-z0-9._-]*");
     private static final Pattern OPENER_PATTERN = Pattern.compile("requirement (.+)");
@@ -435,10 +435,16 @@ public final class Probe {
 
         List<Requirement> parse() {
             List<Requirement> requirements = new ArrayList<>();
+            boolean requiresSeparation = false;
             while (index < lines.size()) {
-                if (line().isEmpty()) {
+                int triviaLines = 0;
+                while (index < lines.size() && (line().isEmpty() || isCommentLine(line()))) {
                     index++;
-                    continue;
+                    triviaLines++;
+                }
+                if (index >= lines.size()) break;
+                if (requiresSeparation && triviaLines == 0) {
+                    fail(index, 1, "record-separation", "requirement records must be separated by a blank line or comment line");
                 }
                 if (!line().startsWith("requirement")) {
                     String code = line().equals("end requirement")
@@ -447,9 +453,7 @@ public final class Probe {
                     fail(index, 1, code, "nonblank content must occur inside a requirement record");
                 }
                 requirements.add(parseRecord());
-                if (index < lines.size() && !line().isEmpty()) {
-                    fail(index, 1, "record-separation", "requirement records must be separated by a blank line");
-                }
+                requiresSeparation = true;
             }
             if (requirements.isEmpty()) {
                 fail(0, 1, "empty-source-file", "a source file must contain at least one requirement record");
@@ -466,27 +470,32 @@ public final class Probe {
             String id = opener.group(1);
             Set<String> seen = new HashSet<>();
             index++;
+            skipComments();
 
             requireNext("title", seen);
             Scalar title = parseScalar("title");
             seen.add("title");
+            skipComments();
 
             String allocation = null;
             if ("allocation".equals(fieldName(lineOrNull()))) {
                 Scalar parsed = parseScalar("allocation");
                 allocation = parsed.value();
                 seen.add("allocation");
+                skipComments();
             }
 
             requireNext("statement", seen);
             Body statement = parseBody("statement", true);
             seen.add("statement");
+            skipComments();
 
             List<ContentBlock> rationale = null;
             if ("rationale".equals(fieldName(lineOrNull()))) {
                 Body parsed = parseBody("rationale", false);
                 rationale = parsed.blocks();
                 seen.add("rationale");
+                skipComments();
             }
 
             String source = null;
@@ -494,6 +503,7 @@ public final class Probe {
                 Scalar parsed = parseScalar("source");
                 source = parsed.value();
                 seen.add("source");
+                skipComments();
             }
 
             List<String> decomposes = new ArrayList<>();
@@ -511,6 +521,7 @@ public final class Probe {
                 decomposes.add(parsed.value());
                 relationshipLocations.add(new RelationshipLocation(parsed.value(), relationshipLine + 1, 13));
                 seen.add("decomposes");
+                skipComments();
             }
 
             if (index >= lines.size()) {
@@ -662,6 +673,14 @@ public final class Probe {
             if (valueLine == null) return null;
             Matcher field = FIELD_PATTERN.matcher(valueLine);
             return field.matches() ? field.group(1) : null;
+        }
+
+        private boolean isCommentLine(String valueLine) {
+            return valueLine.startsWith("#");
+        }
+
+        private void skipComments() {
+            while (index < lines.size() && isCommentLine(line())) index++;
         }
 
         private String line() {

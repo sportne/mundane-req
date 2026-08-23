@@ -173,6 +173,8 @@ The native build completed without reflection configuration or fallback mode. Th
 
 Experiment 0005 subsequently adds a twelfth grouped test and a focused `--incoming ID` query over the same parsed semantic model. That extension does not change the deterministic-interpretation result or the source grammar; its evidence is recorded separately in [Experiment 0005](../0005-incoming-trace-query/README.md).
 
+Experiment 0007 subsequently adds a thirteenth grouped test and support for the provisional 0.2 full-line author comment. The test proves that comments are absent from semantic inventories while `#` remains ordinary content in scalars, prose, rationale, and math. It also compares the commented 0.2 conformance inventory with its comment-free 0.1 counterpart. The design and evidence are recorded in [Experiment 0007](../0007-source-comments/README.md).
+
 ## Findings
 
 1. Specification 0002 is deterministic enough to implement without hidden state or a generalized parsing framework.
@@ -189,7 +191,7 @@ No rule required expansion during implementation. Specification 0002 should rema
 
 - This is one independent implementation, not a cross-implementation compatibility test.
 - The corpus remains small and synthetic.
-- Invalid fixtures are constructed by the test harness rather than maintained as a large conformance suite.
+- The maintained conformance fixtures are representative rather than an exhaustive invalid-input suite.
 - The parser intentionally stops after the first syntax error in a file, although it reports source-set errors across files.
 - Performance and memory behavior at organizational scale were not studied.
 - The experiment tests deterministic interpretation, not whether repeated manual authoring will reveal ergonomic problems.

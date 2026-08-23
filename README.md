@@ -26,8 +26,8 @@ The source representation is the foundation. A requirements file should be under
 - `experiments/` — concrete source fixtures and recorded experimental results.
 - `roadmap/` — development strategy, experiments, and sequencing.
 
-The current written interface consists of the [provisional 0.1 contract](specification/0003-provisional-0.1-contract.md) and the normative [mundanereq Source Language Specification 0.1](specification/0004-mundanereq-source-language-0.1.md). Together they form an evidence-backed trial contract, not a stable release promise.
+The current written interface consists of the [provisional 0.2 contract](specification/0006-provisional-0.2-contract.md) and the normative [mundanereq Source Language Specification 0.2](specification/0005-mundanereq-source-language-0.2.md). Version 0.2 adds only [nonsemantic full-line author comments](research/0009-nonsemantic-source-comments.md) to the 0.1 language. The 0.1 contract and standard remain available as the prior version. These are evidence-backed trial contracts, not stable release promises.
 
 Implementation remains deliberately experimental. The first code is a small [deterministic-interpretation probe](experiments/0002-deterministic-interpretation/README.md) used to test the provisional source language; it is not yet a production architecture commitment. Later experiments [transfer the minimum model](experiments/0004-transferability/README.md) to a licensed NASA FRET case-study corpus and add one [focused incoming trace query](experiments/0005-incoming-trace-query/README.md) without changing authoritative source.
 
-A bounded [ReqIF 1.2 interchange experiment](experiments/0006-reqif-interchange/README.md) demonstrates schema-valid semantic self-roundtrips while keeping ReqIF derived and outside the provisional 0.1 source contract.
+A bounded [ReqIF 1.2 interchange experiment](experiments/0006-reqif-interchange/README.md) demonstrates schema-valid semantic self-roundtrips while keeping ReqIF derived and outside the source-language contract. [Experiment 0007](experiments/0007-source-comments/README.md) confirms that 0.2 author comments do not enter that semantic interchange model.

@@ -2,13 +2,15 @@
 
 Status: Provisional; deterministic interpretation, sustained use, and transferability confirmed by Experiments 0002 through 0004
 
-Provisional contract: [mundanereq source 0.1](0003-provisional-0.1-contract.md)
+Original provisional contract: [mundanereq source 0.1](0003-provisional-0.1-contract.md)
 
-Normative language standard: [mundanereq Source Language Specification 0.1](0004-mundanereq-source-language-0.1.md)
+Original normative language standard: [mundanereq Source Language Specification 0.1](0004-mundanereq-source-language-0.1.md)
+
+Current successor contract and standard: [mundanereq source 0.2](0006-provisional-0.2-contract.md) and [mundanereq Source Language Specification 0.2](0005-mundanereq-source-language-0.2.md)
 
 ## Purpose
 
-This specification records the design and rationale for the smallest source language and semantic model justified by Experiment 0001. The resulting normative language rules are consolidated in Specification 0004. Neither document is a production language release or a stability promise beyond the provisional 0.1 contract.
+This specification records the design and rationale for the smallest source language and semantic model justified by Experiment 0001. The original normative rules are consolidated in Specification 0004; Specification 0005 carries the same semantic model into 0.2 with nonsemantic source comments. None of these documents is a production language release or stability promise beyond its identified provisional contract.
 
 The design has three priorities:
 
