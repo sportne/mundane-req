@@ -174,7 +174,7 @@ Retain shared code only where it prevents conflicting interpretations. If a prop
 
 ## Stage 3 — Deliver `mundanereq-validate`
 
-Status: Planned
+Status: In progress
 
 **Question:** Can a clean checkout receive a fast, precise answer about whether its requirement source conforms to a named language contract?
 

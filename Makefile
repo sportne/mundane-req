@@ -1,4 +1,4 @@
-.PHONY: test native-smoke native-boundaries boundary-isolation verify
+.PHONY: test native-smoke native-validator native-boundaries boundary-isolation verify
 
 BUILD_ROOT := build/maintained
 CLASS_DIR := $(BUILD_ROOT)/classes
@@ -18,11 +18,13 @@ native-smoke: test
 	native-image -O0 --no-fallback -cp $(CLASS_DIR) -o $(abspath $(NATIVE_SMOKE)) mundanereq.smoke.MaintainedBuildTest
 	$(NATIVE_SMOKE)
 
-native-boundaries: test
-	native-image -O0 --no-fallback -cp $(CLASS_DIR) -o $(abspath $(VALIDATE_NATIVE)) mundanereq.cli.ValidateBoundary
+native-validator: test
+	native-image -O0 --no-fallback -cp $(CLASS_DIR) -o $(abspath $(VALIDATE_NATIVE)) mundanereq.cli.ValidatorMain
+	$(VALIDATE_NATIVE) --version
+
+native-boundaries: native-validator
 	native-image -O0 --no-fallback -cp $(CLASS_DIR) -o $(abspath $(FORMAT_NATIVE)) mundanereq.cli.FormatBoundary
 	native-image -O0 --no-fallback -cp $(CLASS_DIR) -o $(abspath $(TRACE_NATIVE)) mundanereq.cli.TraceBoundary
-	$(VALIDATE_NATIVE) --boundary-smoke
 	$(FORMAT_NATIVE) --boundary-smoke
 	$(TRACE_NATIVE) --boundary-smoke
 

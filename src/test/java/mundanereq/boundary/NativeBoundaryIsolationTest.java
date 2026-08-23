@@ -33,12 +33,15 @@ public final class NativeBoundaryIsolationTest {
     }
 
     private static void assertStarts(Path executable) throws IOException, InterruptedException {
-        Process process = new ProcessBuilder(executable.toString(), "--boundary-smoke")
+        boolean validator = executable.getFileName().toString().equals("mundanereq-validate");
+        String argument = validator ? "--version" : "--boundary-smoke";
+        Process process = new ProcessBuilder(executable.toString(), argument)
                 .redirectErrorStream(true)
                 .start();
         String output = new String(process.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
         int status = process.waitFor();
-        if (status != 0 || !output.contains(" boundary")) {
+        String expected = validator ? "source contract mundanereq-source-0.2" : " boundary";
+        if (status != 0 || !output.contains(expected)) {
             throw new AssertionError("failed boundary start for %s: status %d, output %s"
                     .formatted(executable, status, output));
         }

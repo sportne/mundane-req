@@ -51,4 +51,23 @@ test-only executable with `--no-fallback`. Generated classes and native output
 are disposable under `build/maintained`. `make boundary-isolation` builds three
 temporary standalone native boundaries and proves that none requires either of
 the other executables at runtime. These are architecture checks; product
-validator, formatter, and trace behavior remains on the roadmap.
+formatter and trace behavior remains on the roadmap; the validator boundary is
+now implemented as the first product tool.
+
+## Validator
+
+`mundanereq-validate` is the first focused maintained tool. Build its standalone
+Linux native executable after selecting the GraalVM Java 21 SDKMAN candidate:
+
+    make native-validator
+
+Validate one or more explicit files or directories:
+
+    build/maintained/mundanereq-validate requirements/
+
+The validator implements `mundanereq-source-0.2`, reports diagnostics as
+`file:line:column: category: message`, and uses exit status `0` for conforming
+source, `1` for source nonconformance, and `2` when invocation or input failure
+prevents validation. `--help` and `--version` describe the small current
+interface. The command performs no project-policy, formatting, trace, or ReqIF
+work.

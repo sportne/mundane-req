@@ -1,6 +1,6 @@
 # Task TC-0302: Verify Validator Behavior
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 3
 

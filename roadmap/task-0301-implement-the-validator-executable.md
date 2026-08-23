@@ -1,6 +1,6 @@
 # Task TC-0301: Implement the Validator Executable
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 3
 
@@ -43,6 +43,21 @@ Can one focused native executable answer whether an explicitly selected source s
 ## Completion decision
 
 Keep the CLI only as large as required for clean-checkout validation and CI. Defer convenience modes that conflate another tool's responsibility.
+
+## Result
+
+`mundanereq-validate` now accepts explicit file and directory inputs, invokes
+the maintained strict interpreter, emits plain `file:line:column: category:
+message` diagnostics, and identifies `mundanereq-source-0.2` in both successful
+summaries and `--version` output. Exit status `0` means conforming source, `1`
+means source nonconformance, and `2` means invalid invocation or incomplete
+evaluation caused by an unavailable or empty input selection.
+
+The executable has its own `native-validator` GraalVM target and contains no
+formatting, trace, policy, inventory-interchange, daemon, or hidden-state
+behavior. Focused JVM tests cover success, source failure, operational failure,
+usage, help, and contract identification; TC-0302 owns exhaustive JVM/native
+verification and repair-workflow evidence.
 
 ## References
 

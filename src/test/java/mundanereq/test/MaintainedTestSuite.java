@@ -5,6 +5,7 @@ import mundanereq.InterpreterRegressionTest;
 import mundanereq.SemanticConversionTest;
 import mundanereq.smoke.MaintainedBuildTest;
 import mundanereq.source.SourceDocumentTest;
+import mundanereq.cli.ValidatorMainTest;
 
 /** Dependency-free maintained JVM test suite. */
 public final class MaintainedTestSuite {
@@ -20,6 +21,8 @@ public final class MaintainedTestSuite {
         InterpreterTest.run();
         System.out.println("PASS maintained semantic interpretation");
         InterpreterRegressionTest.main(arguments);
-        System.out.println("Passed 5 maintained test groups.");
+        ValidatorMainTest.run();
+        System.out.println("PASS validator command interface");
+        System.out.println("Passed 6 maintained test groups.");
     }
 }
