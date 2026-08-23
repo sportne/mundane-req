@@ -1,0 +1,51 @@
+# Task TC-0501: Define the First Trace Interface
+
+Status: Planned
+
+Roadmap stage: 5
+
+Type: Experiment and decision
+
+Depends on: TC-0203
+
+Unlocks: TC-0502
+
+## Question
+
+Which bounded trace questions over `decomposes` are useful enough to standardize for the first trace executable?
+
+## Outcome
+
+A trace-interface decision defines direct and transitive incoming/outgoing questions, path semantics, deterministic ordering, and error behavior.
+
+## Work
+
+- Revisit manual trace friction from sustained authoring and Experiment 0005.
+- Define direction in domain language rather than graph jargon alone.
+- Decide whether output reports edges, one path, all paths, or bounded summaries for each operation.
+- Define deterministic handling of multiple paths and cycles.
+- Specify missing-ID and invalid-source behavior.
+- Separate structural observations from project-policy failures.
+
+## Acceptance evidence
+
+- Every operation answers a recorded engineering workflow.
+- Incoming links remain derived rather than copied into source.
+- Output semantics are testable without depending on traversal implementation.
+- The interface does not generalize beyond `decomposes` prematurely.
+
+## Out of scope
+
+- Verification coverage or safety relationships.
+- A generalized graph query language.
+- Persistent indexes or interactive browsers.
+
+## Completion decision
+
+Prefer fewer operations with precise meaning. If a question cannot be explained in requirement-decomposition terms, defer it until its relationship model exists.
+
+## References
+
+- [Experiment 0005](../experiments/0005-incoming-trace-query/README.md)
+- [Sustained authoring review](../experiments/0003-sustained-authoring/authoring-review.md)
+- [Roadmap Stage 5](0001-initial-roadmap.md#stage-5--define-and-deliver-mundanereq-trace)

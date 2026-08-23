@@ -1,0 +1,51 @@
+# Task TC-0902: Run an Independent ReqIF Roundtrip
+
+Status: Conditional
+
+Roadmap stage: 9
+
+Type: Interchange experiment
+
+Depends on: TC-0603 and access to an independent ReqIF implementation
+
+Unlocks: A production-interchange decision
+
+## Question
+
+Does the bounded mundane-req ReqIF profile preserve useful semantics through an independent tool rather than only through self-roundtrip?
+
+## Outcome
+
+A recorded export-edit-import experiment through an independent implementation classifies preserved, transformed, rejected, and lost information.
+
+## Work
+
+- Select and record the exact independent ReqIF implementation and version.
+- Export the maintained conformance, UAS, or FRET corpus using the bounded profile.
+- Inspect and edit IDs, rich text, relationships, ordering, and at least one unknown attribute in the external tool.
+- Import or analyze the resulting document strictly against the profile.
+- Compare semantic inventories and ordinary source reconstruction choices.
+- Record tool-added metadata and unsupported content separately.
+
+## Acceptance evidence
+
+- The external tool, steps, and exchanged files are reproducible where licensing permits.
+- Loss is reported rather than silently flattened.
+- Transport identifiers remain distinct from requirement identity.
+- No `.mreq` grammar change is made merely to imitate ReqIF.
+- The result states whether a maintained converter is justified.
+
+## Out of scope
+
+- Arbitrary ReqIF acceptance.
+- Configurable mappings without a real partner need.
+- Making ReqIF authoritative storage.
+
+## Completion decision
+
+Expand or maintain interchange only for demonstrated partner workflows. A failed roundtrip is evidence about the profile or tool behavior, not evidence that source-first storage is invalid.
+
+## References
+
+- [Experiment 0006](../experiments/0006-reqif-interchange/README.md)
+- [ReqIF fidelity review](../experiments/0006-reqif-interchange/fidelity-review.md)

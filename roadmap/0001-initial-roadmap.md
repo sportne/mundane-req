@@ -4,6 +4,8 @@ Status: Draft living roadmap
 
 Last reconciled: 2026-08-22 at `mundanereq-source-0.2`
 
+Execution is decomposed into the [roadmap task-card index](0002-task-card-index.md). This document remains the strategic narrative; the cards carry bounded work, dependencies, and acceptance evidence.
+
 ## Purpose
 
 This roadmap describes how mundane-req should progress from a successful source-language investigation to a usable requirements-engineering toolchain.

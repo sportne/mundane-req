@@ -1,0 +1,50 @@
+# Task TC-0502: Implement the Trace Executable
+
+Status: Planned
+
+Roadmap stage: 5
+
+Type: Implementation
+
+Depends on: TC-0204 and TC-0501
+
+Unlocks: TC-0503
+
+## Question
+
+Can the selected trace questions be answered by an independent native tool using only valid authoritative source and disposable memory?
+
+## Outcome
+
+`mundanereq-trace` implements the selected direct, transitive, and impact-oriented operations over the shared semantic model.
+
+## Work
+
+- Build disposable incoming and outgoing indexes from the selected source set.
+- Implement the TC-0501 operations and deterministic presentation.
+- Reuse shared parsing and diagnostics without depending on validator CLI code.
+- Reject invalid source sets and absent IDs clearly.
+- Keep all derived indexes process-local and reproducible.
+
+## Acceptance evidence
+
+- The trace executable builds independently as a GraalVM native image.
+- No reverse link, cache, or database is written to authoritative source.
+- Results match manual traces for maintained corpora.
+- Removing formatter or validator executables does not affect trace operation.
+
+## Out of scope
+
+- New relationship syntax.
+- Stored matrices.
+- A web traceability browser.
+- Cross-baseline semantic comparison.
+
+## Completion decision
+
+If an operation needs additional authoritative facts, remove it from this release and create a model-pressure card rather than infer those facts.
+
+## References
+
+- [TC-0501](task-0501-define-the-first-trace-interface.md)
+- [TC-0204](task-0204-port-tests-and-prove-native-tool-boundaries.md)

@@ -1,0 +1,51 @@
+# Task TC-0403: Verify Formatter Safety Properties
+
+Status: Planned
+
+Roadmap stage: 4
+
+Type: Verification
+
+Depends on: TC-0402
+
+Unlocks: TC-0404
+
+## Question
+
+Does formatting remain semantically preserving, idempotent, comment-preserving, and reviewable over all maintained source?
+
+## Outcome
+
+Automated property checks and recorded Git-diff reviews establish the formatter's safety boundary.
+
+## Work
+
+- Compare semantic inventories before and after formatting every valid fixture and corpus.
+- Format outputs twice and require byte-identical second results.
+- Verify comment text and relative order across every legal placement.
+- Verify opaque math payloads under multiline and special-character cases.
+- Exercise LF/CRLF and standard-output, check, and in-place modes.
+- Review representative large rewrites through ordinary Git diffs.
+
+## Acceptance evidence
+
+- Semantic equality holds for every valid maintained corpus.
+- Idempotence holds byte-for-byte.
+- No comment or math payload is lost or reinterpreted.
+- Check mode returns documented exit behavior.
+- JVM and native-image results agree.
+
+## Out of scope
+
+- Proving aesthetic preference.
+- Formatting invalid or future language versions.
+- Semantic equivalence of LaTeX expressions.
+
+## Completion decision
+
+Any semantic change, non-idempotence, or unexplained comment movement blocks publication. Narrow the formatting contract before adding recovery machinery.
+
+## References
+
+- [TC-0402](task-0402-implement-the-formatter-executable.md)
+- [0.2 conformance suite](../conformance/0.2/README.md)

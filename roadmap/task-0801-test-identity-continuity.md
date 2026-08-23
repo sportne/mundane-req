@@ -1,0 +1,49 @@
+# Task TC-0801: Test Identity Continuity
+
+Status: Conditional
+
+Roadmap stage: 8
+
+Type: Model-pressure experiment
+
+Depends on: TC-0603 and a workflow requiring ID correction
+
+Unlocks: A requirement identity decision and TC-1001
+
+## Question
+
+When a human-facing ID is corrected, what evidence is required to distinguish continuity from requirement replacement across baselines and consumers?
+
+## Outcome
+
+A focused experiment compares Git-only atomic correction, explicit continuity assertions, and separate durable identity without presuming hidden IDs.
+
+## Work
+
+- Create adjacent baselines containing a realistic ID correction and updated internal links.
+- Test history, trace queries, baseline comparison, and ReqIF mapping.
+- Include at least one stale external or companion-artifact reference.
+- Compare ordinary diffs and consumer repair behavior for each candidate model.
+- Record whether provenance can identify continuity without becoming identity.
+
+## Acceptance evidence
+
+- Each alternative is exercised on the same scenario.
+- The experiment distinguishes human intent from what source snapshots semantically assert.
+- Costs to standalone readability and interchange are explicit.
+- No identity mechanism is selected merely because a database-oriented tool uses it.
+
+## Out of scope
+
+- General aliasing or rename syntax.
+- Cross-repository package identity.
+- Automatic fuzzy identity matching.
+
+## Completion decision
+
+Retain ID-only identity unless a demonstrated consumer cannot preserve necessary continuity through atomic source and Git history. If new identity is selected, specify its authority and visibility explicitly.
+
+## References
+
+- [Roadmap identity study](0001-initial-roadmap.md#identity-continuity)
+- [Experiment 0004 ID correction](../experiments/0004-transferability/transferability-review.md)
