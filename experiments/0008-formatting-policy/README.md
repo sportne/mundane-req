@@ -30,8 +30,10 @@ Two hand-constructed candidate results isolate the policy choice:
   reflows prose body lines toward a shorter width. It leaves scalar fields,
   comments, and LaTeX payload lines unchanged.
 
-The candidates are experiment evidence, not formatter golden files. TC-0402
-owns executable behavior and its maintained tests.
+The candidates originated as experiment evidence rather than executable
+behavior. TC-0402 subsequently adopted `candidate-conservative.mreq` as the
+maintained golden result for the selected policy; the formatter implementation
+and trial contract, rather than this experiment alone, now own that behavior.
 
 ## Comparison method
 

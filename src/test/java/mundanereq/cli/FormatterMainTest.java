@@ -22,7 +22,7 @@ public final class FormatterMainTest {
         formatsOneFileWithSourceSetContext();
         checksAndWritesExplicitSelections();
         rejectsInvalidSelectionsBeforeWriting();
-        reportsStandardOutputFailure();
+        reportsOutputFailuresAcrossModes();
         leavesSourceUntouchedWhenReplacementCannotStart();
         handlesInvocationAndIdentification();
     }
@@ -92,19 +92,41 @@ public final class FormatterMainTest {
         }
     }
 
-    private static void reportsStandardOutputFailure() throws Exception {
-        Path source = ROOT.resolve("experiments/0008-formatting-policy/candidate-conservative.mreq");
+    private static void reportsOutputFailuresAcrossModes() throws Exception {
+        Path experiment = ROOT.resolve("experiments/0008-formatting-policy");
+        assertOutputFailure(new String[] {experiment.resolve("candidate-conservative.mreq").toString()}, "source output");
+        assertOutputFailure(
+                new String[] {"--check", experiment.resolve("input-varied-crlf.mreq").toString()},
+                "check output");
+        assertOutputFailure(new String[] {"--help"}, "help output");
+        assertOutputFailure(new String[] {"--version"}, "version output");
+
+        Path temporary = Files.createTempDirectory("mundanereq-format-output-failure-");
+        try {
+            Path source = temporary.resolve("source.mreq");
+            Files.copy(experiment.resolve("input-varied-crlf.mreq"), source);
+            assertOutputFailure(new String[] {"--write", source.toString()}, "write summary output");
+            assertArrayEquals(
+                    Files.readAllBytes(experiment.resolve("candidate-conservative.mreq")),
+                    Files.readAllBytes(source),
+                    "replacement completes before summary failure");
+        } finally {
+            deleteTemporaryTree(temporary);
+        }
+    }
+
+    private static void assertOutputFailure(String[] arguments, String description) {
         ByteArrayOutputStream standardError = new ByteArrayOutputStream();
         int status;
         try (PrintStream out = new PrintStream(new FailingOutputStream());
                 PrintStream err = new PrintStream(standardError, true, StandardCharsets.UTF_8)) {
-            status = FormatterMain.run(new String[] {source.toString()}, out, err);
+            status = FormatterMain.run(arguments, out, err);
         }
-        assertEquals(2, status, "failed standard-output status");
+        assertEquals(2, status, description + " status");
         assertContains(
                 standardError.toString(StandardCharsets.UTF_8),
                 "output-failed",
-                "failed standard-output diagnostic");
+                description + " diagnostic");
     }
 
     private static void leavesSourceUntouchedWhenReplacementCannotStart() throws Exception {
@@ -162,6 +184,7 @@ public final class FormatterMainTest {
         assertEquals(0, invoke("--help").status(), "help status");
         Invocation version = invoke("--version");
         assertEquals(0, version.status(), "version status");
+        assertContains(version.out(), FormatterMain.TOOL_VERSION, "tool version");
         assertContains(version.out(), FormatterMain.SOURCE_CONTRACT, "source contract");
     }
 

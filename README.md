@@ -90,7 +90,7 @@ normalize LF line endings and collapse comment-free inter-record blank-line
 runs to one line. It does not reflow prose, reorder source, alter comments, or
 interpret opaque math.
 
-Build the development executable with:
+Build the maintained trial executable with:
 
     make native-formatter
 
@@ -100,9 +100,9 @@ Check or explicitly rewrite a complete selected source set:
     build/maintained/mundanereq-format --write requirements/
 
 Check mode returns `0` when every selected file is already formatted, `1`
-when valid files would change, and `2` when invocation or source-set failure
-prevents the check. Standard-output and write modes return `0` on success and
-`2` on invocation, source-set, output, or replacement failure.
+when valid files would change, and `2` when invocation, source-set, or report
+output failure prevents completion. Standard-output and write modes return `0`
+on success and `2` on invocation, source-set, output, or replacement failure.
 
 To write one formatted file to standard output while validating relationships
 against its wider source context:
@@ -110,9 +110,11 @@ against its wider source context:
     build/maintained/mundanereq-format requirements/child.mreq requirements/
 
 Formatting validates the complete selected source set before producing output
-or replacing files. The maintained trial contract and full safety evidence are
-the next roadmap cards; the current executable identifies itself as a
-development interface.
+or replacing files. The [formatter trial contract](specification/0008-formatter-trial-contract-0.1.md)
+defines the complete `trial-0.1` interface, formatting behavior, safety
+boundary, and deliberate omissions. The Git tag `formatter-trial-0.1`
+identifies its reproducible source baseline. This is a maintained trial
+interface, not a stable 1.0 compatibility promise.
 
 On filesystems with a POSIX permission view, write mode preserves the file's
 read, write, and execute permission bits. Replacement does not promise to

@@ -20,7 +20,7 @@ import mundanereq.source.SourceDocument;
 
 /** Focused formatter for the conservative Experiment 0008 policy. */
 public final class FormatterMain {
-    static final String TOOL_VERSION = "development";
+    static final String TOOL_VERSION = "trial-0.1";
     static final String SOURCE_CONTRACT = "mundanereq-source-0.2";
 
     private enum Mode {
@@ -40,11 +40,11 @@ public final class FormatterMain {
     static int run(String[] arguments, PrintStream out, PrintStream err) {
         if (arguments.length == 1 && arguments[0].equals("--help")) {
             out.print(usage());
-            return 0;
+            return finishOutput(out, err, 0);
         }
         if (arguments.length == 1 && arguments[0].equals("--version")) {
             out.printf("mundanereq-format %s; source contract %s%n", TOOL_VERSION, SOURCE_CONTRACT);
-            return 0;
+            return finishOutput(out, err, 0);
         }
 
         Invocation invocation = parseInvocation(arguments, err);
@@ -71,7 +71,7 @@ public final class FormatterMain {
 
         return switch (invocation.mode()) {
             case STANDARD_OUTPUT -> writeStandardOutput(invocation.output(), formatted, out, err);
-            case CHECK -> check(selection.sources(), formatted, out);
+            case CHECK -> check(selection.sources(), formatted, out, err);
             case WRITE -> writeFiles(selection.sources(), formatted, out, err);
         };
     }
@@ -141,15 +141,11 @@ public final class FormatterMain {
             return 2;
         }
         out.write(bytes, 0, bytes.length);
-        out.flush();
-        if (out.checkError()) {
-            err.println("standard-output:1:1: output-failed: unable to write formatted source");
-            return 2;
-        }
-        return 0;
+        return finishOutput(out, err, 0);
     }
 
-    private static int check(List<Interpreter.Source> sources, Map<Path, byte[]> formatted, PrintStream out) {
+    private static int check(
+            List<Interpreter.Source> sources, Map<Path, byte[]> formatted, PrintStream out, PrintStream err) {
         int changes = 0;
         for (Interpreter.Source source : sources) {
             Path path = Path.of(source.file());
@@ -158,7 +154,7 @@ public final class FormatterMain {
                 changes++;
             }
         }
-        return changes == 0 ? 0 : 1;
+        return finishOutput(out, err, changes == 0 ? 0 : 1);
     }
 
     private static int writeFiles(
@@ -177,7 +173,14 @@ public final class FormatterMain {
             }
         }
         out.printf("Formatted %d %s.%n", changes, changes == 1 ? "file" : "files");
-        return 0;
+        return finishOutput(out, err, 0);
+    }
+
+    private static int finishOutput(PrintStream out, PrintStream err, int successStatus) {
+        out.flush();
+        if (!out.checkError()) return successStatus;
+        err.println("standard-output:1:1: output-failed: unable to write command output");
+        return 2;
     }
 
     private static void replace(Path path, byte[] bytes) throws IOException {

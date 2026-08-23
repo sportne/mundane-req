@@ -1,6 +1,6 @@
 # Task TC-0404: Publish the Formatter Trial Contract
 
-Status: Planned
+Status: Complete
 
 Roadmap stage: 4
 
@@ -42,6 +42,23 @@ A versioned formatter trial contract documents canonical behavior, modes, safety
 ## Completion decision
 
 Publish only if the formatter's behavior is small enough to explain completely and safe enough that ordinary diffs remain the review surface.
+
+## Result
+
+The [formatter trial contract 0.1](../specification/0008-formatter-trial-contract-0.1.md)
+states the complete two-rule formatting policy, context-aware source-set
+validation, standard-output/check/write behavior, exit statuses, per-file
+replacement and metadata boundaries, compatibility surfaces, and deliberate
+omissions.
+
+`make formatter-verify` is the reproducible acceptance gate, and the
+`formatter-trial-0.1` Git tag identifies the reviewed source baseline. The
+policy is small enough to explain completely: normalize LF and collapse only
+comment-free inter-record blank-line runs. Ordinary textual diffs remain the
+review surface, with no prose, ordering, comment, or math rewrite hidden behind
+semantic tooling.
+
+Publish as a maintained trial without making a stable 1.0 promise.
 
 ## References
 
