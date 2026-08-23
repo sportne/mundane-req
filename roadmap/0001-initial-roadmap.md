@@ -171,6 +171,8 @@ Study the applicable ReqIF standard and real implementations, define an explicit
 
 **Learning milestone:** Determine whether useful ReqIF interoperability is possible and which interchange concerns, if any, justify changes to the core model.
 
+Result: [Experiment 0006](../experiments/0006-reqif-interchange/README.md) defines and implements a strict bounded ReqIF 1.2 profile in dependency-free Java with a GraalVM native build. The 0.1 conformance fixture, final UAS corpus, and FRET transfer corpus complete equal-inventory semantic self-roundtrips, and all exported documents validate against OMG's normative XSD set. The [fidelity review](../experiments/0006-reqif-interchange/fidelity-review.md) distinguishes preserved requirement semantics from constructed transport metadata and unsupported ReqIF surface area. No core grammar change is justified; an independent-tool roundtrip is the next interchange milestone.
+
 ## Near-term success criterion
 
 A small formally traced requirements set can be:

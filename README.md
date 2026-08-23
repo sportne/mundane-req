@@ -29,3 +29,5 @@ The source representation is the foundation. A requirements file should be under
 The current written interface is the [provisional 0.1 contract](specification/0003-provisional-0.1-contract.md). It is an evidence-backed trial contract, not a stable release promise.
 
 Implementation remains deliberately experimental. The first code is a small [deterministic-interpretation probe](experiments/0002-deterministic-interpretation/README.md) used to test the provisional source language; it is not yet a production architecture commitment. Later experiments [transfer the minimum model](experiments/0004-transferability/README.md) to a licensed NASA FRET case-study corpus and add one [focused incoming trace query](experiments/0005-incoming-trace-query/README.md) without changing authoritative source.
+
+A bounded [ReqIF 1.2 interchange experiment](experiments/0006-reqif-interchange/README.md) demonstrates schema-valid semantic self-roundtrips while keeping ReqIF derived and outside the provisional 0.1 source contract.

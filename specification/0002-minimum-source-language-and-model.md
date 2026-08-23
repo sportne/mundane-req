@@ -265,7 +265,7 @@ This omission is deliberate. It can be revisited when a concrete workflow requir
 - ReqIF import, export, and round-trip preservation;
 - access control, variants, reuse, and cross-repository references.
 
-ReqIF round-tripping remains future roadmap work. This source language should not imitate ReqIF's storage model before interchange requirements are studied.
+Experiment 0006 demonstrates a schema-valid bounded ReqIF 1.2 semantic self-roundtrip without source-language changes. General and cross-tool ReqIF interoperability remains outside this specification. The source language should not imitate ReqIF's storage model merely because a derived adapter can map to it.
 
 ## Open questions after initial interpretation and use
 

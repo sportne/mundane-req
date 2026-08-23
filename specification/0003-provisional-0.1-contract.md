@@ -154,4 +154,4 @@ Before evaluating the 0.1 contract, a team should:
 - verification activity, coverage, execution, and evidence source models;
 - operational behavior with larger independently authored corpora;
 - compatibility and repository selection when multiple source versions exist;
-- bounded ReqIF fidelity and round-trip behavior.
+- cross-tool ReqIF fidelity, update behavior, and identity continuity beyond Experiment 0006's bounded semantic self-roundtrip.
