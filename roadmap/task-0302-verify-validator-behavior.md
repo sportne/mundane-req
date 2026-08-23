@@ -1,6 +1,6 @@
 # Task TC-0302: Verify Validator Behavior
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 3
 
@@ -43,6 +43,21 @@ Reproducible JVM and native evidence covers the normative corpus, maintained pro
 ## Completion decision
 
 Advance only if the validator can replace the experimental probe's validation role without reducing conformance or usability.
+
+## Result
+
+[Research 0014](../research/0014-validator-verification.md) records a
+reproducible `validator-verify` gate. The JVM and no-fallback native executable
+agree exactly over six valid corpora, fourteen invalid conformance selections,
+explicit and duplicate inputs, empty and unavailable selections, invocation
+classes, bounded high-volume diagnostic capture, and two diagnostic-guided
+repair workflows. Bounded observations of
+1 ms for a one-file corpus and 2 ms for a twenty-file corpus exposed no obvious
+native startup or scan regression and are explicitly not scale claims.
+
+No conformance or repair-usability blocker remains for the tested scope. The
+maintained validator can replace the experimental probe's validation role and
+advance to a separately reviewed trial contract.
 
 ## References
 

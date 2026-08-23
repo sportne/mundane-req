@@ -71,3 +71,7 @@ source, `1` for source nonconformance, and `2` when invocation or input failure
 prevents validation. `--help` and `--version` describe the small current
 interface. The command performs no project-policy, formatting, trace, or ReqIF
 work.
+
+`make validator-verify` runs the complete JVM/native validator evidence set,
+including all conformance selections, maintained corpora, source-selection
+cases, and representative editor repairs.

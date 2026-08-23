@@ -1,6 +1,6 @@
 # Task TC-0303: Publish the Validator Trial Contract
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 3
 
