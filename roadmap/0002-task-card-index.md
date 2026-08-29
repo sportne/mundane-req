@@ -69,9 +69,10 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 | [TC-0701](closed/task-0701-select-a-larger-corpus-and-trial-protocol.md) | Licensed corpus and controlled trial plan | Complete | TC-0603 |
 | [TC-0702](closed/task-0702-run-the-independent-interpretation-proxy-trial.md) | AI-proxy independent-interpretation evidence | Complete | TC-0701 |
 | [TC-0703](closed/task-0703-run-the-multi-author-and-layout-trial.md) | Concurrency and file-granularity evidence | Complete | TC-0701 |
-| [TC-0704](task-0704-measure-operational-scale.md) | Operational-scale measurements | Ready | TC-0702, TC-0703 |
-| [TC-0705](task-0705-obtain-independent-conformance-evidence.md) | Independent interpretation evidence | Planned | TC-0103, TC-0303 |
+| [TC-0704](closed/task-0704-measure-operational-scale.md) | Operational-scale measurements | Complete | TC-0702, TC-0703 |
+| [TC-0705](task-0705-obtain-independent-conformance-evidence.md) | Independent interpretation evidence | Ready | TC-0103, TC-0303 |
 | [TC-0706](task-0706-run-the-human-author-trial.md) | Human-author usability evidence | Ready | TC-0701, TC-0702 |
+| [TC-0707](task-0707-test-bounded-diagnostic-presentation.md) | Large diagnostic-set presentation decision | Ready | TC-0704 |
 
 ## Model-pressure research cards
 
@@ -91,7 +92,7 @@ These cards are not assumed to produce syntax. Each must first determine whether
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-0901](task-0901-prioritize-the-next-ecosystem-tool.md) | Evidence-backed next-tool selection | Conditional | TC-0603, TC-0704 |
+| [TC-0901](task-0901-prioritize-the-next-ecosystem-tool.md) | Evidence-backed next-tool selection | Ready | TC-0603, TC-0704 |
 | [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md) | Cross-tool ReqIF fidelity evidence | Conditional | TC-0603 |
 | [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Rendering/view evidence | Conditional | TC-0603, TC-0807 |
 | [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) | One additional independent tool | Conditional | TC-0901 |

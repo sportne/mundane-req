@@ -1,6 +1,6 @@
 # Task TC-0705: Obtain Independent Conformance Evidence
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 7
 

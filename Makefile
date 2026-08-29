@@ -1,4 +1,4 @@
-.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries native-suite package-native-suite native-suite-verify boundary-isolation ci-workflow-evidence ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial verify
+.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries native-suite package-native-suite native-suite-verify boundary-isolation ci-workflow-evidence ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial operational-scale-trial verify
 
 BUILD_ROOT := build/maintained
 CLASS_DIR := $(BUILD_ROOT)/classes
@@ -118,5 +118,9 @@ integrated-toolchain-trial: native-suite
 multi-author-layout-trial: native-suite
 	java -ea -cp $(CLASS_DIR) mundanereq.trial.MultiAuthorLayoutTrialTest \
 		$(FORMAT_NATIVE) $(VALIDATE_NATIVE) $(TRACE_NATIVE)
+
+operational-scale-trial: native-suite
+	experiments/0014-operational-scale/run.sh \
+		$(FORMAT_NATIVE) $(VALIDATE_NATIVE) $(TRACE_NATIVE) $(BUILD_ROOT)/operational-scale
 
 verify: test native-smoke boundary-isolation validator-verify formatter-verify trace-verify native-suite-verify ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial

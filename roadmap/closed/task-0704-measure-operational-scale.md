@@ -1,6 +1,6 @@
 # Task TC-0704: Measure Operational Scale
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 7
 
@@ -44,7 +44,17 @@ Reproducible measurements identify whether the disposable in-memory architecture
 
 Retain the simple in-memory model unless measurements show a concrete workflow cannot be served. If derived caching is justified, require it to remain optional and disposable.
 
+Completed on 2026-08-29. [Experiment 0014](../../experiments/0014-operational-scale/README.md)
+measured independent native processes over semantically equivalent six- and
+60-file layouts. Ordinary repeated means occupied a 3.4–4.2 ms envelope on
+the recorded host with no supported layout distinction. The 1,200-error case
+remained computationally small and produced a 157 KB terminal stream whose
+human navigability remains a TC-0707 hypothesis.
+
+Retain the disposable in-memory model and add no cache, database, or path
+semantics. TC-0707 owns the bounded diagnostic-presentation question.
+
 ## References
 
-- [TC-0702](closed/task-0702-run-the-independent-interpretation-proxy-trial.md)
-- [TC-0703](closed/task-0703-run-the-multi-author-and-layout-trial.md)
+- [TC-0702](task-0702-run-the-independent-interpretation-proxy-trial.md)
+- [TC-0703](task-0703-run-the-multi-author-and-layout-trial.md)
