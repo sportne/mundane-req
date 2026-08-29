@@ -1,6 +1,6 @@
 # Task TC-0504: Publish the Trace Trial Contract
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 5
 
