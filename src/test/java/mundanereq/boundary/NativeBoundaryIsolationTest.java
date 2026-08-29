@@ -42,7 +42,11 @@ public final class NativeBoundaryIsolationTest {
                     executable.toString(),
                     "--check",
                     ROOT.resolve("experiments/0008-formatting-policy/candidate-conservative.mreq").toString());
-            default -> List.of(executable.toString(), "--boundary-smoke");
+            default -> List.of(
+                    executable.toString(),
+                    "impact",
+                    "TOP",
+                    ROOT.resolve("conformance/0.2/valid").toString());
         };
         Process process = new ProcessBuilder(command)
                 .redirectErrorStream(true)
@@ -51,7 +55,7 @@ public final class NativeBoundaryIsolationTest {
         int status = process.waitFor();
         String expected = name.equals("mundanereq-validate")
                 ? "source contract mundanereq-source-0.2"
-                : name.equals("mundanereq-trace") ? " boundary" : "";
+                : name.equals("mundanereq-trace") ? "Lower-level impact paths to TOP:" : "";
         if (status != 0 || !output.contains(expected)) {
             throw new AssertionError("failed boundary start for %s: status %d, output %s"
                     .formatted(executable, status, output));

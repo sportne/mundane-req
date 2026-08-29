@@ -8,6 +8,8 @@ import mundanereq.source.SourceDocumentTest;
 import mundanereq.cli.ValidatorMainTest;
 import mundanereq.cli.FormatterMainTest;
 import mundanereq.format.SourceFormatterTest;
+import mundanereq.cli.TraceMainTest;
+import mundanereq.trace.TraceAnalyzerTest;
 
 /** Dependency-free maintained JVM test suite. */
 public final class MaintainedTestSuite {
@@ -29,6 +31,10 @@ public final class MaintainedTestSuite {
         System.out.println("PASS conservative source formatter");
         FormatterMainTest.run();
         System.out.println("PASS formatter command interface");
-        System.out.println("Passed 8 maintained test groups.");
+        TraceAnalyzerTest.run();
+        System.out.println("PASS decomposition trace analysis");
+        TraceMainTest.run();
+        System.out.println("PASS trace command interface");
+        System.out.println("Passed 10 maintained test groups.");
     }
 }

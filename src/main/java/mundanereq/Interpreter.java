@@ -116,6 +116,10 @@ public final class Interpreter {
 
     private Interpreter() {}
 
+    public static boolean isValidRequirementId(String value) {
+        return value != null && ID_PATTERN.matcher(value).matches();
+    }
+
     private static Result emptyResult(List<Diagnostic> diagnostics, int fileCount) {
         return new Result(List.of(), Map.of(), Map.of(), diagnostics, fileCount);
     }

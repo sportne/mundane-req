@@ -121,3 +121,22 @@ read, write, and execute permission bits. Replacement does not promise to
 preserve ownership, ACLs, extended attributes, or hard-link identity. Teams
 that depend on those properties should use check or standard-output mode until
 a broader metadata contract is justified.
+
+## Trace
+
+`mundanereq-trace` is the third independent native tool. Its development
+interface answers four questions over valid `decomposes` relationships:
+
+    mundanereq-trace parents ID requirements/
+    mundanereq-trace children ID requirements/
+    mundanereq-trace higher ID requirements/
+    mundanereq-trace impact ID requirements/
+
+Direct operations list immediate higher- or lower-level requirements.
+Transitive operations show one deterministic shortest path per result and
+report reachable cycles as non-fatal structural observations. Incoming links,
+reverse indexes, paths, and cycle components are derived in memory and are
+never written to source.
+
+Build the development executable with `make native-trace`. The trace trial
+contract and broader graph/workflow evidence are the next roadmap cards.

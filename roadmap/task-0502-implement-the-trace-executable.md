@@ -1,6 +1,6 @@
 # Task TC-0502: Implement the Trace Executable
 
-Status: Planned
+Status: Complete
 
 Roadmap stage: 5
 
@@ -43,6 +43,25 @@ Can the selected trace questions be answered by an independent native tool using
 ## Completion decision
 
 If an operation needs additional authoritative facts, remove it from this release and create a model-pressure card rather than infer those facts.
+
+## Result
+
+`mundanereq-trace` implements the four TC-0501 operations over the shared valid
+semantic result. Trace-local code builds sorted outgoing and derived incoming
+indexes, deterministic shortest paths, and reachable strongly connected
+components entirely in process memory. It writes no reverse relationships,
+cache, database, or repository configuration.
+
+The real trace executable replaces the final temporary native boundary and
+builds independently with GraalVM Native Image. Native boundary isolation now
+runs a real impact query while validator and formatter binaries are removed in
+turn. Shared source selection, parsing, and diagnostics are reused without
+calling either sibling CLI.
+
+Focused JVM tests cover all four operations, whole-path tie breaking, lexical
+ordering, cycles, self-cycles, disconnected requirements, missing and invalid
+IDs, invalid-source precedence, empty results, output failure, and exact
+rendering. Broader layout, workflow, and JVM/native evidence remains TC-0503.
 
 ## References
 

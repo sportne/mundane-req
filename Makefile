@@ -1,4 +1,4 @@
-.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-boundaries boundary-isolation verify
+.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace native-boundaries boundary-isolation verify
 
 BUILD_ROOT := build/maintained
 CLASS_DIR := $(BUILD_ROOT)/classes
@@ -32,9 +32,11 @@ native-formatter: test
 formatter-verify: native-formatter
 	java -ea -cp $(CLASS_DIR) mundanereq.cli.FormatterVerificationTest $(FORMAT_NATIVE)
 
-native-boundaries: native-validator native-formatter
-	native-image -O0 --no-fallback -cp $(CLASS_DIR) -o $(abspath $(TRACE_NATIVE)) mundanereq.cli.TraceBoundary
-	$(TRACE_NATIVE) --boundary-smoke
+native-trace: test
+	native-image -O0 --no-fallback -cp $(CLASS_DIR) -o $(abspath $(TRACE_NATIVE)) mundanereq.cli.TraceMain
+	$(TRACE_NATIVE) --version
+
+native-boundaries: native-validator native-formatter native-trace
 
 boundary-isolation: native-boundaries
 	java -ea -cp $(CLASS_DIR) mundanereq.boundary.NativeBoundaryIsolationTest \
