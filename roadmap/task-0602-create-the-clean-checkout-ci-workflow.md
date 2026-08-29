@@ -1,6 +1,6 @@
 # Task TC-0602: Create the Clean-Checkout CI Workflow
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 6
 

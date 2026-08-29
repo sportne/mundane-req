@@ -29,7 +29,9 @@ public final class FormatterVerificationTest {
             "experiments/0004-transferability/requirements",
             "experiments/0008-formatting-policy/input-varied-crlf.mreq",
             "experiments/0008-formatting-policy/candidate-conservative.mreq",
-            "experiments/0008-formatting-policy/candidate-prose-reflow.mreq");
+            "experiments/0008-formatting-policy/candidate-prose-reflow.mreq",
+            "experiments/0009-trace-workflows/graph-one-file.mreq",
+            "experiments/0009-trace-workflows/graph-split");
 
     private record Invocation(int status, byte[] out, byte[] err) {}
 

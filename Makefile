@@ -1,4 +1,4 @@
-.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries boundary-isolation verify
+.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries native-suite package-native-suite native-suite-verify boundary-isolation verify
 
 BUILD_ROOT := build/maintained
 CLASS_DIR := $(BUILD_ROOT)/classes
@@ -6,6 +6,23 @@ NATIVE_SMOKE := $(BUILD_ROOT)/native-smoke
 VALIDATE_NATIVE := $(BUILD_ROOT)/mundanereq-validate
 FORMAT_NATIVE := $(BUILD_ROOT)/mundanereq-format
 TRACE_NATIVE := $(BUILD_ROOT)/mundanereq-trace
+NATIVE_IMAGE ?= native-image
+override NATIVE_IMAGE_FLAGS := -O0 --no-fallback -march=compatibility
+GRAALVM_HOME = $(shell candidate="$$(readlink -f "$$(command -v $(NATIVE_IMAGE))")"; \
+	while test "$$candidate" != /; do \
+		candidate="$$(dirname "$$candidate")"; \
+		if test -f "$$candidate/LICENSE_NATIVEIMAGE.txt" && test -d "$$candidate/legal"; then \
+			echo "$$candidate"; \
+			break; \
+		fi; \
+	done)
+SUITE_VERSION := trial-0.1
+PACKAGE_NAME := mundanereq-native-suite-$(SUITE_VERSION)-linux-x86_64-glibc2.34
+PACKAGE_DIR := $(BUILD_ROOT)/package
+PACKAGE_STAGE := $(PACKAGE_DIR)/$(PACKAGE_NAME)
+PACKAGE_ARCHIVE := $(PACKAGE_DIR)/$(PACKAGE_NAME).tar.gz
+PACKAGE_ARCHIVE_CHECKSUM := $(PACKAGE_ARCHIVE).sha256
+EXPECTED_PACKAGE_DIR := $(abspath build/maintained/package)
 MAIN_SOURCES := $(shell find src/main/java -type f -name '*.java' -print | LC_ALL=C sort)
 TEST_SOURCES := $(shell find src/test/java -type f -name '*.java' -print | LC_ALL=C sort)
 
@@ -15,25 +32,25 @@ test:
 	java -ea -cp $(CLASS_DIR) mundanereq.test.MaintainedTestSuite
 
 native-smoke: test
-	native-image -O0 --no-fallback -cp $(CLASS_DIR) -o $(abspath $(NATIVE_SMOKE)) mundanereq.smoke.MaintainedBuildTest
+	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASS_DIR) -o $(abspath $(NATIVE_SMOKE)) mundanereq.smoke.MaintainedBuildTest
 	$(NATIVE_SMOKE)
 
 native-validator: test
-	native-image -O0 --no-fallback -cp $(CLASS_DIR) -o $(abspath $(VALIDATE_NATIVE)) mundanereq.cli.ValidatorMain
+	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASS_DIR) -o $(abspath $(VALIDATE_NATIVE)) mundanereq.cli.ValidatorMain
 	$(VALIDATE_NATIVE) --version
 
 validator-verify: native-validator
 	java -ea -cp $(CLASS_DIR) mundanereq.cli.ValidatorVerificationTest $(VALIDATE_NATIVE)
 
 native-formatter: test
-	native-image -O0 --no-fallback -cp $(CLASS_DIR) -o $(abspath $(FORMAT_NATIVE)) mundanereq.cli.FormatterMain
+	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASS_DIR) -o $(abspath $(FORMAT_NATIVE)) mundanereq.cli.FormatterMain
 	$(FORMAT_NATIVE) --version
 
 formatter-verify: native-formatter
 	java -ea -cp $(CLASS_DIR) mundanereq.cli.FormatterVerificationTest $(FORMAT_NATIVE)
 
 native-trace: test
-	native-image -O0 --no-fallback -cp $(CLASS_DIR) -o $(abspath $(TRACE_NATIVE)) mundanereq.cli.TraceMain
+	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASS_DIR) -o $(abspath $(TRACE_NATIVE)) mundanereq.cli.TraceMain
 	$(TRACE_NATIVE) --version
 
 trace-verify: native-trace
@@ -41,8 +58,51 @@ trace-verify: native-trace
 
 native-boundaries: native-validator native-formatter native-trace
 
+native-suite: native-boundaries
+
+package-native-suite: native-suite
+	test "$(abspath $(PACKAGE_DIR))" = "$(EXPECTED_PACKAGE_DIR)"
+	test "$(abspath $(PACKAGE_STAGE))" = "$(EXPECTED_PACKAGE_DIR)/$(PACKAGE_NAME)"
+	test "$$(uname -s)" = Linux
+	test "$$(uname -m)" = x86_64
+	test "$$(getconf GNU_LIBC_VERSION | sed 's/ .*//')" = glibc
+	test -f "$(GRAALVM_HOME)/LICENSE_NATIVEIMAGE.txt"
+	test -d "$(GRAALVM_HOME)/legal"
+	@for binary in "$(VALIDATE_NATIVE)" "$(FORMAT_NATIVE)" "$(TRACE_NATIVE)"; do \
+		maximum="$$(objdump -T "$$binary" | sed -n 's/.*GLIBC_\([0-9][0-9.]*\).*/\1/p' | sort -V | tail -n 1)"; \
+		test -n "$$maximum"; \
+		test "$$(printf '%s\n' "$$maximum" 2.34 | sort -V | tail -n 1)" = 2.34 || { echo "$$binary requires GLIBC_$$maximum, above package ceiling GLIBC_2.34" >&2; exit 1; }; \
+	done
+	rm -rf "$(abspath $(PACKAGE_STAGE))"
+	mkdir -p "$(PACKAGE_STAGE)/bin" "$(PACKAGE_STAGE)/docs/contracts" "$(PACKAGE_STAGE)/LICENSES/GraalVM-JDK"
+	install -m 755 "$(VALIDATE_NATIVE)" "$(FORMAT_NATIVE)" "$(TRACE_NATIVE)" "$(PACKAGE_STAGE)/bin/"
+	install -m 644 distribution/README.md "$(PACKAGE_STAGE)/README.md"
+	install -m 644 distribution/validate.md distribution/format.md distribution/trace.md distribution/THIRD-PARTY-NOTICES.md "$(PACKAGE_STAGE)/docs/"
+	install -m 644 specification/0007-validator-trial-contract-0.1.md specification/0008-formatter-trial-contract-0.1.md specification/0009-trace-trial-contract-0.1.md "$(PACKAGE_STAGE)/docs/contracts/"
+	install -m 644 LICENSE "$(PACKAGE_STAGE)/LICENSES/mundanereq-BSD-3-Clause.txt"
+	install -m 644 "$(GRAALVM_HOME)/LICENSE_NATIVEIMAGE.txt" "$(PACKAGE_STAGE)/LICENSES/GraalVM-Native-Image.txt"
+	cp -R "$(GRAALVM_HOME)/legal/." "$(PACKAGE_STAGE)/LICENSES/GraalVM-JDK/"
+	$(NATIVE_IMAGE) --version > "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
+	uname -srm >> "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
+	javac -version >> "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt" 2>&1
+	gcc --version | sed -n '1p' >> "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
+	ldd --version | sed -n '1p' >> "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
+	make --version | sed -n '1p' >> "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
+	tar --version | sed -n '1p' >> "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
+	sha256sum --version | sed -n '1p' >> "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
+	objdump --version | sed -n '1p' >> "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
+	getconf GNU_LIBC_VERSION >> "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
+	echo 'Native Image CPU target: compatibility (x86-64 baseline)' >> "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
+	echo 'Package glibc symbol ceiling: GLIBC_2.34' >> "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
+	sha256sum "$(PACKAGE_STAGE)"/bin/* | sed 's#  $(PACKAGE_STAGE)/#  #' > "$(PACKAGE_STAGE)/SHA256SUMS"
+	tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner -czf "$(PACKAGE_ARCHIVE)" -C "$(PACKAGE_DIR)" "$(PACKAGE_NAME)"
+	sha256sum "$(PACKAGE_ARCHIVE)" | sed 's#  .*/#  #' > "$(PACKAGE_ARCHIVE_CHECKSUM)"
+
+native-suite-verify: package-native-suite
+	java -ea -cp $(CLASS_DIR) mundanereq.distribution.NativeSuiteVerificationTest "$(PACKAGE_STAGE)" "$(PACKAGE_ARCHIVE)" "$(PACKAGE_ARCHIVE_CHECKSUM)" "$(GRAALVM_HOME)"
+
 boundary-isolation: native-boundaries
 	java -ea -cp $(CLASS_DIR) mundanereq.boundary.NativeBoundaryIsolationTest \
 		$(VALIDATE_NATIVE) $(FORMAT_NATIVE) $(TRACE_NATIVE)
 
-verify: test native-smoke boundary-isolation validator-verify formatter-verify trace-verify
+verify: test native-smoke boundary-isolation validator-verify formatter-verify trace-verify native-suite-verify

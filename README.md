@@ -24,6 +24,7 @@ The source representation is the foundation. A requirements file should be under
 - `conformance/` — independently runnable examples for provisional source contracts.
 - `research/` — surveys, experiments, evidence, and unresolved design questions.
 - `experiments/` — concrete source fixtures and recorded experimental results.
+- `distribution/` — maintained native-package documentation and notice policy.
 - `roadmap/` — development strategy, experiments, and sequencing.
 - `src/main/java/` — maintained shared implementation and later tool entry points.
 - `src/test/java/` — maintained dependency-free tests.
@@ -145,3 +146,26 @@ compatibility boundaries, and deliberate omissions. The Git tag
 `trace-trial-0.1` identifies its reproducible source baseline. This is a
 maintained trial interface, not a stable 1.0 or machine-readable compatibility
 promise.
+
+## Native tool suite
+
+The three maintained tools can be built together without becoming one
+application:
+
+    make native-suite-verify
+
+This creates a baseline-x86-64, glibc-2.34 Linux archive under
+`build/maintained/package/` containing three sibling executables, independent
+usage documents, their complete trial contracts, checksums, and the license
+notices from the selected GraalVM. There is no suite launcher, server,
+database, or mandatory installation of all three commands. Each executable can
+also still be built with its own `make native-*` target and installed
+separately.
+
+The [native distribution guide](distribution/README.md) defines the package
+layout, installation and rebuild procedure, runtime platform dependencies, and
+the responsibilities left to editors, Git, forges, CI, and project procedure.
+[Research 0017](research/0017-native-suite-packaging.md) records the packaging,
+removal-isolation, licensing, and reproducibility evidence. The Git tag
+`native-suite-trial-0.1` identifies the source baseline; generated binaries and
+archives remain ignored and disposable.
