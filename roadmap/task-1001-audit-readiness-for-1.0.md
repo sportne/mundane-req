@@ -48,6 +48,6 @@ Advance only if the small source foundation is understood well enough to preserv
 ## References
 
 - [TC-0704](closed/task-0704-measure-operational-scale.md)
-- [TC-0705](task-0705-obtain-independent-conformance-evidence.md)
+- [TC-0705](closed/task-0705-obtain-independent-conformance-evidence.md)
 - [TC-0706](task-0706-run-the-human-author-trial.md)
 - [Roadmap Stage 10](0001-initial-roadmap.md#stage-10--decide-whether-to-stabilize-10)

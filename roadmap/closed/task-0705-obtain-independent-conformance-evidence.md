@@ -1,6 +1,6 @@
 # Task TC-0705: Obtain Independent Conformance Evidence
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 7
 
@@ -43,8 +43,17 @@ A second implementation, bounded parser, or rigorous independent implementation 
 
 A material interpretation disagreement blocks 1.0 until the standard or implementation is corrected and the conformance evidence agrees.
 
+Completed on 2026-08-29. [Experiment 0015](../../experiments/0015-independent-conformance/README.md)
+froze an interpretation from the normative standard before comparing it with
+the maintained tool. All 16 validity decisions and both complete semantic
+inventories agree. Five construct-level diagnostic coordinates differ only
+where the standard intentionally leaves the useful anchor to the implementation.
+
+No standard, fixture, or maintained implementation change is required. The
+result is bounded independent-conformance evidence, not human usability evidence.
+
 ## References
 
-- [TC-0103](closed/task-0103-audit-the-0.2-conformance-baseline.md)
-- [TC-0303](closed/task-0303-publish-the-validator-trial-contract.md)
-- [Formalization review](../research/0008-source-language-formalization-review.md)
+- [TC-0103](task-0103-audit-the-0.2-conformance-baseline.md)
+- [TC-0303](task-0303-publish-the-validator-trial-contract.md)
+- [Formalization review](../../research/0008-source-language-formalization-review.md)

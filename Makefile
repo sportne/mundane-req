@@ -1,4 +1,4 @@
-.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries native-suite package-native-suite native-suite-verify boundary-isolation ci-workflow-evidence ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial operational-scale-trial verify
+.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries native-suite package-native-suite native-suite-verify boundary-isolation ci-workflow-evidence ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial operational-scale-trial independent-conformance-compare verify
 
 BUILD_ROOT := build/maintained
 CLASS_DIR := $(BUILD_ROOT)/classes
@@ -123,4 +123,8 @@ operational-scale-trial: native-suite
 	experiments/0014-operational-scale/run.sh \
 		$(FORMAT_NATIVE) $(VALIDATE_NATIVE) $(TRACE_NATIVE) $(BUILD_ROOT)/operational-scale
 
-verify: test native-smoke boundary-isolation validator-verify formatter-verify trace-verify native-suite-verify ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial
+independent-conformance-compare: native-validator
+	experiments/0015-independent-conformance/compare.rb \
+		$(VALIDATE_NATIVE) $(BUILD_ROOT)/independent-conformance
+
+verify: test native-smoke boundary-isolation validator-verify formatter-verify trace-verify native-suite-verify ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial independent-conformance-compare
