@@ -6,7 +6,7 @@ Roadmap stage: 10
 
 Type: Evidence audit
 
-Depends on: TC-0704, TC-0705, and the model or ecosystem cards selected by evidence
+Depends on: TC-0704, TC-0705, TC-0706, and the model or ecosystem cards selected by evidence
 
 Unlocks: TC-1002
 
@@ -49,4 +49,5 @@ Advance only if the small source foundation is understood well enough to preserv
 
 - [TC-0704](task-0704-measure-operational-scale.md)
 - [TC-0705](task-0705-obtain-independent-conformance-evidence.md)
+- [TC-0706](task-0706-run-the-human-author-trial.md)
 - [Roadmap Stage 10](0001-initial-roadmap.md#stage-10--decide-whether-to-stabilize-10)
