@@ -1,6 +1,6 @@
 # Task TC-0801: Test Identity Continuity
 
-Status: Conditional
+Status: Complete
 
 Roadmap stage: 8
 
@@ -43,7 +43,17 @@ A focused experiment compares Git-only atomic correction, explicit continuity as
 
 Retain ID-only identity unless a demonstrated consumer cannot preserve necessary continuity through atomic source and Git history. If new identity is selected, specify its authority and visibility explicitly.
 
+Completed on 2026-08-29. [Experiment 0016](../../experiments/0016-identity-continuity/README.md)
+compares the same correction under Git-only replacement, an explicit continuity
+assertion, and a durable opaque identity. Atomic internal links and ordinary
+diffs are sufficient. Additional identity helps external synchronization only
+when it was made authoritative and shared before the correction.
+
+Retain the human-facing ID as the provisional sole 0.2 snapshot identity for
+this bounded scenario. Reopen for any independently baselined consumer that
+demonstrates a need for pre-exchanged cross-baseline identity.
+
 ## References
 
-- [Roadmap identity study](0001-initial-roadmap.md#identity-continuity)
-- [Experiment 0004 ID correction](../experiments/0004-transferability/transferability-review.md)
+- [Roadmap identity study](../0001-initial-roadmap.md#identity-continuity)
+- [Experiment 0004 ID correction](../../experiments/0004-transferability/transferability-review.md)

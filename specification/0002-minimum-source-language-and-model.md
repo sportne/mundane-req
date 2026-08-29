@@ -69,9 +69,17 @@ A source set denotes a collection of requirement objects and directed decomposit
 
 **Model decision:** The ID in the `requirement` opener is the requirement's sole identity in this version. It is human-facing, case-sensitive, unique across the source set, and independent of title, filename, path, file position, and line number.
 
-Changing the ID denotes replacement of one identity with another unless later tooling or explicit change records provide additional evidence. A separate hidden or machine identity is deferred.
+Changing the ID denotes replacement of one identity with another. Git history or external records may explain that a reviewed change was intended as a correction, but they do not silently alter the semantic identity asserted by either source snapshot.
 
 Experiment 0004 confirms this behavior across an adjacent consumer: correcting `LPC_KIAS_0` to `LPC_KIAS_NONNEGATIVE` and updating its verification-plan reference is clear in an atomic Git diff, but semantic snapshot comparison still sees removal and addition. The unchanged upstream source locator supplies provenance, not an identity-continuity assertion.
+
+Experiment 0016 compares this model with a revision-bound continuity assertion
+and a durable opaque identity in one bounded correction scenario. It exercises
+an external companion reference, the existing ReqIF profile, and a reversible
+candidate transport-ID policy. Both alternatives help only when their additional
+authority was supplied to a consumer. Keep the human ID as sole identity for
+0.2 by default; revisit that provisional decision when any independently
+baselined consumer demonstrates a need for pre-exchanged cross-baseline identity.
 
 For this experiment an ID:
 
@@ -274,10 +282,9 @@ Experiment 0006 demonstrates a schema-valid bounded ReqIF 1.2 semantic self-roun
 ## Open questions after initial interpretation and use
 
 1. What minimum source model should identify verification activities, coverage links, executions, and evidence without coupling them to requirement storage?
-2. Is Git history sufficient for rare human-facing ID corrections, or does cross-baseline and interchange continuity justify an explicit continuity record or separate identity concept?
-3. When do allocation labels need referential identity or a controlled vocabulary?
-4. How should project vocabulary and formal symbol definitions remain independently readable without turning the requirement language into an executable expression framework?
-5. Do prose folding, fixed field order, and source discovery remain comfortable at larger scale and with independent authors?
-6. Which trace-completeness rules are common enough for reusable policy analysis without becoming universal language validity rules?
+2. When do allocation labels need referential identity or a controlled vocabulary?
+3. How should project vocabulary and formal symbol definitions remain independently readable without turning the requirement language into an executable expression framework?
+4. Do prose folding, fixed field order, and source discovery remain comfortable at larger scale and with independent authors?
+5. Which trace-completeness rules are common enough for reusable policy analysis without becoming universal language validity rules?
 
-The next experiment should add one focused, evidence-driven query over the existing model rather than expanding the grammar speculatively. ID continuity should receive another focused test before ReqIF round-trip work.
+The next model experiments should continue testing companion artifacts before expanding the grammar.

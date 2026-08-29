@@ -78,7 +78,7 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-0801](task-0801-test-identity-continuity.md) | ID-correction model decision | Conditional | TC-0603 |
+| [TC-0801](closed/task-0801-test-identity-continuity.md) | ID-correction model decision | Complete | TC-0603 |
 | [TC-0802](task-0802-model-verification-planning-and-evidence.md) | Verification companion-artifact decision | Conditional | TC-0603 |
 | [TC-0803](task-0803-test-safety-classification-ownership.md) | Safety classification ownership decision | Conditional | TC-0603 |
 | [TC-0804](task-0804-test-allocation-and-controlled-vocabulary.md) | Allocation model decision | Conditional | TC-0603 |

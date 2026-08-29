@@ -154,7 +154,8 @@ Before evaluating the 0.2 contract, a team should:
 
 ## Remaining decisions before stability
 
-- identity continuity across corrected human-facing IDs and interchange;
+- whether an independently baselined consumer requires pre-exchanged identity
+  beyond the 0.2 human ID;
 - a human-readable model for project vocabulary and formal symbols;
 - verification activity, coverage, execution, and evidence source models;
 - operational behavior with larger independently authored corpora;

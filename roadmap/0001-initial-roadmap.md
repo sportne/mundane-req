@@ -63,7 +63,7 @@ The initial feasibility investigation and shared-foundation extraction are compl
 - There is no independently packaged traceability executable.
 - Separate tools have not yet been exercised together in a normal edit-review-CI workflow.
 - Operational scale, independent-team authoring, and sustained use on a substantial real corpus are unproven.
-- Requirement identity across ID corrections remains unresolved.
+- Requirement ID correction has been tested in one bounded scenario; 0.2 provisionally retains human-ID-only snapshot identity unless an independently baselined consumer demonstrates a need for pre-exchanged cross-baseline identity.
 - Verification, safety classification, controlled vocabularies, and similar information have conceptual questions but no selected companion source models.
 - ReqIF work has demonstrated only a self-roundtrip through a bounded profile, not practical interoperability with an independent tool.
 - There is no stable language or tool compatibility promise.
@@ -336,6 +336,12 @@ This stage should test workflows, not add a general attribute bag. Candidate stu
 ### Identity continuity
 
 Test correction of a human-facing ID across Git baselines, trace links, and interchange. Decide among ordinary replacement, an explicit continuity assertion, or a separate durable identity. Do not introduce hidden IDs without evidence that Git history and atomic link updates are insufficient.
+
+Disposition: [Experiment 0016](../experiments/0016-identity-continuity/README.md)
+retains ordinary replacement and atomic link updates as the provisional 0.2
+default. A continuity assertion or durable identity is deferred until an
+independently baselined consumer demonstrates that additional identity must be
+shared for cross-baseline matching.
 
 ### Verification planning and evidence
 

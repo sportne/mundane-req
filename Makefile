@@ -1,4 +1,4 @@
-.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries native-suite package-native-suite native-suite-verify boundary-isolation ci-workflow-evidence ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial operational-scale-trial independent-conformance-compare verify
+.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries native-suite package-native-suite native-suite-verify boundary-isolation ci-workflow-evidence ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial operational-scale-trial independent-conformance-compare native-reqif-probe identity-continuity-trial verify
 
 BUILD_ROOT := build/maintained
 CLASS_DIR := $(BUILD_ROOT)/classes
@@ -6,6 +6,7 @@ NATIVE_SMOKE := $(BUILD_ROOT)/native-smoke
 VALIDATE_NATIVE := $(BUILD_ROOT)/mundanereq-validate
 FORMAT_NATIVE := $(BUILD_ROOT)/mundanereq-format
 TRACE_NATIVE := $(BUILD_ROOT)/mundanereq-trace
+REQIF_PROBE := experiments/0006-reqif-interchange/build/reqifprobe
 NATIVE_IMAGE ?= native-image
 override NATIVE_IMAGE_FLAGS := -O0 --no-fallback -march=compatibility
 GRAALVM_HOME = $(shell candidate="$$(readlink -f "$$(command -v $(NATIVE_IMAGE))")"; \
@@ -126,5 +127,13 @@ operational-scale-trial: native-suite
 independent-conformance-compare: native-validator
 	experiments/0015-independent-conformance/compare.rb \
 		$(VALIDATE_NATIVE) $(BUILD_ROOT)/independent-conformance
+
+native-reqif-probe:
+	$(MAKE) -C experiments/0006-reqif-interchange native
+
+identity-continuity-trial: native-validator native-trace native-reqif-probe
+	$(RM) -r $(BUILD_ROOT)/identity-continuity
+	experiments/0016-identity-continuity/run.sh \
+		$(VALIDATE_NATIVE) $(TRACE_NATIVE) $(REQIF_PROBE) $(BUILD_ROOT)/identity-continuity
 
 verify: test native-smoke boundary-isolation validator-verify formatter-verify trace-verify native-suite-verify ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial independent-conformance-compare
