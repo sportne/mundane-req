@@ -10,7 +10,7 @@ import mundanereq.trace.TraceAnalyzer;
 
 /** Focused decomposition trace command selected by Research 0016. */
 public final class TraceMain {
-    static final String TOOL_VERSION = "development";
+    static final String TOOL_VERSION = "trial-0.1";
     static final String SOURCE_CONTRACT = "mundanereq-source-0.2";
 
     private enum Operation {

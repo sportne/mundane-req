@@ -50,9 +50,8 @@ with one command:
 test-only executable with `--no-fallback`. Generated classes and native output
 are disposable under `build/maintained`. `make boundary-isolation` builds three
 temporary standalone native boundaries and proves that none requires either of
-the other executables at runtime. The validator and formatter boundaries are
-now focused product tools; trace remains a temporary boundary pending its
-roadmap stage.
+the other executables at runtime. The validator, formatter, and trace
+boundaries are separate focused product tools with maintained trial contracts.
 
 ## Validator
 
@@ -124,7 +123,7 @@ a broader metadata contract is justified.
 
 ## Trace
 
-`mundanereq-trace` is the third independent native tool. Its development
+`mundanereq-trace` is the third independent native tool. Its maintained trial
 interface answers four questions over valid `decomposes` relationships:
 
     mundanereq-trace parents ID requirements/
@@ -138,5 +137,11 @@ report reachable cycles as non-fatal structural observations. Incoming links,
 reverse indexes, paths, and cycle components are derived in memory and are
 never written to source.
 
-Build the development executable with `make native-trace`. The trace trial
-contract and broader graph/workflow evidence are the next roadmap cards.
+Build the executable with `make native-trace`; `make trace-verify` runs the
+complete graph, workflow, file-layout, and JVM/native agreement evidence. The
+[trace trial contract](specification/0009-trace-trial-contract-0.1.md) defines
+the complete `trial-0.1` interface, deterministic human-readable output,
+compatibility boundaries, and deliberate omissions. The Git tag
+`trace-trial-0.1` identifies its reproducible source baseline. This is a
+maintained trial interface, not a stable 1.0 or machine-readable compatibility
+promise.

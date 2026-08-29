@@ -1,6 +1,6 @@
 # Task TC-0601: Package and Document the Native Suite
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 6
 

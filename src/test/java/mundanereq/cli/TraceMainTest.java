@@ -125,7 +125,10 @@ public final class TraceMainTest {
         assertEquals(0, invoke("--help").status(), "help status");
         Invocation version = invoke("--version");
         assertEquals(0, version.status(), "version status");
-        assertContains(version.out(), TraceMain.SOURCE_CONTRACT, "version source contract");
+        assertEquals(
+                "mundanereq-trace trial-0.1; source contract mundanereq-source-0.2\n",
+                version.out(),
+                "version output");
 
         ByteArrayOutputStream standardError = new ByteArrayOutputStream();
         int status;

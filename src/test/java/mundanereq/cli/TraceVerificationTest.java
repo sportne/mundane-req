@@ -36,11 +36,22 @@ public final class TraceVerificationTest {
         Path nativeTrace = Path.of(arguments[0]).toAbsolutePath().normalize();
         if (!Files.isExecutable(nativeTrace)) throw new AssertionError("native trace is not executable");
 
+        trialIdentityAgrees(nativeTrace);
         graphOperationsAgree(nativeTrace);
         failuresAgree(nativeTrace);
         maintainedCorporaAgree(nativeTrace);
         authoringWorkflowsAgree(nativeTrace);
         System.out.println("PASS complete trace JVM/native verification");
+    }
+
+    private static void trialIdentityAgrees(Path nativeTrace) throws Exception {
+        Invocation version = assertAgreement(nativeTrace, 0, "--version");
+        assertEquals(
+                "mundanereq-trace trial-0.1; source contract mundanereq-source-0.2\n",
+                version.outText(),
+                "published trial version");
+        assertEquals("", version.errText(), "published trial version standard error");
+        System.out.println("PASS published trace trial identity");
     }
 
     private static void graphOperationsAgree(Path nativeTrace) throws Exception {

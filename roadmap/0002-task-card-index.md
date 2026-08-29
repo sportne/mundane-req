@@ -57,8 +57,8 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 | [TC-0501](task-0501-define-the-first-trace-interface.md) | Bounded trace questions and output semantics | Complete | TC-0203 |
 | [TC-0502](task-0502-implement-the-trace-executable.md) | `mundanereq-trace` implementation | Complete | TC-0204, TC-0501 |
 | [TC-0503](task-0503-verify-trace-graph-behavior.md) | Graph and workflow evidence | Complete | TC-0502 |
-| [TC-0504](task-0504-publish-the-trace-trial-contract.md) | Maintained trace trial release | Ready | TC-0503 |
-| [TC-0601](task-0601-package-and-document-the-native-suite.md) | Installable, independently documented native tools | Planned | TC-0303, TC-0404, TC-0504 |
+| [TC-0504](task-0504-publish-the-trace-trial-contract.md) | Maintained trace trial release | Complete | TC-0503 |
+| [TC-0601](task-0601-package-and-document-the-native-suite.md) | Installable, independently documented native tools | Ready | TC-0303, TC-0404, TC-0504 |
 | [TC-0602](task-0602-create-the-clean-checkout-ci-workflow.md) | Reproducible example Git/CI workflow | Planned | TC-0601 |
 | [TC-0603](task-0603-run-the-integrated-toolchain-trial.md) | First toolchain decision record | Planned | TC-0602 |
 
