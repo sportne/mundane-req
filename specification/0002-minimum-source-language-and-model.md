@@ -141,7 +141,16 @@ Experiment 0003 confirms that addition, editing, movement, and deletion are reco
 
 Experiment 0004 represents five planned activities and 19-of-19 planning coverage in a separate baseline-bound text artifact while recording zero executions. Repeating activity definitions or pass/fail state in requirement records would duplicate information and bind revision-specific workflow state to requirement identity.
 
-**Deferred:** The source syntax and semantic model for verification activities, coverage links, executions, and evidence. The experiment establishes conceptual ownership, not a second language.
+Experiment 0017 pressure-tests that separation with exact source-digest
+bindings, reused activity definitions, a changed requirement baseline, uncovered
+requirements, two executions, one evidence reference, and one passing result.
+It selects six distinct conceptual facts: activity, plan, coverage, execution,
+evidence reference, and result. A passing execution does not by itself create a
+timeless `passed` property on a requirement.
+
+**Deferred:** Stable source syntax for the selected companion model and the
+policy by which results contribute to requirement satisfaction. Experiment
+0017's TSV files are a provisional carrier, not a second standardized language.
 
 ## Record syntax
 
@@ -281,10 +290,10 @@ Experiment 0006 demonstrates a schema-valid bounded ReqIF 1.2 semantic self-roun
 
 ## Open questions after initial interpretation and use
 
-1. What minimum source model should identify verification activities, coverage links, executions, and evidence without coupling them to requirement storage?
-2. When do allocation labels need referential identity or a controlled vocabulary?
-3. How should project vocabulary and formal symbol definitions remain independently readable without turning the requirement language into an executable expression framework?
-4. Do prose folding, fixed field order, and source discovery remain comfortable at larger scale and with independent authors?
-5. Which trace-completeness rules are common enough for reusable policy analysis without becoming universal language validity rules?
+1. When do allocation labels need referential identity or a controlled vocabulary?
+2. How should project vocabulary and formal symbol definitions remain independently readable without turning the requirement language into an executable expression framework?
+3. Do prose folding, fixed field order, and source discovery remain comfortable at larger scale and with independent authors?
+4. Which trace-completeness rules are common enough for reusable policy analysis without becoming universal language validity rules?
+5. What stable carrier and satisfaction policy, if any, should build on the selected verification companion model?
 
 The next model experiments should continue testing companion artifacts before expanding the grammar.

@@ -1,6 +1,6 @@
 # Task TC-0802: Model Verification Planning and Evidence
 
-Status: Conditional
+Status: Complete
 
 Roadmap stage: 8
 
@@ -43,7 +43,13 @@ A baseline-bound verification experiment selects, revises, or rejects a companio
 
 Adopt a companion artifact only if it remains small, source-first, and clearly revision-bound. Otherwise retain the conceptual model and defer syntax.
 
+Completed on 2026-08-29. [Experiment 0017](../../experiments/0017-verification-evidence/README.md)
+selects separate activity, plan, coverage, execution, evidence-reference, and
+result concepts. Exact source digests detect stale coverage; execution does not
+rewrite requirements. Retain the conceptual model and experimental text
+carrier, but defer stable syntax pending another workflow and focused analyzer.
+
 ## References
 
-- [Roadmap verification study](0001-initial-roadmap.md#verification-planning-and-evidence)
-- [Experiment 0004 verification plan](../experiments/0004-transferability/verification-plan.md)
+- [Roadmap verification study](../0001-initial-roadmap.md#verification-planning-and-evidence)
+- [Experiment 0004 verification plan](../../experiments/0004-transferability/verification-plan.md)

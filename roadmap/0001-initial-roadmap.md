@@ -347,6 +347,11 @@ shared for cross-baseline matching.
 
 Develop the smallest human-readable model that can distinguish a verification activity, planned coverage of requirement revisions, executions, evidence, and results. Keep passing status and evidence out of timeless requirement fields.
 
+Disposition: [Experiment 0017](../experiments/0017-verification-evidence/README.md)
+selects separate activity, baseline-bound plan, coverage, execution, evidence
+reference, and result concepts. The experimental TSV carrier is not yet a stable
+language; another workflow and focused analyzer should test it first.
+
 ### Safety classification and other assessments
 
 Compare an inline requirement field with a separate baseline-bound classification artifact. Exercise changes caused by hazard analysis, multiple safety schemes, product variants, rationale, assessor authority, and unchanged requirement text. Decide whether the authoritative fact is requirement content, a relationship, or an assessment assertion. Avoid duplicate authoritative copies merely for display convenience.
