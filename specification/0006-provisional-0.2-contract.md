@@ -158,6 +158,7 @@ Before evaluating the 0.2 contract, a team should:
   beyond the 0.2 human ID;
 - a human-readable model for project vocabulary and formal symbols;
 - stable verification-companion syntax and satisfaction policy;
+- stable assessment-carrier syntax and scheme policy;
 - operational behavior with larger independently authored corpora;
 - compatibility and repository selection when incompatible source versions must coexist;
 - cross-tool ReqIF fidelity, update behavior, and identity continuity beyond Experiment 0006's bounded semantic self-roundtrip.

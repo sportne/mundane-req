@@ -152,6 +152,25 @@ timeless `passed` property on a requirement.
 policy by which results contribute to requirement satisfaction. Experiment
 0017's TSV files are a provisional carrier, not a second standardized language.
 
+### Safety classification assessments
+
+**Model decision:** A consequential safety or criticality level is not an
+intrinsic scalar requirement field when its truth depends on a scheme, product
+or deployment context, analysis revision, rationale, evidence source, or
+assessor authority. Model it as an assertion about an exact requirement
+baseline in that declared context.
+
+Experiment 0018 classifies the same unchanged requirement as SC1 and SC2 in two
+contexts under one named project scheme. One level changes because hazard
+analysis changes while requirement text remains byte-identical. The minimum
+reviewable assertion contains requirement baseline, scheme, context, level,
+rationale, source, and authority. A bare list by level is insufficient, while a
+derived inline display can remain disposable.
+
+**Deferred:** Stable assessment syntax, shared scheme vocabularies, and policy
+semantics. Do not add a safety-specific field or generalized attribute bag to
+the requirement language on this evidence.
+
 ## Record syntax
 
 The following record is representative:

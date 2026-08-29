@@ -64,7 +64,7 @@ The initial feasibility investigation and shared-foundation extraction are compl
 - Separate tools have not yet been exercised together in a normal edit-review-CI workflow.
 - Operational scale, independent-team authoring, and sustained use on a substantial real corpus are unproven.
 - Requirement ID correction has been tested in one bounded scenario; 0.2 provisionally retains human-ID-only snapshot identity unless an independently baselined consumer demonstrates a need for pre-exchanged cross-baseline identity.
-- Verification, safety classification, controlled vocabularies, and similar information have conceptual questions but no selected companion source models.
+- Verification and safety classification now have selected conceptual companion models but no stable carriers; controlled vocabularies and similar information remain unresolved.
 - ReqIF work has demonstrated only a self-roundtrip through a bounded profile, not practical interoperability with an independent tool.
 - There is no stable language or tool compatibility promise.
 
@@ -355,6 +355,12 @@ language; another workflow and focused analyzer should test it first.
 ### Safety classification and other assessments
 
 Compare an inline requirement field with a separate baseline-bound classification artifact. Exercise changes caused by hazard analysis, multiple safety schemes, product variants, rationale, assessor authority, and unchanged requirement text. Decide whether the authoritative fact is requirement content, a relationship, or an assessment assertion. Avoid duplicate authoritative copies merely for display convenience.
+
+Disposition: [Experiment 0018](../experiments/0018-safety-classification/README.md)
+selects a separate baseline-bound assertion for consequential classification.
+Scheme, context, rationale, source, and authority are arguments of the
+assessment; a derived inline display is disposable. Stable carrier syntax is
+deferred.
 
 ### Allocation and controlled vocabulary
 

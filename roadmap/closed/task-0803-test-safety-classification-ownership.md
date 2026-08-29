@@ -1,6 +1,6 @@
 # Task TC-0803: Test Safety Classification Ownership
 
-Status: Conditional
+Status: Complete
 
 Roadmap stage: 8
 
@@ -43,7 +43,13 @@ An evidence record compares inline attributes with separate classification asser
 
 Prefer a separate assessment when classification can change independently, vary by context, or needs evidence. Add an intrinsic field only if the workflow demonstrates one authoritative value whose change is defined as a requirement change.
 
+Completed on 2026-08-29. [Experiment 0018](../../experiments/0018-safety-classification/README.md)
+compares inline and separate representations under the project-defined WMSCS-r1
+scheme. One unchanged requirement has different levels in two contexts, and one
+level changes with revised hazard analysis. Select a separate baseline-bound
+assessment assertion; defer stable carrier syntax.
+
 ## References
 
-- [Roadmap safety study](0001-initial-roadmap.md#safety-classification-and-other-assessments)
-- [Practice survey](../research/0001-requirements-management-practice-survey.md)
+- [Roadmap safety study](../0001-initial-roadmap.md#safety-classification-and-other-assessments)
+- [Practice survey](../../research/0001-requirements-management-practice-survey.md)
