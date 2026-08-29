@@ -66,9 +66,9 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-0701](task-0701-select-a-larger-corpus-and-trial-protocol.md) | Licensed corpus and controlled trial plan | Ready | TC-0603 |
-| [TC-0702](task-0702-run-the-independent-author-trial.md) | Independent-author usability evidence | Planned | TC-0701 |
-| [TC-0703](task-0703-run-the-multi-author-and-layout-trial.md) | Concurrency and file-granularity evidence | Planned | TC-0701 |
+| [TC-0701](closed/task-0701-select-a-larger-corpus-and-trial-protocol.md) | Licensed corpus and controlled trial plan | Complete | TC-0603 |
+| [TC-0702](task-0702-run-the-independent-author-trial.md) | Independent-author usability evidence | Ready | TC-0701 |
+| [TC-0703](task-0703-run-the-multi-author-and-layout-trial.md) | Concurrency and file-granularity evidence | Ready | TC-0701 |
 | [TC-0704](task-0704-measure-operational-scale.md) | Operational-scale measurements | Planned | TC-0702, TC-0703 |
 | [TC-0705](task-0705-obtain-independent-conformance-evidence.md) | Independent interpretation evidence | Planned | TC-0103, TC-0303 |
 

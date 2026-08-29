@@ -1,6 +1,6 @@
 # Task TC-0702: Run the Independent-Author Trial
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 7
 
@@ -46,5 +46,5 @@ If independent use depends on oral project history, treat that as a material rea
 
 ## References
 
-- [TC-0701](task-0701-select-a-larger-corpus-and-trial-protocol.md)
+- [TC-0701](closed/task-0701-select-a-larger-corpus-and-trial-protocol.md)
 - [Normative 0.2 standard](../specification/0005-mundanereq-source-language-0.2.md)

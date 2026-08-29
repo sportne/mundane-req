@@ -44,7 +44,8 @@ public final class ValidatorVerificationTest {
                 "experiments/0003-sustained-authoring/requirements",
                 "experiments/0004-transferability/requirements",
                 "experiments/0010-integrated-toolchain-trial/baseline",
-                "experiments/0010-integrated-toolchain-trial/proposed");
+                "experiments/0010-integrated-toolchain-trial/proposed",
+                "experiments/0011-operational-corpus/requirements");
         for (String path : corpora) {
             assertAgreement(nativeValidator, 0, null, ROOT.resolve(path).toString());
         }

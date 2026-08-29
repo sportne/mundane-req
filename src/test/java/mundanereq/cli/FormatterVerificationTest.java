@@ -33,7 +33,8 @@ public final class FormatterVerificationTest {
             "experiments/0009-trace-workflows/graph-one-file.mreq",
             "experiments/0009-trace-workflows/graph-split",
             "experiments/0010-integrated-toolchain-trial/baseline",
-            "experiments/0010-integrated-toolchain-trial/proposed");
+            "experiments/0010-integrated-toolchain-trial/proposed",
+            "experiments/0011-operational-corpus/requirements");
 
     private record Invocation(int status, byte[] out, byte[] err) {}
 

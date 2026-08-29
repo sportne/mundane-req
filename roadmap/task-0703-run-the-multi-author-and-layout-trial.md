@@ -1,6 +1,6 @@
 # Task TC-0703: Run the Multi-Author and Layout Trial
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 7
 
@@ -47,5 +47,5 @@ If one layout is operationally preferable, document it as guidance without chang
 
 ## References
 
-- [TC-0701](task-0701-select-a-larger-corpus-and-trial-protocol.md)
+- [TC-0701](closed/task-0701-select-a-larger-corpus-and-trial-protocol.md)
 - [Experiment 0001 merge review](../experiments/0001-source-representations/concurrent-edit-merge-review.md)

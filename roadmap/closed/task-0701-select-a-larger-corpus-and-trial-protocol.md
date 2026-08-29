@@ -1,6 +1,6 @@
 # Task TC-0701: Select a Larger Corpus and Trial Protocol
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 7
 
@@ -44,8 +44,23 @@ A licensed, provenance-recorded corpus and trial protocol cover multi-level trac
 
 If no corpus is both suitable and redistributable, create a second original corpus informed by observed structures and state that limitation explicitly.
 
+Completed on 2026-08-29. [Experiment 0011](../../experiments/0011-operational-corpus/README.md)
+selects an original fictional corpus of 60 requirements, 54 relationships, six
+roots, and three trace levels under the project license. Its
+[provenance record](../../experiments/0011-operational-corpus/provenance.md) names
+exact inspected revisions of NASA cFE, Doorstop, OpenFastTrace, and StrictDoc
+and explains why importing each would manufacture trace meaning, broaden scope,
+introduce avoidable license/model coupling, or cross the project's stated
+provenance boundary.
+
+The Stage 7 protocol is frozen before execution, including participant inputs,
+task oracles, two file granularities, concurrent-change cases, observation
+classes, evidence rules, and stop conditions. Proceed to TC-0702 and TC-0703;
+do not infer real-system correctness or statistical usability from the original
+corpus.
+
 ## References
 
-- [TC-0603](closed/task-0603-run-the-integrated-toolchain-trial.md)
-- [Roadmap Stage 7](0001-initial-roadmap.md#stage-7--test-operational-use-and-scale)
-- [Experiment 0004 provenance approach](../experiments/0004-transferability/provenance.md)
+- [TC-0603](task-0603-run-the-integrated-toolchain-trial.md)
+- [Roadmap Stage 7](../0001-initial-roadmap.md#stage-7--test-operational-use-and-scale)
+- [Experiment 0004 provenance approach](../../experiments/0004-transferability/provenance.md)

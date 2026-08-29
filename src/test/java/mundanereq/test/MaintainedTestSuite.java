@@ -10,6 +10,7 @@ import mundanereq.cli.FormatterMainTest;
 import mundanereq.format.SourceFormatterTest;
 import mundanereq.cli.TraceMainTest;
 import mundanereq.trace.TraceAnalyzerTest;
+import mundanereq.trial.OperationalCorpusVerificationTest;
 
 /** Dependency-free maintained JVM test suite. */
 public final class MaintainedTestSuite {
@@ -35,6 +36,8 @@ public final class MaintainedTestSuite {
         System.out.println("PASS decomposition trace analysis");
         TraceMainTest.run();
         System.out.println("PASS trace command interface");
-        System.out.println("Passed 10 maintained test groups.");
+        OperationalCorpusVerificationTest.run();
+        System.out.println("PASS frozen operational corpus profile");
+        System.out.println("Passed 11 maintained test groups.");
     }
 }
