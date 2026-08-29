@@ -1,6 +1,6 @@
 # Task TC-0501: Define the First Trace Interface
 
-Status: Planned
+Status: Complete
 
 Roadmap stage: 5
 
@@ -43,6 +43,25 @@ A trace-interface decision defines direct and transitive incoming/outgoing quest
 ## Completion decision
 
 Prefer fewer operations with precise meaning. If a question cannot be explained in requirement-decomposition terms, defer it until its relationship model exists.
+
+## Result
+
+[Research 0016](../research/0016-first-trace-interface.md) selects four
+operations over `decomposes`: direct higher-level requirements (`parents`),
+direct lower-level requirements (`children`), transitive higher-level paths
+(`higher`), and lower-level impact paths (`impact`). Each operation answers a
+workflow observed during sustained authoring or provides its direct symmetric
+navigation question.
+
+Transitive output contains one deterministic shortest path per distinct
+result, choosing the lexicographically least complete path when shortest paths
+tie. Results are ordered independently of files and traversal. Reachable cyclic
+strongly connected components are emitted as non-fatal structural
+observations; they are not redefined as language errors or policy failures.
+
+The decision retains derived incoming links and indexes only in process memory,
+defines invalid-source and missing-ID behavior, and rejects generalized edge
+queries, every-path enumeration, persistent state, and coverage policy.
 
 ## References
 
