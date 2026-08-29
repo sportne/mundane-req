@@ -45,7 +45,7 @@ Favor evolution when behavior can remain continuously covered; favor a parallel 
 
 ## Result
 
-[Research 0011](../research/0011-maintained-implementation-lineage.md) selects
+[Research 0011](../../research/0011-maintained-implementation-lineage.md) selects
 a controlled extraction from the Experiment 0002 probe into one maintained
 implementation. The probe remains a temporary behavioral oracle through
 TC-0204 but will not become a product dependency or dictate class boundaries.
@@ -62,5 +62,5 @@ pins the exact corrected oracle at commit `7cf9c58`.
 ## References
 
 - [TC-0103](task-0103-audit-the-0.2-conformance-baseline.md)
-- [Experiment probe source](../experiments/0002-deterministic-interpretation/src/mundanereq/Probe.java)
-- [Roadmap implementation hypothesis](0001-initial-roadmap.md#first-implementation-hypothesis)
+- [Experiment probe source](../../experiments/0002-deterministic-interpretation/src/mundanereq/Probe.java)
+- [Roadmap implementation hypothesis](../0001-initial-roadmap.md#first-implementation-hypothesis)

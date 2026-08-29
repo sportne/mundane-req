@@ -45,11 +45,11 @@ Publish only the operations demonstrated by TC-0503; retain experimental operati
 
 ## Result
 
-The [trace trial contract 0.1](../specification/0009-trace-trial-contract-0.1.md) publishes only `parents`, `children`, `higher`, and `impact` over authored `decomposes` relationships. It states each requirement-domain question, exact ordering and shortest-path selection, reachable cycle observations, source and query error precedence, exit statuses, disposable derived-state boundary, and deliberate omissions.
+The [trace trial contract 0.1](../../specification/0009-trace-trial-contract-0.1.md) publishes only `parents`, `children`, `higher`, and `impact` over authored `decomposes` relationships. It states each requirement-domain question, exact ordering and shortest-path selection, reachable cycle observations, source and query error precedence, exit statuses, disposable derived-state boundary, and deliberate omissions.
 
 `make trace-verify` is the reproducible acceptance gate, and the `trace-trial-0.1` Git tag identifies the reviewed source baseline. Publish as a maintained human-readable trial without implying arbitrary relationship queries, impact correctness, policy enforcement, persistent indexes, or a stable machine protocol.
 
 ## References
 
 - [TC-0503](task-0503-verify-trace-graph-behavior.md)
-- [Minimum decomposition semantics](../specification/0002-minimum-source-language-and-model.md#decomposition-relationship)
+- [Minimum decomposition semantics](../../specification/0002-minimum-source-language-and-model.md#decomposition-relationship)

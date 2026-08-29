@@ -46,10 +46,10 @@ Nondeterministic or misleading path output blocks publication. Revise the interf
 
 ## Result
 
-Completed on 2026-08-29. [Experiment 0009](../experiments/0009-trace-workflows/README.md) records independently expected results for branching, convergence, tied shortest paths, disconnected nodes, reachable and unreachable cycles, file-layout changes, and reversed input ordering. `make trace-verify` requires exact JVM/native agreement and replays addition, split/retarget, coordinated content change, and retirement workflows without a persistent index. The selected operations remained deterministic and materially reduced repeated reverse source searches, so they may advance unchanged to a trial contract.
+Completed on 2026-08-29. [Experiment 0009](../../experiments/0009-trace-workflows/README.md) records independently expected results for branching, convergence, tied shortest paths, disconnected nodes, reachable and unreachable cycles, file-layout changes, and reversed input ordering. `make trace-verify` requires exact JVM/native agreement and replays addition, split/retarget, coordinated content change, and retirement workflows without a persistent index. The selected operations remained deterministic and materially reduced repeated reverse source searches, so they may advance unchanged to a trial contract.
 
 ## References
 
 - [TC-0502](task-0502-implement-the-trace-executable.md)
-- [Experiment 0003](../experiments/0003-sustained-authoring/README.md)
-- [Experiment 0009](../experiments/0009-trace-workflows/README.md)
+- [Experiment 0003](../../experiments/0003-sustained-authoring/README.md)
+- [Experiment 0009](../../experiments/0009-trace-workflows/README.md)

@@ -59,6 +59,6 @@ distinguish the known nonconforming behavior.
 
 ## References
 
-- [Roadmap Stage 1](0001-initial-roadmap.md#stage-1--establish-an-exact-02-implementation-baseline)
-- [Formalization review](../research/0008-source-language-formalization-review.md)
-- [0.2 conformance suite](../conformance/0.2/README.md)
+- [Roadmap Stage 1](../0001-initial-roadmap.md#stage-1--establish-an-exact-02-implementation-baseline)
+- [Formalization review](../../research/0008-source-language-formalization-review.md)
+- [0.2 conformance suite](../../conformance/0.2/README.md)

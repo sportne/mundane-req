@@ -61,4 +61,4 @@ the validator, formatter, and trace tools actually have in common.
 ## References
 
 - [TC-0104](task-0104-select-the-maintained-implementation-lineage.md)
-- [Roadmap Stage 2](0001-initial-roadmap.md#stage-2--extract-the-smallest-shared-foundation)
+- [Roadmap Stage 2](../0001-initial-roadmap.md#stage-2--extract-the-smallest-shared-foundation)

@@ -45,7 +45,7 @@ Publish as a trial tool only if its supported behavior and limitations can be st
 
 ## Result
 
-The [validator trial contract 0.1](../specification/0007-validator-trial-contract-0.1.md)
+The [validator trial contract 0.1](../../specification/0007-validator-trial-contract-0.1.md)
 states the complete supported invocation, selection, diagnostic, and exit
 behavior and separates source-language, command-line, and Java compatibility.
 The interface is deliberately smaller than the historical experiment probe:
@@ -61,5 +61,5 @@ maintained trial, without making a stable 1.0 promise.
 ## References
 
 - [TC-0302](task-0302-verify-validator-behavior.md)
-- [Project README](../README.md)
-- [Roadmap Stage 10](0001-initial-roadmap.md#stage-10--decide-whether-to-stabilize-10)
+- [Project README](../../README.md)
+- [Roadmap Stage 10](../0001-initial-roadmap.md#stage-10--decide-whether-to-stabilize-10)

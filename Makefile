@@ -1,4 +1,4 @@
-.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries native-suite package-native-suite native-suite-verify boundary-isolation verify
+.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries native-suite package-native-suite native-suite-verify boundary-isolation ci-workflow-evidence ci-workflow-verify verify
 
 BUILD_ROOT := build/maintained
 CLASS_DIR := $(BUILD_ROOT)/classes
@@ -105,4 +105,10 @@ boundary-isolation: native-boundaries
 	java -ea -cp $(CLASS_DIR) mundanereq.boundary.NativeBoundaryIsolationTest \
 		$(VALIDATE_NATIVE) $(FORMAT_NATIVE) $(TRACE_NATIVE)
 
-verify: test native-smoke boundary-isolation validator-verify formatter-verify trace-verify native-suite-verify
+ci-workflow-evidence:
+	java -ea -cp $(CLASS_DIR) mundanereq.ci.CiWorkflowVerificationTest \
+		$(FORMAT_NATIVE) $(VALIDATE_NATIVE) $(TRACE_NATIVE)
+
+ci-workflow-verify: native-suite ci-workflow-evidence
+
+verify: test native-smoke boundary-isolation validator-verify formatter-verify trace-verify native-suite-verify ci-workflow-verify

@@ -4,7 +4,7 @@ Status: Complete
 
 Date: 2026-08-23
 
-Roadmap task: [TC-0403](../roadmap/task-0403-verify-formatter-safety-properties.md)
+Roadmap task: [TC-0403](../roadmap/closed/task-0403-verify-formatter-safety-properties.md)
 
 ## Question
 

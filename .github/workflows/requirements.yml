@@ -1,0 +1,37 @@
+name: Requirements source
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  requirements:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Install GraalVM Community Edition 21
+        uses: graalvm/setup-graalvm@5298d94fb55a4f185c602eeac5de1b553882abe2 # v1.6.4
+        with:
+          java-version: "21"
+          distribution: graalvm-community
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build the three native tools
+        run: make native-suite
+
+      - name: Validate requirements source
+        run: build/maintained/mundanereq-validate conformance/0.2/valid
+
+      - name: Check requirements formatting
+        run: build/maintained/mundanereq-format --check conformance/0.2/valid
+
+      - name: Inspect selected decomposition trace
+        run: build/maintained/mundanereq-trace parents LEAF conformance/0.2/valid
+
+      - name: Verify failure attribution and tool independence
+        run: make ci-workflow-evidence

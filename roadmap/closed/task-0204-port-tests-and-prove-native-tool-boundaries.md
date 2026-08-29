@@ -46,7 +46,7 @@ Proceed to product tools only if shared behavior remains identical and the separ
 
 ## Result
 
-[Research 0013](../research/0013-maintained-interpreter-migration-closeout.md)
+[Research 0013](../../research/0013-maintained-interpreter-migration-closeout.md)
 records byte-identical maintained/probe inventories over all six valid project
 corpora and the transfer of twelve audited interpreter test groups. The three
 temporary executable boundaries build separately with GraalVM Native Image
@@ -57,5 +57,5 @@ without retaining the historical probe in the maintained build.
 ## References
 
 - [TC-0203](task-0203-extract-the-semantic-parser-and-diagnostics.md)
-- [Deterministic interpretation results](../experiments/0002-deterministic-interpretation/README.md)
-- [Bounded ReqIF experiment](../experiments/0006-reqif-interchange/README.md)
+- [Deterministic interpretation results](../../experiments/0002-deterministic-interpretation/README.md)
+- [Bounded ReqIF experiment](../../experiments/0006-reqif-interchange/README.md)

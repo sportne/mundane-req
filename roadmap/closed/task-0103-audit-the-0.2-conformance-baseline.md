@@ -45,7 +45,7 @@ Proceed only if the audit finds no unresolved ambiguity that could make two conf
 
 ## Result
 
-[Research 0010](../research/0010-source-0.2-conformance-audit.md) maps every
+[Research 0010](../../research/0010-source-0.2-conformance-audit.md) maps every
 normative rule area to fixtures, probe tests, adjacent-consumer evidence, or
 an explicit gap disposition. It confirms comments are absent from both the
 semantic inventory and derived ReqIF and separates normative interpretation
@@ -61,5 +61,5 @@ reproducible.
 ## References
 
 - [TC-0102](task-0102-correct-reference-parser-conformance.md)
-- [0.2 trial contract](../specification/0006-provisional-0.2-contract.md)
-- [Source-comment experiment](../experiments/0007-source-comments/README.md)
+- [0.2 trial contract](../../specification/0006-provisional-0.2-contract.md)
+- [Source-comment experiment](../../experiments/0007-source-comments/README.md)

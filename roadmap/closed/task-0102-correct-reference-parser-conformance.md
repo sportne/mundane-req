@@ -61,5 +61,5 @@ documented results. No dependency or source-language change was introduced.
 ## References
 
 - [TC-0101](task-0101-strengthen-unicode-conformance-fixtures.md)
-- [Experiment 0002](../experiments/0002-deterministic-interpretation/README.md)
-- [0.2 language standard](../specification/0005-mundanereq-source-language-0.2.md)
+- [Experiment 0002](../../experiments/0002-deterministic-interpretation/README.md)
+- [0.2 language standard](../../specification/0005-mundanereq-source-language-0.2.md)

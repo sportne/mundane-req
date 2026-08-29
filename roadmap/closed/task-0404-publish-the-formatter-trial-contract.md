@@ -45,7 +45,7 @@ Publish only if the formatter's behavior is small enough to explain completely a
 
 ## Result
 
-The [formatter trial contract 0.1](../specification/0008-formatter-trial-contract-0.1.md)
+The [formatter trial contract 0.1](../../specification/0008-formatter-trial-contract-0.1.md)
 states the complete two-rule formatting policy, context-aware source-set
 validation, standard-output/check/write behavior, exit statuses, per-file
 replacement and metadata boundaries, compatibility surfaces, and deliberate
@@ -63,4 +63,4 @@ Publish as a maintained trial without making a stable 1.0 promise.
 ## References
 
 - [TC-0403](task-0403-verify-formatter-safety-properties.md)
-- [Roadmap cross-cutting rules](0001-initial-roadmap.md#cross-cutting-rules-for-every-stage)
+- [Roadmap cross-cutting rules](../0001-initial-roadmap.md#cross-cutting-rules-for-every-stage)

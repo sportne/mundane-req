@@ -60,5 +60,5 @@ input-order independence, and assert Unicode-scalar diagnostic coordinates.
 ## References
 
 - [TC-0202](task-0202-design-the-shared-source-representation.md)
-- [Minimum model rationale](../specification/0002-minimum-source-language-and-model.md)
-- [0.2 language standard](../specification/0005-mundanereq-source-language-0.2.md)
+- [Minimum model rationale](../../specification/0002-minimum-source-language-and-model.md)
+- [0.2 language standard](../../specification/0005-mundanereq-source-language-0.2.md)

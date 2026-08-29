@@ -47,7 +47,7 @@ If implementation requires semantics not selected by TC-0401, stop and revise th
 ## Result
 
 `mundanereq-format` now implements exactly the two rewrites selected by
-[Experiment 0008](../experiments/0008-formatting-policy/README.md) through
+[Experiment 0008](../../experiments/0008-formatting-policy/README.md) through
 context-aware standard-output, check, and explicit write modes. The shared
 interpreter exposes deterministic physical source selection so the formatter
 can validate one complete source set once, while formatter-local

@@ -47,7 +47,7 @@ Select the smallest policy that creates material consistency. If only a narrow s
 
 ## Result
 
-[Experiment 0008](../experiments/0008-formatting-policy/README.md) compares a
+[Experiment 0008](../../experiments/0008-formatting-policy/README.md) compares a
 conservative structural policy with prose reflow over conforming source that
 combines CRLF, blank-line variation, comments, multiple records, repeated
 relationships, wrapped prose, and opaque LaTeX.
@@ -65,6 +65,6 @@ inventing comment attachment, prose-width, ordering, or math semantics.
 
 ## References
 
-- [Roadmap Stage 4](0001-initial-roadmap.md#stage-4--define-and-deliver-mundanereq-format)
+- [Roadmap Stage 4](../0001-initial-roadmap.md#stage-4--define-and-deliver-mundanereq-format)
 - [TC-0202](task-0202-design-the-shared-source-representation.md)
-- [Source-comment experiment](../experiments/0007-source-comments/README.md)
+- [Source-comment experiment](../../experiments/0007-source-comments/README.md)

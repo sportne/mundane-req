@@ -47,7 +47,7 @@ Any semantic change, non-idempotence, or unexplained comment movement blocks pub
 
 ## Result
 
-[Research 0015](../research/0015-formatter-verification.md) records the
+[Research 0015](../../research/0015-formatter-verification.md) records the
 automated property matrix and ordinary Git-diff review. Nine maintained source
 sets spanning both language versions, both layout experiments, both sustained
 corpora, CRLF/LF, comments, prose, and multiline math retain equal requirement
@@ -67,4 +67,4 @@ a trial contract.
 ## References
 
 - [TC-0402](task-0402-implement-the-formatter-executable.md)
-- [0.2 conformance suite](../conformance/0.2/README.md)
+- [0.2 conformance suite](../../conformance/0.2/README.md)

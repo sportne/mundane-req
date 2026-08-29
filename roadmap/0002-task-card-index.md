@@ -39,28 +39,28 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-0101](task-0101-strengthen-unicode-conformance-fixtures.md) | Unicode edge-case fixtures | Complete | — |
-| [TC-0102](task-0102-correct-reference-parser-conformance.md) | Known parser deviations repaired | Complete | TC-0101 |
-| [TC-0103](task-0103-audit-the-0.2-conformance-baseline.md) | Audited 0.2 implementation baseline | Complete | TC-0101, TC-0102 |
-| [TC-0104](task-0104-select-the-maintained-implementation-lineage.md) | Probe-evolution decision | Complete | TC-0103 |
-| [TC-0201](task-0201-establish-the-maintained-java-project.md) | Maintained Java/GraalVM project skeleton | Complete | TC-0104 |
-| [TC-0202](task-0202-design-the-shared-source-representation.md) | Shared physical and concrete source model | Complete | TC-0201 |
-| [TC-0203](task-0203-extract-the-semantic-parser-and-diagnostics.md) | Shared semantic parser, discovery, and diagnostics | Complete | TC-0202 |
-| [TC-0204](task-0204-port-tests-and-prove-native-tool-boundaries.md) | Regression coverage and three native boundaries | Complete | TC-0203 |
-| [TC-0301](task-0301-implement-the-validator-executable.md) | `mundanereq-validate` implementation | Complete | TC-0204 |
-| [TC-0302](task-0302-verify-validator-behavior.md) | Validator conformance and CI evidence | Complete | TC-0301 |
-| [TC-0303](task-0303-publish-the-validator-trial-contract.md) | Maintained validator trial release | Complete | TC-0302 |
-| [TC-0401](task-0401-run-the-formatting-policy-experiment.md) | Selected conservative formatting policy | Complete | TC-0203 |
-| [TC-0402](task-0402-implement-the-formatter-executable.md) | `mundanereq-format` implementation | Complete | TC-0401, TC-0204 |
-| [TC-0403](task-0403-verify-formatter-safety-properties.md) | Semantic-preservation and idempotence evidence | Complete | TC-0402 |
-| [TC-0404](task-0404-publish-the-formatter-trial-contract.md) | Maintained formatter trial release | Complete | TC-0403 |
-| [TC-0501](task-0501-define-the-first-trace-interface.md) | Bounded trace questions and output semantics | Complete | TC-0203 |
-| [TC-0502](task-0502-implement-the-trace-executable.md) | `mundanereq-trace` implementation | Complete | TC-0204, TC-0501 |
-| [TC-0503](task-0503-verify-trace-graph-behavior.md) | Graph and workflow evidence | Complete | TC-0502 |
-| [TC-0504](task-0504-publish-the-trace-trial-contract.md) | Maintained trace trial release | Complete | TC-0503 |
-| [TC-0601](task-0601-package-and-document-the-native-suite.md) | Installable, independently documented native tools | Complete | TC-0303, TC-0404, TC-0504 |
-| [TC-0602](task-0602-create-the-clean-checkout-ci-workflow.md) | Reproducible example Git/CI workflow | Ready | TC-0601 |
-| [TC-0603](task-0603-run-the-integrated-toolchain-trial.md) | First toolchain decision record | Planned | TC-0602 |
+| [TC-0101](closed/task-0101-strengthen-unicode-conformance-fixtures.md) | Unicode edge-case fixtures | Complete | — |
+| [TC-0102](closed/task-0102-correct-reference-parser-conformance.md) | Known parser deviations repaired | Complete | TC-0101 |
+| [TC-0103](closed/task-0103-audit-the-0.2-conformance-baseline.md) | Audited 0.2 implementation baseline | Complete | TC-0101, TC-0102 |
+| [TC-0104](closed/task-0104-select-the-maintained-implementation-lineage.md) | Probe-evolution decision | Complete | TC-0103 |
+| [TC-0201](closed/task-0201-establish-the-maintained-java-project.md) | Maintained Java/GraalVM project skeleton | Complete | TC-0104 |
+| [TC-0202](closed/task-0202-design-the-shared-source-representation.md) | Shared physical and concrete source model | Complete | TC-0201 |
+| [TC-0203](closed/task-0203-extract-the-semantic-parser-and-diagnostics.md) | Shared semantic parser, discovery, and diagnostics | Complete | TC-0202 |
+| [TC-0204](closed/task-0204-port-tests-and-prove-native-tool-boundaries.md) | Regression coverage and three native boundaries | Complete | TC-0203 |
+| [TC-0301](closed/task-0301-implement-the-validator-executable.md) | `mundanereq-validate` implementation | Complete | TC-0204 |
+| [TC-0302](closed/task-0302-verify-validator-behavior.md) | Validator conformance and CI evidence | Complete | TC-0301 |
+| [TC-0303](closed/task-0303-publish-the-validator-trial-contract.md) | Maintained validator trial release | Complete | TC-0302 |
+| [TC-0401](closed/task-0401-run-the-formatting-policy-experiment.md) | Selected conservative formatting policy | Complete | TC-0203 |
+| [TC-0402](closed/task-0402-implement-the-formatter-executable.md) | `mundanereq-format` implementation | Complete | TC-0401, TC-0204 |
+| [TC-0403](closed/task-0403-verify-formatter-safety-properties.md) | Semantic-preservation and idempotence evidence | Complete | TC-0402 |
+| [TC-0404](closed/task-0404-publish-the-formatter-trial-contract.md) | Maintained formatter trial release | Complete | TC-0403 |
+| [TC-0501](closed/task-0501-define-the-first-trace-interface.md) | Bounded trace questions and output semantics | Complete | TC-0203 |
+| [TC-0502](closed/task-0502-implement-the-trace-executable.md) | `mundanereq-trace` implementation | Complete | TC-0204, TC-0501 |
+| [TC-0503](closed/task-0503-verify-trace-graph-behavior.md) | Graph and workflow evidence | Complete | TC-0502 |
+| [TC-0504](closed/task-0504-publish-the-trace-trial-contract.md) | Maintained trace trial release | Complete | TC-0503 |
+| [TC-0601](closed/task-0601-package-and-document-the-native-suite.md) | Installable, independently documented native tools | Complete | TC-0303, TC-0404, TC-0504 |
+| [TC-0602](closed/task-0602-create-the-clean-checkout-ci-workflow.md) | Reproducible example Git/CI workflow | Complete | TC-0601 |
+| [TC-0603](task-0603-run-the-integrated-toolchain-trial.md) | First toolchain decision record | Ready | TC-0602 |
 
 ## Operational-evidence sequence
 

@@ -46,7 +46,7 @@ Prefer fewer operations with precise meaning. If a question cannot be explained 
 
 ## Result
 
-[Research 0016](../research/0016-first-trace-interface.md) selects four
+[Research 0016](../../research/0016-first-trace-interface.md) selects four
 operations over `decomposes`: direct higher-level requirements (`parents`),
 direct lower-level requirements (`children`), transitive higher-level paths
 (`higher`), and lower-level impact paths (`impact`). Each operation answers a
@@ -65,6 +65,6 @@ queries, every-path enumeration, persistent state, and coverage policy.
 
 ## References
 
-- [Experiment 0005](../experiments/0005-incoming-trace-query/README.md)
-- [Sustained authoring review](../experiments/0003-sustained-authoring/authoring-review.md)
-- [Roadmap Stage 5](0001-initial-roadmap.md#stage-5--define-and-deliver-mundanereq-trace)
+- [Experiment 0005](../../experiments/0005-incoming-trace-query/README.md)
+- [Sustained authoring review](../../experiments/0003-sustained-authoring/authoring-review.md)
+- [Roadmap Stage 5](../0001-initial-roadmap.md#stage-5--define-and-deliver-mundanereq-trace)

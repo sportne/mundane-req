@@ -46,7 +46,7 @@ Advance only if the validator can replace the experimental probe's validation ro
 
 ## Result
 
-[Research 0014](../research/0014-validator-verification.md) records a
+[Research 0014](../../research/0014-validator-verification.md) records a
 reproducible `validator-verify` gate. The JVM and no-fallback native executable
 agree exactly over six valid corpora, fourteen invalid conformance selections,
 explicit and duplicate inputs, empty and unavailable selections, invocation
@@ -62,5 +62,5 @@ advance to a separately reviewed trial contract.
 ## References
 
 - [TC-0301](task-0301-implement-the-validator-executable.md)
-- [0.2 conformance suite](../conformance/0.2/README.md)
-- [Transferability corpus](../experiments/0004-transferability/README.md)
+- [0.2 conformance suite](../../conformance/0.2/README.md)
+- [Transferability corpus](../../experiments/0004-transferability/README.md)

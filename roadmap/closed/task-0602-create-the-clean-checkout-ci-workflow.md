@@ -1,6 +1,6 @@
 # Task TC-0602: Create the Clean-Checkout CI Workflow
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 6
 
@@ -44,7 +44,18 @@ A reproducible example workflow formats or checks, validates, and runs selected 
 
 Add a wrapper or configuration file only if the explicit workflow demonstrates repeated material friction and the added mechanism remains optional.
 
+Completed on 2026-08-29. [Research 0018](../../research/0018-clean-checkout-ci-workflow.md)
+records a clean-checkout GitHub Actions workflow with one native-suite build and
+separately named formatting, validation, and trace invocations. The same
+commands are the documented local equivalents. `make ci-workflow-verify`
+proves successful execution, tool-specific deliberate failures, source
+nonmutation, disposable temporary state, and continued formatter/validator
+operation from an installation where the trace executable is absent.
+
+Keep the explicit workflow. Its small amount of repetition makes capability
+and failure ownership visible; no wrapper or configuration file is justified.
+
 ## References
 
 - [TC-0601](task-0601-package-and-document-the-native-suite.md)
-- [0.2 CI trial guidance](../specification/0006-provisional-0.2-contract.md#ci-trial-guidance)
+- [0.2 CI trial guidance](../../specification/0006-provisional-0.2-contract.md#ci-trial-guidance)

@@ -46,7 +46,7 @@ If separate distribution creates substantial accidental duplication, share packa
 
 ## Result
 
-Completed on 2026-08-29. `make native-suite-verify` builds, packages, and verifies three independent no-fallback baseline-x86-64 Linux executables with a checked glibc 2.34 symbol ceiling. The [distribution guide](../distribution/README.md) and one-purpose tool documents describe separate installation and use without a wrapper, server, or database. [Research 0017](../research/0017-native-suite-packaging.md) records representative isolated operations, exact archive and notice verification, runtime dependencies, checksums, and the source-reproducible rather than byte-identical build boundary.
+Completed on 2026-08-29. `make native-suite-verify` builds, packages, and verifies three independent no-fallback baseline-x86-64 Linux executables with a checked glibc 2.34 symbol ceiling. The [distribution guide](../../distribution/README.md) and one-purpose tool documents describe separate installation and use without a wrapper, server, or database. [Research 0017](../../research/0017-native-suite-packaging.md) records representative isolated operations, exact archive and notice verification, runtime dependencies, checksums, and the source-reproducible rather than byte-identical build boundary.
 
 The package shares build and notice mechanics without merging executable responsibilities. The `native-suite-trial-0.1` tag identifies the rebuildable source baseline; generated package artifacts remain ignored by Git.
 

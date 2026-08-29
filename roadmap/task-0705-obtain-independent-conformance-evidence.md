@@ -45,6 +45,6 @@ A material interpretation disagreement blocks 1.0 until the standard or implemen
 
 ## References
 
-- [TC-0103](task-0103-audit-the-0.2-conformance-baseline.md)
-- [TC-0303](task-0303-publish-the-validator-trial-contract.md)
+- [TC-0103](closed/task-0103-audit-the-0.2-conformance-baseline.md)
+- [TC-0303](closed/task-0303-publish-the-validator-trial-contract.md)
 - [Formalization review](../research/0008-source-language-formalization-review.md)

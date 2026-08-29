@@ -46,7 +46,7 @@ If faithful formatting needs inferred attachment or generalized token machinery,
 
 ## Result
 
-[Research 0012](../research/0012-shared-source-representation.md) selects an
+[Research 0012](../../research/0012-shared-source-representation.md) selects an
 ordered physical-line representation retaining exact UTF-8 bytes, decoded line
 text, original LF/CRLF spelling, Unicode-scalar spans, and only blank, comment,
 or content classification. The prototype reproduces the commented 0.2 fixture
@@ -61,5 +61,5 @@ formatter policy, or stable Java API was introduced.
 ## References
 
 - [TC-0201](task-0201-establish-the-maintained-java-project.md)
-- [Source-comment decision](../research/0009-nonsemantic-source-comments.md)
-- [Roadmap formatter stage](0001-initial-roadmap.md#stage-4--define-and-deliver-mundanereq-format)
+- [Source-comment decision](../../research/0009-nonsemantic-source-comments.md)
+- [Roadmap formatter stage](../0001-initial-roadmap.md#stage-4--define-and-deliver-mundanereq-format)

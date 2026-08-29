@@ -1,6 +1,6 @@
 # Task TC-0603: Run the Integrated Toolchain Trial
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 6
 
@@ -47,5 +47,5 @@ Proceed to operational and model-pressure trials only if the suite demonstrates 
 
 ## References
 
-- [TC-0602](task-0602-create-the-clean-checkout-ci-workflow.md)
+- [TC-0602](closed/task-0602-create-the-clean-checkout-ci-workflow.md)
 - [Roadmap Stage 6](0001-initial-roadmap.md#stage-6--exercise-the-tools-in-concert)

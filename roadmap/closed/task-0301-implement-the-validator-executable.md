@@ -62,5 +62,5 @@ verification and repair-workflow evidence.
 ## References
 
 - [TC-0204](task-0204-port-tests-and-prove-native-tool-boundaries.md)
-- [Roadmap Stage 3](0001-initial-roadmap.md#stage-3--deliver-mundanereq-validate)
-- [0.2 trial contract](../specification/0006-provisional-0.2-contract.md)
+- [Roadmap Stage 3](../0001-initial-roadmap.md#stage-3--deliver-mundanereq-validate)
+- [0.2 trial contract](../../specification/0006-provisional-0.2-contract.md)
