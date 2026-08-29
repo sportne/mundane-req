@@ -1,6 +1,6 @@
 # Task TC-0704: Measure Operational Scale
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 7
 
@@ -47,4 +47,4 @@ Retain the simple in-memory model unless measurements show a concrete workflow c
 ## References
 
 - [TC-0702](closed/task-0702-run-the-independent-interpretation-proxy-trial.md)
-- [TC-0703](task-0703-run-the-multi-author-and-layout-trial.md)
+- [TC-0703](closed/task-0703-run-the-multi-author-and-layout-trial.md)

@@ -26,6 +26,7 @@ proxy behavior with human learnability.
 - Recruit at least one consenting human participant with relevant engineering background and no mundane-req design history.
 - Reuse or explicitly version the TC-0701 task package without revealing its oracle.
 - Capture commands, statuses, diagnostics, questions, assistance, task time, and the final source diff using a participant-approved method.
+- Include at least one ordinary Git branch/review cycle and record human author effort and diff-review experience that the TC-0702 proxy and TC-0703 controlled histories could not measure.
 - Compare semantic results with the frozen oracle and distinguish correctness, learnability, domain judgment, and tool usability.
 - Record privacy-preserving raw evidence or state every capture limitation.
 
