@@ -174,7 +174,7 @@ Retain shared code only where it prevents conflicting interpretations. If a prop
 
 ## Stage 3 — Deliver `mundanereq-validate`
 
-Status: In progress
+Status: Completed
 
 **Question:** Can a clean checkout receive a fast, precise answer about whether its requirement source conforms to a named language contract?
 
@@ -201,7 +201,7 @@ Do not add prose-quality rules, controlled vocabularies, decomposition completen
 
 ## Stage 4 — Define and deliver `mundanereq-format`
 
-Status: Planned
+Status: Completed
 
 **Question:** Can mundane-req remove avoidable formatting debate and diff noise while preserving authored meaning and useful source comments?
 
@@ -240,7 +240,7 @@ If comment preservation requires complex inferred attachment or a lossless tree 
 
 ## Stage 5 — Define and deliver `mundanereq-trace`
 
-Status: Planned
+Status: Completed
 
 **Question:** Which traceability questions can be answered directly and usefully from the current source model?
 
@@ -269,7 +269,7 @@ Do not generalize `decomposes` into arbitrary relationship types merely to make 
 
 ## Stage 6 — Exercise the tools in concert
 
-Status: Planned
+Status: Completed
 
 **Question:** Do three independent native tools collectively create a better requirements workflow than either raw text alone or a monolithic application?
 
@@ -303,7 +303,7 @@ If ordinary use requires a wrapper command, configuration file, or generated ind
 
 ## Stage 7 — Test operational use and scale
 
-Status: Planned after the first toolchain trial
+Status: In progress
 
 **Question:** Does the approach remain understandable with a larger corpus and authors who did not design the language?
 

@@ -1,6 +1,6 @@
 # Task TC-0603: Run the Integrated Toolchain Trial
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 6
 
@@ -45,7 +45,18 @@ A recorded branch-to-baseline trial evaluates editing, formatting, validation, t
 
 Proceed to operational and model-pressure trials only if the suite demonstrates additive value without becoming repository infrastructure that must exist to understand source.
 
+Completed on 2026-08-29. [Experiment 0010](../../experiments/0010-integrated-toolchain-trial/README.md)
+reconstructs a deterministic temporary Git history for a timing-budget change:
+authoring, formatting, validation, impact analysis, ordinary diff review-surface inspection,
+merge, two annotated baselines, tagged-output reconstruction, and continued
+operation through a second complete workflow with trace absent. Source and Git
+remain sufficient; each native tool adds one disposable capability.
+
+Proceed to Stage 7 without a wrapper, database, forge integration, or language
+change. The next evidence must address a larger licensed corpus and independent
+authorship rather than add toolchain machinery.
+
 ## References
 
-- [TC-0602](closed/task-0602-create-the-clean-checkout-ci-workflow.md)
-- [Roadmap Stage 6](0001-initial-roadmap.md#stage-6--exercise-the-tools-in-concert)
+- [TC-0602](task-0602-create-the-clean-checkout-ci-workflow.md)
+- [Roadmap Stage 6](../0001-initial-roadmap.md#stage-6--exercise-the-tools-in-concert)

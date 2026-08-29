@@ -1,4 +1,4 @@
-.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries native-suite package-native-suite native-suite-verify boundary-isolation ci-workflow-evidence ci-workflow-verify verify
+.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries native-suite package-native-suite native-suite-verify boundary-isolation ci-workflow-evidence ci-workflow-verify integrated-toolchain-trial verify
 
 BUILD_ROOT := build/maintained
 CLASS_DIR := $(BUILD_ROOT)/classes
@@ -111,4 +111,8 @@ ci-workflow-evidence:
 
 ci-workflow-verify: native-suite ci-workflow-evidence
 
-verify: test native-smoke boundary-isolation validator-verify formatter-verify trace-verify native-suite-verify ci-workflow-verify
+integrated-toolchain-trial: native-suite
+	java -ea -cp $(CLASS_DIR) mundanereq.trial.IntegratedToolchainTrialTest \
+		$(FORMAT_NATIVE) $(VALIDATE_NATIVE) $(TRACE_NATIVE)
+
+verify: test native-smoke boundary-isolation validator-verify formatter-verify trace-verify native-suite-verify ci-workflow-verify integrated-toolchain-trial

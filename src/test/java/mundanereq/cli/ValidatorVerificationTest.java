@@ -36,16 +36,19 @@ public final class ValidatorVerificationTest {
     }
 
     private static void validCorporaAgree(Path nativeValidator) throws Exception {
-        for (String path : List.of(
+        List<String> corpora = List.of(
                 "conformance/0.1/valid",
                 "conformance/0.2/valid",
                 "experiments/0001-source-representations/candidate-a-modules",
                 "experiments/0001-source-representations/candidate-b-one-per-file/requirements",
                 "experiments/0003-sustained-authoring/requirements",
-                "experiments/0004-transferability/requirements")) {
+                "experiments/0004-transferability/requirements",
+                "experiments/0010-integrated-toolchain-trial/baseline",
+                "experiments/0010-integrated-toolchain-trial/proposed");
+        for (String path : corpora) {
             assertAgreement(nativeValidator, 0, null, ROOT.resolve(path).toString());
         }
-        System.out.println("PASS six valid project corpora");
+        System.out.printf("PASS %d valid project corpora%n", corpora.size());
     }
 
     private static void invalidFixturesAgree(Path nativeValidator) throws Exception {

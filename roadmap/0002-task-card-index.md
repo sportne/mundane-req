@@ -60,13 +60,13 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 | [TC-0504](closed/task-0504-publish-the-trace-trial-contract.md) | Maintained trace trial release | Complete | TC-0503 |
 | [TC-0601](closed/task-0601-package-and-document-the-native-suite.md) | Installable, independently documented native tools | Complete | TC-0303, TC-0404, TC-0504 |
 | [TC-0602](closed/task-0602-create-the-clean-checkout-ci-workflow.md) | Reproducible example Git/CI workflow | Complete | TC-0601 |
-| [TC-0603](task-0603-run-the-integrated-toolchain-trial.md) | First toolchain decision record | Ready | TC-0602 |
+| [TC-0603](closed/task-0603-run-the-integrated-toolchain-trial.md) | First toolchain decision record | Complete | TC-0602 |
 
 ## Operational-evidence sequence
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-0701](task-0701-select-a-larger-corpus-and-trial-protocol.md) | Licensed corpus and controlled trial plan | Planned | TC-0603 |
+| [TC-0701](task-0701-select-a-larger-corpus-and-trial-protocol.md) | Licensed corpus and controlled trial plan | Ready | TC-0603 |
 | [TC-0702](task-0702-run-the-independent-author-trial.md) | Independent-author usability evidence | Planned | TC-0701 |
 | [TC-0703](task-0703-run-the-multi-author-and-layout-trial.md) | Concurrency and file-granularity evidence | Planned | TC-0701 |
 | [TC-0704](task-0704-measure-operational-scale.md) | Operational-scale measurements | Planned | TC-0702, TC-0703 |

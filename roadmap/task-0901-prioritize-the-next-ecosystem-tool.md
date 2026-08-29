@@ -45,6 +45,6 @@ Select at most one next tool. If no candidate materially improves a demonstrated
 
 ## References
 
-- [TC-0603](task-0603-run-the-integrated-toolchain-trial.md)
+- [TC-0603](closed/task-0603-run-the-integrated-toolchain-trial.md)
 - [TC-0704](task-0704-measure-operational-scale.md)
 - [Roadmap Stage 9](0001-initial-roadmap.md#stage-9--add-focused-ecosystem-tools-only-where-use-justifies-them)

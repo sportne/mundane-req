@@ -1,6 +1,6 @@
 # Task TC-0701: Select a Larger Corpus and Trial Protocol
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 7
 
@@ -46,6 +46,6 @@ If no corpus is both suitable and redistributable, create a second original corp
 
 ## References
 
-- [TC-0603](task-0603-run-the-integrated-toolchain-trial.md)
+- [TC-0603](closed/task-0603-run-the-integrated-toolchain-trial.md)
 - [Roadmap Stage 7](0001-initial-roadmap.md#stage-7--test-operational-use-and-scale)
 - [Experiment 0004 provenance approach](../experiments/0004-transferability/provenance.md)
