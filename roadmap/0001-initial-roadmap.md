@@ -413,7 +413,7 @@ Add a source field, relationship, or companion language only when the experiment
 
 ## Stage 9 — Add focused ecosystem tools only where use justifies them
 
-Status: Future options, not a feature commitment
+Status: Portfolio reviewed; no additional tool selected
 
 **Question:** After the first toolchain and operational trial, which independent capability delivers the next largest improvement?
 
@@ -428,6 +428,13 @@ Candidates include:
 - machine-readable analysis output for integration with other independently written tools.
 
 Each candidate should normally become its own executable or optional integration. Java and GraalVM Native Image remain the default implementation direction for the core command-line suite, but implementation reuse is not a language requirement and should not prevent independent implementations.
+
+Disposition: [Research 0030](../research/0030-next-ecosystem-tool-prioritization.md)
+selects no fourth tool. Every candidate either lacks a demonstrated consumer,
+duplicates existing infrastructure, or depends on a provisional model. Complete
+the human-author trial in TC-0706 before reopening tool prioritization. TC-0902
+remains conditional on access to an independent ReqIF implementation and a
+credible exchange workflow; TC-0904 is not unlocked.
 
 ### ReqIF milestone
 

@@ -1,6 +1,6 @@
 # Task TC-0901: Prioritize the Next Ecosystem Tool
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 9
 
@@ -8,7 +8,8 @@ Type: Portfolio decision
 
 Depends on: TC-0603 and TC-0704
 
-Unlocks: TC-0904
+Unlocks: TC-0904 only when this or a successor decision selects a tool; the
+current no-tool decision does not unlock it
 
 ## Question
 
@@ -43,8 +44,14 @@ An evidence comparison selects one next tool or explicitly decides that model re
 
 Select at most one next tool. If no candidate materially improves a demonstrated workflow, do not build one.
 
+Completed on 2026-08-29. [Research 0030](../../research/0030-next-ecosystem-tool-prioritization.md)
+selects no additional tool and does not unlock TC-0904. Existing evidence does
+not identify a candidate that materially improves a demonstrated workflow.
+Prioritize the human-author trial TC-0706, then reopen this decision only if its
+observations establish a concrete consumer and one primary responsibility.
+
 ## References
 
-- [TC-0603](closed/task-0603-run-the-integrated-toolchain-trial.md)
-- [TC-0704](closed/task-0704-measure-operational-scale.md)
-- [Roadmap Stage 9](0001-initial-roadmap.md#stage-9--add-focused-ecosystem-tools-only-where-use-justifies-them)
+- [TC-0603](task-0603-run-the-integrated-toolchain-trial.md)
+- [TC-0704](task-0704-measure-operational-scale.md)
+- [Roadmap Stage 9](../0001-initial-roadmap.md#stage-9--add-focused-ecosystem-tools-only-where-use-justifies-them)

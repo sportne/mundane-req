@@ -2,11 +2,17 @@
 
 Status: Conditional
 
+Current disposition: TC-0901 selected no additional tool on 2026-08-29, so this
+card is not unlocked. Reopen prioritization after new workflow evidence rather
+than treating this card as an implementation commitment.
+
 Roadmap stage: 9
 
 Type: Implementation
 
-Depends on: TC-0901 and its selected experiment
+Depends on: A completed prioritization decision that actually selects a tool
+and its bounded experiment; TC-0901's current no-tool decision does not satisfy
+this dependency
 
 Unlocks: TC-1001
 
@@ -47,5 +53,5 @@ Publish only if the implementation remains focused after real use. If it accumul
 
 ## References
 
-- [TC-0901](task-0901-prioritize-the-next-ecosystem-tool.md)
+- [TC-0901](closed/task-0901-prioritize-the-next-ecosystem-tool.md)
 - [Roadmap product direction](0001-initial-roadmap.md#product-direction)
