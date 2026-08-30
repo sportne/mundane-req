@@ -97,7 +97,7 @@ These cards are not assumed to produce syntax. Each must first determine whether
 | [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Rendering/view evidence | Conditional | TC-0603, TC-0807 |
 | [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) | One additional independent tool | Conditional: not unlocked | A future prioritization decision that selects a tool |
 | [TC-1001](closed/task-1001-audit-readiness-for-1.0.md) | Source 1.0 evidence and gap audit | Complete: conditional source-only recommendation | TC-0704, TC-0705, TC-0706, selected TC-08xx and TC-09xx cards |
-| [TC-1002](task-1002-define-compatibility-and-publish-or-defer-1.0.md) | Explicit 1.0 publication or deferral | Ready | TC-1001 |
+| [TC-1002](task-1002-define-compatibility-and-publish-or-defer-1.0.md) | Explicit 1.0 publication or deferral | In progress: documentation reconciled; verification and decision pending | TC-1001 |
 
 ## Updating cards
 

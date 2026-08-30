@@ -20,18 +20,57 @@ The source representation is the foundation. A requirements file should be under
 
 ## Repository layout
 
-- `specification/` — project and language specifications.
+- [`specification/`](specification/README.md) — project, language, and tool
+  contracts, with an index distinguishing normative standards from design
+  records.
 - `conformance/` — independently runnable examples for provisional source contracts.
-- `research/` — surveys, experiments, evidence, and unresolved design questions.
-- `experiments/` — concrete source fixtures and recorded experimental results.
+- [`research/`](research/README.md) — surveys, evidence, and recorded design
+  decisions.
+- [`experiments/`](experiments/README.md) — concrete fixtures, protocols, and
+  recorded experimental results.
 - `distribution/` — maintained native-package documentation and notice policy.
 - `roadmap/` — development strategy, experiments, and sequencing.
 - `src/main/java/` — maintained shared implementation and later tool entry points.
 - `src/test/java/` — maintained dependency-free tests.
 
-The current written interface consists of the [provisional 0.2 contract](specification/0006-provisional-0.2-contract.md) and the normative [mundanereq Source Language Specification 0.2](specification/0005-mundanereq-source-language-0.2.md). Version 0.2 adds only [nonsemantic full-line author comments](research/0009-nonsemantic-source-comments.md) to the 0.1 language. The 0.1 contract and standard remain available as the prior version. These are evidence-backed trial contracts, not stable release promises.
+## Current status
 
-The first code was a small [deterministic-interpretation probe](experiments/0002-deterministic-interpretation/README.md) used to test the provisional source language. It remains historical evidence rather than production architecture. The [maintained implementation lineage](research/0011-maintained-implementation-lineage.md) now provides a dependency-free Java 21 source area containing a lossless concrete source representation, shared semantic interpreter, and the first focused product tool. Earlier experiments [transfer the minimum model](experiments/0004-transferability/README.md) to a licensed NASA FRET case-study corpus and add one [focused incoming trace query](experiments/0005-incoming-trace-query/README.md) without changing authoritative source.
+The current source interface consists of the [provisional 0.2
+contract](specification/0006-provisional-0.2-contract.md) and the normative
+[mundanereq Source Language Specification
+0.2](specification/0005-mundanereq-source-language-0.2.md). Version 0.2 adds
+only [nonsemantic full-line author
+comments](research/0009-nonsemantic-source-comments.md) to the 0.1 language.
+The 0.1 contract and standard remain available as the prior version. These are
+evidence-backed provisional contracts, not stable release promises.
+
+Three maintained GraalVM native command-line tools operate independently over
+that source: `mundanereq-validate`, `mundanereq-format`, and
+`mundanereq-trace`. Each has its own `trial-0.1` interface contract. Their
+shared implementation does not make the Java packages a public API or turn the
+three commands into one application.
+
+The [source 1.0 readiness
+audit](research/0031-source-1.0-readiness-audit.md) identifies a no-feature,
+semantics-identical successor to 0.2 as the only current 1.0 candidate, but it
+does not authorize publication. [TC-1002](roadmap/task-1002-define-compatibility-and-publish-or-defer-1.0.md)
+must repair the complete verification gate and decide whether missing human
+authoring, normal-review, and real formal-traceability workflow evidence
+requires deferral. Until that task completes, `mundanereq-source-0.2` remains
+the current provisional contract.
+
+The first code was a small [deterministic-interpretation
+probe](experiments/0002-deterministic-interpretation/README.md) used to test
+the provisional source language. It remains historical evidence rather than
+production architecture. The [maintained implementation
+lineage](research/0011-maintained-implementation-lineage.md) now provides a
+dependency-free Java 21 source area containing a lossless concrete source
+representation, shared semantic interpreter, and three focused product tools.
+Earlier experiments [transfer the minimum
+model](experiments/0004-transferability/README.md) to a licensed NASA FRET
+case-study corpus and add one [focused incoming trace
+query](experiments/0005-incoming-trace-query/README.md) without changing
+authoritative source.
 
 A bounded [ReqIF 1.2 interchange experiment](experiments/0006-reqif-interchange/README.md) demonstrates schema-valid semantic self-roundtrips while keeping ReqIF derived and outside the source-language contract. [Experiment 0007](experiments/0007-source-comments/README.md) confirms that 0.2 author comments do not enter that semantic interchange model.
 
@@ -42,10 +81,16 @@ SDKMAN candidate:
 
     sdk use java 21.0.2-graalce
 
-Then verify the maintained JVM and native build boundary from a clean checkout
-with one command:
+The intended complete JVM and native clean-checkout gate is:
 
     make verify
+
+At the current commit, `make test` passes, but `make verify` stops at the
+formatter maintained-corpus completeness check because later experiment
+corpora have not yet been added to that check's explicit inventory. This is a
+documented [TC-1002 release
+blocker](research/0031-source-1.0-readiness-audit.md#publication-work-required-in-tc-1002),
+not a claim that those omitted corpora preserve formatting semantics.
 
 `make test` runs the maintained JVM regression suite. `make native-smoke` builds and runs a
 test-only executable with `--no-fallback`. Generated classes and native output

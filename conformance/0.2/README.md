@@ -12,13 +12,17 @@ semantics as the 0.1 valid fixture while adding comments at every permitted
 kind of structural location: file boundaries, after an opener, between fields,
 before a closer, and as the sole separator between records.
 
-The reference probe must accept it:
+The maintained validator must accept it:
 
-    experiments/0002-deterministic-interpretation/build/mundanereq conformance/0.2/valid
+    make native-validator
+    build/maintained/mundanereq-validate conformance/0.2/valid
 
-Its `--inventory` output must equal [`valid/expected.inventory`](valid/expected.inventory),
-which is byte-identical to the 0.1 expected inventory. This equality is the
-normative example that comments have no semantic value.
+The normative semantic inventory is
+[`valid/expected.inventory`](valid/expected.inventory), which is
+byte-identical to the 0.1 expected inventory. The maintained regression and
+independent-conformance interpreters compare against it; the validator CLI does
+not expose an inventory mode. This equality is the normative example that
+comments have no semantic value.
 
 ## Invalid fixtures
 

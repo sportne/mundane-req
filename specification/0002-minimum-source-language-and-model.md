@@ -1,6 +1,8 @@
 # Specification 0002: Minimum Source Language and Model
 
-Status: Provisional; deterministic interpretation, sustained use, and transferability confirmed by Experiments 0002 through 0004
+Status: Current nonnormative design record for `mundanereq-source-0.2`
+
+Last reconciled: 2026-08-30 through Experiment 0022 and Research 0031
 
 Original provisional contract: [mundanereq source 0.1](0003-provisional-0.1-contract.md)
 
@@ -22,20 +24,23 @@ The evidence and candidate disposition are recorded in [Research 0007](../resear
 
 [Experiment 0002](../experiments/0002-deterministic-interpretation/README.md) implements these rules in a dependency-free GraalVM native Java probe. Its module and one-record-per-file fixtures produce identical semantic inventories, and its focused invalid fixtures produce source-positioned diagnostics. This confirms deterministic interpretation for the tested corpus; it does not establish a compatibility-stable language version.
 
-[Experiment 0003](../experiments/0003-sustained-authoring/README.md) exercises addition, splitting, relationship retargeting, coordinated normative change, reallocation, file movement, retirement, and formal model-pressure workflows. All committed states remain valid without grammar changes. The result supports this minimum model for continued experiment while identifying verification planning and identity continuity across ID correction as unresolved questions.
+[Experiment 0003](../experiments/0003-sustained-authoring/README.md) exercises addition, splitting, relationship retargeting, coordinated normative change, reallocation, file movement, retirement, and formal model-pressure workflows. All committed states remain valid without grammar changes. It originally exposed verification planning and identity continuity across ID correction as unresolved questions; Experiments 0016 and 0017 and Research 0023 and 0024 later gave those pressures explicit dispositions without changing the requirement grammar.
 
 [Experiment 0004](../experiments/0004-transferability/README.md) transfers 19 requirements from NASA's independently structured FRET Lift-Plus-Cruise case study. The records validate without grammar changes. A precise upstream commit/path/record locator fits in the opaque `source` scalar, while a separate baseline-bound verification plan demonstrates why activity identity, coverage, execution, and results should not be collapsed into requirement fields.
 
 ## Status of decisions
 
-This draft distinguishes four kinds of statement:
+This design record retains four labels from the initial investigation:
 
-- **Selected for experiment:** the next parser and validator should implement and test it.
+- **Selected for experiment:** the initial parser and validator were directed to
+  implement and test it. The label is historical; Specification 0005 now
+  controls normative 0.2 behavior.
 - **Model decision:** it expresses current project semantics independently of grammar details.
 - **Hypothesis:** the experiment should test whether it remains usable.
 - **Deferred:** it is deliberately outside this version.
 
-Nothing in this draft requires a production implementation architecture.
+Nothing in this design record defines a production implementation architecture
+or a public Java API.
 
 ## Source set and files
 
@@ -60,6 +65,18 @@ Experiment 0003 confirms this rule directly: moving SYS-008 from a larger subjec
 **Selected for experiment:** Source is UTF-8 text without a byte-order mark. LF and CRLF line endings have the same interpretation. NUL bytes and tabs are invalid. A final line ending is required.
 
 Tabs are prohibited because indentation is structural and their visual width is editor-dependent. This restriction can be revisited if use demonstrates a need.
+
+### Source comments
+
+**Model decision:** Full-line `#` author comments may occur only at the
+structural positions defined by Specification 0005. They remain physical source
+for human authors and faithful rewriting but contribute no requirement,
+relationship, field, attachment, or other semantic value.
+
+[Experiment 0007](../experiments/0007-source-comments/README.md) shows that
+comments remain useful in ordinary diffs, survive the conservative formatter,
+and disappear from semantic inventory and bounded ReqIF interchange. Version
+0.2 added this facility without changing any 0.1 requirement interpretation.
 
 ## Requirement model
 
@@ -322,9 +339,10 @@ This omission is deliberate. It can be revisited when a concrete workflow requir
 - status, approval, signatures, and review workflow;
 - per-requirement revision counters;
 - relationship objects with their own identity or metadata;
-- comments, imports, includes, namespaces, and packages;
+- imports, includes, namespaces, and packages;
 - Markdown as the containing authoritative record format;
-- formatting and canonical rewrite rules;
+- language-mandated formatting or canonical rewriting; the separately
+  versioned formatter trial implements one conservative optional policy;
 - semantic diff or merge;
 - generated documents and reports;
 - ReqIF import, export, and round-trip preservation;
@@ -332,15 +350,30 @@ This omission is deliberate. It can be revisited when a concrete workflow requir
 
 Experiment 0006 demonstrates a schema-valid bounded ReqIF 1.2 semantic self-roundtrip without source-language changes. General and cross-tool ReqIF interoperability remains outside this specification. The source language should not imitate ReqIF's storage model merely because a derived adapter can map to it.
 
-## Open questions after initial interpretation and use
+## Current pressure outcomes and reopening evidence
 
-1. Do prose folding, fixed field order, and source discovery remain comfortable at larger scale and with independent authors?
-2. What stable carrier and satisfaction policy, if any, should build on the selected verification companion model?
-3. Which real workflow, if any, justifies standardizing the provisional identified-allocation companion?
-4. What larger workflow would make ordinary prose and source search insufficient
-   for normative reused terms, or justify a symbol companion beyond adjacent
-   local definitions?
-5. Which trace policy, if any, recurs often enough to justify a focused
-   implementation?
+1. **Human source use:** prose folding, fixed field order, source discovery, and
+   file granularity have controlled corpus and agent evidence, but no
+   independent human systems engineer has completed the frozen authoring trial.
+2. **Verification:** the companion model separates activity, plan, coverage,
+   execution, evidence reference, and result. Stable syntax and satisfaction
+   policy remain deferred. [Research 0024](../research/0024-verification-companion-decision.md)
+3. **Safety assessment:** contextual criticality is a baseline-bound companion
+   assertion rather than a requirement field. Stable carrier and scheme policy
+   remain deferred. [Research 0025](../research/0025-safety-classification-ownership-decision.md)
+4. **Allocation:** retain the optional opaque label and project-policy
+   vocabulary until a real rename-continuity or multi-target workflow requires
+   identified targets. [Research 0027](../research/0027-allocation-model-decision.md)
+5. **Glossary and symbols:** ordinary prose, search, and adjacent local
+   definitions remain sufficient for demonstrated workflows. Reopen only when
+   continuity or impact becomes ambiguous. [Research 0028](../research/0028-glossary-and-symbol-decision.md)
+6. **Trace policy:** coverage and acyclicity remain scoped project policy, not
+   language conformance. No generalized policy language is selected.
+   [Research 0029](../research/0029-trace-policy-decision.md)
+7. **Authored views:** no source syntax is selected without a concrete
+   composition workflow. [TC-0807](../roadmap/task-0807-test-authored-views-and-specifications.md)
 
-The next model experiments should continue testing companion artifacts before expanding the grammar.
+These outcomes deliberately leave companion carriers and empirical maturity
+work outside the requirement grammar. The [1.0 readiness
+audit](../research/0031-source-1.0-readiness-audit.md) records which gaps affect
+publication and which are future reopening conditions.

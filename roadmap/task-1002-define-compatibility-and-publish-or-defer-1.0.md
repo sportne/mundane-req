@@ -1,6 +1,6 @@
 # Task TC-1002: Define Compatibility and Publish or Defer 1.0
 
-Status: Ready
+Status: In progress
 
 Roadmap stage: 10
 
@@ -59,6 +59,14 @@ The project either publishes a scoped 1.0 source contract with separate tool com
 ## Completion decision
 
 Publish 1.0 only if preserving its contract is a deliberate long-term commitment. Otherwise prefer an honest provisional successor over nominal stability.
+
+## Progress
+
+Documentation reconciliation completed on 2026-08-30. The README, strategic
+roadmap, project foundation, minimum-model design record, provisional 0.2
+contract, conformance entry points, and documentation indexes now describe the
+same current state. This does not clear the formatter verification blocker or
+make the publication-or-deferral decision.
 
 ## References
 

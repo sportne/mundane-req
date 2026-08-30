@@ -152,16 +152,35 @@ Before evaluating the 0.2 contract, a team should:
 7. record information that could not be represented without distortion;
 8. decide whether observed friction belongs to source, policy, Git/forge workflow, or an independent tool.
 
-## Remaining decisions before stability
+## Stability disposition and residual evidence
 
-- whether an independently baselined consumer requires pre-exchanged identity
-  beyond the 0.2 human ID;
-- whether a larger workflow justifies a normative reused-term companion;
-  formal-symbol companions also remain deferred;
-- stable verification-companion syntax and satisfaction policy;
-- stable assessment-carrier syntax and scheme policy;
-- stable identified-allocation companion syntax and role policy, if a recurring
-  rename-continuity or multi-target workflow requires it;
-- operational behavior with larger independently authored corpora;
-- compatibility and repository selection when incompatible source versions must coexist;
-- cross-tool ReqIF fidelity, update behavior, and identity continuity beyond Experiment 0006's bounded semantic self-roundtrip.
+The [source 1.0 readiness
+audit](../research/0031-source-1.0-readiness-audit.md) finds no demonstrated need
+to expand the 0.2 requirement grammar before a stability decision. Identity,
+verification, safety assessment, allocation, glossary and symbols, and trace
+policy have explicit dispositions. Their deferred companion carriers are not
+missing intrinsic requirement fields.
+
+The current 1.0 candidate is therefore a no-feature, semantics-identical
+successor to this contract. Publication remains conditional and has not
+occurred. TC-1002 must:
+
+- restore a passing complete formatter and native verification gate;
+- decide explicitly how absent independent-human authoring, normal-review, and
+  real formal-traceability workflow evidence affects publication;
+- define the exact stable source compatibility promise and repository contract
+  selection behavior;
+- establish and tag the 1.0 conformance baseline; and
+- reconcile tool source-contract claims without stabilizing their separate CLI
+  or Java interfaces.
+
+The following remain future evidence or independently versioned work rather
+than prerequisites for the 0.2 semantic model:
+
+- sustained use by a real systems-engineering team on a larger corpus;
+- incompatible source-version coexistence if a real migration requires it;
+- stable verification, assessment, allocation, glossary, symbol, view, or
+  project-policy companion carriers when demonstrated workflows justify them;
+- cross-tool ReqIF fidelity, update behavior, and identity continuity beyond
+  Experiment 0006's bounded semantic self-roundtrip; and
+- broader native platform and operational support evidence.

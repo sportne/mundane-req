@@ -2,7 +2,7 @@
 
 Status: Draft living roadmap
 
-Last reconciled: 2026-08-22 at `mundanereq-source-0.2`
+Last reconciled: 2026-08-30 after the TC-1001 source 1.0 readiness audit
 
 Execution is decomposed into the [roadmap task-card index](0002-task-card-index.md). This document remains the strategic narrative; the cards carry bounded work, dependencies, and acceptance evidence.
 
@@ -42,45 +42,78 @@ The project should prefer several small tools with clear contracts over one comm
 
 ## Where the project is now
 
-The initial feasibility investigation and shared-foundation extraction are complete. The project is beginning its first usable tool suite.
+The feasibility investigation, provisional 0.2 language, first composable tool
+suite, controlled operational trials, and model-pressure studies are complete.
+The project is now executing TC-1002: either publish a deliberately narrow
+source-language 1.0 compatibility promise or defer it with bounded evidence
+work.
 
 ### Evidence already earned
 
-1. **Practice and prior-art survey.** The [practice survey](../research/0001-requirements-management-practice-survey.md) and [representation study](../research/0003-representation-prior-art.md) separate common requirements-management workflows from the architectural choices of existing products. StrictDoc, Doorstop, ReqIF, lightweight markup, and language-tooling approaches have informed the work without becoming mandatory dependencies or storage models.
-2. **Source-representation comparison.** [Experiment 0001](../experiments/0001-source-representations/README.md) compared a purpose-built keyword record syntax using multiple file granularities with a Markdown-document representation. Complete records, IDs inside records, non-semantic file boundaries, and ordinary Git merge behavior survived the comparison. [Research 0007](../research/0007-provisional-source-representation-decision.md) records the resulting decision.
-3. **Minimum semantic model.** [Specification 0002](../specification/0002-minimum-source-language-and-model.md) defines requirements with an ID, title, statement, optional allocation, optional rationale, optional external source, and zero or more directed `decomposes` relationships. Repository snapshots supply requirement revisions and the initial baseline substrate.
-4. **Deterministic interpretation.** [Experiment 0002](../experiments/0002-deterministic-interpretation/README.md) provides a dependency-free Java 21 probe that parses and validates the language, creates a semantic inventory, and produces source-positioned diagnostics. It builds successfully as a GraalVM native executable.
-5. **Sustained authoring and Git use.** [Experiment 0003](../experiments/0003-sustained-authoring/README.md) exercised addition, splitting, coordinated normative changes, reallocation, file movement, retirement, baseline comparison, and concurrent edits as ordinary commits and diffs.
-6. **Transferability.** [Experiment 0004](../experiments/0004-transferability/README.md) represented nineteen requirements from the licensed NASA FRET Lift-Plus-Cruise case study without a grammar change. The study separated requirement-source preservation from lossless interchange and separated verification planning from requirement fields.
-7. **Focused trace analysis.** [Experiment 0005](../experiments/0005-incoming-trace-query/README.md) derives incoming and transitive decomposition paths from an in-memory reverse index without adding redundant reverse links to source.
-8. **Formal source contract.** The normative [0.2 language standard](../specification/0005-mundanereq-source-language-0.2.md), [trial contract](../specification/0006-provisional-0.2-contract.md), and [conformance fixtures](../conformance/0.2/README.md) state the language independently of the reference probe. Version 0.2 adds only the nonsemantic full-line author comments tested by [Experiment 0007](../experiments/0007-source-comments/README.md).
-9. **Bounded ReqIF experiment.** [Experiment 0006](../experiments/0006-reqif-interchange/README.md) provides a second Java 21/GraalVM probe that performs schema-valid semantic self-roundtrips through a deliberately narrow ReqIF 1.2 profile. The experiment did not require changing authoritative `.mreq` source.
+1. **Practice, prior art, and representation.** The practice survey,
+   representation study, syntax comparison, file-granularity trials, and Git
+   histories support complete textual records with identity inside the record
+   and nonsemantic file boundaries.
+2. **Formal provisional source contract.** The normative [0.2 language
+   standard](../specification/0005-mundanereq-source-language-0.2.md), [trial
+   contract](../specification/0006-provisional-0.2-contract.md), and
+   [conformance fixtures](../conformance/0.2/README.md) define the requirement
+   model independently of any implementation.
+3. **Independent interpretation.** The maintained interpreter and one sealed
+   independent implementation agree on all selected validity decisions and
+   complete semantic inventories. Exact CLI wording and diagnostic anchors
+   remain outside language conformance.
+4. **Composable native toolchain.** Three focused GraalVM native executables—
+   validator, formatter, and trace—share implementation where useful while
+   retaining separate entry points, trial contracts, installation, and runtime
+   boundaries.
+5. **Controlled Git and operational evidence.** The project has exercised
+   branch changes, merges, conflicts, review, movement, retargeting, baselines,
+   a 60-requirement/54-link corpus, bounded scale, and integrated clean-checkout
+   workflows. These remain controlled trials rather than sustained real-team
+   use.
+6. **Model-pressure dispositions.** Identity correction, verification,
+   safety classification, allocation, glossary and symbols, trace policy, and
+   diagnostic volume each have evidence-backed decisions. None currently
+   justifies a 1.0 requirement-grammar addition.
+7. **Bounded interchange and packaging.** ReqIF has one schema-valid semantic
+   self-roundtrip but no independent-tool interoperability evidence. The three
+   native tools have a documented Linux x86-64/glibc-2.34 trial package without
+   a broader platform or support promise.
+8. **Readiness audit.** [Research 0031](../research/0031-source-1.0-readiness-audit.md)
+   audits every Stage 10 criterion and separates source-language stability from
+   CLI, Java API, distribution, and interchange stability.
 
 ### What has not yet been established
 
-- The maintained interpreter is not yet exposed through a usable product executable.
-- There is no formatter or formatting contract.
-- There is no independently packaged traceability executable.
-- Separate tools have not yet been exercised together in a normal edit-review-CI workflow.
-- Human-team authoring and sustained use on a substantial real corpus are
-  unproven. Operational scale and independent subagent interpretation have
-  bounded evidence.
-- Requirement ID correction has been tested in one bounded scenario; 0.2 provisionally retains human-ID-only snapshot identity unless an independently baselined consumer demonstrates a need for pre-exchanged cross-baseline identity.
-- Verification and safety classification now have selected conceptual companion models but no stable carriers; controlled vocabularies and similar information remain unresolved.
+- Independent human authoring, acceptance in normal human review, and use in a
+  real formal-traceability workflow are unproven.
+- Sustained operation by a systems-engineering team on a materially larger real
+  corpus is unproven.
+- The complete verification gate is currently red because the formatter's
+  maintained-corpus inventory omits valid source sets added by later model-
+  pressure experiments.
+- Verification, safety assessment, allocation, glossary, symbol, view, and
+  policy companion carriers remain unstandardized; their conceptual
+  dispositions do not imply missing requirement fields.
 - ReqIF work has demonstrated only a self-roundtrip through a bounded profile, not practical interoperability with an independent tool.
 - There is no stable language or tool compatibility promise.
 
-The next objective is therefore not to enlarge the requirement language. It is to turn the evidence-backed 0.2 language into a small, coherent, native toolchain and use that toolchain to expose the next real modeling problems.
+The next objective is not to enlarge the language or tool suite. It is to clear
+the verification blocker and make an explicit publication-or-deferral decision
+for the no-feature source 1.0 candidate while preserving the evidence gaps.
 
-## First implementation hypothesis
+## Maintained implementation shape
 
-The first maintained implementation should use Java 21 and GraalVM Native Image. The intended deliverables are separate native executables with working names:
+The maintained implementation uses Java 21 and GraalVM Native Image. It
+delivers separate native executables:
 
 - `mundanereq-validate` — source discovery, parsing, language conformance, and plain diagnostics;
 - `mundanereq-format` — deterministic formatting and formatting checks without semantic change;
 - `mundanereq-trace` — derived trace navigation and analysis over valid source sets.
 
-They may be built from one repository codebase and share a small set of Java components. Likely shared responsibilities are:
+They are built from one repository codebase and share a small set of Java
+components. Shared responsibilities are:
 
 - physical source reading and explicit source-set discovery;
 - a concrete source representation that retains comments and other syntax needed for faithful rewriting;
@@ -89,7 +122,10 @@ They may be built from one repository codebase and share a small set of Java com
 - diagnostic values and presentation conventions;
 - an in-memory requirement and relationship index.
 
-This is an architectural hypothesis to test, not permission to construct a generalized compiler framework. Module boundaries should be introduced because at least two real tools need them. The shared code must not:
+This remains a deliberately small implementation boundary, not permission to
+construct a generalized compiler framework. Module boundaries should be
+introduced only because at least two real tools need them. The shared code must
+not:
 
 - require a database, daemon, server, repository manifest, or network service;
 - make one executable invoke another internally as its library interface;
@@ -98,25 +134,33 @@ This is an architectural hypothesis to test, not permission to construct a gener
 - expose a prematurely stable Java API merely because the command-line tools share classes;
 - create a plugin architecture or configurable metamodel.
 
-Each executable should accept explicit files or directories, operate from a clean checkout, return meaningful exit status, produce useful plain-text output, and build as a standalone native image. Native executables are platform-specific, so the first supported build target may be Linux; additional packaging targets should follow demonstrated users rather than precede them.
+Each executable accepts explicit files or directories, operates from a clean
+checkout, returns meaningful exit status, produces useful plain-text output,
+and builds as a standalone native image. The documented trial package targets
+Linux x86-64 with glibc 2.34 or later; additional packaging targets should
+follow demonstrated users rather than precede them.
 
-The existing probes are evidence and potential source material. They should not be mechanically promoted into production structure. In particular, the formatter will need concrete source and comment information that the current semantic inventory intentionally discards.
+Earlier probes remain historical evidence. Their useful behavior was migrated
+through explicit comparison rather than mechanically promoted into the
+maintained structure. The maintained concrete representation now retains the
+physical source and comments needed for conservative formatting while keeping
+them out of the semantic requirement model.
 
 ## Primary sequence
 
 ```text
-completed source investigation
-    -> close the 0.2 conformance gap
-    -> establish the smallest shared Java foundation
-    -> deliver validator, formatter, and trace executables
-    -> exercise them together in Git and CI
-    -> run a real team/corpus trial
-    -> resolve model pressure with focused experiments
-    -> add only the independent tools justified by use
-    -> decide whether a stable 1.0 contract is warranted
+completed source investigation and 0.2 contract
+    -> completed shared Java foundation and three-tool native suite
+    -> completed controlled Git, corpus, scale, and conformance trials
+    -> completed selected model-pressure decisions
+    -> current: clear verification blocker and decide source 1.0
+    -> later: add evidence or focused tools only when workflows justify them
 ```
 
-Stages 2 through 5 define the first implementation. Their order permits learning from each tool, but the goal is a coherent suite rather than one executable absorbing the others.
+The completed stages remain below as the evidence-bearing history of how the
+project reached the current decision gate. Their sequence is not the active
+backlog; the [task-card index](0002-task-card-index.md) is authoritative for
+execution status.
 
 ## Stage 0 — Preserve the completed investigation
 
@@ -345,7 +389,7 @@ Prefer improvements to diagnostics, documentation, or focused tools over grammar
 
 ## Stage 8 — Resolve model pressure through companion-artifact experiments
 
-Status: Open research track; decisions must be evidence-driven
+Status: Selected model pressures decided; authored views remain conditional
 
 **Question:** Which engineering facts belong to a requirement, which belong to relationships, and which belong to separately managed assessments or activities?
 
@@ -466,7 +510,7 @@ Every new tool has one stated engineering problem, consumes authoritative text, 
 
 ## Stage 10 — Decide whether to stabilize 1.0
 
-Status: Readiness audit complete; publication decision ready
+Status: Publication or deferral in progress
 
 **Question:** Is the source contract and toolchain mature enough to deserve compatibility promises?
 
@@ -497,7 +541,7 @@ human trial. Formatter acceptance in normal human review and trace use in a
 real formal-traceability workflow are also untested and require the same
 explicit publication-or-deferral decision.
 
-TC-1002 is Ready. It must create and reconcile the actual 1.0 contract,
+TC-1002 is In progress. It must create and reconcile the actual 1.0 contract,
 conformance baseline, repository version, documentation, tool source-contract
 claims, and release tag before the project may describe the language as 1.0.
 It must also repair the stale formatter maintained-corpus inventory found by
@@ -524,13 +568,18 @@ Publish 1.0 only if it represents a small demonstrated foundation that the proje
 
 The next concrete work should proceed in this order:
 
-1. establish the maintained dependency-free Java and GraalVM build boundary;
-2. extract the smallest shared concrete-syntax, semantic-model, parsing, diagnostic, and indexing foundation;
-3. prove three independent native entry-point boundaries against the audited experiment behavior;
-4. ship `mundanereq-validate` as the first maintained executable;
-5. run the formatting-policy experiment and ship `mundanereq-format` only after semantic preservation and comment behavior are settled;
-6. extract the existing incoming-query evidence into `mundanereq-trace` and broaden it only through trace workflows;
-7. run all three executables together in a clean-checkout Git/forge/CI trial;
-8. use the trial to choose the next model-pressure experiment or focused tool.
+1. repair the formatter verification inventory and obtain a passing complete
+   clean-checkout `make verify` run;
+2. decide whether absent independent-human authoring, normal-review, and real
+   formal-traceability workflow evidence permits a narrow source-compatibility
+   release or requires bounded human evidence before 1.0;
+3. if publishing, write a no-feature, semantics-identical 1.0 standard and
+   contract, establish its conformance baseline, reconcile trial-tool source-
+   contract claims, update `VERSION`, and tag the exact verified commit;
+4. if deferring, retain the provisional 0.2 contract and create only the
+   bounded evidence cards required by the deferral decision; and
+5. keep conditional view, ReqIF, presentation, and fourth-tool work locked
+   until their stated workflows and prerequisites exist.
 
-Completion of this sequence would produce the project's first credible toolchain: three small GraalVM native executables working in concert over durable source, while ordinary editors, Git, a forge, and CI continue to supply the surrounding development workflow.
+This sequence is TC-1002. It makes the stability decision explicit without
+using new syntax or another tool to manufacture an appearance of maturity.

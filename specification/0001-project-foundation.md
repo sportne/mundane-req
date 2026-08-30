@@ -1,6 +1,8 @@
 # Specification 0001: Project Foundation
 
-Status: Draft
+Status: Living project foundation; nonnormative
+
+Last reconciled: 2026-08-30 at `mundanereq-source-0.2`
 
 ## Purpose
 
@@ -68,9 +70,16 @@ For example, a mathematical requirement may contain an explicitly delimited LaTe
 
 The project should establish a minimal usable source representation, exercise it in real Git workflows, and add tooling in response to observed friction rather than designing a complete ecosystem before use.
 
-## Experiment-supported direction
+## Evidence-supported direction
 
-Experiment 0001 provides enough evidence to narrow the next specification phase without freezing a production language. [Research 0007](../research/0007-provisional-source-representation-decision.md) records the representation evidence and rationale. Experiments 0002 and 0003 subsequently confirm deterministic interpretation and sustained use on the small UAS corpus. Experiment 0004 confirms that the minimum requirement model transfers to an independently structured NASA FRET case-study corpus without a grammar change, while distinguishing source preservation from lossless tool interchange.
+Experiment 0001 narrowed the representation without freezing a production
+language. [Research 0007](../research/0007-provisional-source-representation-decision.md)
+records that evidence and rationale. Later experiments established
+deterministic interpretation, transferability, comments, independent
+conformance, maintained native tools, bounded operational scale, and explicit
+dispositions for the principal model-pressure questions. The [source 1.0
+readiness audit](../research/0031-source-1.0-readiness-audit.md) is the current
+summary of what that evidence does and does not support.
 
 The current direction is:
 
@@ -85,17 +94,42 @@ The current direction is:
 - Treat decomposition completeness as policy analysis rather than universal syntax validity.
 - Treat verification planning as relationships between requirement revisions and separately identified activities rather than repeated workflow fields intrinsic to requirement objects; a verification-plan syntax remains deferred.
 
-These are provisional language and model decisions supported by the experiment. [Specification 0002](0002-minimum-source-language-and-model.md) makes the minimum grammar, discovery, cardinality, validation, and mathematical-content rules precise enough to test; they are not yet a compatibility promise.
+These remain the project foundation. [Specification
+0002](0002-minimum-source-language-and-model.md) records the model and design
+rationale. The normative grammar, discovery, cardinality, validation, and
+mathematical-content rules are stated by the current [0.2 language
+standard](0005-mundanereq-source-language-0.2.md) and its [provisional
+contract](0006-provisional-0.2-contract.md).
 
-## Open questions
+## Current dispositions and reopening questions
 
-- Does correction of a human-facing ID require separate durable machine identity or an explicit continuity mechanism?
-- What minimum source model should identify verification activities and bind their planned coverage to requirement revisions or baselines?
-- When do allocation labels need referential identity or a controlled vocabulary?
-- What larger workflow would make prose and source search insufficient for
-  normative reused terms, or justify definitions beyond local, adjacent
-  mathematical symbol scope?
-- Which trace policy, if any, recurs often enough to justify a focused
-  implementation without creating a generalized rule framework?
-- Does the first specification need an authored view at all?
-- What constrained mathematical-content profile, if any, should the source language promise?
+- **Identity:** 0.2 retains the human-facing ID as sole identity. Reopen this
+  only for an independently baselined consumer that needs pre-exchanged
+  continuity across ID correction. [Decision](../research/0023-identity-continuity-decision.md)
+- **Verification:** activity, plan, coverage, execution, evidence reference,
+  and result are separate companion concepts. Their stable carrier and
+  satisfaction policy remain deferred. [Decision](../research/0024-verification-companion-decision.md)
+- **Safety and criticality:** contextual classifications belong to a
+  baseline-bound assessment assertion, not an intrinsic requirement field.
+  Stable carrier and scheme policy remain deferred.
+  [Decision](../research/0025-safety-classification-ownership-decision.md)
+- **Allocation:** retain the optional opaque label and keep allowed values in
+  project policy. Reopen referential target identity for a demonstrated rename
+  continuity or multi-target responsibility workflow.
+  [Decision](../research/0027-allocation-model-decision.md)
+- **Glossary and symbols:** use authoritative prose, ordinary search, and
+  adjacent local mathematical definitions. Reopen a companion model only when
+  those mechanisms make continuity or impact ambiguous.
+  [Decision](../research/0028-glossary-and-symbol-decision.md)
+- **Trace policy:** source conformance remains separate from scoped coverage
+  and cycle policy. No reusable policy language or fourth tool is selected.
+  [Decision](../research/0029-trace-policy-decision.md)
+- **Views:** authored ordering and composition remain conditional on a concrete
+  delivery or review workflow. [Task](../roadmap/task-0807-test-authored-views-and-specifications.md)
+- **Mathematics:** LaTeX remains an opaque, explicitly delimited source block.
+  A constrained profile requires a concrete analyzer or renderer need.
+
+The principal unresolved maturity questions are empirical rather than missing
+grammar: independent human authoring, acceptance in normal human review, use in
+a real formal-traceability workflow, and sustained operation by a systems-
+engineering team.
