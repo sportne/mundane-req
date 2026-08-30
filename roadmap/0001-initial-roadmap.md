@@ -466,7 +466,7 @@ Every new tool has one stated engineering problem, consumes authoritative text, 
 
 ## Stage 10 — Decide whether to stabilize 1.0
 
-Status: Future decision
+Status: Readiness audit complete; publication decision ready
 
 **Question:** Is the source contract and toolchain mature enough to deserve compatibility promises?
 
@@ -484,6 +484,24 @@ A stable source-language contract should not be declared merely because three ex
 - the project can state what 1.0 intentionally does not provide.
 
 The language compatibility promise, command-line compatibility promises, Java implementation APIs, and interchange profiles must be versioned separately. Stabilizing human-readable source must not require freezing every tool interface simultaneously.
+
+[Research 0031](../research/0031-source-1.0-readiness-audit.md) finds the
+demonstrated 0.2 source language ready to proceed to a source-language-only 1.0
+publication decision. It recommends no syntax or semantic change. Validator,
+formatter, and trace CLIs remain maintained trials; Java APIs remain internal;
+ReqIF remains experimental; and human learnability remains an explicit,
+unmeasured adoption risk rather than a favorable readiness claim. The
+independent-human criterion is not met as written; TC-1002 must explicitly
+accept that limitation for a narrow compatibility release or defer 1.0 for a
+human trial. Formatter acceptance in normal human review and trace use in a
+real formal-traceability workflow are also untested and require the same
+explicit publication-or-deferral decision.
+
+TC-1002 is Ready. It must create and reconcile the actual 1.0 contract,
+conformance baseline, repository version, documentation, tool source-contract
+claims, and release tag before the project may describe the language as 1.0.
+It must also repair the stale formatter maintained-corpus inventory found by
+the audit and obtain a passing complete `make verify` run before publication.
 
 ### Learning milestone
 
