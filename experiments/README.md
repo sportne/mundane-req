@@ -46,6 +46,7 @@ decision or specification states the durable disposition when one exists.
 | [0020 — Allocation model](0020-allocation-model/README.md) | Retains opaque labels and project policy; identified targets remain conditional. |
 | [0021 — Glossary and symbols](0021-glossary-symbols/README.md) | Retains prose, search, and local definitions in the bounded workflow. |
 | [0022 — Trace policies](0022-trace-policies/README.md) | Keeps scoped coverage and acyclicity policy separate from source validity. |
+| [0024 — Vaccine monitoring pilot](0024-vaccine-monitoring-pilot/README.md) | Executes the model and separate tools through a realistic, self-run formal-traceability workflow. |
 
 Raw participant logs and reviewer transcripts are evidence captures. Paths to
 temporary workspaces inside those captures are historical observations and are

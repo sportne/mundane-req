@@ -1,6 +1,6 @@
 # Task TC-1002: Define Compatibility and Publish or Defer 1.0
 
-Status: In progress
+Status: Complete — 1.0 deferred
 
 Roadmap stage: 10
 
@@ -8,7 +8,7 @@ Type: Specification and release decision
 
 Depends on: TC-1001
 
-Unlocks: A stable 1.x roadmap or explicit provisional continuation
+Unlocks: TC-1003 and an explicit provisional continuation
 
 ## Question
 
@@ -60,6 +60,19 @@ The project either publishes a scoped 1.0 source contract with separate tool com
 
 Publish 1.0 only if preserving its contract is a deliberate long-term commitment. Otherwise prefer an honest provisional successor over nominal stability.
 
+Decision on 2026-08-30: defer source 1.0. The no-feature candidate is coherent,
+and the complete verification gate passes, but the project has not yet exercised
+the model in a realistic end-to-end formal-traceability workflow. Publishing a
+compatibility promise before that use would turn untested modeling assumptions
+into long-term constraints.
+
+[TC-1003](../task-1003-execute-vaccine-monitoring-requirements-pilot.md) is the
+bounded next evidence card. It uses authoritative public source documents and
+the maintained tools to execute a requirements-engineering pilot without
+external participants. This is intentionally not a substitute for independent
+human usability evidence or an independently implemented interpreter; those
+gaps remain visible and are not prerequisites for running the pilot.
+
 ## Progress
 
 Documentation reconciliation completed on 2026-08-30. The README, strategic
@@ -72,8 +85,8 @@ Formatter verification reconciliation completed on 2026-08-30. Fifteen
 omitted independent selections were added at their actual source-set
 boundaries. The focused gate now passes over 29 source sets and 60 files, and
 the complete GraalVM `make verify` gate passes without a formatter behavior or
-policy change. The publication-or-deferral decision remains open, and the
-complete gate must run again on any eventual release commit.
+policy change. The publication-or-deferral decision was closed as a deferral on
+2026-08-30. No source-language feature or compatibility promise was added.
 
 ## References
 
