@@ -321,6 +321,11 @@ Status: In progress
 
 The project has evidence about team adoption and corpus scale, not merely deterministic behavior on fixtures.
 
+[Experiment 0019](../experiments/0019-diagnostic-presentation/README.md)
+selects an explicit `--max-diagnostics N` behavior for a future validator trial
+while retaining complete text by default. Machine-readable output remains
+deferred until a concrete CI consumer justifies a stable field contract.
+
 ### Decision gate
 
 Prefer improvements to diagnostics, documentation, or focused tools over grammar growth when they solve the observed problem. Add indexes or caches only if measured performance requires them, and keep them disposable.

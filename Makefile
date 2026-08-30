@@ -1,4 +1,4 @@
-.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries native-suite package-native-suite native-suite-verify boundary-isolation ci-workflow-evidence ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial operational-scale-trial independent-conformance-compare native-reqif-probe identity-continuity-trial verification-model-trial safety-classification-trial verify
+.PHONY: test native-smoke native-validator validator-verify native-formatter formatter-verify native-trace trace-verify native-boundaries native-suite package-native-suite native-suite-verify boundary-isolation ci-workflow-evidence ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial operational-scale-trial independent-conformance-compare native-reqif-probe identity-continuity-trial verification-model-trial safety-classification-trial diagnostic-presentation-trial verify
 
 BUILD_ROOT := build/maintained
 CLASS_DIR := $(BUILD_ROOT)/classes
@@ -145,5 +145,10 @@ safety-classification-trial: native-validator
 	$(RM) -r $(BUILD_ROOT)/safety-classification
 	experiments/0018-safety-classification/run.sh \
 		$(VALIDATE_NATIVE) $(BUILD_ROOT)/safety-classification
+
+diagnostic-presentation-trial: native-validator
+	$(RM) -r $(BUILD_ROOT)/diagnostic-presentation
+	experiments/0019-diagnostic-presentation/run.sh \
+		$(VALIDATE_NATIVE) $(BUILD_ROOT)/diagnostic-presentation
 
 verify: test native-smoke boundary-isolation validator-verify formatter-verify trace-verify native-suite-verify ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial independent-conformance-compare

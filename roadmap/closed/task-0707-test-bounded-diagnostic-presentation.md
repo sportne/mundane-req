@@ -1,6 +1,6 @@
 # Task TC-0707: Test Bounded Diagnostic Presentation
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 7
 
@@ -47,7 +47,12 @@ obtain every diagnostic.
 Add a focused output mode only if it materially improves the recorded workflow
 without complicating the normal terminal interface.
 
+Completed on 2026-08-29. [Experiment 0019](../../experiments/0019-diagnostic-presentation/README.md)
+selects future `--max-diagnostics N` behavior while preserving unlimited text by
+default, complete validation, exit status, explicit omission counts, and a
+complete-stream recovery path. Structured output remains deferred.
+
 ## References
 
-- [Experiment 0014](../experiments/0014-operational-scale/README.md)
-- [TC-0704](closed/task-0704-measure-operational-scale.md)
+- [Experiment 0014](../../experiments/0014-operational-scale/README.md)
+- [TC-0704](task-0704-measure-operational-scale.md)
