@@ -49,7 +49,8 @@ public final class FormatterVerificationTest {
             "experiments/0021-glossary-symbols/scenario/baseline-c",
             "experiments/0022-trace-policies/source/pass",
             "experiments/0022-trace-policies/source/coverage-fail",
-            "experiments/0022-trace-policies/source/cycle-fail");
+            "experiments/0022-trace-policies/source/cycle-fail",
+            "experiments/0024-vaccine-monitoring-pilot/product/requirements");
 
     private record Invocation(int status, byte[] out, byte[] err) {}
 

@@ -96,3 +96,17 @@ gate and does not select a fourth tool. The project has chosen not to collect
 that human evidence at this stage. TC-1001 must decide whether the resulting
 uncertainty blocks 1.0, belongs outside the intended compatibility promise, or
 requires a later bounded task. TC-0904 remains locked.
+
+## Reopened by end-to-end workflow evidence
+
+On 2026-08-30 [Experiment 0024](../experiments/0024-vaccine-monitoring-pilot/assessment.md)
+executed the second verification companion workflow requested by this decision.
+Across 57 requirements and two baselines, manual checks were needed for
+requirement/activity references, baseline binding, coverage, and staleness.
+The retention change also showed that whole-source-set binding creates
+irrelevant assessment churn.
+
+This evidence selects a focused verification-plan analyzer, not a generalized
+policy tool. [TC-0905](../roadmap/task-0905-define-verification-analyzer-contract.md)
+must compare revision-binding granularities and freeze a bounded trial contract.
+Only a successful TC-0905 unlocks TC-0904 implementation.

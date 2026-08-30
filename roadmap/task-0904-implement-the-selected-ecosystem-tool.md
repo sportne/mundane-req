@@ -1,18 +1,17 @@
 # Task TC-0904: Implement the Selected Ecosystem Tool
 
-Status: Conditional
+Status: Planned
 
-Current disposition: TC-0901 selected no additional tool on 2026-08-29, so this
-card is not unlocked. Reopen prioritization after new workflow evidence rather
-than treating this card as an implementation commitment.
+Current disposition: Experiment 0024 supplied the repeated workflow evidence
+that TC-0901 required and selected a focused verification-plan analyzer. TC-0905
+must define and survive a bounded contract experiment before implementation is
+unlocked.
 
 Roadmap stage: 9
 
 Type: Implementation
 
-Depends on: A completed prioritization decision that actually selects a tool
-and its bounded experiment; TC-0901's current no-tool decision does not satisfy
-this dependency
+Depends on: TC-0905
 
 Unlocks: TC-1001
 
@@ -54,4 +53,6 @@ Publish only if the implementation remains focused after real use. If it accumul
 ## References
 
 - [TC-0901](closed/task-0901-prioritize-the-next-ecosystem-tool.md)
+- [TC-0905](task-0905-define-verification-analyzer-contract.md)
+- [Pilot decision](../research/0032-end-to-end-pilot-decision.md)
 - [Roadmap product direction](0001-initial-roadmap.md#product-direction)

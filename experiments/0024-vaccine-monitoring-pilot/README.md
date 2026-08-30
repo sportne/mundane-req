@@ -1,10 +1,10 @@
 # Experiment 0024: Vaccine Equipment Monitoring Requirements Pilot
 
-Status: In progress
+Status: Complete
 
 Date begun: 2026-08-30
 
-Roadmap task: [TC-1003](../../roadmap/task-1003-execute-vaccine-monitoring-requirements-pilot.md)
+Roadmap task: [TC-1003](../../roadmap/closed/task-1003-execute-vaccine-monitoring-requirements-pilot.md)
 
 ## Purpose
 
@@ -39,11 +39,11 @@ procedures for responding to temperature excursions.
    questions before requirements are authored.
 4. The tag `experiment-0024-baseline-a` identifies the first reviewed source
    set and companion planning artifacts.
-5. `change/` will contain the controlled change request, impact analysis, and
-   review record.
+5. `change/` contains the controlled change request, impact analysis, focused
+   diff, and review record.
 6. `product/` contains the advancing work product; the tag
-   `experiment-0024-baseline-b` will identify its second reviewed baseline.
-7. `assessment.md` will contain the final trial assessment.
+   `experiment-0024-baseline-b` identifies its second reviewed baseline.
+7. [`assessment.md`](assessment.md) contains the final trial assessment.
 
 Git commits and annotated experiment tags identify the two requirement
 baselines. The current branch does not preserve duplicate baseline directories;

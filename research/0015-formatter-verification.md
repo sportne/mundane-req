@@ -39,7 +39,7 @@ Every maintained source set is also passed to `--check` through both the JVM
 entry point and native process with exact status, output, and diagnostic
 agreement. A completeness assertion discovers every `.mreq` file under
 `conformance/` and `experiments/` outside an `invalid/` directory and requires
-the 29-source-set matrix to cover it. Adding maintained valid source therefore
+the explicit source-set matrix to cover it. Adding maintained valid source therefore
 cannot silently bypass this gate.
 
 The process-level matrix compares status, standard output, and standard error
@@ -124,3 +124,9 @@ agrees between JVM and native execution. The complete `make verify` gate also
 passes, including native boundaries, all three tool verifications, package and
 CI checks, integrated and multi-author workflows, and independent conformance.
 No formatter implementation or policy change was necessary.
+
+Experiment 0024 subsequently added its four-file vaccine-monitoring work
+product as one independent source set. The maintained matrix now covers 30
+source sets and 64 files and preserves 37 comments and 102 opaque math lines.
+This was an inventory-only extension; formatter behavior and policy remain
+unchanged.

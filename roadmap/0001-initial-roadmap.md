@@ -2,7 +2,7 @@
 
 Status: Draft living roadmap
 
-Last reconciled: 2026-08-30 after the TC-1001 source 1.0 readiness audit
+Last reconciled: 2026-08-30 after the end-to-end requirements pilot
 
 Execution is decomposed into the [roadmap task-card index](0002-task-card-index.md). This document remains the strategic narrative; the cards carry bounded work, dependencies, and acceptance evidence.
 
@@ -43,10 +43,11 @@ The project should prefer several small tools with clear contracts over one comm
 ## Where the project is now
 
 The feasibility investigation, provisional 0.2 language, first composable tool
-suite, controlled operational trials, and model-pressure studies are complete.
-The project is now executing TC-1002: either publish a deliberately narrow
-source-language 1.0 compatibility promise or defer it with bounded evidence
-work.
+suite, controlled operational trials, model-pressure studies, and first
+end-to-end formal-traceability pilot are complete. TC-1002 deferred source 1.0.
+The current active card is TC-0905: define a bounded verification-analyzer
+contract from the repeated workflow evidence before implementing a fourth
+native tool.
 
 ### Evidence already earned
 
@@ -83,11 +84,17 @@ work.
 8. **Readiness audit.** [Research 0031](../research/0031-source-1.0-readiness-audit.md)
    audits every Stage 10 criterion and separates source-language stability from
    CLI, Java API, distribution, and interchange stability.
+9. **End-to-end pilot.** [Experiment 0024](../experiments/0024-vaccine-monitoring-pilot/assessment.md)
+   develops and changes a 57-requirement vaccine-monitoring source set through
+   two annotated baselines, complete planned verification coverage, contextual
+   safety assessment, and the three maintained tools. It retains the grammar
+   and exposes coarse companion binding as the primary new friction.
 
 ### What has not yet been established
 
-- Independent human authoring, acceptance in normal human review, and use in a
-  real formal-traceability workflow are unproven.
+- Independent human authoring and acceptance in normal human review remain
+  unproven. A realistic formal-traceability workflow has now been self-executed,
+  not independently adopted.
 - Sustained operation by a systems-engineering team on a materially larger real
   corpus is unproven.
 - Verification, safety assessment, allocation, glossary, symbol, view, and
@@ -96,10 +103,11 @@ work.
 - ReqIF work has demonstrated only a self-roundtrip through a bounded profile, not practical interoperability with an independent tool.
 - There is no stable language or tool compatibility promise.
 
-The next objective is not to enlarge the language or tool suite. The complete
-verification gate has been restored. The remaining work is an explicit
-publication-or-deferral decision for the no-feature source 1.0 candidate while
-preserving the evidence gaps.
+The next objective is not to enlarge the requirement language. TC-0905 will
+compare verification-plan revision bindings and define the smallest analyzer
+contract that solves the repeated manual coverage and staleness workflow. Only
+then may TC-0904 implement a separate GraalVM native analyzer. Source 1.0
+remains deferred.
 
 ## Maintained implementation shape
 
@@ -152,8 +160,10 @@ completed source investigation and 0.2 contract
     -> completed controlled Git, corpus, scale, and conformance trials
     -> completed selected model-pressure decisions
     -> completed formatter verification repair
-    -> current: decide whether to publish or defer source 1.0
-    -> later: add evidence or focused tools only when workflows justify them
+    -> completed: defer source 1.0
+    -> completed: end-to-end requirements pilot and controlled change
+    -> current: define the focused verification-analyzer contract
+    -> next if justified: implement and trial the separate native analyzer
 ```
 
 The completed stages remain below as the evidence-bearing history of how the
@@ -509,7 +519,7 @@ Every new tool has one stated engineering problem, consumes authoritative text, 
 
 ## Stage 10 — Decide whether to stabilize 1.0
 
-Status: Publication or deferral in progress
+Status: 1.0 deferred; bounded evidence work continues
 
 **Question:** Is the source contract and toolchain mature enough to deserve compatibility promises?
 
@@ -528,24 +538,19 @@ A stable source-language contract should not be declared merely because three ex
 
 The language compatibility promise, command-line compatibility promises, Java implementation APIs, and interchange profiles must be versioned separately. Stabilizing human-readable source must not require freezing every tool interface simultaneously.
 
-[Research 0031](../research/0031-source-1.0-readiness-audit.md) finds the
-demonstrated 0.2 source language ready to proceed to a source-language-only 1.0
-publication decision. It recommends no syntax or semantic change. Validator,
-formatter, and trace CLIs remain maintained trials; Java APIs remain internal;
-ReqIF remains experimental; and human learnability remains an explicit,
-unmeasured adoption risk rather than a favorable readiness claim. The
-independent-human criterion is not met as written; TC-1002 must explicitly
-accept that limitation for a narrow compatibility release or defer 1.0 for a
-human trial. Formatter acceptance in normal human review and trace use in a
-real formal-traceability workflow are also untested and require the same
-explicit publication-or-deferral decision.
+[Research 0031](../research/0031-source-1.0-readiness-audit.md) identified a
+no-feature source-only candidate and the evidence gaps surrounding it.
+[TC-1002](closed/task-1002-define-compatibility-and-publish-or-defer-1.0.md)
+explicitly deferred publication on 2026-08-30 while retaining provisional 0.2.
+It also repaired the formatter maintained-corpus inventory and restored a
+passing complete `make verify` gate.
 
-TC-1002 is In progress. It must create and reconcile the actual 1.0 contract,
-conformance baseline, repository version, documentation, tool source-contract
-claims, and release tag before the project may describe the language as 1.0.
-It has repaired the stale formatter maintained-corpus inventory found by the
-audit and obtained a passing complete `make verify` run. The release gate must
-run again against any eventual publication commit.
+[Experiment 0024](../experiments/0024-vaccine-monitoring-pilot/assessment.md)
+then executed a realistic self-run formal-traceability workflow. It strengthened
+evidence that the current requirement object is sufficient for the tested
+obligations, but it did not provide independent-human adoption evidence and did
+not reverse the deferral. Any future publication task must run the complete gate
+again and make a new explicit compatibility decision.
 
 ### Learning milestone
 
@@ -568,16 +573,16 @@ Publish 1.0 only if it represents a small demonstrated foundation that the proje
 
 The next concrete work should proceed in this order:
 
-1. decide whether absent independent-human authoring, normal-review, and real
-   formal-traceability workflow evidence permits a narrow source-compatibility
-   release or requires bounded human evidence before 1.0;
-2. if publishing, write a no-feature, semantics-identical 1.0 standard and
-   contract, establish its conformance baseline, reconcile trial-tool source-
-   contract claims, update `VERSION`, and tag the exact verified commit;
-3. if deferring, retain the provisional 0.2 contract and create only the
-   bounded evidence cards required by the deferral decision; and
-4. keep conditional view, ReqIF, presentation, and fourth-tool work locked
-   until their stated workflows and prerequisites exist.
+1. execute TC-0905 to compare whole-set and requirement-revision bindings and
+   freeze a bounded verification-plan analyzer trial contract;
+2. if that contract survives its fixtures, execute TC-0904 as a separate Java
+   21/GraalVM native executable sharing only the parser and semantic components
+   it actually needs;
+3. rerun the Experiment 0024 planning and controlled-change workflow with the
+   analyzer and decide whether the tool remains focused;
+4. keep view, independent ReqIF, presentation, and source 1.0 work conditional
+   on their own evidence and authority.
 
-This sequence is TC-1002. It makes the stability decision explicit without
-using new syntax or another tool to manufacture an appearance of maturity.
+This sequence adds one purpose-built tool only after the software-toolchain
+model exposed a repeated manual analysis need. It does not turn the companion
+carrier into requirement syntax or broaden the analyzer into a platform.

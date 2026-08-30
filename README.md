@@ -53,10 +53,12 @@ three commands into one application.
 The [source 1.0 readiness
 audit](research/0031-source-1.0-readiness-audit.md) identifies a no-feature,
 semantics-identical successor to 0.2 as the only current 1.0 candidate, but it
-does not authorize publication. [TC-1002](roadmap/task-1002-define-compatibility-and-publish-or-defer-1.0.md)
-has restored the complete verification gate and must now decide whether missing
-human authoring, normal-review, and real formal-traceability workflow evidence
-requires deferral. Until that task completes, `mundanereq-source-0.2` remains
+does not authorize publication. [TC-1002](roadmap/closed/task-1002-define-compatibility-and-publish-or-defer-1.0.md)
+deferred 1.0 rather than turn missing workflow evidence into a compatibility
+promise. [Experiment 0024](experiments/0024-vaccine-monitoring-pilot/assessment.md)
+then executed a 57-requirement, two-baseline formal-traceability pilot and
+retained the source model unchanged. It also selected a bounded verification-
+analyzer contract experiment as the next work. `mundanereq-source-0.2` remains
 the current provisional contract.
 
 The first code was a small [deterministic-interpretation
@@ -86,9 +88,9 @@ The intended complete JVM and native clean-checkout gate is:
     make verify
 
 The TC-1002 verification repair expanded formatter coverage to every maintained
-valid corpus and restored a passing complete `make verify` run. The remaining
-1.0 decision concerns the evidence scope and compatibility promise, not a known
-red build gate.
+valid corpus; Experiment 0024 extends that inventory to 30 source sets and 64
+files. The complete `make verify` gate remains the release check. Source 1.0 is
+deferred for evidence reasons, not because of a known red build gate.
 
 `make test` runs the maintained JVM regression suite. `make native-smoke` builds and runs a
 test-only executable with `--no-fallback`. Generated classes and native output

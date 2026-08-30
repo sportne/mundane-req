@@ -161,18 +161,15 @@ verification, safety assessment, allocation, glossary and symbols, and trace
 policy have explicit dispositions. Their deferred companion carriers are not
 missing intrinsic requirement fields.
 
-The current 1.0 candidate is therefore a no-feature, semantics-identical
-successor to this contract. Publication remains conditional and has not
-occurred. TC-1002 has restored a passing complete formatter and native
-verification gate. It must still:
-
-- decide explicitly how absent independent-human authoring, normal-review, and
-  real formal-traceability workflow evidence affects publication;
-- define the exact stable source compatibility promise and repository contract
-  selection behavior;
-- establish and tag the 1.0 conformance baseline; and
-- reconcile tool source-contract claims without stabilizing their separate CLI
-  or Java interfaces.
+The only identified 1.0 candidate remains a no-feature, semantics-identical
+successor to this contract. [TC-1002](../roadmap/closed/task-1002-define-compatibility-and-publish-or-defer-1.0.md)
+deferred publication on 2026-08-30 because independent-human authoring, normal
+human review, and realistic workflow evidence were insufficient for a durable
+compatibility promise. [Experiment 0024](../experiments/0024-vaccine-monitoring-pilot/assessment.md)
+subsequently exercised a realistic self-run formal-traceability workflow and
+retained the requirement grammar unchanged. It does not supply the independent-
+human evidence or authorize 1.0 publication. The formatter and native
+verification gate is passing.
 
 The following remain future evidence or independently versioned work rather
 than prerequisites for the 0.2 semantic model:
@@ -180,7 +177,8 @@ than prerequisites for the 0.2 semantic model:
 - sustained use by a real systems-engineering team on a larger corpus;
 - incompatible source-version coexistence if a real migration requires it;
 - stable verification, assessment, allocation, glossary, symbol, view, or
-  project-policy companion carriers when demonstrated workflows justify them;
+  project-policy companion carriers; the verification workflow now justifies a
+  bounded analyzer-contract experiment but not a standardized carrier;
 - cross-tool ReqIF fidelity, update behavior, and identity continuity beyond
   Experiment 0006's bounded semantic self-roundtrip; and
 - broader native platform and operational support evidence.

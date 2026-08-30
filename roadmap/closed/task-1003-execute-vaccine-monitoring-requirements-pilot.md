@@ -1,6 +1,6 @@
 # Task TC-1003: Execute a Vaccine-Monitoring Requirements Pilot
 
-Status: In progress
+Status: Complete
 
 Roadmap stage: 10
 
@@ -8,7 +8,7 @@ Type: Trial
 
 Depends on: TC-1002
 
-Unlocks: A renewed source 1.0 readiness assessment
+Unlocks: TC-0905 and a renewed source 1.0 readiness assessment
 
 ## Question
 
@@ -72,11 +72,20 @@ companion artifacts. Create narrowly framed follow-up work only for concrete
 friction observed in the pilot. Do not publish source 1.0 solely because this
 self-executed pilot succeeds.
 
+Completed on 2026-08-30. Experiment 0024 established two tagged requirement
+baselines, executed CR-001, retained the source language unchanged, and selected
+the bounded verification-analyzer contract experiment in TC-0905. Source 1.0
+remains deferred because the self-executed pilot does not provide independent-
+human evidence. The final GraalVM `make verify` gate passes with the pilot work
+product included in the maintained 30-source-set, 64-file formatter matrix.
+
 ## References
 
-- [Roadmap 0001](0001-initial-roadmap.md)
-- [TC-1002](closed/task-1002-define-compatibility-and-publish-or-defer-1.0.md)
-- [Readiness audit](../research/0031-source-1.0-readiness-audit.md)
-- [Verification companion decision](../research/0024-verification-companion-decision.md)
-- [Safety-classification decision](../research/0025-safety-classification-ownership-decision.md)
-- [Allocation decision](../research/0027-allocation-model-decision.md)
+- [Roadmap 0001](../0001-initial-roadmap.md)
+- [TC-1002](task-1002-define-compatibility-and-publish-or-defer-1.0.md)
+- [Readiness audit](../../research/0031-source-1.0-readiness-audit.md)
+- [Verification companion decision](../../research/0024-verification-companion-decision.md)
+- [Safety-classification decision](../../research/0025-safety-classification-ownership-decision.md)
+- [Allocation decision](../../research/0027-allocation-model-decision.md)
+- [Experiment assessment](../../experiments/0024-vaccine-monitoring-pilot/assessment.md)
+- [Pilot decision](../../research/0032-end-to-end-pilot-decision.md)

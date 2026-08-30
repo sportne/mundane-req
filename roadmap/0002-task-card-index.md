@@ -95,10 +95,11 @@ These cards are not assumed to produce syntax. Each must first determine whether
 | [TC-0901](closed/task-0901-prioritize-the-next-ecosystem-tool.md) | Evidence-backed next-tool selection | Complete: no tool selected | TC-0603, TC-0704 |
 | [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md) | Cross-tool ReqIF fidelity evidence | Conditional | TC-0603 |
 | [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Rendering/view evidence | Conditional | TC-0603, TC-0807 |
-| [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) | One additional independent tool | Conditional: not unlocked | A future prioritization decision that selects a tool |
+| [TC-0905](task-0905-define-verification-analyzer-contract.md) | Verification companion and binding contract | Ready | TC-0802, TC-1003 |
+| [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) | Focused verification-plan analyzer | Planned | TC-0905 |
 | [TC-1001](closed/task-1001-audit-readiness-for-1.0.md) | Source 1.0 evidence and gap audit | Complete: conditional source-only recommendation | TC-0704, TC-0705, TC-0706, selected TC-08xx and TC-09xx cards |
 | [TC-1002](closed/task-1002-define-compatibility-and-publish-or-defer-1.0.md) | Explicit 1.0 publication or deferral | Complete: 1.0 deferred | TC-1001 |
-| [TC-1003](task-1003-execute-vaccine-monitoring-requirements-pilot.md) | End-to-end formal-traceability pilot | In progress | TC-1002 |
+| [TC-1003](closed/task-1003-execute-vaccine-monitoring-requirements-pilot.md) | End-to-end formal-traceability pilot | Complete | TC-1002 |
 
 ## Updating cards
 

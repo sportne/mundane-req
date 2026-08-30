@@ -77,9 +77,9 @@ language. [Research 0007](../research/0007-provisional-source-representation-dec
 records that evidence and rationale. Later experiments established
 deterministic interpretation, transferability, comments, independent
 conformance, maintained native tools, bounded operational scale, and explicit
-dispositions for the principal model-pressure questions. The [source 1.0
-readiness audit](../research/0031-source-1.0-readiness-audit.md) is the current
-summary of what that evidence does and does not support.
+dispositions for the principal model-pressure questions. The [end-to-end pilot
+decision](../research/0032-end-to-end-pilot-decision.md) is the current summary
+of what that evidence does and does not support.
 
 The current direction is:
 
@@ -108,7 +108,9 @@ contract](0006-provisional-0.2-contract.md).
   continuity across ID correction. [Decision](../research/0023-identity-continuity-decision.md)
 - **Verification:** activity, plan, coverage, execution, evidence reference,
   and result are separate companion concepts. Their stable carrier and
-  satisfaction policy remain deferred. [Decision](../research/0024-verification-companion-decision.md)
+  satisfaction policy remain deferred. Experiment 0024 now justifies a focused
+  analyzer-contract experiment, not requirement syntax.
+  [Decision](../research/0032-end-to-end-pilot-decision.md)
 - **Safety and criticality:** contextual classifications belong to a
   baseline-bound assessment assertion, not an intrinsic requirement field.
   Stable carrier and scheme policy remain deferred.

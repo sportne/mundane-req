@@ -5,8 +5,8 @@ and decision records. Research explains evidence and tradeoffs; it is not
 normative source-language text unless a specification explicitly incorporates
 the result.
 
-For the current project position, begin with the [source 1.0 readiness
-audit](0031-source-1.0-readiness-audit.md), then follow its evidence links.
+For the current project position, begin with the [end-to-end pilot
+decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 
 ## Foundation and representation
 
@@ -31,7 +31,7 @@ audit](0031-source-1.0-readiness-audit.md), then follow its evidence links.
 | [0012 — Shared source representation](0012-shared-source-representation.md) | Separates lossless concrete source from semantic requirement values. |
 | [0013 — Interpreter migration closeout](0013-maintained-interpreter-migration-closeout.md) | Proves maintained and historical interpretations agree on the selected corpus. |
 | [0014 — Validator verification](0014-validator-verification.md) | Records JVM/native, conformance, diagnostic, and repair evidence. |
-| [0015 — Formatter verification](0015-formatter-verification.md) | Records preservation and idempotence over all 29 maintained source sets and 60 files. |
+| [0015 — Formatter verification](0015-formatter-verification.md) | Records preservation and idempotence over all 30 maintained source sets and 64 files. |
 | [0016 — First trace interface](0016-first-trace-interface.md) | Selects four bounded decomposition-navigation questions. |
 | [0017 — Native suite packaging](0017-native-suite-packaging.md) | Defines independent executable packaging and the Linux ABI boundary. |
 | [0018 — Clean-checkout CI workflow](0018-clean-checkout-ci-workflow.md) | Defines reproducible independent CI steps for the tool suite. |
@@ -63,3 +63,4 @@ audit](0031-source-1.0-readiness-audit.md), then follow its evidence links.
 | --- | --- |
 | [0030 — Next ecosystem tool prioritization](0030-next-ecosystem-tool-prioritization.md) | Selects no fourth tool without a demonstrated consumer or stable companion model. |
 | [0031 — Source 1.0 readiness audit](0031-source-1.0-readiness-audit.md) | Recommends a conditional source-only stability decision, identifies evidence gaps, and records the resolved verification blocker. |
+| [0032 — End-to-end pilot decision](0032-end-to-end-pilot-decision.md) | Retains the requirement model, keeps 1.0 deferred, and selects a bounded verification-analyzer experiment. |

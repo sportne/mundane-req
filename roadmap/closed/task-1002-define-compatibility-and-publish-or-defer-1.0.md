@@ -66,7 +66,7 @@ the model in a realistic end-to-end formal-traceability workflow. Publishing a
 compatibility promise before that use would turn untested modeling assumptions
 into long-term constraints.
 
-[TC-1003](../task-1003-execute-vaccine-monitoring-requirements-pilot.md) is the
+[TC-1003](task-1003-execute-vaccine-monitoring-requirements-pilot.md) is the
 bounded next evidence card. It uses authoritative public source documents and
 the maintained tools to execute a requirements-engineering pilot without
 external participants. This is intentionally not a substitute for independent
@@ -90,7 +90,7 @@ policy change. The publication-or-deferral decision was closed as a deferral on
 
 ## References
 
-- [TC-1001](closed/task-1001-audit-readiness-for-1.0.md)
-- [Readiness audit](../research/0031-source-1.0-readiness-audit.md)
-- [Current 0.2 contract](../specification/0006-provisional-0.2-contract.md)
-- [Roadmap 0001](0001-initial-roadmap.md)
+- [TC-1001](task-1001-audit-readiness-for-1.0.md)
+- [Readiness audit](../../research/0031-source-1.0-readiness-audit.md)
+- [Current 0.2 contract](../../specification/0006-provisional-0.2-contract.md)
+- [Roadmap 0001](../0001-initial-roadmap.md)
