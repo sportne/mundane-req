@@ -1,4 +1,4 @@
-# Baseline A Contextual Safety Assessment
+# Current Contextual Safety Assessment
 
 This is a pilot assessment, not a safety certification or a claim about a
 built product. `safety.tsv` records baseline-bound assertions rather than

@@ -37,17 +37,19 @@ procedures for responding to temperature excursions.
    stakeholders, operational contexts, assumptions, and exclusions.
 3. [`protocol.md`](protocol.md) fixes the trial procedure and evaluation
    questions before requirements are authored.
-4. `baseline-a/` will contain the first reviewed source set and companion
-   planning artifacts.
+4. The tag `experiment-0024-baseline-a` identifies the first reviewed source
+   set and companion planning artifacts.
 5. `change/` will contain the controlled change request, impact analysis, and
    review record.
-6. `baseline-b/` will contain the changed source set and updated companion
-   artifacts.
-7. `results/` will contain reproducible tool output and the final assessment.
+6. `product/` contains the advancing work product; the tag
+   `experiment-0024-baseline-b` will identify its second reviewed baseline.
+7. `assessment.md` will contain the final trial assessment.
 
 Git commits and annotated experiment tags identify the two requirement
-baselines. Directory names are convenient experiment labels, not requirement
-identity or source-language semantics.
+baselines. The current branch does not preserve duplicate baseline directories;
+ordinary Git reconstructs each tagged source and companion snapshot. Directory
+names are convenient working labels, not requirement identity or
+source-language semantics.
 
 ## Claims deliberately not made
 

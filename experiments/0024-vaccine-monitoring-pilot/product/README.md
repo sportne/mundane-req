@@ -1,6 +1,6 @@
-# SVEMS Baseline A
+# SVEMS Current Work Product
 
-Status: Self-reviewed pilot baseline
+Status: Baseline B change in progress
 
 Source-set digest: `sha256:73cda2413ec43084da68e046f35a35f264c54fadca4437fd1a601259fe8d4c4c`
 

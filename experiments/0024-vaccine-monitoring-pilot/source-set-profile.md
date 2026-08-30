@@ -9,13 +9,14 @@ named `requirements` immediately beneath that baseline directory. Every `.mreq`
 file recursively selected from that directory is in scope under Clause 7 of the
 0.2 language standard.
 
-Baseline A selection:
+Baseline A selection from its tag:
 
-    build/maintained/mundanereq-validate experiments/0024-vaccine-monitoring-pilot/baseline-a/requirements
+    git worktree add TEMP experiment-0024-baseline-a
+    TEMP/build/maintained/mundanereq-validate TEMP/experiments/0024-vaccine-monitoring-pilot/baseline-a/requirements
 
-Baseline B selection:
+Current and eventual Baseline B selection:
 
-    build/maintained/mundanereq-validate experiments/0024-vaccine-monitoring-pilot/baseline-b/requirements
+    build/maintained/mundanereq-validate experiments/0024-vaccine-monitoring-pilot/product/requirements
 
 Markdown, TSV, tool output, and Git metadata are not requirement source. They
 may be authoritative workflow artifacts in the experiment, but they are not

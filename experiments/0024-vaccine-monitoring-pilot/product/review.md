@@ -1,4 +1,4 @@
-# Baseline A Self-Review
+# Current Self-Review
 
 Date: 2026-08-30
 

@@ -18,6 +18,7 @@ product conforms to the referenced document.
 | `CDC-TOOLKIT-2026-07` | Operational guidance | CDC, *Vaccine Storage and Handling Toolkit*, July 2026 | https://stacks.cdc.gov/view/cdc/258326 |
 | `CDC-PINK-5` | Operational guidance | CDC Pink Book, Chapter 5, *Vaccine Storage and Handling*, web edition retrieved 2026-08-30 | https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-5-vaccine-storage-and-handling.html |
 | `PILOT-CONTEXT` | Project decision | [`system-context.md`](system-context.md), Baseline A context | Repository artifact |
+| `CR-001` | Authorized pilot change | [`change/CR-001.md`](change/CR-001.md), five-year hosted-data period | Repository artifact |
 
 ## Source roles
 
