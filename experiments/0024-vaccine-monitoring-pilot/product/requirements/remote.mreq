@@ -14,10 +14,10 @@ requirement RDS-002
 title: Retain complete hosted record
 allocation: Remote data service
 statement:
-  The remote data service shall retain accepted raw observations, logger files, alarm events, fault events, configuration changes, and generated summaries for at least three years after their recorded time.
+  The remote data service shall retain accepted raw observations, logger files, alarm events, fault events, configuration changes, and generated summaries for at least five years after their recorded time.
 rationale:
-  The hosted service is the durable remote record for the selected service period.
-source: WHO-EM01.2:4.2.19
+  The hosted service is the durable remote record for the employer's changed service period.
+source: CR-001 + WHO-EM01.2:4.2.19
 decomposes: SYS-009
 decomposes: SYS-013
 end requirement

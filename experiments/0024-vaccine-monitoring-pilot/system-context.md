@@ -1,4 +1,4 @@
-# SVEMS System Context — Baseline A
+# SVEMS System Context — Baseline B
 
 Status: Pilot context definition
 
@@ -62,7 +62,7 @@ Outside SVEMS:
 - A reachable external notification gateway accepts notification requests;
   end-to-end delivery by a telecommunications provider is not under SVEMS
   control.
-- The pilot uses a three-year hosted-data service period.
+- The pilot uses a five-year hosted-data service period under `CR-001`.
 - The deployment country, hosting country, communications technology, and
   programme-specific access policy are procurement/configuration decisions.
 

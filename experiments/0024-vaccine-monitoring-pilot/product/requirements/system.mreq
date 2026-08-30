@@ -95,10 +95,10 @@ requirement SYS-009
 title: Retain hosted monitoring records
 allocation: SVEMS
 statement:
-  SVEMS shall make raw observations, alarms, faults, and derived summaries available to authorized employer users for at least three years after their recorded time.
+  SVEMS shall make raw observations, alarms, faults, and derived summaries available to authorized employer users for at least five years after their recorded time.
 rationale:
-  The pilot chooses the standard three-year service period for operational review and investigation.
-source: WHO-EM01.2:4.2.19 + CDC-PINK-5:Monitoring Vaccine Temperatures
+  The employer's changed service period supports a longer programme audit and investigation horizon.
+source: CR-001 + WHO-EM01.2:4.2.19
 decomposes: NEED-004
 decomposes: NEED-005
 end requirement

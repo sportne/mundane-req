@@ -1,60 +1,55 @@
-# Current Self-Review
+# Baseline B Self-Review
 
 Date: 2026-08-30
 
 Reviewer: Codex acting as the pilot systems engineer
 
-Independence: none. This review is a disciplined second pass by the same agent,
-not independent-human evidence or external approval.
+Independence: none. The same limitation as Baseline A applies.
 
-## Review performed
+## Change reviewed
 
-- Compared each selected source-backed statement with the source register and
-  relevant clause locator.
-- Checked requirement statements for a named subject, observable obligation or
-  stakeholder need, and an identifiable operational context where needed.
-- Queried every authored decomposition target through source validation.
-- Confirmed every system requirement has a stakeholder parent and every
-  allocated lower-level requirement has a system parent.
-- Compared system obligations with lower-level coverage and added `DEV-019`
-  when the integrity requirement had no producer for the digest verified by
-  `RDS-005`.
-- Added `RDS-008` when the interval-status system requirement had presentation
-  but no durable remote classification behavior.
-- Confirmed all 57 requirements have at least one planned verification or
-  stakeholder-validation activity.
-- Kept verification execution, evidence, results, and safety assessment out of
-  requirement records.
+CR-001 increases hosted record availability from three years to five years.
+The focused requirement diff changes only `SYS-009` and `RDS-002`; their IDs,
+allocations, and decomposition relationships remain stable. The changed source
+fields identify the project change and retain the applicable WHO hosting clause.
 
-## Findings closed before baselining
+`NTF-002`, `NEED-004`, `NEED-005`, and `RDS-006` were inspected from the impact
+paths and related workflow. They remain unchanged because they define retained
+content, the contracted-period need, and export behavior without fixing the
+duration.
 
-1. `SYS-016` initially decomposed only to file preservation, service checking,
-   and export-digest behavior. `DEV-019` now establishes the pre-transfer digest
-   needed to detect transfer corruption.
-2. `SYS-012` initially relied on `UI-001` to display status without allocating
-   persistent interval classification. `RDS-008` now owns that behavior.
+## Companion review
 
-## Accepted limitations and friction
+- `ACT-RETENTION` now evaluates five years.
+- Every coverage row now belongs to `PLAN-B`; all 57 requirement IDs remain
+  covered exactly once in this bounded plan.
+- `PLAN-B` binds the new requirement and activity source digests.
+- Baseline A's plan is detectably stale against Baseline B.
+- The six safety judgments did not change substantively because none of their
+  requirement values or contexts changed. Their whole-source-set binding still
+  required six mechanical assertion revisions.
 
-- Several requirements have compound provenance. The single opaque `source`
-  field remains readable, but software cannot reliably split or query those
-  references. This is a concrete provenance-analysis limitation, not evidence
-  that arbitrary attributes belong in the requirement language.
-- Source-set scope, allowed allocations, and trace-coverage policy require the
-  separate project profile. The validator correctly does not infer them, but no
-  focused project-policy tool checks them yet.
-- The 57-row verification coverage table is understandable and diffable but
-  laborious to audit manually. A focused analyzer would now solve an observed
-  problem: referential checking, exact baseline binding, uncovered-item queries,
-  and stale-plan detection.
-- Safety levels are meaningful only with their context, scheme, rationale,
-  evidence source, authority, and exact source-set digest. Putting only `L1` or
-  `L2` into requirement records would lose material semantics.
-- Public source documents and the source register provide realistic inputs but
-  do not substitute for stakeholder validation of the pilot's derived needs.
+## Tool review
+
+- Formatter check: pass with no source rewrite.
+- Validator: 57 requirements and 70 decomposition relationships in four files.
+- Requirement manifest: all four files pass SHA-256 checking.
+- Verification binding: requirement and activity digests match `PLAN-B`.
+- Coverage: 57 rows, 57 known requirements, zero uncovered requirements.
+- Trace: `SYS-009` still has `RDS-002` and `NTF-002` as incoming lower-level
+  requirements; `RDS-002` reaches `NEED-004` and `NEED-005` through `SYS-009`.
+
+## Finding
+
+The controlled change is easy to understand in ordinary requirement-source
+diffs. The most significant friction is not in `.mreq`; it is the coarse digest
+used by provisional companion artifacts. A change to two unassessed retention
+requirements made all six safety assertions stale because they bind the whole
+source set. This preserves honesty but creates irrelevant churn. A future
+companion experiment should compare exact per-requirement semantic revision
+bindings with whole-source-set bindings before any carrier is standardized.
 
 ## Disposition
 
-Accept Baseline A for the controlled-change phase. The source model is adequate
-for this baseline without new syntax. The accepted limitations remain explicit
-inputs to the final assessment.
+Accept Baseline B. CR-001 is fully represented and no source-language change is
+justified by the workflow.

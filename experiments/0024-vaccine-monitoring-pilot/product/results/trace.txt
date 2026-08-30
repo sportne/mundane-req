@@ -35,3 +35,15 @@ Lower-level impact paths to SYS-016:
 1 DEV-019 -> SYS-016
 1 RDS-005 -> SYS-016
 1 RDS-007 -> SYS-016
+
+COMMAND: mundanereq-trace impact SYS-009 requirements
+Lower-level impact paths to SYS-009:
+1 NTF-002 -> SYS-009
+1 RDS-002 -> SYS-009
+
+COMMAND: mundanereq-trace higher RDS-002 requirements
+Higher-level decomposition paths from RDS-002:
+1 RDS-002 -> SYS-009
+1 RDS-002 -> SYS-013
+2 RDS-002 -> SYS-009 -> NEED-004
+2 RDS-002 -> SYS-009 -> NEED-005

@@ -1,5 +1,5 @@
-plan=PLAN-A
-requirement_source_set_sha256=73cda2413ec43084da68e046f35a35f264c54fadca4437fd1a601259fe8d4c4c
+plan=PLAN-B
+requirement_source_set_sha256=2f3ce6e76a89fb573f0bb3a7f697b410f981a2b7d50a8ee68068128c9aa9ea51
 requirements=57
 coverage_rows=57
 covered_requirements=57
