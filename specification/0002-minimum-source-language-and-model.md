@@ -111,6 +111,13 @@ The relationship does not claim that the source requirement independently and co
 
 The minimum validator checks that every target exists in the selected source set. Cycle analysis and completeness claims are deferred pending a concrete workflow.
 
+Experiment 0022 tests required downward coverage and acyclic decomposition as
+separate, scoped project-policy questions. Conforming 0.2 source may fail either
+policy. Scope, waivers, rationale, and misapplication risk remain human-readable
+project policy; the validator and requirement grammar do not own them. If a
+recurring workflow later justifies implementation, prefer a focused operation
+over a generalized rule language.
+
 ### External source
 
 **Selected for experiment:** `source` is an opaque scalar. This language does not parse document revisions, fragment locators, URIs, or supplier identifiers from it.
@@ -328,11 +335,12 @@ Experiment 0006 demonstrates a schema-valid bounded ReqIF 1.2 semantic self-roun
 ## Open questions after initial interpretation and use
 
 1. Do prose folding, fixed field order, and source discovery remain comfortable at larger scale and with independent authors?
-2. Which trace-completeness rules are common enough for reusable policy analysis without becoming universal language validity rules?
-3. What stable carrier and satisfaction policy, if any, should build on the selected verification companion model?
-4. Which real workflow, if any, justifies standardizing the provisional identified-allocation companion?
-5. What larger workflow would make ordinary prose and source search insufficient
+2. What stable carrier and satisfaction policy, if any, should build on the selected verification companion model?
+3. Which real workflow, if any, justifies standardizing the provisional identified-allocation companion?
+4. What larger workflow would make ordinary prose and source search insufficient
    for normative reused terms, or justify a symbol companion beyond adjacent
    local definitions?
+5. Which trace policy, if any, recurs often enough to justify a focused
+   implementation?
 
 The next model experiments should continue testing companion artifacts before expanding the grammar.

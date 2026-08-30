@@ -95,6 +95,7 @@ These are provisional language and model decisions supported by the experiment. 
 - What larger workflow would make prose and source search insufficient for
   normative reused terms, or justify definitions beyond local, adjacent
   mathematical symbol scope?
-- Which trace-completeness policies are reusable without becoming universal language rules?
+- Which trace policy, if any, recurs often enough to justify a focused
+  implementation without creating a generalized rule framework?
 - Does the first specification need an authored view at all?
 - What constrained mathematical-content profile, if any, should the source language promise?

@@ -392,6 +392,13 @@ from representation, tool-only meaning is rejected, and LaTeX remains opaque.
 
 Define example project policies for required decomposition coverage, permitted cycles, allowed allocation values, or verification coverage. Determine which checks are reusable while keeping policy failure distinct from source-language invalidity.
 
+Disposition: [Experiment 0022](../experiments/0022-trace-policies/README.md)
+tests scoped required-downward-coverage and acyclicity as focused policy
+questions, not language validity. Scope and waivers remain human-readable
+project source. Downward coverage has one observed UAS workflow; acyclicity is
+a boundary-control candidate. Neither has recurred enough to implement. The
+FRET counterexample shows universal application is unsound.
+
 ### Views and specifications
 
 Revisit authored ordering or document composition only for a demonstrated delivery or review workflow. Requirement files must remain the model; a specification or report should remain a view unless contrary evidence is compelling.

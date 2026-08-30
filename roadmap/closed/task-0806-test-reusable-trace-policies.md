@@ -1,6 +1,6 @@
 # Task TC-0806: Test Reusable Trace Policies
 
-Status: Conditional
+Status: Complete
 
 Roadmap stage: 8
 
@@ -43,7 +43,13 @@ Example policies for coverage, cycles, vocabularies, or verification distinguish
 
 Implement only policies demonstrated to recur. Prefer explicit focused checks before inventing generalized configuration.
 
+Completed on 2026-08-29. [Experiment 0022](../../experiments/0022-trace-policies/README.md)
+keeps scoped downward coverage and acyclicity outside language validity. Exact
+scope and waivers are human-readable policy data. Downward coverage has one
+observed workflow and acyclicity is a boundary-control candidate; neither has
+recurred enough to select an implementation.
+
 ## References
 
-- [Roadmap trace-policy study](0001-initial-roadmap.md#trace-policy)
-- [0.2 contract policy guidance](../specification/0006-provisional-0.2-contract.md#ci-trial-guidance)
+- [Roadmap trace-policy study](../0001-initial-roadmap.md#trace-policy)
+- [0.2 contract policy guidance](../../specification/0006-provisional-0.2-contract.md#ci-trial-guidance)

@@ -83,7 +83,7 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 | [TC-0803](closed/task-0803-test-safety-classification-ownership.md) | Safety classification ownership decision | Complete | TC-0603 |
 | [TC-0804](closed/task-0804-test-allocation-and-controlled-vocabulary.md) | Allocation model decision | Complete | TC-0603 |
 | [TC-0805](closed/task-0805-test-glossary-and-formal-symbol-artifacts.md) | Vocabulary and symbol model decision | Complete | TC-0603 |
-| [TC-0806](task-0806-test-reusable-trace-policies.md) | Language-versus-policy decision | Conditional | TC-0603 |
+| [TC-0806](closed/task-0806-test-reusable-trace-policies.md) | Language-versus-policy decision | Complete | TC-0603 |
 | [TC-0807](task-0807-test-authored-views-and-specifications.md) | View-language decision | Conditional | TC-0603 |
 
 These cards are not assumed to produce syntax. Each must first determine whether the need belongs to requirement content, a relationship, a companion artifact, project policy, Git/forge workflow, or a derived tool.
