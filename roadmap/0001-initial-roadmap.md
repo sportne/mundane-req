@@ -381,6 +381,13 @@ real need for them, so identified allocation targets remain deferred.
 
 Test whether shared terms and mathematical symbols need a human-readable companion artifact. Do not turn opaque LaTeX or requirement prose into an executable expression language without a concrete analysis need.
 
+Disposition: [Experiment 0021](../experiments/0021-glossary-symbols/README.md)
+shows that separately identified definitions and explicit use mappings can
+analyze a reused term, but authoritative prose plus ordinary search finds the
+same affected requirements with fewer concepts in this corpus. Term and
+formal-symbol companions are therefore deferred. Normativity does not follow
+from representation, tool-only meaning is rejected, and LaTeX remains opaque.
+
 ### Trace policy
 
 Define example project policies for required decomposition coverage, permitted cycles, allowed allocation values, or verification coverage. Determine which checks are reusable while keeping policy failure distinct from source-language invalidity.

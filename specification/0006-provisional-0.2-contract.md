@@ -156,7 +156,8 @@ Before evaluating the 0.2 contract, a team should:
 
 - whether an independently baselined consumer requires pre-exchanged identity
   beyond the 0.2 human ID;
-- a human-readable model for project vocabulary and formal symbols;
+- whether a larger workflow justifies a normative reused-term companion;
+  formal-symbol companions also remain deferred;
 - stable verification-companion syntax and satisfaction policy;
 - stable assessment-carrier syntax and scheme policy;
 - stable identified-allocation companion syntax and role policy, if a recurring

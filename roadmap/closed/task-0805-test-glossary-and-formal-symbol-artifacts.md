@@ -1,6 +1,6 @@
 # Task TC-0805: Test Glossary and Formal-Symbol Artifacts
 
-Status: Conditional
+Status: Complete
 
 Roadmap stage: 8
 
@@ -43,7 +43,14 @@ A bounded corpus compares ordinary prose definitions, a companion glossary or sy
 
 Adopt a companion artifact only if explicit shared identity materially improves the tested workflow over prose and project convention.
 
+Completed on 2026-08-29. [Experiment 0021](../../experiments/0021-glossary-symbols/README.md)
+finds that a structured companion can support rename and impact queries, but
+ordinary normative prose plus source search finds the same affected set with
+fewer concepts. It therefore defers both term and formal-symbol companions.
+Normativity is independent of representation, tool-owned definitions are
+rejected, and LaTeX stays opaque.
+
 ## References
 
-- [Roadmap glossary study](0001-initial-roadmap.md#glossary-and-formal-symbols)
-- [Mathematical content model](../specification/0002-minimum-source-language-and-model.md#mathematical-content)
+- [Roadmap glossary study](../0001-initial-roadmap.md#glossary-and-formal-symbols)
+- [Mathematical content model](../../specification/0002-minimum-source-language-and-model.md#mathematical-content)

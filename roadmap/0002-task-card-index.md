@@ -82,7 +82,7 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 | [TC-0802](closed/task-0802-model-verification-planning-and-evidence.md) | Verification companion-artifact decision | Complete | TC-0603 |
 | [TC-0803](closed/task-0803-test-safety-classification-ownership.md) | Safety classification ownership decision | Complete | TC-0603 |
 | [TC-0804](closed/task-0804-test-allocation-and-controlled-vocabulary.md) | Allocation model decision | Complete | TC-0603 |
-| [TC-0805](task-0805-test-glossary-and-formal-symbol-artifacts.md) | Vocabulary and symbol model decision | Conditional | TC-0603 |
+| [TC-0805](closed/task-0805-test-glossary-and-formal-symbol-artifacts.md) | Vocabulary and symbol model decision | Complete | TC-0603 |
 | [TC-0806](task-0806-test-reusable-trace-policies.md) | Language-versus-policy decision | Conditional | TC-0603 |
 | [TC-0807](task-0807-test-authored-views-and-specifications.md) | View-language decision | Conditional | TC-0603 |
 

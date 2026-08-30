@@ -254,6 +254,17 @@ After removing the statement's two-space indentation, `math latex` and `end math
 
 **Selected for experiment:** The semantic model records this as a math content block labeled `latex` with an opaque payload. It does not interpret or validate LaTeX commands.
 
+Experiment 0021 retains that opacity and all adjacent UAS formula definitions.
+Its provisional companion can query normative reused domain terms through
+rename and definition changes, but authoritative prose plus ordinary search
+finds the same affected requirements with fewer concepts in the bounded case.
+The companion is therefore deferred. Normativity is declared by project
+governance rather than implied by prose or table form.
+The same study defers a formal-symbol companion: two local equations legitimately
+reuse `T` with different adjacent definitions, so project-global symbol identity
+would distort the source. No carrier is standardized, and no definition creates
+macro expansion or executable mathematical semantics.
+
 **Deferred:** A promised LaTeX subset, macro policy, renderer behavior, mathematical equivalence, and math blocks in fields other than `statement`.
 
 ## Semantic interpretation
@@ -316,10 +327,12 @@ Experiment 0006 demonstrates a schema-valid bounded ReqIF 1.2 semantic self-roun
 
 ## Open questions after initial interpretation and use
 
-1. How should project vocabulary and formal symbol definitions remain independently readable without turning the requirement language into an executable expression framework?
-2. Do prose folding, fixed field order, and source discovery remain comfortable at larger scale and with independent authors?
-3. Which trace-completeness rules are common enough for reusable policy analysis without becoming universal language validity rules?
-4. What stable carrier and satisfaction policy, if any, should build on the selected verification companion model?
-5. Which real workflow, if any, justifies standardizing the provisional identified-allocation companion?
+1. Do prose folding, fixed field order, and source discovery remain comfortable at larger scale and with independent authors?
+2. Which trace-completeness rules are common enough for reusable policy analysis without becoming universal language validity rules?
+3. What stable carrier and satisfaction policy, if any, should build on the selected verification companion model?
+4. Which real workflow, if any, justifies standardizing the provisional identified-allocation companion?
+5. What larger workflow would make ordinary prose and source search insufficient
+   for normative reused terms, or justify a symbol companion beyond adjacent
+   local definitions?
 
 The next model experiments should continue testing companion artifacts before expanding the grammar.

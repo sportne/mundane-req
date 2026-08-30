@@ -92,7 +92,9 @@ These are provisional language and model decisions supported by the experiment. 
 - Does correction of a human-facing ID require separate durable machine identity or an explicit continuity mechanism?
 - What minimum source model should identify verification activities and bind their planned coverage to requirement revisions or baselines?
 - When do allocation labels need referential identity or a controlled vocabulary?
-- How should project vocabulary and formal symbol definitions remain independently readable without turning the requirement language into an executable expression framework?
+- What larger workflow would make prose and source search insufficient for
+  normative reused terms, or justify definitions beyond local, adjacent
+  mathematical symbol scope?
 - Which trace-completeness policies are reusable without becoming universal language rules?
 - Does the first specification need an authored view at all?
 - What constrained mathematical-content profile, if any, should the source language promise?
