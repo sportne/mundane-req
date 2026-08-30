@@ -62,7 +62,9 @@ The initial feasibility investigation and shared-foundation extraction are compl
 - There is no formatter or formatting contract.
 - There is no independently packaged traceability executable.
 - Separate tools have not yet been exercised together in a normal edit-review-CI workflow.
-- Operational scale, independent-team authoring, and sustained use on a substantial real corpus are unproven.
+- Human-team authoring and sustained use on a substantial real corpus are
+  unproven. Operational scale and independent subagent interpretation have
+  bounded evidence.
 - Requirement ID correction has been tested in one bounded scenario; 0.2 provisionally retains human-ID-only snapshot identity unless an independently baselined consumer demonstrates a need for pre-exchanged cross-baseline identity.
 - Verification and safety classification now have selected conceptual companion models but no stable carriers; controlled vocabularies and similar information remain unresolved.
 - ReqIF work has demonstrated only a self-roundtrip through a bounded profile, not practical interoperability with an independent tool.
@@ -303,7 +305,7 @@ If ordinary use requires a wrapper command, configuration file, or generated ind
 
 ## Stage 7 — Test operational use and scale
 
-Status: In progress
+Status: Completed with material scope deviation
 
 **Question:** Does the approach remain understandable with a larger corpus and authors who did not design the language?
 
@@ -319,7 +321,18 @@ Status: In progress
 
 ### Learning milestone
 
-The project has evidence about team adoption and corpus scale, not merely deterministic behavior on fixtures.
+The project has evidence about corpus scale, independent interpretation, and
+review correction, not merely deterministic behavior on fixtures. Human team
+adoption remains untested by explicit scope decision.
+
+[Experiment 0023](../experiments/0023-multi-subagent-author-review/README.md)
+records the project owner's decision to replace the planned human-author case
+with two fresh-context subagent authors, two independent reviewers, and a
+separate oracle auditor. Both authors completed the frozen task set correctly,
+and ordinary review corrected evidence defects without changing requirement
+source. This completes the selected Stage 7 evidence program but does not
+establish human learnability, effort, editor/forge experience, or broad
+usability. Those absences remain explicit inputs to TC-1001.
 
 [Experiment 0019](../experiments/0019-diagnostic-presentation/README.md)
 selects an explicit `--max-diagnostics N` behavior for a future validator trial
@@ -432,9 +445,12 @@ Each candidate should normally become its own executable or optional integration
 Disposition: [Research 0030](../research/0030-next-ecosystem-tool-prioritization.md)
 selects no fourth tool. Every candidate either lacks a demonstrated consumer,
 duplicates existing infrastructure, or depends on a provisional model. Complete
-the human-author trial in TC-0706 before reopening tool prioritization. TC-0902
-remains conditional on access to an independent ReqIF implementation and a
-credible exchange workflow; TC-0904 is not unlocked.
+the independent-author evidence in TC-0706 before reopening tool prioritization.
+TC-0706 is now complete through the explicitly substituted multi-subagent
+author/review case. That case cannot supply the human/editor evidence required
+to reopen the original editor-tool gate, so it selects no additional tool.
+TC-0902 remains conditional on access to an independent ReqIF implementation
+and a credible exchange workflow; TC-0904 is not unlocked.
 
 ### ReqIF milestone
 

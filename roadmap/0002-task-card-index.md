@@ -71,7 +71,7 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 | [TC-0703](closed/task-0703-run-the-multi-author-and-layout-trial.md) | Concurrency and file-granularity evidence | Complete | TC-0701 |
 | [TC-0704](closed/task-0704-measure-operational-scale.md) | Operational-scale measurements | Complete | TC-0702, TC-0703 |
 | [TC-0705](closed/task-0705-obtain-independent-conformance-evidence.md) | Independent interpretation evidence | Complete | TC-0103, TC-0303 |
-| [TC-0706](task-0706-run-the-human-author-trial.md) | Human-author usability evidence | Ready | TC-0701, TC-0702 |
+| [TC-0706](closed/task-0706-run-the-subagent-author-review-trial.md) | Material scope deviation: two-author/two-reviewer subagent evidence; human evidence absent | Complete | TC-0701, TC-0702 |
 | [TC-0707](closed/task-0707-test-bounded-diagnostic-presentation.md) | Large diagnostic-set presentation decision | Complete | TC-0704 |
 
 ## Model-pressure research cards
@@ -96,7 +96,7 @@ These cards are not assumed to produce syntax. Each must first determine whether
 | [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md) | Cross-tool ReqIF fidelity evidence | Conditional | TC-0603 |
 | [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Rendering/view evidence | Conditional | TC-0603, TC-0807 |
 | [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) | One additional independent tool | Conditional: not unlocked | A future prioritization decision that selects a tool |
-| [TC-1001](task-1001-audit-readiness-for-1.0.md) | 1.0 evidence and gap audit | Conditional | TC-0704, TC-0705, TC-0706, selected TC-08xx and TC-09xx cards |
+| [TC-1001](task-1001-audit-readiness-for-1.0.md) | 1.0 evidence and gap audit | Ready | TC-0704, TC-0705, TC-0706, selected TC-08xx and TC-09xx cards |
 | [TC-1002](task-1002-define-compatibility-and-publish-or-defer-1.0.md) | Explicit 1.0 publication or deferral | Conditional | TC-1001 |
 
 ## Updating cards

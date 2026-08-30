@@ -1,6 +1,6 @@
 # Task TC-1001: Audit Readiness for 1.0
 
-Status: Conditional
+Status: Ready
 
 Roadmap stage: 10
 
@@ -21,6 +21,8 @@ A traceable audit evaluates every Roadmap Stage 10 criterion against committed e
 ## Work
 
 - Review independent authoring and conformance evidence.
+- Treat the deliberate substitution of subagents for the TC-0706 human-author
+  case as an evidence limitation, not favorable human-usability evidence.
 - Review validator, formatter, trace, operational-scale, and Git workflow results.
 - Review language evolution and repository contract selection.
 - Confirm dispositions for identity and every consequential model-pressure issue encountered in trials.
@@ -49,5 +51,5 @@ Advance only if the small source foundation is understood well enough to preserv
 
 - [TC-0704](closed/task-0704-measure-operational-scale.md)
 - [TC-0705](closed/task-0705-obtain-independent-conformance-evidence.md)
-- [TC-0706](task-0706-run-the-human-author-trial.md)
+- [TC-0706](closed/task-0706-run-the-subagent-author-review-trial.md)
 - [Roadmap Stage 10](0001-initial-roadmap.md#stage-10--decide-whether-to-stabilize-10)

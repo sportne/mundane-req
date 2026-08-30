@@ -57,7 +57,8 @@ yet contain evidence sufficient to choose one.
 ## Selected next experiment
 
 Select no ecosystem-tool implementation and do not unlock TC-0904. The next
-bounded evidence milestone is existing [TC-0706](../roadmap/task-0706-run-the-human-author-trial.md).
+bounded evidence milestone is existing
+[TC-0706](../roadmap/closed/task-0706-run-the-subagent-author-review-trial.md).
 Its primary question is whether a systems engineer can understand, author,
 repair, trace, and review the source using the written material and current
 tools.
@@ -80,3 +81,18 @@ portfolio. Existing documentation or infrastructure is not declared sufficient
 in advance; the trial is how the project will determine where it is
 insufficient. Keep source authoritative, avoid persistent services, and require
 future candidates to solve one observed workflow before implementation.
+
+## Subsequent scope decision
+
+On 2026-08-30 the project owner explicitly replaced the planned human case with
+the [Experiment 0023](../experiments/0023-multi-subagent-author-review/README.md)
+two-author/two-reviewer subagent trial. That experiment adds independent
+interpretation and review evidence but cannot provide the human effort,
+completion, navigation, editor, or forge evidence that this research named as
+the condition for reconsidering editor/LSP support.
+
+Therefore Experiment 0023 does not positively satisfy the original editor-tool
+gate and does not select a fourth tool. The project has chosen not to collect
+that human evidence at this stage. TC-1001 must decide whether the resulting
+uncertainty blocks 1.0, belongs outside the intended compatibility promise, or
+requires a later bounded task. TC-0904 remains locked.
