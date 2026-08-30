@@ -121,11 +121,18 @@ Experiment 0004 demonstrates that an opaque value can preserve a precise Git com
 
 ### Allocation
 
-**Hypothesis:** `allocation` remains a plain label. Its presence is optional so that an otherwise valid requirement can exist before allocation. Modeling components or allocations as relationship objects is deferred.
+**Model decision:** `allocation` remains a plain label. Its presence is optional so that an otherwise valid requirement can exist before allocation. Modeling components or allocations as relationship objects is not part of the core requirement model.
 
-Experiment 0003 found that a reallocation is a clear one-line change, but also confirmed that a label cannot provide referential component identity, controlled vocabulary, or rename semantics. The hypothesis remains unchanged pending another corpus.
+Experiment 0003 found that a reallocation is a clear one-line change, but also confirmed that a label cannot provide referential component identity, controlled vocabulary, or rename semantics.
 
 Experiment 0004 maps FRET's single `vehicle` component label directly and readably, but the one-value vocabulary provides no evidence about heterogeneous target types or rename behavior. A repository policy may constrain allowed labels without changing the core model.
+
+Experiment 0020 exercises heterogeneous targets, a recorded reallocation,
+display-name change, typo detection, and multiple responsibility. It retains the
+plain label and selects separate project policy for allowed labels. Its
+synthetic rename and multi-target cases show that an identified companion could
+represent those concerns but do not demonstrate a real need, so no target
+carrier or role vocabulary is selected.
 
 ### Revisions and baselines
 
@@ -309,10 +316,10 @@ Experiment 0006 demonstrates a schema-valid bounded ReqIF 1.2 semantic self-roun
 
 ## Open questions after initial interpretation and use
 
-1. When do allocation labels need referential identity or a controlled vocabulary?
-2. How should project vocabulary and formal symbol definitions remain independently readable without turning the requirement language into an executable expression framework?
-3. Do prose folding, fixed field order, and source discovery remain comfortable at larger scale and with independent authors?
-4. Which trace-completeness rules are common enough for reusable policy analysis without becoming universal language validity rules?
-5. What stable carrier and satisfaction policy, if any, should build on the selected verification companion model?
+1. How should project vocabulary and formal symbol definitions remain independently readable without turning the requirement language into an executable expression framework?
+2. Do prose folding, fixed field order, and source discovery remain comfortable at larger scale and with independent authors?
+3. Which trace-completeness rules are common enough for reusable policy analysis without becoming universal language validity rules?
+4. What stable carrier and satisfaction policy, if any, should build on the selected verification companion model?
+5. Which real workflow, if any, justifies standardizing the provisional identified-allocation companion?
 
 The next model experiments should continue testing companion artifacts before expanding the grammar.

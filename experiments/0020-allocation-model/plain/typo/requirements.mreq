@@ -1,0 +1,6 @@
+requirement SYS-004
+title: Flight-plan authorization binding
+allocation: Authorisation service
+statement:
+  The service shall bind each approved flight plan to its authorizing decision.
+end requirement

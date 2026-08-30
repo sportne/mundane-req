@@ -1,6 +1,6 @@
 # Task TC-0804: Test Allocation and Controlled Vocabulary
 
-Status: Conditional
+Status: Complete
 
 Roadmap stage: 8
 
@@ -43,7 +43,13 @@ A corpus experiment compares plain labels, project-policy vocabularies, and sepa
 
 Keep the plain label unless referential continuity or multi-target semantics solve a demonstrated workflow that project policy cannot.
 
+Completed on 2026-08-29. [Experiment 0020](../../experiments/0020-allocation-model/README.md)
+retains the plain label for singular display-oriented allocation and separates
+allowed-value policy from parsing. Synthetic rename and multi-target scenarios
+show what stable companion target references could represent but do not
+demonstrate a real need, so the companion remains deferred.
+
 ## References
 
-- [Roadmap allocation study](0001-initial-roadmap.md#allocation-and-controlled-vocabulary)
-- [Minimum allocation hypothesis](../specification/0002-minimum-source-language-and-model.md#allocation)
+- [Roadmap allocation study](../0001-initial-roadmap.md#allocation-and-controlled-vocabulary)
+- [Minimum allocation model](../../specification/0002-minimum-source-language-and-model.md#allocation)

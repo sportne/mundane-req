@@ -1,0 +1,2 @@
+SYS-012	primary	TGT-GCA	Ground-control adapter	adapter
+SYS-012	supporting	TGT-LINK	Link monitor	service

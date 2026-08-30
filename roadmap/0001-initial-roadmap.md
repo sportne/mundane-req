@@ -371,6 +371,12 @@ deferred.
 
 Use a corpus with real component identity, renaming, heterogeneous allocation targets, and project vocabulary. Determine whether the current label is sufficient or whether allocation should reference separately identified model objects.
 
+Disposition: [Experiment 0020](../experiments/0020-allocation-model/README.md)
+retains the opaque label and treats allowed values as project policy. Its
+recorded real reallocation is clear in an ordinary diff. Synthetic rename and
+multi-target cases demonstrate possible companion representations but not a
+real need for them, so identified allocation targets remain deferred.
+
 ### Glossary and formal symbols
 
 Test whether shared terms and mathematical symbols need a human-readable companion artifact. Do not turn opaque LaTeX or requirement prose into an executable expression language without a concrete analysis need.
