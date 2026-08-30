@@ -54,8 +54,8 @@ The [source 1.0 readiness
 audit](research/0031-source-1.0-readiness-audit.md) identifies a no-feature,
 semantics-identical successor to 0.2 as the only current 1.0 candidate, but it
 does not authorize publication. [TC-1002](roadmap/task-1002-define-compatibility-and-publish-or-defer-1.0.md)
-must repair the complete verification gate and decide whether missing human
-authoring, normal-review, and real formal-traceability workflow evidence
+has restored the complete verification gate and must now decide whether missing
+human authoring, normal-review, and real formal-traceability workflow evidence
 requires deferral. Until that task completes, `mundanereq-source-0.2` remains
 the current provisional contract.
 
@@ -85,12 +85,10 @@ The intended complete JVM and native clean-checkout gate is:
 
     make verify
 
-At the current commit, `make test` passes, but `make verify` stops at the
-formatter maintained-corpus completeness check because later experiment
-corpora have not yet been added to that check's explicit inventory. This is a
-documented [TC-1002 release
-blocker](research/0031-source-1.0-readiness-audit.md#publication-work-required-in-tc-1002),
-not a claim that those omitted corpora preserve formatting semantics.
+The TC-1002 verification repair expanded formatter coverage to every maintained
+valid corpus and restored a passing complete `make verify` run. The remaining
+1.0 decision concerns the evidence scope and compatibility promise, not a known
+red build gate.
 
 `make test` runs the maintained JVM regression suite. `make native-smoke` builds and runs a
 test-only executable with `--no-fallback`. Generated classes and native output

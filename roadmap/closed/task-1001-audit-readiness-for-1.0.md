@@ -77,6 +77,12 @@ Experiment 0011. This does not establish a formatter semantic defect, but the
 omitted sets lack the formatter's maintained preservation evidence. TC-1002
 must restore and pass the complete verification run before publication.
 
+Resolved on 2026-08-30 during TC-1002: the formatter matrix now covers 29
+source sets and 60 files, focused JVM/native verification passes, and the
+complete `make verify` gate passes without a formatter behavior change. The
+human-authoring, normal-review, and real-workflow evidence decisions remain
+open.
+
 ## References
 
 - [TC-0704](task-0704-measure-operational-scale.md)

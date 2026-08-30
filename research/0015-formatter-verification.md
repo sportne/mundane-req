@@ -4,6 +4,8 @@ Status: Complete
 
 Date: 2026-08-23
 
+Maintained-corpus coverage expanded: 2026-08-30
+
 Roadmap task: [TC-0403](../roadmap/closed/task-0403-verify-formatter-safety-properties.md)
 
 ## Question
@@ -22,7 +24,10 @@ process. The maintained source-set matrix contains:
 - both source-representation layouts;
 - the sustained-authoring and NASA FRET transfer corpora; and
 - all three Experiment 0008 formatting-policy fixtures, including all-CRLF
-  input and both LF candidates.
+  input and both LF candidates;
+- trace-workflow, integrated-toolchain, and operational corpora; and
+- all language-valid source sets from the identity, verification, safety,
+  allocation, glossary and symbol, and trace-policy experiments.
 
 For every selected physical file, the gate formats once and twice and requires
 the second byte sequence to equal the first. It requires ordered nonblank line
@@ -34,7 +39,7 @@ Every maintained source set is also passed to `--check` through both the JVM
 entry point and native process with exact status, output, and diagnostic
 agreement. A completeness assertion discovers every `.mreq` file under
 `conformance/` and `experiments/` outside an `invalid/` directory and requires
-the nine-set matrix to cover it. Adding maintained valid source therefore
+the 29-source-set matrix to cover it. Adding maintained valid source therefore
 cannot silently bypass this gate.
 
 The process-level matrix compares status, standard output, and standard error
@@ -103,3 +108,19 @@ No safety blocker was found. The formatter may advance to a maintained trial
 contract without widening the two-rule policy. Any future prose reflow,
 ordering, indentation, comment-placement, or math rewrite remains a new policy
 experiment rather than an implementation detail.
+
+## Maintained-corpus expansion
+
+TC-1001 discovered that valid source added by Experiments 0016 through 0022
+was visible to the completeness assertion but absent from the explicit
+source-set matrix. TC-1002 added 15 selections at their actual independent
+source-set boundaries, including allocation-typo and trace-policy-failure
+fixtures that conform to the source language while intentionally failing
+separate project policy.
+
+The expanded focused gate passes over 29 source sets and 60 files. It preserves
+33 comments and 102 opaque math lines in order, remains byte-idempotent, and
+agrees between JVM and native execution. The complete `make verify` gate also
+passes, including native boundaries, all three tool verifications, package and
+CI checks, integrated and multi-author workflows, and independent conformance.
+No formatter implementation or policy change was necessary.

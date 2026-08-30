@@ -34,7 +34,22 @@ public final class FormatterVerificationTest {
             "experiments/0009-trace-workflows/graph-split",
             "experiments/0010-integrated-toolchain-trial/baseline",
             "experiments/0010-integrated-toolchain-trial/proposed",
-            "experiments/0011-operational-corpus/requirements");
+            "experiments/0011-operational-corpus/requirements",
+            "experiments/0016-identity-continuity/scenario/baseline-a",
+            "experiments/0016-identity-continuity/scenario/baseline-b",
+            "experiments/0017-verification-evidence/scenario/baseline-a",
+            "experiments/0017-verification-evidence/scenario/baseline-b",
+            "experiments/0018-safety-classification/scenario",
+            "experiments/0020-allocation-model/plain/baseline-a",
+            "experiments/0020-allocation-model/plain/baseline-b",
+            "experiments/0020-allocation-model/plain/typo",
+            "experiments/0020-allocation-model/referenced",
+            "experiments/0021-glossary-symbols/scenario/baseline-a",
+            "experiments/0021-glossary-symbols/scenario/baseline-b",
+            "experiments/0021-glossary-symbols/scenario/baseline-c",
+            "experiments/0022-trace-policies/source/pass",
+            "experiments/0022-trace-policies/source/coverage-fail",
+            "experiments/0022-trace-policies/source/cycle-fail");
 
     private record Invocation(int status, byte[] out, byte[] err) {}
 

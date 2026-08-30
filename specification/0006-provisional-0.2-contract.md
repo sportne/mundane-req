@@ -163,9 +163,9 @@ missing intrinsic requirement fields.
 
 The current 1.0 candidate is therefore a no-feature, semantics-identical
 successor to this contract. Publication remains conditional and has not
-occurred. TC-1002 must:
+occurred. TC-1002 has restored a passing complete formatter and native
+verification gate. It must still:
 
-- restore a passing complete formatter and native verification gate;
 - decide explicitly how absent independent-human authoring, normal-review, and
   real formal-traceability workflow evidence affects publication;
 - define the exact stable source compatibility promise and repository contract

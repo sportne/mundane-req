@@ -65,8 +65,15 @@ Publish 1.0 only if preserving its contract is a deliberate long-term commitment
 Documentation reconciliation completed on 2026-08-30. The README, strategic
 roadmap, project foundation, minimum-model design record, provisional 0.2
 contract, conformance entry points, and documentation indexes now describe the
-same current state. This does not clear the formatter verification blocker or
-make the publication-or-deferral decision.
+same current state. That reconciliation did not itself make the publication-
+or-deferral decision.
+
+Formatter verification reconciliation completed on 2026-08-30. Fifteen
+omitted independent selections were added at their actual source-set
+boundaries. The focused gate now passes over 29 source sets and 60 files, and
+the complete GraalVM `make verify` gate passes without a formatter behavior or
+policy change. The publication-or-deferral decision remains open, and the
+complete gate must run again on any eventual release commit.
 
 ## References
 

@@ -90,18 +90,16 @@ work.
   real formal-traceability workflow are unproven.
 - Sustained operation by a systems-engineering team on a materially larger real
   corpus is unproven.
-- The complete verification gate is currently red because the formatter's
-  maintained-corpus inventory omits valid source sets added by later model-
-  pressure experiments.
 - Verification, safety assessment, allocation, glossary, symbol, view, and
   policy companion carriers remain unstandardized; their conceptual
   dispositions do not imply missing requirement fields.
 - ReqIF work has demonstrated only a self-roundtrip through a bounded profile, not practical interoperability with an independent tool.
 - There is no stable language or tool compatibility promise.
 
-The next objective is not to enlarge the language or tool suite. It is to clear
-the verification blocker and make an explicit publication-or-deferral decision
-for the no-feature source 1.0 candidate while preserving the evidence gaps.
+The next objective is not to enlarge the language or tool suite. The complete
+verification gate has been restored. The remaining work is an explicit
+publication-or-deferral decision for the no-feature source 1.0 candidate while
+preserving the evidence gaps.
 
 ## Maintained implementation shape
 
@@ -153,7 +151,8 @@ completed source investigation and 0.2 contract
     -> completed shared Java foundation and three-tool native suite
     -> completed controlled Git, corpus, scale, and conformance trials
     -> completed selected model-pressure decisions
-    -> current: clear verification blocker and decide source 1.0
+    -> completed formatter verification repair
+    -> current: decide whether to publish or defer source 1.0
     -> later: add evidence or focused tools only when workflows justify them
 ```
 
@@ -544,8 +543,9 @@ explicit publication-or-deferral decision.
 TC-1002 is In progress. It must create and reconcile the actual 1.0 contract,
 conformance baseline, repository version, documentation, tool source-contract
 claims, and release tag before the project may describe the language as 1.0.
-It must also repair the stale formatter maintained-corpus inventory found by
-the audit and obtain a passing complete `make verify` run before publication.
+It has repaired the stale formatter maintained-corpus inventory found by the
+audit and obtained a passing complete `make verify` run. The release gate must
+run again against any eventual publication commit.
 
 ### Learning milestone
 
@@ -568,17 +568,15 @@ Publish 1.0 only if it represents a small demonstrated foundation that the proje
 
 The next concrete work should proceed in this order:
 
-1. repair the formatter verification inventory and obtain a passing complete
-   clean-checkout `make verify` run;
-2. decide whether absent independent-human authoring, normal-review, and real
+1. decide whether absent independent-human authoring, normal-review, and real
    formal-traceability workflow evidence permits a narrow source-compatibility
    release or requires bounded human evidence before 1.0;
-3. if publishing, write a no-feature, semantics-identical 1.0 standard and
+2. if publishing, write a no-feature, semantics-identical 1.0 standard and
    contract, establish its conformance baseline, reconcile trial-tool source-
    contract claims, update `VERSION`, and tag the exact verified commit;
-4. if deferring, retain the provisional 0.2 contract and create only the
+3. if deferring, retain the provisional 0.2 contract and create only the
    bounded evidence cards required by the deferral decision; and
-5. keep conditional view, ReqIF, presentation, and fourth-tool work locked
+4. keep conditional view, ReqIF, presentation, and fourth-tool work locked
    until their stated workflows and prerequisites exist.
 
 This sequence is TC-1002. It makes the stability decision explicit without

@@ -34,17 +34,16 @@ This recommendation does not stabilize:
 Those surfaces are separate by design. A stable source contract does not
 require every tool around it to become stable at the same time.
 
-The current checkout is not release-ready: the audit's 2026-08-30 execution of
-`make verify` fails because `FormatterVerificationTest` does not include valid
-source sets added by Experiments 0016, 0017, 0018, 0020, 0021, and 0022 in its
-declared maintained inventory. The failure occurs at the inventory-completeness
-assertion, after the listed older source sets pass preservation checks. It is
-evidence of a stale verification boundary, not evidence that the newly omitted
-sets preserve semantics. TC-1002 must restore the complete verification run and
-exercise those sets before publication. It must also explicitly decide whether
-the absence of human authoring, normal-review, and real formal-traceability
-workflow evidence is acceptable for a source-compatibility release or requires
-deferral.
+The audit's first 2026-08-30 execution of `make verify` found a stale
+verification boundary: `FormatterVerificationTest` omitted valid source sets
+added by Experiments 0016, 0017, 0018, 0020, 0021, and 0022. TC-1002 resolved
+that blocker by adding 15 independent source-set selections. Focused formatter
+verification now passes over 29 source sets and 60 files, and the complete
+GraalVM `make verify` gate passes. No formatter behavior change was required.
+
+TC-1002 must still decide whether the absence of human authoring,
+normal-review, and real formal-traceability workflow evidence is acceptable for
+a source-compatibility release or requires deferral.
 
 ## Audit method
 
@@ -73,7 +72,7 @@ Ratings mean:
 | --- | --- | --- |
 | Independent users can understand and author from the written standard | **Not met as written; independent-agent proxy only** | [Experiment 0012](../experiments/0012-independent-author-trial/README.md) and [Experiment 0023](../experiments/0023-multi-subagent-author-review/README.md) show fresh-context interpretation, authoring, repair, trace use, and ordinary review without project history. Both use AI agents. The project owner explicitly substituted agents for the planned human case, so they provide useful ambiguity pressure but no human learnability, effort, or editor-workflow evidence. |
 | Validator implements the standard without known deviation | **Met** | The [0.2 conformance audit](0010-source-0.2-conformance-audit.md), [maintained migration comparison](0013-maintained-interpreter-migration-closeout.md), and [validator verification](0014-validator-verification.md) cover all conformance selections, twelve maintained interpretation groups, project corpora, source selection, diagnostics, repair, JVM/native agreement, and historical-oracle inventory equality. No known source-validity or semantic deviation remains. |
-| Formatter output is semantic-preserving, idempotent, and accepted in normal review | **Release blocker for current preservation coverage; normal-review acceptance not met as written** | [Formatter verification](0015-formatter-verification.md) establishes semantic preservation, authored nonblank-text and comment preservation, opaque-math preservation, byte idempotence, and JVM/native agreement for the previously enumerated corpus. [Experiment 0010](../experiments/0010-integrated-toolchain-trial/README.md) provides only a controlled ordinary-diff and simulated branch/review workflow. The 2026-08-30 `make verify` run found that the verification inventory stops at Experiment 0011 even though later valid `.mreq` corpora are present. Those omitted corpora have not passed the formatter's maintained all-source-set check, and no independent human normal-review acceptance evidence exists. |
+| Formatter output is semantic-preserving, idempotent, and accepted in normal review | **Preservation and idempotence met for the current corpus; normal-review acceptance not met as written** | [Formatter verification](0015-formatter-verification.md) establishes semantic preservation, authored nonblank-text and comment preservation, opaque-math preservation, byte idempotence, and JVM/native agreement across 29 independently selected source sets and 60 files. [Experiment 0010](../experiments/0010-integrated-toolchain-trial/README.md) provides only a controlled ordinary-diff and simulated branch/review workflow; no independent human normal-review acceptance evidence exists. |
 | Trace analysis answers real formal-traceability workflows | **Not met as written; controlled workflow proxy only** | [Research 0016](0016-first-trace-interface.md) derives four bounded questions from sustained-authoring experiments. [Experiment 0009](../experiments/0009-trace-workflows/README.md), [Experiment 0010](../experiments/0010-integrated-toolchain-trial/README.md), and [Experiment 0023](../experiments/0023-multi-subagent-author-review/README.md) exercise direct and transitive navigation, impact paths, cycles, repairs, and agent review. They demonstrate tool behavior against representative formal-traceability questions, not use in a real systems-engineering workflow. |
 | A meaningful corpus and multi-author Git history have been maintained | **Met for controlled project evidence; real-team operation is untested** | The original UAS corpus, the licensed 19-requirement [NASA FRET transfer](../experiments/0004-transferability/README.md), the 60-requirement/54-link [operational corpus](../experiments/0011-operational-corpus/README.md), [multi-author layout histories](../experiments/0013-multi-author-layout-trial/README.md), and the two independent Experiment 0023 branches cover addition, change, deletion, movement, retargeting, conflict, merge, baselines, and review. These are bounded constructed experiments, not sustained maintenance by a real engineering team. |
 | Language evolution and repository version selection are understood | **Met for one repository-wide contract; mixed versions deferred** | The [0.2 contract](../specification/0006-provisional-0.2-contract.md) records that 0.2 adds only nonsemantic comments and preserves every 0.1 interpretation. Annotated tags `provisional-0.1` and `provisional-0.2` retain both baselines, while the repository [VERSION](../VERSION) selects `0.2-provisional` without adding per-file directives. No real workflow requires incompatible versions in one source set. |
@@ -194,9 +193,10 @@ not unresolved evidence questions:
    documents, and trial contracts so none call the source release provisional
    or imply that tool 1.0 accompanies it.
 7. Create an annotated source-contract release tag and verify the complete
-   clean-checkout evidence from that exact commit. Before the tag, repair the
-   stale formatter maintained-source-set inventory discovered by this audit,
-   exercise every maintained valid corpus, and require `make verify` to pass.
+   clean-checkout evidence from that exact commit. The stale formatter
+   maintained-source-set inventory discovered by this audit has been repaired
+   and `make verify` passes; the gate must run again on the eventual release
+   commit.
 8. Record an explicit publication decision about the unmet human-authoring,
    normal-review, and real-workflow criteria. Either limit 1.0 to a
    compatibility promise while publishing those evidence gaps, or defer 1.0
@@ -274,10 +274,11 @@ independent tools or later separately versioned companion standards.
 ## Recommendation to TC-1002
 
 Proceed to TC-1002 with a **conditional publication recommendation** for a
-source-language-only 1.0 release. Publication requires a passing complete
-verification run and an explicit decision about the unmet human-authoring
-criterion and absent normal-review and real-workflow evidence. If that evidence
-is treated as mandatory for 1.0, defer and create the bounded trials instead.
+source-language-only 1.0 release. The complete verification condition is now
+met. Publication still requires an explicit decision about the unmet human-
+authoring criterion and absent normal-review and real-workflow evidence. If
+that evidence is treated as mandatory for 1.0, defer and create the bounded
+trials instead.
 
 TC-1002 should not add features to make the release look more complete. It
 should convert the demonstrated 0.2 language into a deliberate long-term
