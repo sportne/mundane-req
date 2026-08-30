@@ -1,0 +1,2 @@
+plan_id	requirement_baseline	requirement_source_set_sha256	activity_source_sha256	context_ref
+PLAN-A	experiment-0024-baseline-a	73cda2413ec43084da68e046f35a35f264c54fadca4437fd1a601259fe8d4c4c	e87658802d2e7988a5bdb76658669c047a03dd671e21738e4a0113631a1ea0e5	../../system-context.md:Baseline A
