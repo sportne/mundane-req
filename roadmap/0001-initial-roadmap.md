@@ -200,7 +200,7 @@ concrete consumer, not a general cleanup objective.
 
 ## Stage 15 — Extend repeatable checks and contributor integration
 
-[TC-1502](task-1502-centralize-version-declarations.md) addresses current version
+[TC-1502](closed/task-1502-centralize-version-declarations.md) addresses current version
 drift while preserving independent source/tool/package/format identifiers and
 experimental migration policy.
 [TC-1503](task-1503-align-ci-with-authoritative-verification.md) closes today's

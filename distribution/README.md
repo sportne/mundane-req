@@ -91,3 +91,12 @@ ignored by Git and are disposable; the tagged source remains authoritative.
   decomposition completeness, and delivery obligations.
 
 The package does not replace any of those systems or decisions.
+
+## Current version declarations
+
+The checkout's `versions.properties` feeds independent command/source identifiers
+and package naming. Builds generate Java constants and this package's
+`VERSIONS.json`; historical contracts retain their recorded identifiers. See
+Research 0039 in the source checkout for the declaration inventory, experimental
+change procedure and tested build assumptions. Build-time Python 3 generates the
+constants; installed native commands do not read the declaration file.

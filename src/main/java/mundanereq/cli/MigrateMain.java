@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import mundanereq.Interpreter;
 import mundanereq.SourceFormat;
+import mundanereq.Versions;
 
 /** Separate-output migration; the original source is never written. */
 public final class MigrateMain {
@@ -34,7 +35,7 @@ public final class MigrateMain {
 
     private static int migrate(String[] args, PrintStream out, PrintStream err) throws IOException {
         if (args.length == 1 && args[0].equals("--version")) {
-            out.println("mundanereq-migrate trial-0.1; mundanereq-source-0.2 -> mundanereq-yaml-0.3");
+            out.printf("mundanereq-migrate %s; %s -> %s%n", Versions.MIGRATE_VERSION, Versions.SOURCE_CUSTOM, Versions.SOURCE_YAML);
             return 0;
         }
         if (args.length == 1 && args[0].equals("--help")) { out.print(usage()); return 0; }

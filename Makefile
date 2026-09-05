@@ -17,7 +17,8 @@ GRAALVM_HOME = $(shell candidate="$$(readlink -f "$$(command -v $(NATIVE_IMAGE))
 			break; \
 		fi; \
 	done)
-SUITE_VERSION := trial-0.1
+include versions.properties
+GENERATED_DIR := $(BUILD_ROOT)/generated
 PACKAGE_NAME := mundanereq-native-suite-$(SUITE_VERSION)-linux-x86_64-glibc2.34
 PACKAGE_DIR := $(BUILD_ROOT)/package
 PACKAGE_STAGE := $(PACKAGE_DIR)/$(PACKAGE_NAME)
@@ -34,9 +35,9 @@ CLASSPATH := $(CLASS_DIR):$(YAML_JAR)
 yaml-dependency:
 	scripts/fetch-yaml-parser.sh
 
-test: yaml-dependency
+test: yaml-dependency version-declarations
 	mkdir -p $(CLASS_DIR)
-	javac -cp $(YAML_JAR) --release 21 -Xlint:all -Werror -d $(CLASS_DIR) $(MAIN_SOURCES) $(TEST_SOURCES)
+	javac -cp $(YAML_JAR) --release 21 -Xlint:all -Werror -d $(CLASS_DIR) $(MAIN_SOURCES) $(GENERATED_DIR)/mundanereq/Versions.java $(TEST_SOURCES)
 	java -ea -cp $(CLASSPATH) mundanereq.test.MaintainedTestSuite
 
 native-smoke: test
@@ -95,6 +96,7 @@ package-native-suite: native-suite
 	install -m 644 specification/schema/requirements-yaml-0.3.json "$(PACKAGE_STAGE)/docs/contracts/schema/"
 	install -m 644 "$(GRAALVM_HOME)/LICENSE_NATIVEIMAGE.txt" "$(PACKAGE_STAGE)/LICENSES/GraalVM-Native-Image.txt"
 	cp -R "$(GRAALVM_HOME)/legal/." "$(PACKAGE_STAGE)/LICENSES/GraalVM-JDK/"
+	install -m 644 $(GENERATED_DIR)/versions.json "$(PACKAGE_STAGE)/VERSIONS.json"
 	$(NATIVE_IMAGE) --version > "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
 	uname -srm >> "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
 	javac -version >> "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt" 2>&1
@@ -195,3 +197,12 @@ yaml-schema-verify:
 	scripts/check-yaml-schema.sh
 
 verify: yaml-schema-verify
+
+.PHONY: version-declarations version-verify
+version-declarations:
+	python3 scripts/generate-versions.py versions.properties $(GENERATED_DIR)
+
+version-verify: test
+	python3 scripts/check-versions.py "$(SUITE_VERSION)"
+
+verify: version-verify

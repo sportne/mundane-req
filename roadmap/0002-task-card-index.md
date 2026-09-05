@@ -72,7 +72,7 @@ consumers' dependencies explicitly before proceeding.
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-1201](task-1201-define-requirement-semantic-output.md) | Define Requirement Semantic Output | Planned | TC-1103, TC-1502 |
+| [TC-1201](task-1201-define-requirement-semantic-output.md) | Define Requirement Semantic Output | Ready | TC-1103, TC-1502 |
 | [TC-1202](task-1202-emit-compiled-requirement-artifacts.md) | Emit Compiled Requirement Artifacts | Planned | TC-1201 |
 | [TC-1203](task-1203-define-import-and-reference-contracts.md) | Define Import and Reference Contracts | Planned | TC-1201 |
 | [TC-1204](task-1204-implement-bounded-artifact-linking.md) | Implement Bounded Artifact Linking | Conditional | TC-1202, TC-1203, TC-0905 |
@@ -111,7 +111,7 @@ explicit compatibility behavior. Contextual assessments keep their own authority
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
 | [TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md) | Extend Artifact Workflow Regression Corpora | Planned | TC-0903 |
-| [TC-1502](task-1502-centralize-version-declarations.md) | Centralize Independent Version Declarations | Ready | — |
+| [TC-1502](closed/task-1502-centralize-version-declarations.md) | Centralize Independent Version Declarations | Complete | — |
 | [TC-1503](task-1503-align-ci-with-authoritative-verification.md) | Align CI with Authoritative Verification | Ready | — |
 | [TC-1504](task-1504-emit-sarif-validation-diagnostics.md) | Emit SARIF Validation Diagnostics | Planned | TC-1201, TC-1402, TC-1403 |
 

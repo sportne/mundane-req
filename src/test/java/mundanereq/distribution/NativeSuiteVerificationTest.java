@@ -1,5 +1,7 @@
 package mundanereq.distribution;
 
+import mundanereq.Versions;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -127,11 +129,22 @@ public final class NativeSuiteVerificationTest {
     }
 
     private static void identitiesAreIndependent(Path packageRoot) throws Exception {
+        String metadata = Files.readString(packageRoot.resolve("VERSIONS.json"));
+        for (var field : Versions.class.getFields()) {
+            if (!metadata.contains("\"" + field.getName() + "\": \"" + field.get(null) + "\"")) {
+                throw new AssertionError("package metadata disagrees: " + field.getName());
+            }
+        }
         for (String tool : TOOLS) {
             Invocation result = invoke(packageRoot.resolve("bin").resolve(tool), "--version");
             assertEquals(0, result.status(), tool + " version status");
             assertEquals(
-                    tool + " trial-0.1; source contract mundanereq-source-0.2\n",
+                    tool + " " + switch (tool) {
+                        case "mundanereq-validate" -> Versions.VALIDATE_VERSION;
+                        case "mundanereq-format" -> Versions.FORMAT_VERSION;
+                        case "mundanereq-trace" -> Versions.TRACE_VERSION;
+                        default -> throw new AssertionError(tool);
+                    } + "; source contract " + Versions.SOURCE_CUSTOM + "\n",
                     result.out(),
                     tool + " version output");
             assertEquals("", result.err(), tool + " version standard error");

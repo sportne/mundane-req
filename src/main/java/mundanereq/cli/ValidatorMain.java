@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import mundanereq.Interpreter;
 import mundanereq.SourceFormat;
+import mundanereq.Versions;
 
 /** Focused command-line validator for the provisional 0.2 source contract. */
 public final class ValidatorMain {
-    static final String TOOL_VERSION = "trial-0.1";
-    static final String SOURCE_CONTRACT = "mundanereq-source-0.2";
+    static final String TOOL_VERSION = Versions.VALIDATE_VERSION;
+    static final String SOURCE_CONTRACT = Versions.SOURCE_CUSTOM;
 
     private ValidatorMain() {}
 

@@ -1,6 +1,6 @@
 # Task TC-1502: Centralize Independent Version Declarations
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 15
 
@@ -66,7 +66,11 @@ migration or a shared version number that changes independent interface meanings
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [Makefile](../Makefile)
-- [Native distribution](../distribution/README.md)
-- [Packaging evidence](../research/0017-native-suite-packaging.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [Makefile](../../Makefile)
+- [Native distribution](../../distribution/README.md)
+- [Packaging evidence](../../research/0017-native-suite-packaging.md)
+
+## Completion evidence
+
+Completed by [Research 0039](../../research/0039-independent-version-declarations.md) and versions.properties. `make version-verify native-suite-verify` passed all maintained JVM groups, declaration/mutation checks and native package metadata/identity/isolation checks. Historical contracts and current --version values are preserved. TC-1201 is now Ready.

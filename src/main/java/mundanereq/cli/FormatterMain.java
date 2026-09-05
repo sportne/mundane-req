@@ -16,13 +16,14 @@ import java.util.Map;
 import java.util.Set;
 import mundanereq.Interpreter;
 import mundanereq.SourceFormat;
+import mundanereq.Versions;
 import mundanereq.format.SourceFormatter;
 import mundanereq.source.SourceDocument;
 
 /** Focused formatter for the conservative Experiment 0008 policy. */
 public final class FormatterMain {
-    static final String TOOL_VERSION = "trial-0.1";
-    static final String SOURCE_CONTRACT = "mundanereq-source-0.2";
+    static final String TOOL_VERSION = Versions.FORMAT_VERSION;
+    static final String SOURCE_CONTRACT = Versions.SOURCE_CUSTOM;
 
     private enum Mode {
         STANDARD_OUTPUT,

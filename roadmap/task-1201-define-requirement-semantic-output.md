@@ -1,6 +1,6 @@
 # Task TC-1201: Define Requirement Semantic Output
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 12
 
@@ -70,6 +70,6 @@ revise any proposal that mixes source trivia with normative requirement content.
 
 - [Roadmap](0001-initial-roadmap.md)
 - [TC-1103](closed/task-1103-test-compilation-linking-and-rebuilds.md)
-- [TC-1502](task-1502-centralize-version-declarations.md)
+- [TC-1502](closed/task-1502-centralize-version-declarations.md)
 - [Interpreter](../src/main/java/mundanereq/Interpreter.java)
 - [Shared source representation](../research/0012-shared-source-representation.md)
