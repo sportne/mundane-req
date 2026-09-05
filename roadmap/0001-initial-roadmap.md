@@ -2,7 +2,7 @@
 
 Status: Draft living roadmap
 
-Last reconciled: 2026-09-05 after the compiled-requirements batch
+Last reconciled: 2026-09-05 after the verification-workflow batch
 
 Execution is decomposed into the [task-card index](0002-task-card-index.md).
 This remains the single strategic roadmap; cards describe bounded work and
@@ -16,8 +16,8 @@ Mundane-Req as its first independently usable language and tool component.
 Human-authored requirements, assertions, and project declarations remain
 authoritative. Compiled artifacts, indexes, analyses, and views are derived.
 
-The bounded integration experiment has proved this loop; maintained requirement
-compilation now supplies its first public interface:
+Maintained requirement and plan compilers, explicit local linking and a focused
+analyzer now support this loop; the report remains a bounded experiment:
 
 ```text
 requirements source -> requirement compilation ----+
@@ -70,7 +70,9 @@ integrations need concrete workflows before acquiring implementations.
 
 Default invocation retains source 0.2 with prior 0.1 conformance fixtures. Explicit
 requirements YAML 0.3 has a normative schema and semantic contract. Java 21/GraalVM
-supplies validate/format/trace tools, a migration utility and an independent compiler. The existing
+supplies validate/format/trace tools, a migration utility and an independent
+requirements compiler. Separate native plan, linking and verification commands
+consume published serialized interfaces. The existing
 lossless source representation preserves comments; normalizedInventory is a
 testing utility rather than a public compiled-artifact contract.
 
@@ -90,8 +92,9 @@ testing utility rather than a public compiled-artifact contract.
 - Interpreter still combines decoding, parsing, semantic construction, and
   source-set validation. One parse failure can discard a file's parsed records;
   source decoding is repeated in the formatter path.
-- CI runs the native suite and example workflow, not the complete Makefile
-  verification gate. Current version identifiers now come from versions.properties,
+- CI runs the complete Makefile verification gate and checks deliberate failure
+  propagation in a recorded Ubuntu 24.04 environment. Current version identifiers
+  now come from versions.properties,
   with separate source, command, package and compiled-format domains.
 - Linux packaging already supplies checksums, notices, environment information,
   and isolation checks. Existing evidence is source-reproducible, not a claim of
@@ -104,7 +107,8 @@ The [completed YAML batch](../research/0035-yaml-requirements-batch-verification
 records current source, migration, safety and verification evidence.
 The [compiled-requirements batch](../research/0041-compiled-requirements-verification.md)
 adds the documented compiler boundary, retained source spans and a serialized-only
-consumer check. Maintained imports, plan notation and project schemas remain unresolved.
+consumer check. Maintained local imports, TSV plans and review-basis comparisons
+now have contracts and implementations. Project attribute schemas remain unresolved.
 Current paths are retained. Normative source and output contracts live in specification/.
 
 ## Stage 11 — Monorepo and ownership decisions
@@ -119,7 +123,8 @@ selection and default custom 0.2 preservation. TC-1103 used that interpreter and
 the existing experimental TSV plan carrier in a 57-requirement, 13-case experiment.
 It demonstrated missing/ambiguous references, context, exact source versus semantic
 revision comparison, incomplete input rejection and identical clean rebuilds.
-TC-0905 still selects the maintained plan authoring format independently.
+TC-0905 independently selected bounded TSV plan tables with explicit context and
+baseline/current scopes.
 
 ## Stage 12 — Publish bounded compiler and import interfaces
 
@@ -128,22 +133,24 @@ requirement semantics, source ranges, diagnostic meanings, provenance, ordering,
 and completeness; [TC-1202](closed/task-1202-emit-compiled-requirement-artifacts.md)
 implemented the selected interface as mundanereq-compile.
 
-[TC-1203](closed/task-1203-define-import-and-reference-contracts.md) decides explicit
+[TC-1203](closed/task-1203-define-import-and-reference-contracts.md) completed explicit
 import selection, qualification, target kinds, revision binding, and failure
 behavior. Qualification preserves human-authored requirement IDs. The design
 distinguishes relationship cycles from build cycles and describes partial input
 without presenting it as fully analyzed.
 
-[TC-0905](closed/task-0905-define-verification-analyzer-contract.md) supplies the
+[TC-0905](closed/task-0905-define-verification-analyzer-contract.md) completed the
 verification-plan contract and staleness decisions after those designs.
-[TC-1204](closed/task-1204-implement-bounded-artifact-linking.md) implements only the
-shared resolution capability justified by that workflow.
-[TC-0904](closed/task-0904-implement-the-selected-ecosystem-tool.md) implements the
-focused verification consumer.
+[TC-1204](closed/task-1204-implement-bounded-artifact-linking.md) implemented the
+bounded resolver, including exact input pins and incomplete-input rejection.
+[TC-0904](closed/task-0904-implement-the-selected-ecosystem-tool.md) implemented plan
+compilation and the focused verification consumer, with 57 planned assertions and
+two stale statement bindings in the checked-in change case.
 
 The experiment compared exact Git tree binding with per-requirement semantic values.
 Compiled output records SHA-256 of exact input bytes for provenance; it has no public
-per-requirement fingerprint. TC-0905 still selects its review-basis policy. Human
+per-requirement fingerprint. TC-0905 selected normalized requirement-value
+comparison; source moves and comments do not create review-stale bindings. Human
 IDs remain identity and digests do not enter authored requirement records.
 
 ## Stage 13 — Decide project-defined attributes
@@ -192,10 +199,11 @@ concrete consumer, not a general cleanup objective.
 [TC-1502](closed/task-1502-centralize-version-declarations.md) completed authoritative current version
 declarations while preserving independent source/tool/package/format identifiers and
 experimental migration policy.
-[TC-1503](task-1503-align-ci-with-authoritative-verification.md) closes today's
-gap between hosted checks and make verify and can begin now.
+[TC-1503](closed/task-1503-align-ci-with-authoritative-verification.md) closed the
+gap between hosted checks and make verify, with clean-run and deliberate-failure
+evidence.
 
-After the first report loop,
+The first report loop is complete.
 [TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md) broadens its
 bounded golden/change corpus, seeded generation, targeted mutation checks, and
 compatibility fixtures. Every implementation card still supplies its own tests.
@@ -209,9 +217,10 @@ must name a current missing capability and measured evidence.
 
 ## Views and specifications
 
-[TC-0903](closed/task-0903-run-a-derived-presentation-experiment.md) generates the
-verification report after the analyzer. It uses deterministic presentation first,
-records input revisions and analysis completeness, and links findings to source.
+[TC-0903](closed/task-0903-run-a-derived-presentation-experiment.md) completed a
+deterministic report over the analyzer, recording input revisions and completeness
+and linking findings to source. Its repeatable review workflow justified retaining
+the experimental renderer but did not demonstrate a need for authored composition.
 
 [TC-0807](task-0807-test-authored-views-and-specifications.md) is a conditional
 successor if the report demonstrates a need for authored composition. Source
@@ -234,7 +243,7 @@ TC-1101 -> TC-1102 -> TC-1103 -> TC-1201 -> TC-1203 -> TC-0905
    v            v                 v                       |
 TC-1104?     TC-1301           TC-1202 ---------------------+
                 |                                         v
-                +-- (+ TC-1203) -> TC-1302             TC-1204?
+                +-- (+ TC-1203) -> TC-1302             TC-1204
                                                           |
                                                           v
                                         TC-0904 -> TC-0903 -> TC-1501
@@ -242,8 +251,9 @@ TC-1104?     TC-1301           TC-1202 ---------------------+
                                                        v
                                                    TC-0807?
 
-Ready: TC-1203, TC-1301, TC-1403, TC-1503
-Complete: TC-1101, TC-1102, TC-1103, TC-1502, TC-1201, TC-1202
+Ready: TC-1301, TC-1403, TC-1501
+Complete: TC-1101, TC-1102, TC-1103, TC-1502, TC-1201, TC-1202,
+          TC-1203, TC-0905, TC-1204, TC-0904, TC-0903, TC-1503
 TC-1105 (complete) -> TC-1103
 Completed YAML chain: TC-1105 -> TC-1106 -> TC-1107 -> TC-1108 -> TC-1109
 TC-1106 -> TC-1302

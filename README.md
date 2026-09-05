@@ -63,9 +63,13 @@ ownership are recorded; current physical paths are retained.
 [`mundanereq-compile`](distribution/compile.md) publishes a documented experimental
 JSON artifact with semantic values, retained source ranges, checksums, diagnostics
 and completeness. A consumer can use it without parser implementation classes.
-Maintained imports, verification-plan syntax and project attributes remain design
-work. The [backlog](roadmap/0002-task-card-index.md) tracks these alongside parser
-recovery and CI alignment. [Independent version declarations](versions.properties)
+The [independent companion commands](distribution/verification.md) now compile an
+explicit TSV verification plan, link locally selected requirement artifacts, and
+analyze planned coverage and review staleness. [Experiment 0029](experiments/0029-verification-report/README.md)
+builds a disposable source-linked HTML report. TSV was selected independently for
+this plan workflow; other artifact formats remain open decisions. The
+[backlog](roadmap/0002-task-card-index.md) tracks project-attribute design, parser
+recovery and broader workflow corpora. [Independent version declarations](versions.properties)
 feed command builds and package metadata.
 
 The first code was a small [deterministic-interpretation
@@ -90,15 +94,18 @@ SDKMAN candidate:
 
     sdk use java 21.0.2-graalce
 
-The intended complete JVM and native clean-checkout gate is:
+The complete JVM and native clean-checkout gate is:
 
     make verify
 
 The recorded formatter verification repair expanded coverage to every maintained
 valid corpus; Experiment 0024 extends that inventory to 30 source sets and 64
 files. The complete `make verify` gate is the authoritative repository check.
-The hosted workflow currently runs a subset; TC-1503 plans to align it with the
-complete command. YAML verification adds 120 equivalent requirements across three
+The hosted workflow runs that command through
+`scripts/run-ci-verification.sh`, which records tool versions and checks deliberate
+failure propagation. [Build prerequisites and local CI reproduction](distribution/build-verification.md)
+describe the tested Ubuntu 24.04, GraalVM CE 21.0.2 and Python 3.12 environment.
+YAML verification adds 120 equivalent requirements across three
 migration corpora, authoring fixtures, negative cases and JVM/native command checks.
 
 The first build needs curl/network access to obtain a checksummed parser jar.
@@ -109,9 +116,9 @@ permit subsequent offline checks.
 
 `make test` runs the maintained JVM regression suite. `make native-smoke` builds and runs a
 test-only executable with `--no-fallback`. Generated classes and native output
-are disposable under `build/maintained`. `make boundary-isolation` builds three
-temporary standalone native boundaries and proves that none requires either of
-the other executables at runtime. The validator, formatter, and trace
+are disposable under `build/maintained`. `make boundary-isolation` removes each
+of the three built requirements executables in turn and proves that the others
+still run independently. The validator, formatter, and trace
 boundaries are separate focused product tools with maintained trial contracts.
 
 ## Validator

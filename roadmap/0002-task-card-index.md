@@ -27,10 +27,10 @@ superseded prospective roadmap sequence does not undo their completed work.
 
 ## Dependency shape and priority
 
-The YAML/safety and compiled-requirements batches are complete. Start TC-1203
-(import/reference contracts), TC-1301 (attribute use cases), TC-1403 (parser recovery)
-and TC-1503 (CI alignment). The graph retains completed prerequisites for context;
-the active tables below contain only remaining work.
+The YAML/safety, compiled-requirements and verification-workflow batches are
+complete. Ready work is TC-1301 (attribute use cases), TC-1403 (parser recovery)
+and TC-1501 (broader integrated corpora). The graph retains completed prerequisites
+for context; active tables contain only remaining work.
 
 ```text
 TC-1101 -> TC-1102 -> TC-1103 -> TC-1201 -> TC-1203 -> TC-0905
@@ -38,7 +38,7 @@ TC-1101 -> TC-1102 -> TC-1103 -> TC-1201 -> TC-1203 -> TC-0905
    v            v                 v                       |
 TC-1104?     TC-1301           TC-1202 ---------------------+
                 |                                         v
-                +-- (+ TC-1203) -> TC-1302             TC-1204?
+                +-- (+ TC-1203) -> TC-1302             TC-1204
                                                           |
                                                           v
                                         TC-0904 -> TC-0903 -> TC-1501
@@ -51,12 +51,12 @@ Completed YAML chain: TC-1105 -> TC-1106 -> TC-1107 -> TC-1108 -> TC-1109
 TC-1106 -> TC-1302
 TC-1502 (complete) -> TC-1201 (complete)
 TC-1201 + TC-1402 + TC-1403 -> TC-1504
-TC-1401 is complete; TC-1503 is independent; TC-0902? remains conditional.
+TC-1401 and TC-1503 are complete; TC-0902? remains conditional.
 ```
 
 Question marks mark conditional work. Tables include all prerequisites, including
 completed evidence. TC-1104 is optional layout work, not a gate for fixes in the
-current layout. TC-1101–1103, TC-1201/1202 and TC-1502 in the graph are complete.
+current layout. TC-1101–1103, TC-1201–1204, TC-0903–0905 and TC-1502/1503 are complete.
 Implementations include their own tests; TC-1501 extends the
 integrated corpus afterward. If a conditional card is superseded, revise its
 consumers' dependencies explicitly before proceeding.
@@ -67,24 +67,9 @@ consumers' dependencies explicitly before proceeding.
 | --- | --- | --- | --- |
 | [TC-1104](task-1104-establish-monorepo-component-layout.md) | Establish the Monorepo Component Layout | Conditional | TC-1101 |
 
-## Stage 12: Compilation, imports, and linking
-
-| Card | Outcome | Status | Depends on |
-| --- | --- | --- | --- |
-| [TC-1203](closed/task-1203-define-import-and-reference-contracts.md) | Define Import and Reference Contracts | Complete | TC-1201 |
-| [TC-1204](closed/task-1204-implement-bounded-artifact-linking.md) | Implement Bounded Artifact Linking | Complete | TC-1202, TC-1203, TC-0905 |
-
-## First verification consumer and report
-
-| Card | Outcome | Status | Depends on |
-| --- | --- | --- | --- |
-| [TC-0905](closed/task-0905-define-verification-analyzer-contract.md) | Define the Verification Analyzer Contract | Complete | TC-0802, TC-1003, TC-1103, TC-1203 |
-| [TC-0904](closed/task-0904-implement-the-selected-ecosystem-tool.md) | Implement the Selected Ecosystem Tool | Complete | TC-0905, TC-1204 |
-| [TC-0903](closed/task-0903-run-a-derived-presentation-experiment.md) | Run a Derived Presentation Experiment | Complete | TC-0904 |
-
-The generic import contract precedes the domain plan contract; the plan contract
-provides fixtures for the maintained linker, then the analyzer consumes that
-linker. This avoids a design/implementation dependency cycle.
+The completed import contract precedes the plan contract, whose fixtures drive
+the maintained linker and analyzer. Their completed cards are in the evidence
+inventory below; TC-1501 extends that integrated workflow.
 
 ## Stage 13: Project attribute decisions
 
@@ -108,12 +93,11 @@ explicit compatibility behavior. Contextual assessments keep their own authority
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
 | [TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md) | Extend Artifact Workflow Regression Corpora | Ready | TC-0903 |
-| [TC-1503](task-1503-align-ci-with-authoritative-verification.md) | Align CI with Authoritative Verification | Ready | — |
 | [TC-1504](task-1504-emit-sarif-validation-diagnostics.md) | Emit SARIF Validation Diagnostics | Planned | TC-1201, TC-1402, TC-1403 |
 
 Version declarations address current constant/metadata drift while preserving
-independent source, CLI, package, and compiled-format identifiers. CI alignment
-addresses incomplete hosted verification. Existing packaging/checksum work is
+independent source, CLI, package, and compiled-format identifiers. Completed CI alignment
+closes the hosted verification gap. Existing packaging/checksum work is
 reused; additions need a demonstrated gap.
 
 ## Conditional existing work
@@ -177,13 +161,18 @@ superseded by Stages 11–15. Their filenames and evidence are preserved.
 | [TC-1109](closed/task-1109-migrate-yaml-examples-and-conformance-material.md) | Migrate YAML Examples and Conformance Material | Complete | TC-1107, TC-1108 |
 | [TC-1401](closed/task-1401-protect-formatter-write-back.md) | Protect Formatter Write-Back | Complete | — |
 | [TC-1402](closed/task-1402-report-cli-output-failures.md) | Report CLI Output Failures Consistently | Complete | — |
-
 | [TC-1101](closed/task-1101-define-monorepo-component-boundaries.md) | Define Monorepo Component Boundaries | Complete | — |
 | [TC-1102](closed/task-1102-define-requirement-and-assertion-ownership.md) | Define Requirement and Assertion Ownership | Complete | TC-1101 |
 | [TC-1103](closed/task-1103-test-compilation-linking-and-rebuilds.md) | Test Compilation, Linking, and Rebuilds | Complete | TC-1102, TC-1105 |
 | [TC-1502](closed/task-1502-centralize-version-declarations.md) | Centralize Independent Version Declarations | Complete | — |
 | [TC-1201](closed/task-1201-define-requirement-semantic-output.md) | Define Requirement Semantic Output | Complete | TC-1103, TC-1502 |
 | [TC-1202](closed/task-1202-emit-compiled-requirement-artifacts.md) | Emit Compiled Requirement Artifacts | Complete | TC-1201 |
+| [TC-1203](closed/task-1203-define-import-and-reference-contracts.md) | Define Import and Reference Contracts | Complete | TC-1201 |
+| [TC-1204](closed/task-1204-implement-bounded-artifact-linking.md) | Implement Bounded Artifact Linking | Complete | TC-1202, TC-1203, TC-0905 |
+| [TC-0905](closed/task-0905-define-verification-analyzer-contract.md) | Define the Verification Analyzer Contract | Complete | TC-0802, TC-1003, TC-1103, TC-1203 |
+| [TC-0904](closed/task-0904-implement-the-selected-ecosystem-tool.md) | Implement the Selected Ecosystem Tool | Complete | TC-0905, TC-1204 |
+| [TC-0903](closed/task-0903-run-a-derived-presentation-experiment.md) | Run a Derived Presentation Experiment | Complete | TC-0904 |
+| [TC-1503](closed/task-1503-align-ci-with-authoritative-verification.md) | Align CI with Authoritative Verification | Complete | — |
 
 ## Planning reconciliation
 

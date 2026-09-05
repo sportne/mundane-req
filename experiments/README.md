@@ -59,3 +59,5 @@ not expected to remain navigable.
 - [Experiment 0028: Verification plan contract](0028-verification-contract/README.md)
 
 - [Experiment 0029: Verification report](0029-verification-report/README.md)
+
+- [Experiment 0030: Complete CI verification](0030-ci-verification/README.md)

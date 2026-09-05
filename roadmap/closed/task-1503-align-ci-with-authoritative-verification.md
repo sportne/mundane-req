@@ -1,6 +1,6 @@
 # Task TC-1503: Align CI with Authoritative Verification
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 15
 
@@ -67,8 +67,12 @@ the partial workflow as complete.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [Current workflow](../.github/workflows/requirements.yml)
-- [Makefile](../Makefile)
-- [Existing CI card](closed/task-0602-create-the-clean-checkout-ci-workflow.md)
-- [Packaging evidence](../research/0017-native-suite-packaging.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [Current workflow](../../.github/workflows/requirements.yml)
+- [Makefile](../../Makefile)
+- [Existing CI card](task-0602-create-the-clean-checkout-ci-workflow.md)
+- [Packaging evidence](../../research/0017-native-suite-packaging.md)
+
+## Completion evidence
+
+Completed the full local/hosted gate and deliberate-failure evidence in [Research 0047](../../research/0047-complete-ci-verification.md) and [Experiment 0030](../../experiments/0030-ci-verification/README.md). CI invokes make verify through the same logging/failure-check wrapper used locally. The first hosted run exposed Python 3.10 incompatibility with pinned schema dependencies; the corrected Ubuntu 24.04 run passed. Existing native package and independent-tool checks are retained.
