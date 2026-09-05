@@ -1,6 +1,6 @@
 # Task TC-1102: Define Requirement and Assertion Ownership
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 11
 
@@ -64,9 +64,13 @@ universal inheritance, behavior, or implicit cross-domain approval semantics.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [TC-1101](closed/task-1101-define-monorepo-component-boundaries.md)
-- [Verification ownership](../research/0024-verification-companion-decision.md)
-- [Safety ownership](../research/0025-safety-classification-ownership-decision.md)
-- [Allocation decision](../research/0027-allocation-model-decision.md)
-- [Identity decision](../research/0023-identity-continuity-decision.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [TC-1101](task-1101-define-monorepo-component-boundaries.md)
+- [Verification ownership](../../research/0024-verification-companion-decision.md)
+- [Safety ownership](../../research/0025-safety-classification-ownership-decision.md)
+- [Allocation decision](../../research/0027-allocation-model-decision.md)
+- [Identity decision](../../research/0023-identity-continuity-decision.md)
+
+## Completion evidence
+
+Completed by [Research 0037](../../research/0037-requirement-and-assertion-ownership.md): ownership/context/revision matrix, valid and invalid safety examples, independent variant and plan revisions, authored link direction and analysis distinctions. Planning refinement: preserve both maintained custom 0.2 and YAML 0.3 contracts. TC-1103 and TC-1301 are now Ready.

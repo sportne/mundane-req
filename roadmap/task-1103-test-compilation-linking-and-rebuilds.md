@@ -1,6 +1,6 @@
 # Task TC-1103: Test Compilation, Linking, and Rebuilds
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 11
 
@@ -30,7 +30,7 @@ and records the minimum interfaces needed for maintained compilation and linking
   Produce experimental requirement and plan representations, resolve references,
   calculate planned coverage/staleness, and generate one plain report.
 - Use a small adapter for the existing experimental TSV plan carrier alongside
-  the provisional requirements YAML adapter. This exercises different source
+  the maintained requirements YAML interpreter. This exercises different source
   representations through compiled interfaces. Keep the plan carrier provisional;
   TC-0905 selects its eventual authoring format using verification workflow needs.
 - Delete generated outputs and rebuild from explicit inputs. Capture source,
@@ -80,7 +80,7 @@ a generalized type system or mandatory platform is needed for this first consume
 ## References
 
 - [Roadmap](0001-initial-roadmap.md)
-- [TC-1102](task-1102-define-requirement-and-assertion-ownership.md)
+- [TC-1102](closed/task-1102-define-requirement-and-assertion-ownership.md)
 - [TC-1105](closed/task-1105-compare-yaml-and-custom-requirement-source.md)
 - [Pilot assessment](../experiments/0024-vaccine-monitoring-pilot/assessment.md)
 - [Pilot decision](../research/0032-end-to-end-pilot-decision.md)
@@ -93,11 +93,13 @@ YAML/custom-syntax disposition. The compiled-artifact workflow and semantic-mode
 scope remain unchanged; this card does not silently adopt an authoring format.
 
 The completed [YAML decision](../research/0033-yaml-source-representation-decision.md)
-permits the experimental YAML adapter for this bounded compilation experiment.
-Label its profile provisional; do not freeze experimental source syntax into the
-compiled contract. TC-1102 remains an incomplete prerequisite.
+is implemented by TC-1106–1109. Use the maintained YAML 0.3 interpreter; only
+the compiled experiment and plan carrier remain provisional. TC-1102 is complete.
 
 Limit TC-1105's YAML disposition to the requirement adapter. Replace the shared-
 notation comparison with a bounded check using the existing distinct source
 carriers. This neither selects TSV for maintained plans nor adds a source-format
 decision for other artifacts. Status and dependencies remain unchanged.
+
+The completed YAML batch supersedes the provisional requirement-adapter assumption.
+Use maintained YAML 0.3 directly; no second YAML parser or profile is introduced.

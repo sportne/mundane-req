@@ -69,3 +69,5 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 | [0035 — Requirements YAML batch verification](0035-yaml-requirements-batch-verification.md) | Records maintained YAML tooling, migration and safety verification. |
 
 - [Research 0036: Monorepo component boundaries](0036-monorepo-component-boundaries.md)
+
+- [Research 0037: Requirement and assertion ownership](0037-requirement-and-assertion-ownership.md)

@@ -1,6 +1,6 @@
 # Task TC-1301: Classify Project Attribute Use Cases
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 13
 
@@ -64,6 +64,6 @@ the requirement object. Stop types whose sole justification is hypothetical brea
 ## References
 
 - [Roadmap](0001-initial-roadmap.md)
-- [TC-1102](task-1102-define-requirement-and-assertion-ownership.md)
+- [TC-1102](closed/task-1102-define-requirement-and-assertion-ownership.md)
 - [Safety ownership](../research/0025-safety-classification-ownership-decision.md)
 - [Allocation decision](../research/0027-allocation-model-decision.md)
