@@ -134,7 +134,7 @@ behavior. Qualification preserves human-authored requirement IDs. The design
 distinguishes relationship cycles from build cycles and describes partial input
 without presenting it as fully analyzed.
 
-[TC-0905](task-0905-define-verification-analyzer-contract.md) supplies the
+[TC-0905](closed/task-0905-define-verification-analyzer-contract.md) supplies the
 verification-plan contract and staleness decisions after those designs.
 [TC-1204](task-1204-implement-bounded-artifact-linking.md) implements only the
 shared resolution capability justified by that workflow.

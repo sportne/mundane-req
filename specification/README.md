@@ -60,3 +60,5 @@ explicit contract update and applicable compatibility notes.
 - [Compiled diagnostic rule catalog](0013-compiled-diagnostic-rules.md)
 
 - [Local artifact imports and linking 0.1](0014-local-artifact-imports-0.1.md)
+
+- [Verification planning 0.1](0015-verification-planning-0.1.md)

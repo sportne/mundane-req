@@ -81,7 +81,7 @@ systems model merely to resolve references.
 - [Roadmap](../0001-initial-roadmap.md)
 - [TC-1201](task-1201-define-requirement-semantic-output.md)
 - [Identity decision](../../research/0023-identity-continuity-decision.md)
-- [TC-0905](../task-0905-define-verification-analyzer-contract.md)
+- [TC-0905](task-0905-define-verification-analyzer-contract.md)
 
 ## Planning refinement
 

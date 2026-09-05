@@ -107,6 +107,6 @@ The retention change also showed that whole-source-set binding creates
 irrelevant assessment churn.
 
 This evidence selects a focused verification-plan analyzer, not a generalized
-policy tool. [TC-0905](../roadmap/task-0905-define-verification-analyzer-contract.md)
+policy tool. [TC-0905](../roadmap/closed/task-0905-define-verification-analyzer-contract.md)
 must compare revision-binding granularities and freeze a bounded trial contract.
 Only a successful TC-0905 unlocks TC-0904 implementation.

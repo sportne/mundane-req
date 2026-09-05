@@ -84,7 +84,7 @@ a generalized type system or mandatory platform is needed for this first consume
 - [TC-1105](task-1105-compare-yaml-and-custom-requirement-source.md)
 - [Pilot assessment](../../experiments/0024-vaccine-monitoring-pilot/assessment.md)
 - [Pilot decision](../../research/0032-end-to-end-pilot-decision.md)
-- [TC-0905](../task-0905-define-verification-analyzer-contract.md)
+- [TC-0905](task-0905-define-verification-analyzer-contract.md)
 
 ## Planning refinement
 

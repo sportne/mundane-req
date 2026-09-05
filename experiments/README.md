@@ -55,3 +55,5 @@ temporary workspaces inside those captures are historical observations and are
 not expected to remain navigable.
 
 - [Experiment 0027: Compilation and linking](0027-compilation-linking/README.md)
+
+- [Experiment 0028: Verification plan contract](0028-verification-contract/README.md)

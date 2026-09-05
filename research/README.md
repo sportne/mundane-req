@@ -81,3 +81,5 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 - [Research 0041: Compiled requirements verification](0041-compiled-requirements-verification.md)
 
 - [Research 0042: Local imports and references](0042-local-import-and-reference-decision.md)
+
+- [Research 0043: Verification plan contract](0043-verification-plan-contract-decision.md)

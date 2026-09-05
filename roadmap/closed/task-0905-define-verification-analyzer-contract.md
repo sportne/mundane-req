@@ -1,6 +1,6 @@
 # Task TC-0905: Define the Verification Analyzer Contract
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 9
 
@@ -81,14 +81,14 @@ not ready.
 
 ## References
 
-- [TC-1103](closed/task-1103-test-compilation-linking-and-rebuilds.md)
-- [TC-1203](closed/task-1203-define-import-and-reference-contracts.md)
-- [TC-1204](task-1204-implement-bounded-artifact-linking.md)
-- [Experiment 0017](../experiments/0017-verification-evidence/README.md)
-- [Experiment 0024](../experiments/0024-vaccine-monitoring-pilot/assessment.md)
-- [Verification companion decision](../research/0024-verification-companion-decision.md)
-- [Pilot decision](../research/0032-end-to-end-pilot-decision.md)
-- [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md)
+- [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md)
+- [TC-1203](task-1203-define-import-and-reference-contracts.md)
+- [TC-1204](../task-1204-implement-bounded-artifact-linking.md)
+- [Experiment 0017](../../experiments/0017-verification-evidence/README.md)
+- [Experiment 0024](../../experiments/0024-vaccine-monitoring-pilot/assessment.md)
+- [Verification companion decision](../../research/0024-verification-companion-decision.md)
+- [Pilot decision](../../research/0032-end-to-end-pilot-decision.md)
+- [TC-0904](../task-0904-implement-the-selected-ecosystem-tool.md)
 
 ## Compatibility and affected components
 
@@ -109,3 +109,7 @@ or satisfaction semantics to answer coverage and staleness.
 Keep verification-plan notation an independent decision. Replace the ambiguous
 shared-interpreter allowance with consumption through compiled interfaces and a
 separately selected plan adapter. Status and dependencies remain unchanged.
+
+## Completion evidence
+
+Completed by [Experiment 0028](../../experiments/0028-verification-contract/README.md), [Research 0043](../../research/0043-verification-plan-contract-decision.md) and verification planning 0.1. The eight-case experiment passed with 57 requirements and the complete pilot coverage table; compiled plan/import fixtures precede implementation. Select the existing TSV workflow with explicit version/context/scopes independently of YAML requirements. TC-1204 is Ready as a bounded resolver; TC-0904 still awaits it.

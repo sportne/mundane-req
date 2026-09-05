@@ -1,0 +1,1 @@
+{"format":"mundane-imports-0.1","imports":[{"dependsOn":[],"kind":"requirements","path":"fixtures/baseline.json","scope":"baseline","sha256":"e01b98587c5850d1a1b9484d329e6570dcba906b903e1da8aa955d2e3acd3ad5"},{"dependsOn":[],"kind":"requirements","path":"fixtures/current.json","scope":"current","sha256":null}]}
