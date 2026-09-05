@@ -40,6 +40,7 @@ public final class MaintainedTestSuite {
         System.out.println("PASS frozen operational corpus profile");
         mundanereq.cli.YamlWorkflowTest.run();
         mundanereq.cli.CompileMainTest.run();
-        System.out.println("Passed 13 maintained test groups.");
+        engineering.artifacts.ArtifactBoundaryTest.run();
+        System.out.println("Passed 14 maintained test groups.");
     }
 }

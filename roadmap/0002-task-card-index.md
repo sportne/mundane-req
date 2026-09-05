@@ -72,14 +72,14 @@ consumers' dependencies explicitly before proceeding.
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
 | [TC-1203](closed/task-1203-define-import-and-reference-contracts.md) | Define Import and Reference Contracts | Complete | TC-1201 |
-| [TC-1204](task-1204-implement-bounded-artifact-linking.md) | Implement Bounded Artifact Linking | Ready | TC-1202, TC-1203, TC-0905 |
+| [TC-1204](closed/task-1204-implement-bounded-artifact-linking.md) | Implement Bounded Artifact Linking | Complete | TC-1202, TC-1203, TC-0905 |
 
 ## First verification consumer and report
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
 | [TC-0905](closed/task-0905-define-verification-analyzer-contract.md) | Define the Verification Analyzer Contract | Complete | TC-0802, TC-1003, TC-1103, TC-1203 |
-| [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) | Implement the Selected Ecosystem Tool | Planned | TC-0905, TC-1204 |
+| [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) | Implement the Selected Ecosystem Tool | Ready | TC-0905, TC-1204 |
 | [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Run a Derived Presentation Experiment | Planned | TC-0904 |
 
 The generic import contract precedes the domain plan contract; the plan contract

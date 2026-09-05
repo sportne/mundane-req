@@ -83,3 +83,5 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 - [Research 0042: Local imports and references](0042-local-import-and-reference-decision.md)
 
 - [Research 0043: Verification plan contract](0043-verification-plan-contract-decision.md)
+
+- [Research 0044: Bounded linker verification](0044-bounded-linker-verification.md)

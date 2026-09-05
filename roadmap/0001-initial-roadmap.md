@@ -136,7 +136,7 @@ without presenting it as fully analyzed.
 
 [TC-0905](closed/task-0905-define-verification-analyzer-contract.md) supplies the
 verification-plan contract and staleness decisions after those designs.
-[TC-1204](task-1204-implement-bounded-artifact-linking.md) implements only the
+[TC-1204](closed/task-1204-implement-bounded-artifact-linking.md) implements only the
 shared resolution capability justified by that workflow.
 [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) implements the
 focused verification consumer.

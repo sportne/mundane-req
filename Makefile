@@ -222,3 +222,13 @@ compilation-experiment-verify: test
 	python3 experiments/0027-compilation-linking/run.py
 
 verify: compilation-experiment-verify
+
+.PHONY: native-link link-verify
+native-link: test
+	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASS_DIR) -o $(abspath $(BUILD_ROOT)/mundane-link) engineering.artifacts.LinkMain
+	$(BUILD_ROOT)/mundane-link --version
+
+link-verify: native-link native-compile
+	python3 scripts/check-artifact-linking.py $(BUILD_ROOT)/mundane-link
+
+verify: link-verify

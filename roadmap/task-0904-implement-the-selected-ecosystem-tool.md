@@ -1,6 +1,6 @@
 # Task TC-0904: Implement the Selected Ecosystem Tool
 
-Status: Planned
+Status: Ready
 
 Current disposition: Experiment 0024 supplied the repeated workflow evidence
 that TC-0901 required and selected a focused verification-plan analyzer. TC-0905
@@ -63,7 +63,7 @@ storage, or satisfaction semantics enter the implementation.
 
 - [TC-0901](closed/task-0901-prioritize-the-next-ecosystem-tool.md)
 - [TC-0905](closed/task-0905-define-verification-analyzer-contract.md)
-- [TC-1204](task-1204-implement-bounded-artifact-linking.md)
+- [TC-1204](closed/task-1204-implement-bounded-artifact-linking.md)
 - [TC-0903](task-0903-run-a-derived-presentation-experiment.md)
 - [Pilot decision](../research/0032-end-to-end-pilot-decision.md)
 - [Roadmap product direction](0001-initial-roadmap.md#product-direction)

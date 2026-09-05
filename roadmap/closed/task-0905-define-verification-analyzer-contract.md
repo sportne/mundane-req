@@ -83,7 +83,7 @@ not ready.
 
 - [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md)
 - [TC-1203](task-1203-define-import-and-reference-contracts.md)
-- [TC-1204](../task-1204-implement-bounded-artifact-linking.md)
+- [TC-1204](task-1204-implement-bounded-artifact-linking.md)
 - [Experiment 0017](../../experiments/0017-verification-evidence/README.md)
 - [Experiment 0024](../../experiments/0024-vaccine-monitoring-pilot/assessment.md)
 - [Verification companion decision](../../research/0024-verification-companion-decision.md)
