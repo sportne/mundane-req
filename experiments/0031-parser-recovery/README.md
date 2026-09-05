@@ -1,7 +1,7 @@
 # Experiment 0031: Bounded parser recovery
 
-The checked-in custom source contains valid BEFORE/BETWEEN/AFTER records, two
-malformed records, and a second file referencing BEFORE and BAD-A. YAML supplies
+The checked-in `invalid/custom` source contains valid BEFORE/BETWEEN/AFTER records, two
+malformed records, and a second file referencing BEFORE and BAD-A. `invalid/yaml` supplies
 the same five-record sequence with two independently invalid mappings.
 
 `results/before-*` records the native compiler at commit 72e385b before modifying
@@ -24,3 +24,7 @@ The generator is bounded by case/record counts; the public subprocess matrix has
 These synthetic fixtures are project-authored under the repository BSD license.
 They do not represent human usability sessions or independent parser evidence.
 [Recovery contract](../../specification/0016-diagnostic-recovery.md).
+
+TC-1501 moved these fixtures beneath the established `invalid` directory convention
+so formatter corpus discovery does not classify intentionally malformed source as
+valid. Their bytes and before/after compiled goldens are unchanged.

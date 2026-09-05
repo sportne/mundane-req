@@ -41,8 +41,8 @@ def run(command,root,paths,source='custom-0.2',status=1):
 cases=[('clean',BASE/'valid',[BASE/'valid'],0,'custom-0.2'),
        ('multi',BASE/'invalid',[BASE/'invalid'],1,'custom-0.2'),
        ('semantic',BASE/'invalid',[BASE/'invalid/semantic.mreq'],1,'custom-0.2'),
-       ('recovery',ROOT/'experiments/0031-parser-recovery/custom',[ROOT/'experiments/0031-parser-recovery/custom'],1,'custom-0.2'),
-       ('yaml',ROOT/'experiments/0031-parser-recovery/yaml',[ROOT/'experiments/0031-parser-recovery/yaml'],1,'yaml-0.3'),
+       ('recovery',ROOT/'experiments/0031-parser-recovery/invalid/custom',[ROOT/'experiments/0031-parser-recovery/invalid/custom'],1,'custom-0.2'),
+       ('yaml',ROOT/'experiments/0031-parser-recovery/invalid/yaml',[ROOT/'experiments/0031-parser-recovery/invalid/yaml'],1,'yaml-0.3'),
        ('missing',BASE/'valid',[BASE/'valid/absent.mreq'],2,'custom-0.2')]
 for name,root,paths,status,source in cases:
     pair=[run(c,root,paths,source,status) for c in COMMANDS]

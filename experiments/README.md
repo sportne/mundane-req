@@ -65,3 +65,5 @@ not expected to remain navigable.
 - [Experiment 0031: Parser recovery](0031-parser-recovery/README.md)
 
 - [Experiment 0032: SARIF diagnostics](0032-sarif-diagnostics/README.md)
+
+- [Experiment 0033: Workflow regressions](0033-workflow-regressions/README.md)

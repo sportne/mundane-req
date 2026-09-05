@@ -68,9 +68,17 @@ explicit TSV verification plan, link locally selected requirement artifacts, and
 analyze planned coverage and review staleness. [Experiment 0029](experiments/0029-verification-report/README.md)
 builds a disposable source-linked HTML report. TSV was selected independently for
 this plan workflow; other artifact formats remain open decisions. The
-[backlog](roadmap/0002-task-card-index.md) tracks project-attribute design, parser
-recovery and broader workflow corpora. [Independent version declarations](versions.properties)
+[backlog](roadmap/0002-task-card-index.md) tracks project-attribute use cases
+and schema decisions. [Independent version declarations](versions.properties)
 feed command builds and package metadata.
+
+[Bounded diagnostic recovery](specification/0016-diagnostic-recovery.md) now retains
+reliably parsed neighbors while keeping invalid sources incomplete. The validator
+also offers [SARIF output](specification/0017-sarif-validation-output.md) with stable
+rules and Unicode source points for downstream tooling. The
+[workflow regression corpus](experiments/0033-workflow-regressions/README.md)
+extends source-to-report rebuild checks across custom and YAML requirements,
+including replayable generated cases and targeted implementation mutations.
 
 The first code was a small [deterministic-interpretation
 probe](experiments/0002-deterministic-interpretation/README.md) used to test
@@ -100,7 +108,9 @@ The complete JVM and native clean-checkout gate is:
 
 The recorded formatter verification repair expanded coverage to every maintained
 valid corpus; Experiment 0024 extends that inventory to 30 source sets and 64
-files. The complete `make verify` gate is the authoritative repository check.
+files. The current formatter inventory includes 31 source sets and 65 files,
+including the SARIF authoring example. The complete `make verify` gate is the
+authoritative repository check.
 The hosted workflow runs that command through
 `scripts/run-ci-verification.sh`, which records tool versions and checks deliberate
 failure propagation. [Build prerequisites and local CI reproduction](distribution/build-verification.md)

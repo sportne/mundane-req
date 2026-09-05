@@ -8,7 +8,7 @@ BASE=ROOT/'experiments/0031-parser-recovery'
 CP=str(ROOT/'build/maintained/classes')+':'+str(ROOT/'build/dependencies/snakeyaml-engine-3.1.1.jar')
 BIN=Path(sys.argv[1]).resolve()
 for mode,source in [('custom','custom-0.2'),('yaml','yaml-0.3')]:
-    folder=BASE/mode; paths=sorted(folder.iterdir()); snapshots={p:p.read_bytes() for p in paths}
+    folder=BASE/'invalid'/mode; paths=sorted(folder.iterdir()); snapshots={p:p.read_bytes() for p in paths}
     artifacts=[]
     for native in [False,True]:
         def command(tool):return [str(BIN/('mundanereq-'+tool.lower()))] if native else ['java','-cp',CP,'mundanereq.cli.'+tool+'Main']

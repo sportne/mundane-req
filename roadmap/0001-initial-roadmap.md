@@ -2,7 +2,7 @@
 
 Status: Draft living roadmap
 
-Last reconciled: 2026-09-05 after the verification-workflow batch
+Last reconciled: 2026-09-05 after the diagnostics and regression batch
 
 Execution is decomposed into the [task-card index](0002-task-card-index.md).
 This remains the single strategic roadmap; cards describe bounded work and
@@ -82,6 +82,7 @@ testing utility rather than a public compiled-artifact contract.
   planning because manual coverage and coarse revision binding caused friction.
 - The former formatter-inventory gap was repaired in commit 42e5082. The latest
   pilot closeout extended documented coverage to 30 source sets and 64 files.
+  The diagnostics batch adds the SARIF example for 31 source sets and 65 files.
   The old audit finding is not an outstanding formatter-corpus task.
 - Existing tests already cover formatter idempotence, semantic preservation,
   comment retention, and selected output/replacement failures. New work extends
@@ -89,9 +90,11 @@ testing utility rather than a public compiled-artifact contract.
 - Formatter write-back now checks snapshot bytes and available file identity;
   detected external edits survive. Partial failures identify completed and remaining
   paths. All commands check stdout/stderr delivery; a rename race remains documented.
-- Interpreter still combines decoding, parsing, semantic construction, and
-  source-set validation. One parse failure can discard a file's parsed records;
-  source decoding is repeated in the formatter path.
+- Bounded parser recovery retains reliable neighboring records and suppresses
+  uncertain reference errors. Malformed YAML and ambiguous math boundaries remain
+  incomplete. Formatter decoding is still repeated; no unrelated refactor was needed.
+- SARIF output preserves rule IDs, source-point coordinates and incomplete-analysis
+  status. Diagnostic end spans remain unavailable rather than being invented.
 - CI runs the complete Makefile verification gate and checks deliberate failure
   propagation in a recorded Ubuntu 24.04 environment. Current version identifiers
   now come from versions.properties,
@@ -180,7 +183,7 @@ by this roadmap.
 
 ## Stage 14 — Address current correctness independently
 
-TC-1401 and TC-1402 are complete; TC-1403 can begin alongside architecture design:
+TC-1401 through TC-1403 are complete:
 
 - [TC-1401](closed/task-1401-protect-formatter-write-back.md): detect intervening edits
   and document recoverable multi-file outcomes, including remaining filesystem races.
@@ -204,11 +207,11 @@ gap between hosted checks and make verify, with clean-run and deliberate-failure
 evidence.
 
 The first report loop is complete.
-[TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md) broadens its
-bounded golden/change corpus, seeded generation, targeted mutation checks, and
-compatibility fixtures. Every implementation card still supplies its own tests.
-[TC-1504](closed/task-1504-emit-sarif-validation-diagnostics.md) provides a concrete
-code-review/editor diagnostic interface after diagnostic contracts and recovery.
+[TC-1501](closed/task-1501-extend-artifact-workflow-regression-corpora.md) adds five
+source-rebuilt report corpora, 12 replayable seeds in both source modes and six
+isolated implementation mutations. Every implementation card still supplies its
+own tests. [TC-1504](closed/task-1504-emit-sarif-validation-diagnostics.md) adds
+schema-validated SARIF with source-accurate points and tested output failure behavior.
 
 Reproduce existing package checks rather than commissioning new packaging work
 without a demonstrated need. Document tested Java, GraalVM, native-toolchain,
@@ -251,9 +254,10 @@ TC-1104?     TC-1301           TC-1202 ---------------------+
                                                        v
                                                    TC-0807?
 
-Ready: TC-1301, TC-1403, TC-1501
+Ready: TC-1301 (then TC-1302)
 Complete: TC-1101, TC-1102, TC-1103, TC-1502, TC-1201, TC-1202,
-          TC-1203, TC-0905, TC-1204, TC-0904, TC-0903, TC-1503
+          TC-1203, TC-0905, TC-1204, TC-0904, TC-0903, TC-1503,
+          TC-1403, TC-1504, TC-1501
 TC-1105 (complete) -> TC-1103
 Completed YAML chain: TC-1105 -> TC-1106 -> TC-1107 -> TC-1108 -> TC-1109
 TC-1106 -> TC-1302

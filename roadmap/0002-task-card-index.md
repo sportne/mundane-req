@@ -27,9 +27,9 @@ superseded prospective roadmap sequence does not undo their completed work.
 
 ## Dependency shape and priority
 
-The YAML/safety, compiled-requirements and verification-workflow batches are
-complete. Ready work is TC-1301 (attribute use cases), TC-1403 (parser recovery)
-and TC-1501 (broader integrated corpora). The graph retains completed prerequisites
+The YAML/safety, compiled-requirements, verification-workflow, and diagnostics
+batches are complete. Ready work is TC-1301 (attribute use cases), which unlocks
+TC-1302 (project attribute schemas). The graph retains completed prerequisites
 for context; active tables contain only remaining work.
 
 ```text
@@ -51,14 +51,14 @@ Completed YAML chain: TC-1105 -> TC-1106 -> TC-1107 -> TC-1108 -> TC-1109
 TC-1106 -> TC-1302
 TC-1502 (complete) -> TC-1201 (complete)
 TC-1201 + TC-1402 + TC-1403 -> TC-1504
-TC-1401 and TC-1503 are complete; TC-0902? remains conditional.
+TC-1401–1403 and TC-1501–1504 are complete; TC-0902? remains conditional.
 ```
 
 Question marks mark conditional work. Tables include all prerequisites, including
 completed evidence. TC-1104 is optional layout work, not a gate for fixes in the
-current layout. TC-1101–1103, TC-1201–1204, TC-0903–0905 and TC-1502/1503 are complete.
-Implementations include their own tests; TC-1501 extends the
-integrated corpus afterward. If a conditional card is superseded, revise its
+current layout. TC-1101–1103, TC-1201–1204, TC-0903–0905, TC-1401–1403 and TC-1501–1504 are complete.
+Implementations include their own tests; completed TC-1501 extends the integrated
+corpus without replacing those owning suites. If a conditional card is superseded, revise its
 consumers' dependencies explicitly before proceeding.
 
 ## Stage 11: Monorepo and ownership decisions
@@ -82,23 +82,9 @@ Attribute implementation and propagation cards are created only after these
 decisions select intrinsic/descriptive use cases, checked-in typed schemas, and
 explicit compatibility behavior. Contextual assessments keep their own authority.
 
-## Stage 14: Immediate correctness
-
-| Card | Outcome | Status | Depends on |
-| --- | --- | --- | --- |
-| [TC-1403](closed/task-1403-recover-parser-diagnostics-safely.md) | Recover Parser Diagnostics Safely | Complete | — |
-
-## Stage 15: Repeatable verification and contributor integration
-
-| Card | Outcome | Status | Depends on |
-| --- | --- | --- | --- |
-| [TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md) | Extend Artifact Workflow Regression Corpora | Ready | TC-0903 |
-| [TC-1504](closed/task-1504-emit-sarif-validation-diagnostics.md) | Emit SARIF Validation Diagnostics | Complete | TC-1201, TC-1402, TC-1403 |
-
-Version declarations address current constant/metadata drift while preserving
-independent source, CLI, package, and compiled-format identifiers. Completed CI alignment
-closes the hosted verification gap. Existing packaging/checksum work is
-reused; additions need a demonstrated gap.
+Completed diagnostic and workflow work is recorded in the evidence inventory
+below. Existing package, compatibility and owning regression checks remain part
+of the authoritative gate; additional work needs a concrete new use case.
 
 ## Conditional existing work
 
@@ -173,6 +159,9 @@ superseded by Stages 11–15. Their filenames and evidence are preserved.
 | [TC-0904](closed/task-0904-implement-the-selected-ecosystem-tool.md) | Implement the Selected Ecosystem Tool | Complete | TC-0905, TC-1204 |
 | [TC-0903](closed/task-0903-run-a-derived-presentation-experiment.md) | Run a Derived Presentation Experiment | Complete | TC-0904 |
 | [TC-1503](closed/task-1503-align-ci-with-authoritative-verification.md) | Align CI with Authoritative Verification | Complete | — |
+| [TC-1403](closed/task-1403-recover-parser-diagnostics-safely.md) | Recover Parser Diagnostics Safely | Complete | — |
+| [TC-1501](closed/task-1501-extend-artifact-workflow-regression-corpora.md) | Extend Artifact Workflow Regression Corpora | Complete | TC-0903 |
+| [TC-1504](closed/task-1504-emit-sarif-validation-diagnostics.md) | Emit SARIF Validation Diagnostics | Complete | TC-1201, TC-1402, TC-1403 |
 
 ## Planning reconciliation
 

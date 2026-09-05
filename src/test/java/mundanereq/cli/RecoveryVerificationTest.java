@@ -16,7 +16,7 @@ import mundanereq.SourceFormat;
 public final class RecoveryVerificationTest {
     private RecoveryVerificationTest() {}
     public static void run() throws Exception {
-        Path root = Path.of("experiments/0031-parser-recovery");
+        Path root = Path.of("experiments/0031-parser-recovery/invalid");
         var custom = Interpreter.interpretInputs(List.of(root.resolve("custom")));
         require(ids(custom).equals(Set.of("BEFORE", "BETWEEN", "AFTER", "REF")), "valid custom neighbors retained");
         require(!custom.syntaxComplete() && !custom.valid(), "custom recovery marked incomplete");

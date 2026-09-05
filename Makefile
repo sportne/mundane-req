@@ -265,3 +265,10 @@ sarif-verify: native-validator yaml-schema-verify
 	build/schema-check-venv/bin/python scripts/check-sarif.py $(VALIDATE_NATIVE)
 
 verify: sarif-verify
+
+.PHONY: workflow-corpus-verify
+workflow-corpus-verify: native-compile native-formatter native-plan native-verification
+	python3 experiments/0033-workflow-regressions/run.py
+	python3 experiments/0033-workflow-regressions/mutations.py
+
+verify: workflow-corpus-verify

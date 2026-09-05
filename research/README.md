@@ -95,3 +95,5 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 - [Research 0048: Parser recovery](0048-parser-recovery-verification.md)
 
 - [Research 0049: SARIF diagnostics](0049-sarif-diagnostics-verification.md)
+
+- [Research 0050: Workflow regression corpus](0050-workflow-regression-corpus.md)

@@ -61,7 +61,7 @@ Build a maintained renderer only if the presentation materially serves the selec
 - [TC-0807](../task-0807-test-authored-views-and-specifications.md)
 - [Roadmap views study](../0001-initial-roadmap.md#views-and-specifications)
 - [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md)
-- [TC-1501](../task-1501-extend-artifact-workflow-regression-corpora.md)
+- [TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md)
 
 ## Compatibility and affected components
 

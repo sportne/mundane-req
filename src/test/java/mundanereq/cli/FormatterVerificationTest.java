@@ -21,6 +21,7 @@ import mundanereq.source.SourceDocument;
 public final class FormatterVerificationTest {
     private static final Path ROOT = Path.of("").toAbsolutePath().normalize();
     private static final List<String> MAINTAINED_SOURCE_SETS = List.of(
+            "experiments/0032-sarif-diagnostics/valid",
             "conformance/0.1/valid",
             "conformance/0.2/valid",
             "experiments/0001-source-representations/candidate-a-modules",

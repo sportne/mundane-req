@@ -1,6 +1,6 @@
 # Task TC-1501: Extend Artifact Workflow Regression Corpora
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 15
 
@@ -66,7 +66,20 @@ unsupported cases rather than inventing compatibility or participant evidence.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [TC-0903](closed/task-0903-run-a-derived-presentation-experiment.md)
-- [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md)
-- [Formatter verification](../src/test/java/mundanereq/cli/FormatterVerificationTest.java)
+- [Roadmap](../0001-initial-roadmap.md)
+- [TC-0903](task-0903-run-a-derived-presentation-experiment.md)
+- [TC-0902](../task-0902-run-an-independent-reqif-roundtrip.md)
+- [Formatter verification](../../src/test/java/mundanereq/cli/FormatterVerificationTest.java)
+
+## Planning refinement
+
+Include YAML 0.3 alongside retained legacy-compatible source sets. Reuse existing
+parser, formatting, compiled, SARIF and individual-tool suites; add cross-format
+source-to-report workflows and six targeted implementation mutations. Reproduce
+committed source in a clean input archive with installed tools, and run the full
+gate from a separate clean checkout for final evidence. No project-schema cases
+are invented before implementation.
+
+## Completion evidence
+
+Completed [Experiment 0033](../../experiments/0033-workflow-regressions/README.md) and [Research 0050](../../research/0050-workflow-regression-corpus.md): five source-rebuilt reports, 12 seeds in both source modes, six compiled behavior-changing mutations, and clean full-gate verification. The formatter inventory caught and corrected the new fixture classifications; its completeness assertion remains. All 17 JVM groups, native/package/integration gates and deliberate failure propagation passed.
