@@ -209,7 +209,7 @@ must name a current missing capability and measured evidence.
 
 ## Views and specifications
 
-[TC-0903](task-0903-run-a-derived-presentation-experiment.md) generates the
+[TC-0903](closed/task-0903-run-a-derived-presentation-experiment.md) generates the
 verification report after the analyzer. It uses deterministic presentation first,
 records input revisions and analysis completeness, and links findings to source.
 

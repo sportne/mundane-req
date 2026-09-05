@@ -1,6 +1,6 @@
 # Task TC-1501: Extend Artifact Workflow Regression Corpora
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 15
 
@@ -67,6 +67,6 @@ unsupported cases rather than inventing compatibility or participant evidence.
 ## References
 
 - [Roadmap](0001-initial-roadmap.md)
-- [TC-0903](task-0903-run-a-derived-presentation-experiment.md)
+- [TC-0903](closed/task-0903-run-a-derived-presentation-experiment.md)
 - [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md)
 - [Formatter verification](../src/test/java/mundanereq/cli/FormatterVerificationTest.java)

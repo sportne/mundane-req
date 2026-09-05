@@ -246,3 +246,9 @@ verification-verify: native-plan native-verification native-compile
 	python3 scripts/check-verification-workflow.py $(BUILD_ROOT)/mundane-plan $(BUILD_ROOT)/mundane-verify
 
 verify: verification-verify
+
+.PHONY: report-verify
+report-verify: native-verification
+	python3 experiments/0029-verification-report/run.py
+
+verify: report-verify

@@ -47,7 +47,7 @@ Defer a view language if a disposable ordering convention serves the workflow. S
 
 - [Roadmap views study](0001-initial-roadmap.md#views-and-specifications)
 - [Non-Markdown view research](../research/0006-non-markdown-view-notation.md)
-- [TC-0903](task-0903-run-a-derived-presentation-experiment.md)
+- [TC-0903](closed/task-0903-run-a-derived-presentation-experiment.md)
 
 ## Planning refinement
 

@@ -1,6 +1,6 @@
 # Task TC-0903: Run a Derived Presentation Experiment
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 9
 
@@ -25,7 +25,7 @@ One disposable presentation is generated from source and evaluated against a con
 - Start with deterministic derived ordering and no new authoritative view syntax.
 - Render statement prose and opaque LaTeX content without changing their source ownership.
 - Include source IDs and trace navigation needed by the selected workflow.
-- Delete and reproduce the output from a clean tagged checkout.
+- Delete and reproduce the output from a clean recorded commit archive.
 - Record whether sections, selection, and ordering need authored configuration.
   Supply that evidence to TC-0807 only if the simple generated view is insufficient.
 
@@ -58,10 +58,10 @@ Build a maintained renderer only if the presentation materially serves the selec
 
 ## References
 
-- [TC-0807](task-0807-test-authored-views-and-specifications.md)
-- [Roadmap views study](0001-initial-roadmap.md#views-and-specifications)
-- [TC-0904](closed/task-0904-implement-the-selected-ecosystem-tool.md)
-- [TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md)
+- [TC-0807](../task-0807-test-authored-views-and-specifications.md)
+- [Roadmap views study](../0001-initial-roadmap.md#views-and-specifications)
+- [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md)
+- [TC-1501](../task-1501-extend-artifact-workflow-regression-corpora.md)
 
 ## Compatibility and affected components
 
@@ -77,3 +77,12 @@ change Conditional to Planned, and replace the authored-view prerequisite with
 TC-0904. TC-0807 becomes a conditional successor if this experiment demonstrates
 composition needs. The card remains a bounded experiment, not a general report
 framework; stop or narrow if its first view requires a new publishing language.
+
+Refined during execution: use a clean archive of a recorded Git commit for input
+reproduction, with installed analyzer/renderer tools. This retains immutable input
+evidence without creating a tag. The recorded tool revision and fixture digests
+identify the reproduction boundary.
+
+## Completion evidence
+
+Completed the deterministic report experiment with public analyzer input, source navigation, provenance, golden rebuild and failure evidence. See [Research 0046](../../research/0046-verification-report-decision.md) and [Experiment 0029](../../experiments/0029-verification-report/README.md). Retain the experimental renderer; TC-0807 stays conditional and TC-1501 is unlocked.

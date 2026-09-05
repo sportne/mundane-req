@@ -80,7 +80,7 @@ consumers' dependencies explicitly before proceeding.
 | --- | --- | --- | --- |
 | [TC-0905](closed/task-0905-define-verification-analyzer-contract.md) | Define the Verification Analyzer Contract | Complete | TC-0802, TC-1003, TC-1103, TC-1203 |
 | [TC-0904](closed/task-0904-implement-the-selected-ecosystem-tool.md) | Implement the Selected Ecosystem Tool | Complete | TC-0905, TC-1204 |
-| [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Run a Derived Presentation Experiment | Ready | TC-0904 |
+| [TC-0903](closed/task-0903-run-a-derived-presentation-experiment.md) | Run a Derived Presentation Experiment | Complete | TC-0904 |
 
 The generic import contract precedes the domain plan contract; the plan contract
 provides fixtures for the maintained linker, then the analyzer consumes that
@@ -107,7 +107,7 @@ explicit compatibility behavior. Contextual assessments keep their own authority
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md) | Extend Artifact Workflow Regression Corpora | Planned | TC-0903 |
+| [TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md) | Extend Artifact Workflow Regression Corpora | Ready | TC-0903 |
 | [TC-1503](task-1503-align-ci-with-authoritative-verification.md) | Align CI with Authoritative Verification | Ready | — |
 | [TC-1504](task-1504-emit-sarif-validation-diagnostics.md) | Emit SARIF Validation Diagnostics | Planned | TC-1201, TC-1402, TC-1403 |
 
@@ -197,7 +197,7 @@ existing planning files. The YAML comparison follow-up below adds TC-1105.
 | [Task template](task-card-template.md) | Compatibility/components, present problem, risks, and explicit refinement instructions |
 | [TC-0905](closed/task-0905-define-verification-analyzer-contract.md) | Ready becomes Planned; add compilation/import decisions and compiled plan fixture obligations |
 | [TC-0904](closed/task-0904-implement-the-selected-ecosystem-tool.md) | Add bounded linking dependency and compiled consumer evidence; unlock report instead of historical audit |
-| [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Conditional becomes Planned; select verification report and make composition a possible successor |
+| [TC-0903](closed/task-0903-run-a-derived-presentation-experiment.md) | Conditional becomes Planned; select verification report and make composition a possible successor |
 | [TC-0807](task-0807-test-authored-views-and-specifications.md) | Reverse the old report prerequisite; retain conditional composition scope |
 | [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md) | Clarify that the decision concerns a maintained interchange capability; external-tool prerequisite remains |
 | [Repository README](../README.md) | Align current direction and verification wording with incremental planning |
