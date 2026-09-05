@@ -107,7 +107,13 @@ public final class Interpreter {
             Map<String, Set<String>> outgoing,
             List<Diagnostic> diagnostics,
             int fileCount,
-            List<RequirementOrigin> origins) {
+            List<RequirementOrigin> origins,
+            boolean syntaxComplete) {
+        public Result(List<Requirement> requirements, Map<String, Requirement> byId,
+                Map<String, Set<String>> outgoing, List<Diagnostic> diagnostics, int fileCount,
+                List<RequirementOrigin> origins) {
+            this(requirements, byId, outgoing, diagnostics, fileCount, origins, diagnostics.isEmpty());
+        }
         public Result(List<Requirement> requirements, Map<String, Requirement> byId,
                 Map<String, Set<String>> outgoing, List<Diagnostic> diagnostics, int fileCount) {
             this(requirements, byId, outgoing, diagnostics, fileCount, List.of());
@@ -123,7 +129,7 @@ public final class Interpreter {
         }
 
         public boolean valid() {
-            return diagnostics.isEmpty();
+            return syntaxComplete && diagnostics.isEmpty();
         }
     }
 
@@ -274,11 +280,7 @@ public final class Interpreter {
                 parsedRequirements.addAll(YamlRequirements.parse(source, diagnostics));
                 continue;
             }
-            try {
-                parsedRequirements.addAll(new Parser(decoded.document()).parse());
-            } catch (ParseFailure failure) {
-                diagnostics.add(failure.diagnostic);
-            }
+            parsedRequirements.addAll(new Parser(decoded.document()).parse(diagnostics));
         }
 
         boolean incomplete = !diagnostics.isEmpty();
@@ -304,7 +306,7 @@ public final class Interpreter {
         for (ParsedRequirement parsed : parsedRequirements) {
             for (RelationshipLocation relationship : parsed.relationshipLocations()) {
                 if (!byId.containsKey(relationship.target())
-                        && !(format == SourceFormat.YAML_03 && incomplete)) {
+                        && !incomplete) {
                     diagnostics.add(diagnostic(
                             parsed.location().file(),
                             relationship.line(),
@@ -323,7 +325,7 @@ public final class Interpreter {
         }
         sortDiagnostics(diagnostics);
         return new Result(requirements, byId, outgoing, diagnostics, sources.size(),
-                parsedRequirements.stream().map(ParsedRequirement::origin).toList());
+                parsedRequirements.stream().map(ParsedRequirement::origin).toList(), !incomplete);
     }
 
     private static Decoded decode(Source source) {
@@ -461,8 +463,9 @@ public final class Interpreter {
                     .toList();
         }
 
-        List<ParsedRequirement> parse() {
+        List<ParsedRequirement> parse(List<Diagnostic> diagnostics) {
             List<ParsedRequirement> requirements = new ArrayList<>();
+            int initialErrors = diagnostics.size();
             boolean requiresSeparation = false;
             while (index < lines.size()) {
                 int triviaLines = 0;
@@ -471,22 +474,54 @@ public final class Interpreter {
                     triviaLines++;
                 }
                 if (index >= lines.size()) break;
-                if (requiresSeparation && triviaLines == 0) {
-                    fail(index, 1, "record-separation", "requirement records must be separated by a blank line or comment line");
+                int start = index;
+                try {
+                    if (requiresSeparation && triviaLines == 0) {
+                        fail(index, 1, "record-separation", "requirement records must be separated by a blank line or comment line");
+                    }
+                    if (!line().startsWith("requirement")) {
+                        String code = line().equals("end requirement")
+                                ? "unmatched-record-end" : "content-outside-record";
+                        fail(index, 1, code, "nonblank content must occur inside a requirement record");
+                    }
+                    requirements.add(parseRecord());
+                    requiresSeparation = true;
+                } catch (ParseFailure failure) {
+                    if (diagnostics.size() - initialErrors == 99) {
+                        diagnostics.add(lineDiagnostic(start, 1, "recovery-limit",
+                                "diagnostic limit reached; source is incomplete"));
+                        break;
+                    }
+                    diagnostics.add(failure.diagnostic);
+                    recover(start);
+                    requiresSeparation = false;
                 }
-                if (!line().startsWith("requirement")) {
-                    String code = line().equals("end requirement")
-                            ? "unmatched-record-end"
-                            : "content-outside-record";
-                    fail(index, 1, code, "nonblank content must occur inside a requirement record");
-                }
-                requirements.add(parseRecord());
-                requiresSeparation = true;
             }
-            if (requirements.isEmpty()) {
-                fail(0, 1, "empty-source-file", "a source file must contain at least one requirement record");
+            if (requirements.isEmpty() && diagnostics.size() == initialErrors) {
+                diagnostics.add(lineDiagnostic(0, 1, "empty-source-file",
+                        "a source file must contain at least one requirement record"));
             }
             return requirements;
+        }
+
+        // Only an unindented valid opener with source separation is a candidate.
+        // Indented prose/math lookalikes never synchronize. An unclosed math block
+        // makes the remainder ambiguous, so retain the prefix and stop recovery.
+        private void recover(int start) {
+            boolean math = false;
+            boolean separated = false;
+            for (int cursor = start + 1; cursor < lines.size(); cursor++) {
+                String text = lines.get(cursor);
+                if (text.equals("  math latex")) math = true;
+                else if (text.equals("  end math")) math = false;
+                if (!math && separated && OPENER_PATTERN.matcher(text).matches()
+                        && isValidRequirementId(text.substring(12))) {
+                    index = cursor;
+                    return;
+                }
+                separated = text.isEmpty() || text.startsWith("#");
+            }
+            index = lines.size();
         }
 
         private ParsedRequirement parseRecord() {

@@ -91,3 +91,5 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 - [Research 0046: Verification report decision](0046-verification-report-decision.md)
 
 - [Research 0047: Complete CI verification](0047-complete-ci-verification.md)
+
+- [Research 0048: Parser recovery](0048-parser-recovery-verification.md)

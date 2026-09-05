@@ -87,6 +87,8 @@ final class YamlRequirements {
                 error(doc.get("requirements"), "yaml-limit", "record count exceeds 10000");
                 return records;
             }
+            // An invalid envelope cannot establish any record interpretation.
+            if (diagnostics.size() != initialCount) return records;
             for (Node node : nodes) {
                 int startErrors = diagnostics.size();
                 Map<String, Node> item = mapping(node,

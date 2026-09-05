@@ -1,0 +1,7 @@
+requirement REF
+title: REF
+statement:
+  The component shall respond.
+decomposes: BEFORE
+decomposes: BAD-A
+end requirement

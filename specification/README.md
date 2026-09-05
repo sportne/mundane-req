@@ -62,3 +62,5 @@ explicit contract update and applicable compatibility notes.
 - [Local artifact imports and linking 0.1](0014-local-artifact-imports-0.1.md)
 
 - [Verification planning 0.1](0015-verification-planning-0.1.md)
+
+- [Diagnostic recovery and incomplete interpretation](0016-diagnostic-recovery.md)

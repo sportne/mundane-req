@@ -35,6 +35,7 @@ new rule identifier. Source contracts remain the authority for validity.
 | no-source-files | Selection contains no eligible source files. |
 | nul-byte | Source contains NUL. |
 | out-of-order-field | A custom field occurs in the wrong order. |
+| recovery-limit | Custom record recovery reached its 100-diagnostic per-file bound. |
 | record-separation | Custom records lack required blank/comment separation. |
 | tab | Source contains a forbidden physical tab. |
 | unexpected-math-end | A math terminator occurs without an opener. |

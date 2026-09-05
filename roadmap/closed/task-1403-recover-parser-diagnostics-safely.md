@@ -1,6 +1,6 @@
 # Task TC-1403: Recover Parser Diagnostics Safely
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 14
 
@@ -66,7 +66,18 @@ and profile before optimizing them.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [Interpreter](../src/main/java/mundanereq/Interpreter.java)
-- [Source representation decision](../research/0012-shared-source-representation.md)
-- [TC-1201](closed/task-1201-define-requirement-semantic-output.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [Interpreter](../../src/main/java/mundanereq/Interpreter.java)
+- [Source representation decision](../../research/0012-shared-source-representation.md)
+- [TC-1201](task-1201-define-requirement-semantic-output.md)
+
+## Planning refinement
+
+Include explicitly selected YAML 0.3 alongside retained custom-source fixtures.
+YAML recovery is limited to independently invalid mappings after successful
+composition; malformed YAML and invalid document envelopes remain file-fatal.
+Do not infer record boundaries from malformed YAML text.
+
+## Completion evidence
+
+Implemented and verified bounded recovery under [Contract 0016](../../specification/0016-diagnostic-recovery.md), with before/after captures and [Research 0048](../../research/0048-parser-recovery-verification.md). Sixteen JVM groups, existing compiled-output checks and the JVM/native recovery matrix passed. TC-1504 is Ready; YAML syntax recovery remains deliberately conservative.

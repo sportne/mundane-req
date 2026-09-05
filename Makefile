@@ -252,3 +252,9 @@ report-verify: native-verification
 	python3 experiments/0029-verification-report/run.py
 
 verify: report-verify
+
+.PHONY: recovery-verify
+recovery-verify: native-validator native-formatter native-compile
+	python3 scripts/check-parser-recovery.py $(BUILD_ROOT)
+
+verify: recovery-verify

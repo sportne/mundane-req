@@ -186,7 +186,7 @@ TC-1401 and TC-1402 are complete; TC-1403 can begin alongside architecture desig
   and document recoverable multi-file outcomes, including remaining filesystem races.
 - [TC-1402](closed/task-1402-report-cli-output-failures.md): avoid false success on
   stdout/stderr failures and retain focused existing command behavior.
-- [TC-1403](task-1403-recover-parser-diagnostics-safely.md): recover independent
+- [TC-1403](closed/task-1403-recover-parser-diagnostics-safely.md): recover independent
   errors without inventing complete valid models or misleading cross-file findings.
 
 Separate decoding, syntax, semantics, and validation only where it produces an
