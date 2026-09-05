@@ -180,7 +180,7 @@ trace-policy-trial: native-validator native-trace
 	experiments/0022-trace-policies/run.sh \
 		$(VALIDATE_NATIVE) $(TRACE_NATIVE) $(BUILD_ROOT)/trace-policies
 
-verify: test native-smoke boundary-isolation validator-verify formatter-verify trace-verify native-suite-verify ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial independent-conformance-compare
+verify: yaml-schema-verify test native-smoke boundary-isolation validator-verify formatter-verify trace-verify native-suite-verify ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial independent-conformance-compare
 
 .PHONY: native-migrate yaml-verify
 native-migrate: test

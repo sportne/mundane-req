@@ -21,17 +21,10 @@ jobs:
           distribution: graalvm-community
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build the three native tools
-        run: make native-suite
+      - name: Install full verification prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby python3-venv curl gcc make libc6-dev zlib1g-dev binutils
 
-      - name: Validate requirements source
-        run: build/maintained/mundanereq-validate conformance/0.2/valid
-
-      - name: Check requirements formatting
-        run: build/maintained/mundanereq-format --check conformance/0.2/valid
-
-      - name: Inspect selected decomposition trace
-        run: build/maintained/mundanereq-trace parents LEAF conformance/0.2/valid
-
-      - name: Verify failure attribution and tool independence
-        run: make ci-workflow-evidence
+      - name: Run authoritative verification and failure propagation checks
+        run: scripts/run-ci-verification.sh

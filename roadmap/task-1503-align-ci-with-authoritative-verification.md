@@ -1,6 +1,6 @@
 # Task TC-1503: Align CI with Authoritative Verification
 
-Status: Ready
+Status: In progress
 
 Roadmap stage: 15
 

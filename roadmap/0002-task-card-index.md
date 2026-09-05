@@ -108,7 +108,7 @@ explicit compatibility behavior. Contextual assessments keep their own authority
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
 | [TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md) | Extend Artifact Workflow Regression Corpora | Ready | TC-0903 |
-| [TC-1503](task-1503-align-ci-with-authoritative-verification.md) | Align CI with Authoritative Verification | Ready | — |
+| [TC-1503](task-1503-align-ci-with-authoritative-verification.md) | Align CI with Authoritative Verification | In progress | — |
 | [TC-1504](task-1504-emit-sarif-validation-diagnostics.md) | Emit SARIF Validation Diagnostics | Planned | TC-1201, TC-1402, TC-1403 |
 
 Version declarations address current constant/metadata drift while preserving
