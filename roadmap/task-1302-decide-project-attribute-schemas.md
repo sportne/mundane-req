@@ -78,7 +78,7 @@ ambiguous, narrow it before creating implementation work.
 
 - [Roadmap](0001-initial-roadmap.md)
 - [TC-1301](task-1301-classify-project-attribute-use-cases.md)
-- [TC-1203](task-1203-define-import-and-reference-contracts.md)
+- [TC-1203](closed/task-1203-define-import-and-reference-contracts.md)
 - [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md)
 - [Source language](../specification/0005-mundanereq-source-language-0.2.md)
 - [TC-1105](closed/task-1105-compare-yaml-and-custom-requirement-source.md)

@@ -128,7 +128,7 @@ requirement semantics, source ranges, diagnostic meanings, provenance, ordering,
 and completeness; [TC-1202](closed/task-1202-emit-compiled-requirement-artifacts.md)
 implemented the selected interface as mundanereq-compile.
 
-[TC-1203](task-1203-define-import-and-reference-contracts.md) decides explicit
+[TC-1203](closed/task-1203-define-import-and-reference-contracts.md) decides explicit
 import selection, qualification, target kinds, revision binding, and failure
 behavior. Qualification preserves human-authored requirement IDs. The design
 distinguishes relationship cycles from build cycles and describes partial input

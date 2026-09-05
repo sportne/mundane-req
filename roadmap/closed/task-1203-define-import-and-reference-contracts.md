@@ -1,6 +1,6 @@
 # Task TC-1203: Define Import and Reference Contracts
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 12
 
@@ -78,13 +78,17 @@ systems model merely to resolve references.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [TC-1201](closed/task-1201-define-requirement-semantic-output.md)
-- [Identity decision](../research/0023-identity-continuity-decision.md)
-- [TC-0905](task-0905-define-verification-analyzer-contract.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [TC-1201](task-1201-define-requirement-semantic-output.md)
+- [Identity decision](../../research/0023-identity-continuity-decision.md)
+- [TC-0905](../task-0905-define-verification-analyzer-contract.md)
 
 ## Planning refinement
 
 Make the compiled integration boundary independent of authoring notation. The
 requirements YAML choice does not select import syntax for every artifact type.
 Status and dependencies remain unchanged.
+
+## Completion evidence
+
+Completed by [Research 0042](../../research/0042-local-import-and-reference-decision.md) and [local import contract 0.1](../../specification/0014-local-artifact-imports-0.1.md): explicit local snapshots, qualification, provenance, completeness, failure/cycle/context cases and revision change matrix. Select a bounded resolver for TC-1204 after TC-0905 supplies its companion fixtures. TC-0905 is Ready; TC-1302 still needs TC-1301.

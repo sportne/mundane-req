@@ -71,14 +71,14 @@ consumers' dependencies explicitly before proceeding.
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-1203](task-1203-define-import-and-reference-contracts.md) | Define Import and Reference Contracts | Ready | TC-1201 |
+| [TC-1203](closed/task-1203-define-import-and-reference-contracts.md) | Define Import and Reference Contracts | Complete | TC-1201 |
 | [TC-1204](task-1204-implement-bounded-artifact-linking.md) | Implement Bounded Artifact Linking | Conditional | TC-1202, TC-1203, TC-0905 |
 
 ## First verification consumer and report
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-0905](task-0905-define-verification-analyzer-contract.md) | Define the Verification Analyzer Contract | Planned | TC-0802, TC-1003, TC-1103, TC-1203 |
+| [TC-0905](task-0905-define-verification-analyzer-contract.md) | Define the Verification Analyzer Contract | Ready | TC-0802, TC-1003, TC-1103, TC-1203 |
 | [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) | Implement the Selected Ecosystem Tool | Planned | TC-0905, TC-1204 |
 | [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Run a Derived Presentation Experiment | Planned | TC-0904 |
 
@@ -236,7 +236,7 @@ dependencies change in this refinement, and no additional cards are needed.
 | [TC-1101](closed/task-1101-define-monorepo-component-boundaries.md) | Record source-format decisions separately from shared component interfaces |
 | [TC-1103](closed/task-1103-test-compilation-linking-and-rebuilds.md) | Exercise provisional YAML requirements with the existing TSV plan adapter; remove shared-notation comparison |
 | [TC-1106](closed/task-1106-specify-yaml-requirement-source-profile.md) | Specify the requirements model, YAML mapping, structural schema and semantic rules with explicit authority and scope |
-| [TC-1203](task-1203-define-import-and-reference-contracts.md) | Separate common linking meanings from each artifact's authored encoding |
+| [TC-1203](closed/task-1203-define-import-and-reference-contracts.md) | Separate common linking meanings from each artifact's authored encoding |
 | [TC-0905](task-0905-define-verification-analyzer-contract.md) | Select plan notation independently and consume published compiled interfaces |
 | [TC-1302](task-1302-decide-project-attribute-schemas.md) | Keep project declaration format a decision distinct from YAML requirement values |
 

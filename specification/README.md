@@ -58,3 +58,5 @@ explicit contract update and applicable compatibility notes.
 
 - [Requirement semantic output 0.1](0012-requirement-semantic-output-0.1.md)
 - [Compiled diagnostic rule catalog](0013-compiled-diagnostic-rules.md)
+
+- [Local artifact imports and linking 0.1](0014-local-artifact-imports-0.1.md)

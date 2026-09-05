@@ -79,3 +79,5 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 - [Research 0040: Semantic output decision](0040-requirement-semantic-output-decision.md)
 
 - [Research 0041: Compiled requirements verification](0041-compiled-requirements-verification.md)
+
+- [Research 0042: Local imports and references](0042-local-import-and-reference-decision.md)

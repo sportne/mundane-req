@@ -1,6 +1,6 @@
 # Task TC-0905: Define the Verification Analyzer Contract
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 9
 
@@ -82,7 +82,7 @@ not ready.
 ## References
 
 - [TC-1103](closed/task-1103-test-compilation-linking-and-rebuilds.md)
-- [TC-1203](task-1203-define-import-and-reference-contracts.md)
+- [TC-1203](closed/task-1203-define-import-and-reference-contracts.md)
 - [TC-1204](task-1204-implement-bounded-artifact-linking.md)
 - [Experiment 0017](../experiments/0017-verification-evidence/README.md)
 - [Experiment 0024](../experiments/0024-vaccine-monitoring-pilot/assessment.md)

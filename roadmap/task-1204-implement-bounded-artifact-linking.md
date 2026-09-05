@@ -66,6 +66,6 @@ is justified.
 
 - [Roadmap](0001-initial-roadmap.md)
 - [TC-1202](closed/task-1202-emit-compiled-requirement-artifacts.md)
-- [TC-1203](task-1203-define-import-and-reference-contracts.md)
+- [TC-1203](closed/task-1203-define-import-and-reference-contracts.md)
 - [TC-0905](task-0905-define-verification-analyzer-contract.md)
 - [TC-1103](closed/task-1103-test-compilation-linking-and-rebuilds.md)
