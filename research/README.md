@@ -64,3 +64,4 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 | [0030 — Next ecosystem tool prioritization](0030-next-ecosystem-tool-prioritization.md) | Selects no fourth tool without a demonstrated consumer or stable companion model. |
 | [0031 — Source 1.0 readiness audit](0031-source-1.0-readiness-audit.md) | Recommends a conditional source-only stability decision, identifies evidence gaps, and records the resolved verification blocker. |
 | [0032 — End-to-end pilot decision](0032-end-to-end-pilot-decision.md) | Retains the requirement model, keeps 1.0 deferred, and selects a bounded verification-analyzer experiment. |
+| [0033 — YAML source representation](0033-yaml-source-representation-decision.md) | Selects a constrained YAML successor direction; preserves current contracts pending specification and implementation. |

@@ -1,0 +1,5 @@
+requirements:
+  - id: "001"
+    title: *missing
+    statement: >-
+      The display shall preserve its label.

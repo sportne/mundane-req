@@ -1,0 +1,5 @@
+requirements:
+  - id: "-bad"
+    title: "A test"
+    statement: >-
+      The display shall preserve its label.

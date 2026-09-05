@@ -22,6 +22,10 @@ for the first verification consumer and TC-1204's bounded resolver.
 
 ## Work
 
+- Define common reference/provenance/linking meanings at the compiled interface.
+  Distinguish those meanings from their encoding in each artifact's source or
+  input declaration. Use TC-1103's different source carriers as the first example;
+  bindings for other artifact formats remain with their own contract decisions.
 - Define import declarations, local resolution roots, dependency selection and
   recorded resolved versions. Compare current-checkout selection with pinned Git
   revisions using two local repositories; remote fetching can remain unsupported.
@@ -47,6 +51,10 @@ for the first verification consumer and TC-1204's bounded resolver.
   expected diagnostics or supported linked results.
 - Linking proves resolvability/type compatibility only; a path to a requirement
   does not prove satisfaction or propagate approval.
+- A worked requirement/plan example resolves references and retains source
+  provenance across TC-1103's different source representations. The linker contract
+  requires the selected compiled interfaces, without requiring YAML source or a
+  shared source parser for imported artifacts.
 - Source remains authoritative; compiled imports and recorded build manifests
   identify their exact inputs and can be regenerated.
 
@@ -74,3 +82,9 @@ systems model merely to resolve references.
 - [TC-1201](task-1201-define-requirement-semantic-output.md)
 - [Identity decision](../research/0023-identity-continuity-decision.md)
 - [TC-0905](task-0905-define-verification-analyzer-contract.md)
+
+## Planning refinement
+
+Make the compiled integration boundary independent of authoring notation. The
+requirements YAML choice does not select import syntax for every artifact type.
+Status and dependencies remain unchanged.

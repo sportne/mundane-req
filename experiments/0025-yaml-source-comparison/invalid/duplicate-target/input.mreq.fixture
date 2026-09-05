@@ -1,0 +1,7 @@
+requirement 001
+title: A test
+statement:
+  The display shall preserve its label.
+decomposes: 001
+decomposes: 001
+end requirement

@@ -33,7 +33,10 @@ expected analyses sufficient to implement a separate native analyzer.
   snapshot plus requirement-ID binding against comment-only, unrelated,
   normative, identity, and file-move changes.
 - Decide the minimum carrier fields and file-selection behavior needed for
-  activity definitions, plans, and coverage.
+  activity definitions, plans, and coverage. Select the plan authoring format on
+  its own evidence: assess the existing experimental TSV carrier and alternatives
+  only where authoring or tooling needs justify them. Record that decision
+  separately from its compiled interface; requirements YAML supplies no default.
 - Specify diagnostics for unknown requirement/activity references, duplicate
   rows, digest mismatch, stale plans, and uncovered in-scope requirements.
 - Keep execution, evidence storage, results, safety assessment, generalized
@@ -56,8 +59,12 @@ expected analyses sufficient to implement a separate native analyzer.
   expected results.
 - The contract identifies authoritative inputs and disposable outputs without a
   database, daemon, or hidden repository state.
-- The future executable has one focused responsibility and can reuse the shared
-  source interpreter without depending on another executable.
+- The plan-format decision explains its authoring/workflow evidence and maps its
+  selected source through an adapter to the published compiled interface. It leaves
+  safety, test-evidence and other artifact authoring formats unresolved.
+- The future executable has one focused responsibility and consumes the published
+  compiled interfaces without requiring another artifact's source parser. Shared
+  implementation is justified separately by the selected contracts.
 
 ## Out of scope
 
@@ -98,3 +105,7 @@ from Ready to Planned because those decisions are unresolved. The plan contract
 now supplies the linker's first companion fixture interface; its implementation
 remains TC-0904. Stop or narrow if the selected carrier needs generalized policy
 or satisfaction semantics to answer coverage and staleness.
+
+Keep verification-plan notation an independent decision. Replace the ambiguous
+shared-interpreter allowance with consumption through compiled interfaces and a
+separately selected plan adapter. Status and dependencies remain unchanged.

@@ -1,0 +1,6 @@
+requirements:
+  - id: "001"
+    title: "A test"
+    title: Again
+    statement: >-
+      The display shall preserve its label.

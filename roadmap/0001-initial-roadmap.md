@@ -40,6 +40,11 @@ reference reachability alone establishes neither invalidity nor satisfaction.
 
 One repository can coordinate contracts and consumers without requiring one
 language, executable, shared version number, or universal engineering metamodel.
+YAML is selected for requirements only. Each other artifact's authoring format
+remains a separate workflow decision, including use of existing formats or native
+engineering files. Common integration concerns compiled interfaces, explicit
+references, provenance and linking. Neither shared YAML notation nor a common
+source schema is an ecosystem requirement.
 The initial responsibilities to investigate are:
 
 | Responsibility | Boundary to preserve |
@@ -108,17 +113,21 @@ requirements/verification loop with experimental artifacts before selecting
 public contracts. [TC-1104](task-1104-establish-monorepo-component-layout.md)
 conditionally implements justified layout changes.
 
-[TC-1105](task-1105-compare-yaml-and-custom-requirement-source.md) can begin
-independently using the existing semantic model. It compares current .mreq source
-with a documented YAML-compatible schema/profile, including multiple requirements
-per file, prose/math, comments, diagnostics, and matched edit/conflict workflows.
-It evaluates rewriting the requirements specification around YAML, records the
-specification/migration outline, and precedes TC-1103's source-adapter selection.
-The authoring format remains unresolved until that comparison; compiled semantics
-and artifact linking can be implemented with either representation.
+[TC-1105](closed/task-1105-compare-yaml-and-custom-requirement-source.md) is complete.
+Its [decision](../research/0033-yaml-source-representation-decision.md) selects a
+constrained YAML target, preserving authored IDs and the requirement semantic
+model. Current source 0.2 remains authoritative until successor work is completed.
+[TC-1106](task-1106-specify-yaml-requirement-source-profile.md) settles the profile
+and specification; [TC-1107](task-1107-interpret-and-validate-yaml-requirement-source.md)
+implements interpretation; [TC-1108](task-1108-format-yaml-source-without-content-loss.md)
+provides safe formatting; [TC-1109](task-1109-migrate-yaml-examples-and-conformance-material.md)
+provides verified migration and examples. The bounded compilation experiment may
+use the provisional adapter without waiting for maintained source conversion.
 
-The experiment reuses the existing pilot and plan carrier. It tests a serialized
-consumer boundary, missing/ambiguous references, context, revisions, partial
+The compilation experiment uses the provisional requirements YAML adapter and
+existing experimental TSV plan carrier to exercise distinct source representations.
+TC-0905 independently selects the maintained plan format. The experiment tests
+a serialized consumer boundary, missing/ambiguous references, context, revisions, partial
 information, and rebuilds. It is not a mandate to standardize every artifact.
 
 ## Stage 12 — Publish bounded compiler and import interfaces
@@ -154,7 +163,8 @@ decision to representative metadata and selects a bounded initial type set.
 schema source, naming, types, cardinality, defaults, discovery, standalone-file
 behavior, and compatibility.
 
-The attribute-schema decision uses TC-1105's selected authoring representation;
+The attribute-schema decision uses TC-1105's selected authoring representation
+and depends on TC-1106's final YAML profile;
 it does not assume that project attributes require extending a custom grammar.
 
 Text and enumeration are first candidates. Lists, references, and other types
@@ -241,8 +251,10 @@ TC-1104?     TC-1301           TC-1202 ---------------------+
                                                        v
                                                    TC-0807?
 
-Start independently: TC-1105, TC-1401, TC-1402, TC-1403, TC-1502, TC-1503
-TC-1105 -> TC-1103
+Start independently: TC-1106, TC-1401, TC-1402, TC-1403, TC-1502, TC-1503
+TC-1105 (complete) -> TC-1103
+TC-1105 (complete) -> TC-1106 -> TC-1107 -> TC-1108 -> TC-1109
+TC-1106 -> TC-1302
 TC-1502 -> TC-1201
 TC-1201 + TC-1402 + TC-1403 -> TC-1504
 TC-0902? remains independent of the main chain

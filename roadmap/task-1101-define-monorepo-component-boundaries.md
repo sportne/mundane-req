@@ -28,6 +28,10 @@ This enables TC-1104's bounded reorganization and TC-1102's ownership decisions.
   test infrastructure. Distinguish current code from prospective responsibilities.
 - Compare logical boundaries in the existing layout with physical component
   directories. Record a concrete benefit for every proposed move.
+- Scope the YAML source decision to requirements. Leave other artifact authoring
+  formats to their own workflow decisions, including reuse of existing formats
+  and native engineering files. Shared integration contracts concern compiled
+  interfaces, references, provenance and linking; source notation remains separate.
 - Define which consumers use published compiled interfaces and where shared
   implementation is appropriate; describe a test that exposes accidental use of
   requirement implementation internals.
@@ -45,6 +49,9 @@ This enables TC-1104's bounded reorganization and TC-1102's ownership decisions.
 - Every proposed component contains an existing capability or the first bounded
   workflow; future safety, BOM, and CAD integrations appear as possibilities, not
   empty frameworks to implement.
+- The boundary record distinguishes each component's source-format decision from
+  its published compiled interface. Only requirements inherit the YAML decision;
+  other source formats are recorded as existing experimental inputs or unresolved.
 - The decision identifies the verification workflow as the first integration and
   identifies observable checks required before moving files.
 
@@ -71,3 +78,9 @@ requirements.
 - [Roadmap](0001-initial-roadmap.md)
 - [Project foundation](../specification/0001-project-foundation.md)
 - [Implementation lineage](../research/0011-maintained-implementation-lineage.md)
+
+## Planning refinement
+
+Clarify that component boundaries do not select a common authoring notation.
+The requirements YAML decision has requirements-only scope. Status and
+dependencies remain unchanged.

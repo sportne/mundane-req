@@ -29,8 +29,10 @@ and records the minimum interfaces needed for maintained compilation and linking
 - Reuse a small selection from Experiment 0024 plus its two-baseline change case.
   Produce experimental requirement and plan representations, resolve references,
   calculate planned coverage/staleness, and generate one plain report.
-- Use a small adapter for the experimental plan carrier; compare shared notation
-  with separate representations only where it affects this workflow.
+- Use a small adapter for the existing experimental TSV plan carrier alongside
+  the provisional requirements YAML adapter. This exercises different source
+  representations through compiled interfaces. Keep the plan carrier provisional;
+  TC-0905 selects its eventual authoring format using verification workflow needs.
 - Delete generated outputs and rebuild from explicit inputs. Capture source,
   compiler/adapter, format, and resolved dependency provenance.
 - Exercise a normative edit, unrelated edit, comment edit, file move, ID correction,
@@ -45,7 +47,9 @@ and records the minimum interfaces needed for maintained compilation and linking
 - Checked-in source fixtures, experimental scripts, expected reports, and commands
   reproduce the successful build and every negative/change case.
 - One consumer reads the compiled requirement representation without importing
-  requirement-parser internals.
+  requirement-parser internals. The recorded pipeline uses YAML requirement source
+  and the existing TSV plan fixture through separate adapters; linking and analysis
+  depend on their published experimental values, references and provenance.
 - Each reported impact traces to an authored reference; possible impact does not
   automatically assert invalidity, failed verification, or requirement satisfaction.
 - Repeated builds from the same recorded inputs produce identical semantic outputs
@@ -77,7 +81,7 @@ a generalized type system or mandatory platform is needed for this first consume
 
 - [Roadmap](0001-initial-roadmap.md)
 - [TC-1102](task-1102-define-requirement-and-assertion-ownership.md)
-- [TC-1105](task-1105-compare-yaml-and-custom-requirement-source.md)
+- [TC-1105](closed/task-1105-compare-yaml-and-custom-requirement-source.md)
 - [Pilot assessment](../experiments/0024-vaccine-monitoring-pilot/assessment.md)
 - [Pilot decision](../research/0032-end-to-end-pilot-decision.md)
 - [TC-0905](task-0905-define-verification-analyzer-contract.md)
@@ -87,3 +91,13 @@ a generalized type system or mandatory platform is needed for this first consume
 Add TC-1105 as a prerequisite so the source-adapter experiment uses the explicit
 YAML/custom-syntax disposition. The compiled-artifact workflow and semantic-model
 scope remain unchanged; this card does not silently adopt an authoring format.
+
+The completed [YAML decision](../research/0033-yaml-source-representation-decision.md)
+permits the experimental YAML adapter for this bounded compilation experiment.
+Label its profile provisional; do not freeze experimental source syntax into the
+compiled contract. TC-1102 remains an incomplete prerequisite.
+
+Limit TC-1105's YAML disposition to the requirement adapter. Replace the shared-
+notation comparison with a bounded check using the existing distinct source
+carriers. This neither selects TSV for maintained plans nor adds a source-format
+decision for other artifacts. Status and dependencies remain unchanged.

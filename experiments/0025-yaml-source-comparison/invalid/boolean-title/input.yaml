@@ -1,0 +1,5 @@
+requirements:
+  - id: "001"
+    title: true
+    statement: >-
+      The display shall preserve its label.

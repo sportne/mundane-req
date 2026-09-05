@@ -1,6 +1,6 @@
 # Task TC-1105: Compare YAML and Custom Requirement Source
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 11
 
@@ -107,13 +107,33 @@ normative specification changes require the resulting successor work.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [Representation prior art](../research/0003-representation-prior-art.md)
-- [Custom record sketches](../research/0005-purpose-built-record-syntax-sketches.md)
-- [Provisional representation decision](../research/0007-provisional-source-representation-decision.md)
-- [Source language](../specification/0005-mundanereq-source-language-0.2.md)
-- [Source representation](../research/0012-shared-source-representation.md)
-- [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md)
-- [TC-1301](task-1301-classify-project-attribute-use-cases.md)
-- [TC-1302](task-1302-decide-project-attribute-schemas.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [Representation prior art](../../research/0003-representation-prior-art.md)
+- [Custom record sketches](../../research/0005-purpose-built-record-syntax-sketches.md)
+- [Provisional representation decision](../../research/0007-provisional-source-representation-decision.md)
+- [Source language](../../specification/0005-mundanereq-source-language-0.2.md)
+- [Source representation](../../research/0012-shared-source-representation.md)
+- [TC-1103](../task-1103-test-compilation-linking-and-rebuilds.md)
+- [TC-1301](../task-1301-classify-project-attribute-use-cases.md)
+- [TC-1302](../task-1302-decide-project-attribute-schemas.md)
 - [YAML specification](https://yaml.org/spec/1.2.2/)
+
+## Completion evidence and decision
+
+Completed the bounded comparison in [Experiment 0025](../../experiments/0025-yaml-source-comparison/README.md)
+and recorded [Research 0033](../../research/0033-yaml-source-representation-decision.md).
+Select a constrained YAML target through TC-1106–TC-1109; current normative and
+production behavior remains unchanged. Eleven paired records, 28 pressure cases,
+12 workflow outcomes and 43 JVM/native parser/emitter comparisons are recorded.
+The maintained make verify suite and experimental golden replay passed.
+
+Rich Java emitters lost comments; the conservative text-preserving path passed.
+Native schema/domain integration and editor behavior remain untested and are not
+claimed as completed work. TC-1103 still awaits TC-1102. TC-1302 additionally
+requires TC-1106's final profile; attribute scope remains independently decided.
+
+## Planning refinement
+
+The comparison selected YAML as a future specification direction and creates four
+bounded successors for specification, interpretation, formatting and migration.
+No requirement source files or normative contracts were converted in this task.

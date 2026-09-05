@@ -8,7 +8,7 @@ Strategic source: [Roadmap 0001](0001-initial-roadmap.md)
 
 This index decomposes the strategic roadmap into bounded, independently
 reviewable task cards. Cards are planning, not additions to the source-language
-specification. The current tranche contains 18 new cards and three reconciled
+specification. The current tranche contains 22 new cards and three reconciled
 verification/report cards; two existing experiments remain conditional.
 
 ## Status vocabulary
@@ -27,7 +27,7 @@ superseded prospective roadmap sequence does not undo their completed work.
 
 ## Dependency shape and priority
 
-Start TC-1101, the YAML comparison TC-1105, and the independent correctness and
+Start TC-1101, the YAML specification TC-1106, and the independent correctness and
 contributor cards TC-1401, TC-1402, TC-1403, TC-1502, and TC-1503. They address
 current uncertainty or observable gaps, rather than waiting for the entire ecosystem.
 
@@ -45,7 +45,9 @@ TC-1104?     TC-1301           TC-1202 ---------------------+
                                                        v
                                                    TC-0807?
 
-TC-1105 -> TC-1103 (source-representation comparison)
+TC-1105 (complete) -> TC-1103
+TC-1105 (complete) -> TC-1106 -> TC-1107 -> TC-1108 -> TC-1109
+TC-1106 -> TC-1302
 TC-1502 -> TC-1201
 TC-1201 + TC-1402 + TC-1403 -> TC-1504
 TC-1401 and TC-1503 are independent; TC-0902? remains conditional.
@@ -65,7 +67,10 @@ consumers' dependencies explicitly before proceeding.
 | [TC-1102](task-1102-define-requirement-and-assertion-ownership.md) | Define Requirement and Assertion Ownership | Planned | TC-1101 |
 | [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md) | Test Compilation, Linking, and Rebuilds | Planned | TC-1102, TC-1105 |
 | [TC-1104](task-1104-establish-monorepo-component-layout.md) | Establish the Monorepo Component Layout | Conditional | TC-1101 |
-| [TC-1105](task-1105-compare-yaml-and-custom-requirement-source.md) | Compare YAML and Custom Requirement Source | Ready | — |
+| [TC-1106](task-1106-specify-yaml-requirement-source-profile.md) | Specify the YAML Requirement Source Profile | Ready | TC-1105 |
+| [TC-1107](task-1107-interpret-and-validate-yaml-requirement-source.md) | Interpret and Validate YAML Requirement Source | Planned | TC-1106 |
+| [TC-1108](task-1108-format-yaml-source-without-content-loss.md) | Format YAML Source Without Content Loss | Planned | TC-1107 |
+| [TC-1109](task-1109-migrate-yaml-examples-and-conformance-material.md) | Migrate YAML Examples and Conformance Material | Planned | TC-1107, TC-1108 |
 
 ## Stage 12: Compilation, imports, and linking
 
@@ -93,7 +98,7 @@ linker. This avoids a design/implementation dependency cycle.
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
 | [TC-1301](task-1301-classify-project-attribute-use-cases.md) | Classify Project Attribute Use Cases | Planned | TC-1102 |
-| [TC-1302](task-1302-decide-project-attribute-schemas.md) | Decide Project Attribute Schemas | Planned | TC-1301, TC-1203 |
+| [TC-1302](task-1302-decide-project-attribute-schemas.md) | Decide Project Attribute Schemas | Planned | TC-1301, TC-1203, TC-1106 |
 
 Attribute implementation and propagation cards are created only after these
 decisions select intrinsic/descriptive use cases, checked-in typed schemas, and
@@ -176,6 +181,8 @@ superseded by Stages 11–15. Their filenames and evidence are preserved.
 | [TC-1002](closed/task-1002-define-compatibility-and-publish-or-defer-1.0.md) | Historical decision; prospective sequence superseded | Complete | TC-1001 |
 | [TC-1003](closed/task-1003-execute-vaccine-monitoring-requirements-pilot.md) | End-to-end formal-traceability pilot | Complete | TC-1002 |
 
+| [TC-1105](closed/task-1105-compare-yaml-and-custom-requirement-source.md) | Compare YAML and Custom Requirement Source | Complete | — |
+
 ## Planning reconciliation
 
 The initial monorepo reconciliation added 17 Stage 11–15 cards and changed these
@@ -202,18 +209,38 @@ this reconciliation.
 
 ## YAML comparison follow-up
 
-[TC-1105](task-1105-compare-yaml-and-custom-requirement-source.md) compares the
-current syntax with a specified YAML profile using the same requirement model.
-It evaluates whether the requirements specification should be rewritten around
-YAML and records a clause-level outline and migration implications before any
-normative or production change.
+[TC-1105](closed/task-1105-compare-yaml-and-custom-requirement-source.md) is complete.
+[Research 0033](../research/0033-yaml-source-representation-decision.md) selects a
+constrained YAML target for a future requirements specification, with unchanged
+current source/CLI contracts. [Experiment 0025](../experiments/0025-yaml-source-comparison/README.md)
+records the corpus, failures, replay and clause-level outline.
 
-The [roadmap](0001-initial-roadmap.md) and this index place it in the immediate
-independent work. [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md)
-gains the representation decision as a prerequisite;
-[TC-1302](task-1302-decide-project-attribute-schemas.md) consumes that decision
-through its existing dependency chain and no longer assumes custom source syntax.
-No representation is selected by creating the comparison card.
+TC-1106–TC-1109 add specification, interpretation, safe formatting and migration
+work. TC-1106 is Ready; the other successors are Planned. TC-1103 still depends
+on TC-1102 and may use the provisional experiment adapter. TC-1302 gains TC-1106
+as an explicit prerequisite so unresolved YAML profile choices do not become
+accidental attribute rules. The roadmap records the selected direction while
+retaining independent correctness, ownership and integration work.
+
+## Requirements-only YAML scope refinement
+
+The YAML decision applies only to requirement source. Other artifact authoring
+formats remain independent workflow decisions; compiled interfaces, references,
+provenance and linking provide the integration boundary. No task statuses, IDs or
+dependencies change in this refinement, and no additional cards are needed.
+
+| Card | Clarification |
+| --- | --- |
+| [TC-1101](task-1101-define-monorepo-component-boundaries.md) | Record source-format decisions separately from shared component interfaces |
+| [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md) | Exercise provisional YAML requirements with the existing TSV plan adapter; remove shared-notation comparison |
+| [TC-1106](task-1106-specify-yaml-requirement-source-profile.md) | Specify the requirements model, YAML mapping, structural schema and semantic rules with explicit authority and scope |
+| [TC-1203](task-1203-define-import-and-reference-contracts.md) | Separate common linking meanings from each artifact's authored encoding |
+| [TC-0905](task-0905-define-verification-analyzer-contract.md) | Select plan notation independently and consume published compiled interfaces |
+| [TC-1302](task-1302-decide-project-attribute-schemas.md) | Keep project declaration format a decision distinct from YAML requirement values |
+
+The [roadmap product direction](0001-initial-roadmap.md#product-direction) records
+this boundary. Existing requirements-only implementation and migration cards
+inherit TC-1106's scope; other artifact implementations inherit their own contracts.
 
 ## Updating cards
 

@@ -1,0 +1,6 @@
+requirement 001
+title: A test
+allocation: 
+statement:
+  The display shall preserve its label.
+end requirement
