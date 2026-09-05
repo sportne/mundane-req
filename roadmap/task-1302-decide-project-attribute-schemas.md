@@ -22,7 +22,9 @@ future implementation cards; this card does not authorize those implementations.
 
 ## Work
 
-- Compare Mundane-Req syntax with a narrowly scoped configuration format. Specify
+- Apply TC-1105's authoring-format decision, inherited through TC-1203's
+  prerequisites. Compare declarations in the selected requirement representation
+  with a narrowly scoped configuration format. Specify
   storage, version control, explicit selection versus directory discovery, roots,
   missing/invalid/ambiguous schemas, and single-file operation without project context.
 - Decide naming restrictions, built-in/reserved conflicts, type/enumeration
@@ -77,3 +79,10 @@ ambiguous, narrow it before creating implementation work.
 - [TC-1203](task-1203-define-import-and-reference-contracts.md)
 - [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md)
 - [Source language](../specification/0005-mundanereq-source-language-0.2.md)
+- [TC-1105](task-1105-compare-yaml-and-custom-requirement-source.md)
+
+## Planning refinement
+
+Require the selected YAML/custom-source disposition to inform attribute schema
+placement instead of assuming the current grammar will be extended. Existing
+ownership, type-scope, and no-schema compatibility decisions remain required.

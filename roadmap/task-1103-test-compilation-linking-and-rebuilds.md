@@ -6,7 +6,7 @@ Roadmap stage: 11
 
 Type: Experiment and decision
 
-Depends on: TC-1102
+Depends on: TC-1102, TC-1105
 
 Unlocks: TC-1201, TC-0905
 
@@ -22,6 +22,10 @@ and records the minimum interfaces needed for maintained compilation and linking
 
 ## Work
 
+- Apply TC-1105's source-representation decision when selecting experimental
+  requirement adapters. Keep compiled semantics independent of authoring syntax;
+  a YAML decision does not itself migrate maintained source or change production
+  parser behavior in this experiment.
 - Reuse a small selection from Experiment 0024 plus its two-baseline change case.
   Produce experimental requirement and plan representations, resolve references,
   calculate planned coverage/staleness, and generate one plain report.
@@ -73,6 +77,13 @@ a generalized type system or mandatory platform is needed for this first consume
 
 - [Roadmap](0001-initial-roadmap.md)
 - [TC-1102](task-1102-define-requirement-and-assertion-ownership.md)
+- [TC-1105](task-1105-compare-yaml-and-custom-requirement-source.md)
 - [Pilot assessment](../experiments/0024-vaccine-monitoring-pilot/assessment.md)
 - [Pilot decision](../research/0032-end-to-end-pilot-decision.md)
 - [TC-0905](task-0905-define-verification-analyzer-contract.md)
+
+## Planning refinement
+
+Add TC-1105 as a prerequisite so the source-adapter experiment uses the explicit
+YAML/custom-syntax disposition. The compiled-artifact workflow and semantic-model
+scope remain unchanged; this card does not silently adopt an authoring format.

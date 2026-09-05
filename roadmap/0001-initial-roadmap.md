@@ -108,6 +108,15 @@ requirements/verification loop with experimental artifacts before selecting
 public contracts. [TC-1104](task-1104-establish-monorepo-component-layout.md)
 conditionally implements justified layout changes.
 
+[TC-1105](task-1105-compare-yaml-and-custom-requirement-source.md) can begin
+independently using the existing semantic model. It compares current .mreq source
+with a documented YAML-compatible schema/profile, including multiple requirements
+per file, prose/math, comments, diagnostics, and matched edit/conflict workflows.
+It evaluates rewriting the requirements specification around YAML, records the
+specification/migration outline, and precedes TC-1103's source-adapter selection.
+The authoring format remains unresolved until that comparison; compiled semantics
+and artifact linking can be implemented with either representation.
+
 The experiment reuses the existing pilot and plan carrier. It tests a serialized
 consumer boundary, missing/ambiguous references, context, revisions, partial
 information, and rebuilds. It is not a mandate to standardize every artifact.
@@ -144,6 +153,9 @@ decision to representative metadata and selects a bounded initial type set.
 [TC-1302](task-1302-decide-project-attribute-schemas.md) then decides checked-in
 schema source, naming, types, cardinality, defaults, discovery, standalone-file
 behavior, and compatibility.
+
+The attribute-schema decision uses TC-1105's selected authoring representation;
+it does not assume that project attributes require extending a custom grammar.
 
 Text and enumeration are first candidates. Lists, references, and other types
 must earn their place. Descriptive classification may belong on a requirement;
@@ -229,7 +241,8 @@ TC-1104?     TC-1301           TC-1202 ---------------------+
                                                        v
                                                    TC-0807?
 
-Start independently: TC-1401, TC-1402, TC-1403, TC-1502, TC-1503
+Start independently: TC-1105, TC-1401, TC-1402, TC-1403, TC-1502, TC-1503
+TC-1105 -> TC-1103
 TC-1502 -> TC-1201
 TC-1201 + TC-1402 + TC-1403 -> TC-1504
 TC-0902? remains independent of the main chain

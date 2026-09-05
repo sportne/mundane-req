@@ -8,7 +8,7 @@ Strategic source: [Roadmap 0001](0001-initial-roadmap.md)
 
 This index decomposes the strategic roadmap into bounded, independently
 reviewable task cards. Cards are planning, not additions to the source-language
-specification. The current tranche contains 17 new cards and three reconciled
+specification. The current tranche contains 18 new cards and three reconciled
 verification/report cards; two existing experiments remain conditional.
 
 ## Status vocabulary
@@ -27,9 +27,9 @@ superseded prospective roadmap sequence does not undo their completed work.
 
 ## Dependency shape and priority
 
-Start TC-1101 and the independent correctness/contributor cards TC-1401,
-TC-1402, TC-1403, TC-1502, and TC-1503. They address current uncertainty or
-observable gaps, rather than waiting for the entire ecosystem.
+Start TC-1101, the YAML comparison TC-1105, and the independent correctness and
+contributor cards TC-1401, TC-1402, TC-1403, TC-1502, and TC-1503. They address
+current uncertainty or observable gaps, rather than waiting for the entire ecosystem.
 
 ```text
 TC-1101 -> TC-1102 -> TC-1103 -> TC-1201 -> TC-1203 -> TC-0905
@@ -45,6 +45,7 @@ TC-1104?     TC-1301           TC-1202 ---------------------+
                                                        v
                                                    TC-0807?
 
+TC-1105 -> TC-1103 (source-representation comparison)
 TC-1502 -> TC-1201
 TC-1201 + TC-1402 + TC-1403 -> TC-1504
 TC-1401 and TC-1503 are independent; TC-0902? remains conditional.
@@ -62,8 +63,9 @@ consumers' dependencies explicitly before proceeding.
 | --- | --- | --- | --- |
 | [TC-1101](task-1101-define-monorepo-component-boundaries.md) | Define Monorepo Component Boundaries | Ready | — |
 | [TC-1102](task-1102-define-requirement-and-assertion-ownership.md) | Define Requirement and Assertion Ownership | Planned | TC-1101 |
-| [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md) | Test Compilation, Linking, and Rebuilds | Planned | TC-1102 |
+| [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md) | Test Compilation, Linking, and Rebuilds | Planned | TC-1102, TC-1105 |
 | [TC-1104](task-1104-establish-monorepo-component-layout.md) | Establish the Monorepo Component Layout | Conditional | TC-1101 |
+| [TC-1105](task-1105-compare-yaml-and-custom-requirement-source.md) | Compare YAML and Custom Requirement Source | Ready | — |
 
 ## Stage 12: Compilation, imports, and linking
 
@@ -176,8 +178,8 @@ superseded by Stages 11–15. Their filenames and evidence are preserved.
 
 ## Planning reconciliation
 
-This update adds the 17 Stage 11–15 cards linked above and changes these existing
-planning files:
+The initial monorepo reconciliation added 17 Stage 11–15 cards and changed these
+existing planning files. The YAML comparison follow-up below adds TC-1105.
 
 | File | Material change |
 | --- | --- |
@@ -197,6 +199,21 @@ publication gate are removed from active planning. Existing completed audit,
 pilot, identity, safety, and verification evidence is preserved unchanged.
 No feature implementation, source-contract change, or release action is part of
 this reconciliation.
+
+## YAML comparison follow-up
+
+[TC-1105](task-1105-compare-yaml-and-custom-requirement-source.md) compares the
+current syntax with a specified YAML profile using the same requirement model.
+It evaluates whether the requirements specification should be rewritten around
+YAML and records a clause-level outline and migration implications before any
+normative or production change.
+
+The [roadmap](0001-initial-roadmap.md) and this index place it in the immediate
+independent work. [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md)
+gains the representation decision as a prerequisite;
+[TC-1302](task-1302-decide-project-attribute-schemas.md) consumes that decision
+through its existing dependency chain and no longer assumes custom source syntax.
+No representation is selected by creating the comparison card.
 
 ## Updating cards
 
