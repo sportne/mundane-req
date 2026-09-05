@@ -6,36 +6,131 @@ Strategic source: [Roadmap 0001](0001-initial-roadmap.md)
 
 ## Purpose
 
-This index decomposes the strategic roadmap into bounded, independently reviewable task cards. A task card describes one outcome and the evidence needed to complete it. The cards are execution aids, not additions to the source-language specification.
+This index decomposes the strategic roadmap into bounded, independently
+reviewable task cards. Cards are planning, not additions to the source-language
+specification. The current tranche contains 17 new cards and three reconciled
+verification/report cards; two existing experiments remain conditional.
 
 ## Status vocabulary
 
 - **Ready:** known dependencies are complete; work may begin.
 - **Planned:** accepted work with incomplete dependencies.
-- **Conditional:** perform only when its stated decision gate or prerequisite justifies it.
+- **Conditional:** perform only when its stated decision or prerequisite justifies it.
 - **In progress:** actively being executed.
 - **Complete:** acceptance evidence and the completion decision are recorded.
 - **Superseded:** replaced by a later card or roadmap decision, with the replacement identified.
 
-Only a completed card's recorded evidence, specification changes, or decision records are durable project results. Checking boxes without that evidence does not complete a card.
+Only recorded evidence and decisions complete a card. If future work is
+superseded, record its replacement, retain its ID, and keep a closed-card link.
+Completed historical cards retain Complete and their original evidence; a
+superseded prospective roadmap sequence does not undo their completed work.
 
-## Dependency shape
+## Dependency shape and priority
+
+Start TC-1101 and the independent correctness/contributor cards TC-1401,
+TC-1402, TC-1403, TC-1502, and TC-1503. They address current uncertainty or
+observable gaps, rather than waiting for the entire ecosystem.
 
 ```text
-Stage 1 exact 0.2 baseline
-    -> Stage 2 shared Java foundation
-    -> Stage 3 validator ---------+
-    -> Stage 4 formatter ---------+-> Stage 6 integrated toolchain trial
-    -> Stage 5 trace tool --------+
-                                      -> Stage 7 operational evidence
-                                      -> Stage 8 model-pressure experiments
-                                      -> Stage 9 selected ecosystem tools
-                                      -> Stage 10 1.0 decision
+TC-1101 -> TC-1102 -> TC-1103 -> TC-1201 -> TC-1203 -> TC-0905
+   |            |                 |                       |
+   v            v                 v                       |
+TC-1104?     TC-1301           TC-1202 ---------------------+
+                |                                         v
+                +-- (+ TC-1203) -> TC-1302             TC-1204?
+                                                          |
+                                                          v
+                                        TC-0904 -> TC-0903 -> TC-1501
+                                                       |
+                                                       v
+                                                   TC-0807?
+
+TC-1502 -> TC-1201
+TC-1201 + TC-1402 + TC-1403 -> TC-1504
+TC-1401 and TC-1503 are independent; TC-0902? remains conditional.
 ```
 
-Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native executables. Stage 8 is a research track: its cards may be reprioritized after Stage 6 when a concrete workflow makes one question urgent.
+Question marks mark conditional work. Tables include all prerequisites, including
+completed evidence. TC-1104 is optional layout work, not a gate for fixes in the
+current layout. Implementations include their own tests; TC-1501 extends the
+integrated corpus afterward. If a conditional card is superseded, revise its
+consumers' dependencies explicitly before proceeding.
 
-## Active implementation sequence
+## Stage 11: Monorepo and ownership decisions
+
+| Card | Outcome | Status | Depends on |
+| --- | --- | --- | --- |
+| [TC-1101](task-1101-define-monorepo-component-boundaries.md) | Define Monorepo Component Boundaries | Ready | — |
+| [TC-1102](task-1102-define-requirement-and-assertion-ownership.md) | Define Requirement and Assertion Ownership | Planned | TC-1101 |
+| [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md) | Test Compilation, Linking, and Rebuilds | Planned | TC-1102 |
+| [TC-1104](task-1104-establish-monorepo-component-layout.md) | Establish the Monorepo Component Layout | Conditional | TC-1101 |
+
+## Stage 12: Compilation, imports, and linking
+
+| Card | Outcome | Status | Depends on |
+| --- | --- | --- | --- |
+| [TC-1201](task-1201-define-requirement-semantic-output.md) | Define Requirement Semantic Output | Planned | TC-1103, TC-1502 |
+| [TC-1202](task-1202-emit-compiled-requirement-artifacts.md) | Emit Compiled Requirement Artifacts | Planned | TC-1201 |
+| [TC-1203](task-1203-define-import-and-reference-contracts.md) | Define Import and Reference Contracts | Planned | TC-1201 |
+| [TC-1204](task-1204-implement-bounded-artifact-linking.md) | Implement Bounded Artifact Linking | Conditional | TC-1202, TC-1203, TC-0905 |
+
+## First verification consumer and report
+
+| Card | Outcome | Status | Depends on |
+| --- | --- | --- | --- |
+| [TC-0905](task-0905-define-verification-analyzer-contract.md) | Define the Verification Analyzer Contract | Planned | TC-0802, TC-1003, TC-1103, TC-1203 |
+| [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) | Implement the Selected Ecosystem Tool | Planned | TC-0905, TC-1204 |
+| [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Run a Derived Presentation Experiment | Planned | TC-0904 |
+
+The generic import contract precedes the domain plan contract; the plan contract
+provides fixtures for the maintained linker, then the analyzer consumes that
+linker. This avoids a design/implementation dependency cycle.
+
+## Stage 13: Project attribute decisions
+
+| Card | Outcome | Status | Depends on |
+| --- | --- | --- | --- |
+| [TC-1301](task-1301-classify-project-attribute-use-cases.md) | Classify Project Attribute Use Cases | Planned | TC-1102 |
+| [TC-1302](task-1302-decide-project-attribute-schemas.md) | Decide Project Attribute Schemas | Planned | TC-1301, TC-1203 |
+
+Attribute implementation and propagation cards are created only after these
+decisions select intrinsic/descriptive use cases, checked-in typed schemas, and
+explicit compatibility behavior. Contextual assessments keep their own authority.
+
+## Stage 14: Immediate correctness
+
+| Card | Outcome | Status | Depends on |
+| --- | --- | --- | --- |
+| [TC-1401](task-1401-protect-formatter-write-back.md) | Protect Formatter Write-Back | Ready | — |
+| [TC-1402](task-1402-report-cli-output-failures.md) | Report CLI Output Failures Consistently | Ready | — |
+| [TC-1403](task-1403-recover-parser-diagnostics-safely.md) | Recover Parser Diagnostics Safely | Ready | — |
+
+## Stage 15: Repeatable verification and contributor integration
+
+| Card | Outcome | Status | Depends on |
+| --- | --- | --- | --- |
+| [TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md) | Extend Artifact Workflow Regression Corpora | Planned | TC-0903 |
+| [TC-1502](task-1502-centralize-version-declarations.md) | Centralize Independent Version Declarations | Ready | — |
+| [TC-1503](task-1503-align-ci-with-authoritative-verification.md) | Align CI with Authoritative Verification | Ready | — |
+| [TC-1504](task-1504-emit-sarif-validation-diagnostics.md) | Emit SARIF Validation Diagnostics | Planned | TC-1201, TC-1402, TC-1403 |
+
+Version declarations address current constant/metadata drift while preserving
+independent source, CLI, package, and compiled-format identifiers. CI alignment
+addresses incomplete hosted verification. Existing packaging/checksum work is
+reused; additions need a demonstrated gap.
+
+## Conditional existing work
+
+| Card | Outcome | Status | Depends on |
+| --- | --- | --- | --- |
+| [TC-0807](task-0807-test-authored-views-and-specifications.md) | Authored composition decision if simple reporting is insufficient | Conditional | TC-0603, TC-0903; demonstrated composition need |
+| [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md) | External-tool ReqIF fidelity evidence | Conditional | TC-0603; access to an independent implementation |
+
+## Completed evidence
+
+The rows below are historical results, not the current execution sequence.
+TC-1001/TC-1002 remain completed records; their prospective decision sequence is
+superseded by Stages 11–15. Their filenames and evidence are preserved.
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
@@ -61,11 +156,6 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 | [TC-0601](closed/task-0601-package-and-document-the-native-suite.md) | Installable, independently documented native tools | Complete | TC-0303, TC-0404, TC-0504 |
 | [TC-0602](closed/task-0602-create-the-clean-checkout-ci-workflow.md) | Reproducible example Git/CI workflow | Complete | TC-0601 |
 | [TC-0603](closed/task-0603-run-the-integrated-toolchain-trial.md) | First toolchain decision record | Complete | TC-0602 |
-
-## Operational-evidence sequence
-
-| Card | Outcome | Status | Depends on |
-| --- | --- | --- | --- |
 | [TC-0701](closed/task-0701-select-a-larger-corpus-and-trial-protocol.md) | Licensed corpus and controlled trial plan | Complete | TC-0603 |
 | [TC-0702](closed/task-0702-run-the-independent-interpretation-proxy-trial.md) | AI-proxy independent-interpretation evidence | Complete | TC-0701 |
 | [TC-0703](closed/task-0703-run-the-multi-author-and-layout-trial.md) | Concurrency and file-granularity evidence | Complete | TC-0701 |
@@ -73,42 +163,52 @@ Stages 3, 4, and 5 share Stage 2 foundations but produce separate GraalVM native
 | [TC-0705](closed/task-0705-obtain-independent-conformance-evidence.md) | Independent interpretation evidence | Complete | TC-0103, TC-0303 |
 | [TC-0706](closed/task-0706-run-the-subagent-author-review-trial.md) | Material scope deviation: two-author/two-reviewer subagent evidence; human evidence absent | Complete | TC-0701, TC-0702 |
 | [TC-0707](closed/task-0707-test-bounded-diagnostic-presentation.md) | Large diagnostic-set presentation decision | Complete | TC-0704 |
-
-## Model-pressure research cards
-
-| Card | Outcome | Status | Depends on |
-| --- | --- | --- | --- |
 | [TC-0801](closed/task-0801-test-identity-continuity.md) | ID-correction model decision | Complete | TC-0603 |
 | [TC-0802](closed/task-0802-model-verification-planning-and-evidence.md) | Verification companion-artifact decision | Complete | TC-0603 |
 | [TC-0803](closed/task-0803-test-safety-classification-ownership.md) | Safety classification ownership decision | Complete | TC-0603 |
 | [TC-0804](closed/task-0804-test-allocation-and-controlled-vocabulary.md) | Allocation model decision | Complete | TC-0603 |
 | [TC-0805](closed/task-0805-test-glossary-and-formal-symbol-artifacts.md) | Vocabulary and symbol model decision | Complete | TC-0603 |
 | [TC-0806](closed/task-0806-test-reusable-trace-policies.md) | Language-versus-policy decision | Complete | TC-0603 |
-| [TC-0807](task-0807-test-authored-views-and-specifications.md) | View-language decision | Conditional | TC-0603 |
-
-These cards are not assumed to produce syntax. Each must first determine whether the need belongs to requirement content, a relationship, a companion artifact, project policy, Git/forge workflow, or a derived tool.
-
-## Ecosystem and stability cards
-
-| Card | Outcome | Status | Depends on |
-| --- | --- | --- | --- |
 | [TC-0901](closed/task-0901-prioritize-the-next-ecosystem-tool.md) | Evidence-backed next-tool selection | Complete: no tool selected | TC-0603, TC-0704 |
-| [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md) | Cross-tool ReqIF fidelity evidence | Conditional | TC-0603 |
-| [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Rendering/view evidence | Conditional | TC-0603, TC-0807 |
-| [TC-0905](task-0905-define-verification-analyzer-contract.md) | Verification companion and binding contract | Ready | TC-0802, TC-1003 |
-| [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) | Focused verification-plan analyzer | Planned | TC-0905 |
-| [TC-1001](closed/task-1001-audit-readiness-for-1.0.md) | Source 1.0 evidence and gap audit | Complete: conditional source-only recommendation | TC-0704, TC-0705, TC-0706, selected TC-08xx and TC-09xx cards |
-| [TC-1002](closed/task-1002-define-compatibility-and-publish-or-defer-1.0.md) | Explicit 1.0 publication or deferral | Complete: 1.0 deferred | TC-1001 |
+| [TC-1001](closed/task-1001-audit-readiness-for-1.0.md) | Historical audit; prospective sequence superseded | Complete | Historical evidence prerequisites retained in card |
+| [TC-1002](closed/task-1002-define-compatibility-and-publish-or-defer-1.0.md) | Historical decision; prospective sequence superseded | Complete | TC-1001 |
 | [TC-1003](closed/task-1003-execute-vaccine-monitoring-requirements-pilot.md) | End-to-end formal-traceability pilot | Complete | TC-1002 |
+
+## Planning reconciliation
+
+This update adds the 17 Stage 11–15 cards linked above and changes these existing
+planning files:
+
+| File | Material change |
+| --- | --- |
+| [Strategic roadmap](0001-initial-roadmap.md) | Monorepo scope, compile/link workflow, bounded checks, historical anchors, incremental execution order |
+| [This index](0002-task-card-index.md) | Current dependencies/statuses and separate completed evidence inventory |
+| [Task template](task-card-template.md) | Compatibility/components, present problem, risks, and explicit refinement instructions |
+| [TC-0905](task-0905-define-verification-analyzer-contract.md) | Ready becomes Planned; add compilation/import decisions and compiled plan fixture obligations |
+| [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) | Add bounded linking dependency and compiled consumer evidence; unlock report instead of historical audit |
+| [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Conditional becomes Planned; select verification report and make composition a possible successor |
+| [TC-0807](task-0807-test-authored-views-and-specifications.md) | Reverse the old report prerequisite; retain conditional composition scope |
+| [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md) | Clarify that the decision concerns a maintained interchange capability; external-tool prerequisite remains |
+| [Repository README](../README.md) | Align current direction and verification wording with incremental planning |
+| [Specification index](../specification/README.md) | Remove stale prospective status while retaining current normative authority |
+
+The former strategic field-use/separate-parser expectations and prospective
+publication gate are removed from active planning. Existing completed audit,
+pilot, identity, safety, and verification evidence is preserved unchanged.
+No feature implementation, source-contract change, or release action is part of
+this reconciliation.
 
 ## Updating cards
 
-When beginning a card, change its status here and in the card in the same commit. When completing it:
+When beginning a card, change its status here and in the card together. When
+completing it:
 
-1. record the evidence and resulting decision in the repository;
-2. update affected specifications, experiments, or roadmap text;
-3. mark the card complete and link its result;
-4. make newly unblocked cards Ready;
-5. revise dependencies rather than performing work that the evidence no longer justifies.
+1. record reproducible evidence and the resulting decision;
+2. update affected contracts, experiments, or roadmap text;
+3. mark the card complete, retain its ID, and link its result under closed/;
+4. make newly unblocked cards Ready only when their conditions are satisfied;
+5. revise or supersede dependencies when evidence selects a smaller scope.
 
-Use the [task-card template](task-card-template.md) when a roadmap decision creates another bounded task.
+Use the [template](task-card-template.md). Explain material scope/status/dependency
+changes in a Planning refinement section. Do not renumber existing cards or turn
+generated output into authored source.

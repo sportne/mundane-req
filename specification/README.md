@@ -5,10 +5,10 @@ contract and compatibility policy, nonnormative design rationale, and
 separately versioned tool interfaces.
 
 The current authoritative source contract is `mundanereq-source-0.2`. It is
-provisional. The [source 1.0 readiness
-audit](../research/0031-source-1.0-readiness-audit.md) recommends considering a
-no-feature, semantics-identical stable successor, but TC-1002 has not made that
-publication decision.
+provisional. The [current roadmap](../roadmap/0001-initial-roadmap.md) plans
+incremental monorepo, compilation, linking, and tooling work. Those cards do not
+change normative syntax or existing CLI contracts; adopted changes require an
+explicit contract update and applicable compatibility notes.
 
 ## Recommended reading order
 

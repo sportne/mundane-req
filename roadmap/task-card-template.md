@@ -4,7 +4,7 @@ Status: Planned
 
 Roadmap stage: N
 
-Type: Experiment | Implementation | Decision | Trial | Documentation
+Type: Experiment | Implementation | Decision | Trial | Documentation | Verification
 
 Depends on: TC-XXXX or none
 
@@ -12,7 +12,8 @@ Unlocks: TC-XXXX or none
 
 ## Question
 
-What uncertainty does this card resolve?
+What uncertainty or observed failure does this card resolve, and why does it
+matter to the current language or an identified ecosystem consumer?
 
 ## Outcome
 
@@ -30,9 +31,19 @@ State the single observable result this card should produce.
 
 - Name adjacent work this card deliberately does not absorb.
 
+## Compatibility and affected components
+
+Identify source, CLI, compiled-format, and independent-version implications.
+Name likely components without preselecting unresolved implementation details.
+
 ## Completion decision
 
-State the decision enabled by the evidence, including a stop or revision condition.
+State the decision enabled by the evidence, including risks, unresolved questions,
+and a stop or revision condition. Design outcomes precede dependent implementation.
+
+For a material refinement of an existing card, append a Planning refinement
+section explaining scope, status, and dependency changes; preserve its task ID,
+filename, and recorded historical evidence.
 
 ## References
 

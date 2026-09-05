@@ -6,9 +6,9 @@ Roadmap stage: 8
 
 Type: Model-pressure experiment
 
-Depends on: TC-0603 and a delivery or review workflow requiring composition
+Depends on: TC-0603, TC-0903 and a demonstrated composition need
 
-Unlocks: TC-0903 and a view-language decision
+Unlocks: A view-language decision and any justified successor card
 
 ## Question
 
@@ -47,3 +47,11 @@ Defer a view language if a disposable ordering convention serves the workflow. S
 
 - [Roadmap views study](0001-initial-roadmap.md#views-and-specifications)
 - [Non-Markdown view research](../research/0006-non-markdown-view-notation.md)
+- [TC-0903](task-0903-run-a-derived-presentation-experiment.md)
+
+## Planning refinement
+
+Reconciled on 2026-09-04: use the basic report experiment as evidence before
+considering authored composition. This reverses the former prerequisite so a
+useful generated view can be tested without first selecting a view language.
+The original Conditional status and composition scope are retained.

@@ -1,14 +1,14 @@
 # Task TC-0903: Run a Derived Presentation Experiment
 
-Status: Conditional
+Status: Planned
 
 Roadmap stage: 9
 
 Type: Rendering experiment
 
-Depends on: TC-0603 and the TC-0807 disposition
+Depends on: TC-0904
 
-Unlocks: A renderer or view decision
+Unlocks: TC-1501 and conditional TC-0807
 
 ## Question
 
@@ -20,15 +20,26 @@ One disposable presentation is generated from source and evaluated against a con
 
 ## Work
 
-- Select one output such as HTML specification, traceability matrix, or requirement browser.
+- Generate one deterministic verification coverage/staleness report from the
+  selected compiled artifacts and TC-0904's analyses, using the pilot/change case.
 - Start with deterministic derived ordering and no new authoritative view syntax.
 - Render statement prose and opaque LaTeX content without changing their source ownership.
 - Include source IDs and trace navigation needed by the selected workflow.
 - Delete and reproduce the output from a clean tagged checkout.
-- Compare the result with the TC-0807 composition decision.
+- Record whether sections, selection, and ordering need authored configuration.
+  Supply that evidence to TC-0807 only if the simple generated view is insufficient.
 
 ## Acceptance evidence
 
+- Built-in values, source IDs, assertion locations, input revisions, analysis
+  completeness, and compiler/format provenance are visible or directly linked.
+  Project-defined attributes may be shown only after their design/implementation;
+  this experiment does not invent them or depend on their availability.
+- Repeated builds from recorded inputs have identical report content under the
+  documented provenance policy. A changed requirement updates the expected rows.
+- Missing, incompatible, partial, and output-failure cases cannot produce a report
+  presented as a complete successful analysis. Generated views are clearly labeled
+  with regeneration instructions and retain no competing authoring authority.
 - The output is reproducible and disposable.
 - Every displayed requirement value traces to readable source.
 - Rendering failure does not prevent understanding or editing requirements.
@@ -48,4 +59,21 @@ Build a maintained renderer only if the presentation materially serves the selec
 ## References
 
 - [TC-0807](task-0807-test-authored-views-and-specifications.md)
-- [Roadmap derived presentation milestone](0001-initial-roadmap.md#derived-presentation-milestone)
+- [Roadmap views study](0001-initial-roadmap.md#views-and-specifications)
+- [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md)
+- [TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md)
+
+## Compatibility and affected components
+
+Likely components: an experimental renderer, report fixtures, and source-location
+links over public artifact/analysis contracts. An issued report may be retained
+as a delivery record, with its inputs and separate approval provenance; generating
+it does not approve content or replace authored requirements and assertions.
+
+## Planning refinement
+
+Reconciled on 2026-09-04: select verification reporting as the concrete workflow,
+change Conditional to Planned, and replace the authored-view prerequisite with
+TC-0904. TC-0807 becomes a conditional successor if this experiment demonstrates
+composition needs. The card remains a bounded experiment, not a general report
+framework; stop or narrow if its first view requires a new publishing language.

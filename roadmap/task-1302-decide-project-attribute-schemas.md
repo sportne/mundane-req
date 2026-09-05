@@ -1,0 +1,79 @@
+# Task TC-1302: Decide Project Attribute Schemas
+
+Status: Planned
+
+Roadmap stage: 13
+
+Type: Decision
+
+Depends on: TC-1301, TC-1203
+
+Unlocks: follow-up work selected by the completion decision
+
+## Question
+
+How should a project declare and select the bounded typed attributes chosen by
+TC-1301 without hidden configuration or ambiguous source interpretation?
+
+## Outcome
+
+A written schema/syntax decision and worked examples enable separately scoped
+future implementation cards; this card does not authorize those implementations.
+
+## Work
+
+- Compare Mundane-Req syntax with a narrowly scoped configuration format. Specify
+  storage, version control, explicit selection versus directory discovery, roots,
+  missing/invalid/ambiguous schemas, and single-file operation without project context.
+- Decide naming restrictions, built-in/reserved conflicts, type/enumeration
+  declarations, duplicate and unknown attributes, required values, multiplicity,
+  defaults, and invalid values.
+- Specify schema version/compatibility, no-schema behavior, imported schema
+  selection, and reproducibility when a schema changes.
+- Work through source attachment, semantic representation, deterministic formatter
+  ordering and comment preservation without assigning comments invented ownership.
+- Map propagation obligations to validation, semantic output, trace, views, ReqIF,
+  and editor diagnostics/hover/completion; distinguish lossless support, best-effort
+  mapping with visible loss, and explicit unsupported cases.
+- Prepare bounded successor cards only after the decision: grammar/model/validation;
+  formatting; interchange/output propagation; examples/testing/documentation; and
+  individual editor capabilities where justified.
+
+## Acceptance evidence
+
+- A decision record precedes implementation and contains valid and invalid source
+  and schema examples for every chosen rule, including isolated-file processing.
+- A matrix states whether unchanged 0.1/0.2 projects without schemas remain valid
+  and identifies any intentional breaking case and its migration note.
+- Worked defaults and schema changes demonstrate what enters compiled semantics;
+  generated output never becomes the attribute definition authority.
+- The follow-up test plan names golden parsing/formatting, invalid schema/value,
+  round-trip, property/mutation, and no-schema compatibility fixtures.
+- Each proposed follow-up names this decision as a dependency; unselected syntax
+  and unsupported ReqIF/editor behavior are not silently promised.
+
+## Out of scope
+
+- Implementing custom attributes, general metadata inheritance, a policy engine,
+  or retroactively assigning assessment authority to descriptive labels.
+
+## Compatibility and affected components
+
+Likely components: future schema source, grammar, Interpreter, formatter, CLI input
+selection, artifact contracts, experimental ReqIF adapter, and language reference.
+Human IDs remain identity. Reconcile the old safety/allocation dispositions through
+a new decision, preserving the historical reasoning.
+
+## Completion decision
+
+Select only a reviewable design whose no-schema and standalone-file cases are
+explicit. If schema discovery, defaults, or type breadth makes the initial model
+ambiguous, narrow it before creating implementation work.
+
+## References
+
+- [Roadmap](0001-initial-roadmap.md)
+- [TC-1301](task-1301-classify-project-attribute-use-cases.md)
+- [TC-1203](task-1203-define-import-and-reference-contracts.md)
+- [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md)
+- [Source language](../specification/0005-mundanereq-source-language-0.2.md)

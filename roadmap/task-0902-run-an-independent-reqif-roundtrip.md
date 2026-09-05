@@ -8,7 +8,7 @@ Type: Interchange experiment
 
 Depends on: TC-0603 and access to an independent ReqIF implementation
 
-Unlocks: A production-interchange decision
+Unlocks: A maintained-interchange decision
 
 ## Question
 

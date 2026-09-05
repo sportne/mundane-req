@@ -50,16 +50,20 @@ that source: `mundanereq-validate`, `mundanereq-format`, and
 shared implementation does not make the Java packages a public API or turn the
 three commands into one application.
 
-The [source 1.0 readiness
-audit](research/0031-source-1.0-readiness-audit.md) identifies a no-feature,
-semantics-identical successor to 0.2 as the only current 1.0 candidate, but it
-does not authorize publication. [TC-1002](roadmap/closed/task-1002-define-compatibility-and-publish-or-defer-1.0.md)
-deferred 1.0 rather than turn missing workflow evidence into a compatibility
-promise. [Experiment 0024](experiments/0024-vaccine-monitoring-pilot/assessment.md)
-then executed a 57-requirement, two-baseline formal-traceability pilot and
-retained the source model unchanged. It also selected a bounded verification-
-analyzer contract experiment as the next work. `mundanereq-source-0.2` remains
-the current provisional contract.
+[Experiment 0024](experiments/0024-vaccine-monitoring-pilot/assessment.md)
+executed a 57-requirement, two-baseline formal-traceability pilot, retained the
+source model, and selected a bounded verification-plan analyzer investigation.
+`mundanereq-source-0.2` remains the current provisional contract.
+
+The [current roadmap](roadmap/0001-initial-roadmap.md) broadens the planned
+repository scope to an engineering tooling monorepo with requirements as its
+first independently usable component. The next integration experiment compiles
+requirements and verification plans, resolves explicit references, analyzes
+coverage/staleness, and builds a reproducible report. Component layout, public
+artifact contracts, and project-defined attribute schemas remain design work.
+The [backlog](roadmap/0002-task-card-index.md) also prioritizes current formatter,
+diagnostic-output, parser-recovery, version-consistency, and CI gaps. This direction
+does not change the existing implementation or language contract.
 
 The first code was a small [deterministic-interpretation
 probe](experiments/0002-deterministic-interpretation/README.md) used to test
@@ -87,10 +91,11 @@ The intended complete JVM and native clean-checkout gate is:
 
     make verify
 
-The TC-1002 verification repair expanded formatter coverage to every maintained
+The recorded formatter verification repair expanded coverage to every maintained
 valid corpus; Experiment 0024 extends that inventory to 30 source sets and 64
-files. The complete `make verify` gate remains the release check. Source 1.0 is
-deferred for evidence reasons, not because of a known red build gate.
+files. The complete `make verify` gate is the authoritative repository check.
+The hosted workflow currently runs a subset; TC-1503 plans to align it with the
+complete command. These are recorded results and planned work, not a new build run.
 
 `make test` runs the maintained JVM regression suite. `make native-smoke` builds and runs a
 test-only executable with `--no-fallback`. Generated classes and native output
@@ -121,7 +126,7 @@ The [validator trial contract](specification/0007-validator-trial-contract-0.1.m
 defines the complete `trial-0.1` interface, installation procedure,
 compatibility boundaries, and known omissions. The Git tag
 `validator-trial-0.1` identifies its reproducible source baseline. This is a
-maintained trial interface, not a stable 1.0 compatibility promise.
+maintained, separately versioned trial interface.
 
 `make validator-verify` runs the complete JVM/native validator evidence set,
 including all conformance selections, maintained corpora, source-selection
@@ -159,7 +164,7 @@ or replacing files. The [formatter trial contract](specification/0008-formatter-
 defines the complete `trial-0.1` interface, formatting behavior, safety
 boundary, and deliberate omissions. The Git tag `formatter-trial-0.1`
 identifies its reproducible source baseline. This is a maintained trial
-interface, not a stable 1.0 compatibility promise.
+interface with its own version and compatibility boundary.
 
 On filesystems with a POSIX permission view, write mode preserves the file's
 read, write, and execute permission bits. Replacement does not promise to
@@ -189,8 +194,8 @@ complete graph, workflow, file-layout, and JVM/native agreement evidence. The
 the complete `trial-0.1` interface, deterministic human-readable output,
 compatibility boundaries, and deliberate omissions. The Git tag
 `trace-trial-0.1` identifies its reproducible source baseline. This is a
-maintained trial interface, not a stable 1.0 or machine-readable compatibility
-promise.
+maintained trial interface. Its human-readable output is not a machine-readable
+interchange contract.
 
 ## Native tool suite
 

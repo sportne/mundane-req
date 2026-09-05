@@ -11,9 +11,9 @@ Roadmap stage: 9
 
 Type: Implementation
 
-Depends on: TC-0905
+Depends on: TC-0905, TC-1204
 
-Unlocks: TC-1001
+Unlocks: TC-0903
 
 ## Question
 
@@ -25,7 +25,9 @@ One evidence-backed tool is implemented, verified, and documented with an explic
 
 ## Work
 
-- Write a bounded contract from the selecting experiment.
+- Implement the bounded contract selected by TC-0905, using TC-1204's resolved
+  references. Include the selected plan adapter/compiler boundary needed to
+  consume authored plans; keep the serialized fixture contract independently usable.
 - Reuse shared Java components only where semantic consistency requires it.
 - Keep the executable or integration independently usable and removable.
 - Ensure outputs are disposable or explicitly external interchange.
@@ -34,6 +36,11 @@ One evidence-backed tool is implemented, verified, and documented with an explic
 
 ## Acceptance evidence
 
+- Published compiled requirement/plan interfaces suffice for a fixture consumer
+  without parser-internal access. Golden outputs cover current, stale, uncovered,
+  missing-reference, and invalid/partial-input cases with source-linked findings.
+- Rebuilding after comment-only, unrelated, normative, ID, and file-move changes
+  produces TC-0905's expected binding outcomes. Output failures cannot yield success.
 - The tool solves the stated problem in the recorded workflow.
 - Removing it does not make authoritative requirements unintelligible.
 - It does not absorb unrelated validator, formatter, trace, forge, or editor responsibilities.
@@ -48,11 +55,29 @@ One evidence-backed tool is implemented, verified, and documented with an explic
 
 ## Completion decision
 
-Publish only if the implementation remains focused after real use. If it accumulates unrelated capabilities, split or stop it before release.
+Accept only if the recorded pilot/change fixtures demonstrate the focused
+coverage and staleness behavior. Split or stop if unrelated execution, evidence
+storage, or satisfaction semantics enter the implementation.
 
 ## References
 
 - [TC-0901](closed/task-0901-prioritize-the-next-ecosystem-tool.md)
 - [TC-0905](task-0905-define-verification-analyzer-contract.md)
+- [TC-1204](task-1204-implement-bounded-artifact-linking.md)
+- [TC-0903](task-0903-run-a-derived-presentation-experiment.md)
 - [Pilot decision](../research/0032-end-to-end-pilot-decision.md)
 - [Roadmap product direction](0001-initial-roadmap.md#product-direction)
+
+## Compatibility and affected components
+
+Likely components: the selected verification plan adapter/compiler, analyzer,
+artifact consumer, independent CLI boundary, and regression fixtures. Source 0.2
+and existing tool interfaces stay intact. Analysis reports planned coverage and
+staleness rather than approval or requirement satisfaction.
+
+## Planning refinement
+
+Reconciled on 2026-09-04: retain the selected analyzer implementation and add the
+bounded linker dependency. Replace the obsolete TC-1001 unlock with the concrete
+report experiment. This card implements the chosen workflow, not an umbrella
+engineering platform; removing it must leave requirements tools usable.
