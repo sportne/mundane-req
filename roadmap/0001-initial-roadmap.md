@@ -110,7 +110,7 @@ unresolved. This roadmap does not change normative language or CLI contracts.
 ownership, permitted dependencies, and the smallest useful layout.
 [TC-1102](closed/task-1102-define-requirement-and-assertion-ownership.md) separates
 obligations, descriptive attributes, relationships, and contextual assertions.
-[TC-1103](task-1103-test-compilation-linking-and-rebuilds.md) exercises the
+[TC-1103](closed/task-1103-test-compilation-linking-and-rebuilds.md) exercises the
 requirements/verification loop with experimental artifacts before selecting
 public contracts. [TC-1104](task-1104-establish-monorepo-component-layout.md)
 conditionally implements justified layout changes.

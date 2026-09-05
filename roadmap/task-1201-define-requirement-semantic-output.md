@@ -69,7 +69,7 @@ revise any proposal that mixes source trivia with normative requirement content.
 ## References
 
 - [Roadmap](0001-initial-roadmap.md)
-- [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md)
+- [TC-1103](closed/task-1103-test-compilation-linking-and-rebuilds.md)
 - [TC-1502](task-1502-centralize-version-declarations.md)
 - [Interpreter](../src/main/java/mundanereq/Interpreter.java)
 - [Shared source representation](../research/0012-shared-source-representation.md)

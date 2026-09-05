@@ -1,6 +1,6 @@
 # Task TC-1103: Test Compilation, Linking, and Rebuilds
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 11
 
@@ -79,12 +79,12 @@ a generalized type system or mandatory platform is needed for this first consume
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [TC-1102](closed/task-1102-define-requirement-and-assertion-ownership.md)
-- [TC-1105](closed/task-1105-compare-yaml-and-custom-requirement-source.md)
-- [Pilot assessment](../experiments/0024-vaccine-monitoring-pilot/assessment.md)
-- [Pilot decision](../research/0032-end-to-end-pilot-decision.md)
-- [TC-0905](task-0905-define-verification-analyzer-contract.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [TC-1102](task-1102-define-requirement-and-assertion-ownership.md)
+- [TC-1105](task-1105-compare-yaml-and-custom-requirement-source.md)
+- [Pilot assessment](../../experiments/0024-vaccine-monitoring-pilot/assessment.md)
+- [Pilot decision](../../research/0032-end-to-end-pilot-decision.md)
+- [TC-0905](../task-0905-define-verification-analyzer-contract.md)
 
 ## Planning refinement
 
@@ -92,7 +92,7 @@ Add TC-1105 as a prerequisite so the source-adapter experiment uses the explicit
 YAML/custom-syntax disposition. The compiled-artifact workflow and semantic-model
 scope remain unchanged; this card does not silently adopt an authoring format.
 
-The completed [YAML decision](../research/0033-yaml-source-representation-decision.md)
+The completed [YAML decision](../../research/0033-yaml-source-representation-decision.md)
 is implemented by TC-1106–1109. Use the maintained YAML 0.3 interpreter; only
 the compiled experiment and plan carrier remain provisional. TC-1102 is complete.
 
@@ -103,3 +103,7 @@ decision for other artifacts. Status and dependencies remain unchanged.
 
 The completed YAML batch supersedes the provisional requirement-adapter assumption.
 Use maintained YAML 0.3 directly; no second YAML parser or profile is introduced.
+
+## Completion evidence
+
+Completed by [Experiment 0027](../../experiments/0027-compilation-linking/README.md) and [Research 0038](../../research/0038-compilation-linking-experiment.md). The runner passed 57 requirements, 13 golden change/failure cases, independent local checkouts and two identical clean rebuilds using a serialized-only consumer. TC-1201 still awaits TC-1502; maintained import and plan contracts remain unresolved.

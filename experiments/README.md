@@ -53,3 +53,5 @@ decision or specification states the durable disposition when one exists.
 Raw participant logs and reviewer transcripts are evidence captures. Paths to
 temporary workspaces inside those captures are historical observations and are
 not expected to remain navigable.
+
+- [Experiment 0027: Compilation and linking](0027-compilation-linking/README.md)
