@@ -99,3 +99,7 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 - [Research 0050: Workflow regression corpus](0050-workflow-regression-corpus.md)
 
 - [Research 0051: Project attribute use cases](0051-project-attribute-use-case-decision.md)
+
+- [Research 0052: Project attribute schema decision](0052-project-attribute-schema-decision.md)
+
+- [Research 0053: Project attribute worked design cases](0053-project-attribute-design-cases.md)

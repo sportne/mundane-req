@@ -2,7 +2,7 @@
 
 Status: Draft living roadmap
 
-Last reconciled: 2026-09-05 after the diagnostics and regression batch
+Last reconciled: 2026-09-05 after the project attribute design batch
 
 Execution is decomposed into the [task-card index](0002-task-card-index.md).
 This remains the single strategic roadmap; cards describe bounded work and
@@ -156,33 +156,41 @@ per-requirement fingerprint. TC-0905 selected normalized requirement-value
 comparison; source moves and comments do not create review-stale bindings. Human
 IDs remain identity and digests do not enter authored requirement records.
 
-## Stage 13 — Decide project-defined attributes
+## Stage 13 — Implement the selected project attributes incrementally
 
-[TC-1301](closed/task-1301-classify-project-attribute-use-cases.md) applies the ownership
-decision to representative metadata and has selected text and enumeration with
-required/optional single values and no defaults. Its
-[decision record](../research/0051-project-attribute-use-case-decision.md) keeps
-contextual assessments independently owned.
-[TC-1302](task-1302-decide-project-attribute-schemas.md) then decides checked-in
-schema source, naming, types, cardinality, defaults, discovery, standalone-file
-behavior, and compatibility.
+[TC-1301](closed/task-1301-classify-project-attribute-use-cases.md) and
+[TC-1302](closed/task-1302-decide-project-attribute-schemas.md) are complete.
+[Research 0051](../research/0051-project-attribute-use-case-decision.md) selects
+text/enumeration, required/optional single values and no defaults for descriptive
+annotations. Independently revised assessments, verification results and contextual
+allocations remain outside the requirement. Built-in allocation/source stay valid.
 
-The attribute-schema decision uses TC-1105's selected authoring representation
-and depends on TC-1106's final YAML profile;
-it does not assume that project attributes require extending a custom grammar.
+[Research 0052](../research/0052-project-attribute-schema-decision.md) selects a
+checked-in narrow JSON declaration passed explicitly to requirements commands,
+and YAML requirement values under an opt-in future source profile. Other artifact
+formats remain independent. No discovery, schema merging or default values are
+introduced. Current normative schemas, version constants and commands are unchanged;
+[worked design cases](../research/0053-project-attribute-design-cases.md) are expected
+outcomes for future tests, not claims of implemented support.
 
-Text and enumeration are first candidates. Lists, references, and other types
-must earn their place. Descriptive classification may belong on a requirement;
-assessment criticality may require context, revision, scheme, rationale, evidence,
-and authority. Current built-in allocation remains valid while richer variant
-allocation is studied as a distinct assertion.
+Execute [TC-1303](task-1303-validate-project-defined-requirement-attributes.md) for
+contracts/model/schema validation first. Then
+[TC-1304](task-1304-preserve-attributes-in-formatting-and-trace.md) supplies safe
+formatting/trace independently of
+[TC-1305](task-1305-compile-project-attribute-artifacts.md)'s versioned output.
+[TC-1306](task-1306-link-and-analyze-project-attributes.md) validates serialized
+imports and compares explicit values plus schema definitions; changes must be
+visible rather than silently ignored.
+[TC-1307](task-1307-display-project-attributes-in-derived-reports.md) extends the
+existing experimental report and records unsupported interchange boundaries.
+[TC-1308](task-1308-verify-and-document-project-attribute-workflows.md) closes the
+integration loop with reproducible examples, compatibility checks and migration
+notes; each implementation supplies its own tests before completion.
 
-Attribute implementation is deliberately conditional on these decisions. The
-schema card must propose bounded successors for grammar/model/validation,
-comment-preserving formatting, compiled/view/trace/ReqIF propagation, fixtures,
-documentation, and individual editor capabilities. It must distinguish lossless
-support, visible best-effort mapping, and unsupported cases. No syntax is selected
-by this roadmap.
+Compiled output sorts attribute maps; authored YAML keeps its comments and key
+order under the conservative formatter. Existing custom/YAML projects remain
+valid without opting into attributes. Editor assistance requires its own selected
+host/workflow, and external ReqIF fidelity remains conditional under TC-0902.
 
 ## Stage 14 — Address current correctness independently
 
@@ -257,7 +265,9 @@ TC-1104?     TC-1301           TC-1202 ---------------------+
                                                        v
                                                    TC-0807?
 
-Ready: TC-1302; TC-1301 is complete
+Ready: TC-1303; TC-1301 and TC-1302 are complete
+TC-1302 -> TC-1303 -> TC-1304 ----------------------------+
+                  +-> TC-1305 -> TC-1306 -> TC-1307 ------+-> TC-1308
 Complete: TC-1101, TC-1102, TC-1103, TC-1502, TC-1201, TC-1202,
           TC-1203, TC-0905, TC-1204, TC-0904, TC-0903, TC-1503,
           TC-1403, TC-1504, TC-1501

@@ -8,7 +8,7 @@ Strategic source: [Roadmap 0001](0001-initial-roadmap.md)
 
 This index decomposes the strategic roadmap into bounded, independently
 reviewable task cards. Cards are planning, not additions to the source-language
-specification. The current tranche contains 22 new cards and three reconciled
+specification. The current tranche contains 28 new cards and three reconciled
 verification/report cards; two existing experiments remain conditional.
 
 ## Status vocabulary
@@ -28,8 +28,9 @@ superseded prospective roadmap sequence does not undo their completed work.
 ## Dependency shape and priority
 
 The YAML/safety, compiled-requirements, verification-workflow, and diagnostics
-batches are complete. TC-1301 has selected the initial attribute use cases;
-TC-1302 (project attribute schemas) is Ready. The graph retains completed prerequisites
+batches are complete. TC-1301/1302 have selected descriptive text/enum attributes
+and explicit project schemas. TC-1303 (validation) is Ready; TC-1304–1308 are the
+bounded implementation and verification successors. The graph retains completed prerequisites
 for context; active tables contain only remaining work.
 
 ```text
@@ -52,6 +53,10 @@ TC-1106 -> TC-1302
 TC-1502 (complete) -> TC-1201 (complete)
 TC-1201 + TC-1402 + TC-1403 -> TC-1504
 TC-1401–1403 and TC-1501–1504 are complete; TC-0902? remains conditional.
+
+Attribute continuation (TC-1301/1302 complete):
+TC-1302 -> TC-1303 -> TC-1304 ----------------------------+
+                  +-> TC-1305 -> TC-1306 -> TC-1307 ------+-> TC-1308
 ```
 
 Question marks mark conditional work. Tables include all prerequisites, including
@@ -71,15 +76,22 @@ The completed import contract precedes the plan contract, whose fixtures drive
 the maintained linker and analyzer. Their completed cards are in the evidence
 inventory below; TC-1501 extends that integrated workflow.
 
-## Stage 13: Project attribute decisions
+## Stage 13: Project attribute implementation
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-1302](task-1302-decide-project-attribute-schemas.md) | Decide Project Attribute Schemas | Ready | TC-1301, TC-1203, TC-1106 |
+| [TC-1303](task-1303-validate-project-defined-requirement-attributes.md) | Validate Project-Defined Requirement Attributes | Ready | TC-1302 |
+| [TC-1304](task-1304-preserve-attributes-in-formatting-and-trace.md) | Preserve Attributes in Formatting and Trace | Planned | TC-1302, TC-1303 |
+| [TC-1305](task-1305-compile-project-attribute-artifacts.md) | Compile Project Attribute Artifacts | Planned | TC-1302, TC-1303 |
+| [TC-1306](task-1306-link-and-analyze-project-attributes.md) | Link and Analyze Project Attributes | Planned | TC-1302, TC-1305 |
+| [TC-1307](task-1307-display-project-attributes-in-derived-reports.md) | Display Project Attributes in Derived Reports | Planned | TC-1302, TC-1306 |
+| [TC-1308](task-1308-verify-and-document-project-attribute-workflows.md) | Verify and Document Project Attribute Workflows | Planned | TC-1302, TC-1304, TC-1306, TC-1307 |
 
-Attribute implementation and propagation cards are created only after these
-decisions select intrinsic/descriptive use cases, checked-in typed schemas, and
-explicit compatibility behavior. Contextual assessments keep their own authority.
+The completed [design](../research/0052-project-attribute-schema-decision.md)
+selects explicit JSON declarations, YAML requirement values, no defaults and
+separate authority for contextual assessments. These are future capabilities;
+current source and output contracts remain unchanged. Editor assistance and ReqIF
+mapping are not implicitly implemented by this chain.
 
 Completed diagnostic and workflow work is recorded in the evidence inventory
 below. Existing package, compatibility and owning regression checks remain part
@@ -162,6 +174,7 @@ superseded by Stages 11–15. Their filenames and evidence are preserved.
 | [TC-1501](closed/task-1501-extend-artifact-workflow-regression-corpora.md) | Extend Artifact Workflow Regression Corpora | Complete | TC-0903 |
 | [TC-1504](closed/task-1504-emit-sarif-validation-diagnostics.md) | Emit SARIF Validation Diagnostics | Complete | TC-1201, TC-1402, TC-1403 |
 | [TC-1301](closed/task-1301-classify-project-attribute-use-cases.md) | Classify Project Attribute Use Cases | Complete | TC-1102 |
+| [TC-1302](closed/task-1302-decide-project-attribute-schemas.md) | Decide Project Attribute Schemas | Complete | TC-1301, TC-1203, TC-1106 |
 
 ## Planning reconciliation
 
@@ -216,7 +229,7 @@ dependencies change in this refinement, and no additional cards are needed.
 | [TC-1106](closed/task-1106-specify-yaml-requirement-source-profile.md) | Specify the requirements model, YAML mapping, structural schema and semantic rules with explicit authority and scope |
 | [TC-1203](closed/task-1203-define-import-and-reference-contracts.md) | Separate common linking meanings from each artifact's authored encoding |
 | [TC-0905](closed/task-0905-define-verification-analyzer-contract.md) | Select plan notation independently and consume published compiled interfaces |
-| [TC-1302](task-1302-decide-project-attribute-schemas.md) | Keep project declaration format a decision distinct from YAML requirement values |
+| [TC-1302](closed/task-1302-decide-project-attribute-schemas.md) | Keep project declaration format a decision distinct from YAML requirement values |
 
 The [roadmap product direction](0001-initial-roadmap.md#product-direction) records
 this boundary. Existing requirements-only implementation and migration cards
@@ -259,3 +272,13 @@ completing it:
 Use the [template](task-card-template.md). Explain material scope/status/dependency
 changes in a Planning refinement section. Do not renumber existing cards or turn
 generated output into authored source.
+
+## Completed attribute decisions and selected successors
+
+TC-1301/1302 are Complete under closed/. Research 0051–0053 record the ownership,
+two-type scope, declaration/attachment contract, comparison policy and worked cases.
+TC-1303–1308 are six new bounded successors, preserving current source contracts
+until their opt-in implementations land. TC-1303 is Ready; formatting/trace and
+compilation can proceed independently after it, then serialized analysis, report
+propagation and integrated verification follow. Existing conditional composition,
+layout and external ReqIF cards remain unchanged.

@@ -68,8 +68,10 @@ explicit TSV verification plan, link locally selected requirement artifacts, and
 analyze planned coverage and review staleness. [Experiment 0029](experiments/0029-verification-report/README.md)
 builds a disposable source-linked HTML report. TSV was selected independently for
 this plan workflow; other artifact formats remain open decisions. The
-[backlog](roadmap/0002-task-card-index.md) tracks project-attribute use cases
-and schema decisions. [Independent version declarations](versions.properties)
+[backlog](roadmap/0002-task-card-index.md) tracks implementation of the selected
+[project-attribute design](research/0052-project-attribute-schema-decision.md):
+explicit project declarations and descriptive text/enum values. Attributes are
+not implemented yet. [Independent version declarations](versions.properties)
 feed command builds and package metadata.
 
 [Bounded diagnostic recovery](specification/0016-diagnostic-recovery.md) now retains

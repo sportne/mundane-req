@@ -1,6 +1,6 @@
 # Task TC-1302: Decide Project Attribute Schemas
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 13
 
@@ -76,13 +76,13 @@ ambiguous, narrow it before creating implementation work.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [TC-1301](closed/task-1301-classify-project-attribute-use-cases.md)
-- [TC-1203](closed/task-1203-define-import-and-reference-contracts.md)
-- [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md)
-- [Source language](../specification/0005-mundanereq-source-language-0.2.md)
-- [TC-1105](closed/task-1105-compare-yaml-and-custom-requirement-source.md)
-- [TC-1106](closed/task-1106-specify-yaml-requirement-source-profile.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [TC-1301](task-1301-classify-project-attribute-use-cases.md)
+- [TC-1203](task-1203-define-import-and-reference-contracts.md)
+- [TC-0902](../task-0902-run-an-independent-reqif-roundtrip.md)
+- [Source language](../../specification/0005-mundanereq-source-language-0.2.md)
+- [TC-1105](task-1105-compare-yaml-and-custom-requirement-source.md)
+- [TC-1106](task-1106-specify-yaml-requirement-source-profile.md)
 
 ## Planning refinement
 
@@ -96,3 +96,17 @@ Distinguish YAML requirement values from the still-unresolved representation of
 project attribute declarations. This requirements-specific schema decision does
 not establish a platform-wide schema or authoring format. Status and dependencies
 remain unchanged.
+
+## Execution refinement
+
+The selected design uses requirements YAML for values and narrow JSON for project
+declarations, independently of other artifact formats. Six successor cards split
+validation, formatting/trace, compilation, serialized analysis, report propagation,
+and integrated examples/documentation. Editor assistance obligations are specified,
+but host-specific diagnostics, completion and hover cards await an actual editor
+workflow; unsupported ReqIF mapping remains conditional. No attribute implementation
+or current normative contract/version change is included in this decision card.
+
+## Completion evidence
+
+Completed 2026-09-05. [Research 0052](../../research/0052-project-attribute-schema-decision.md) selects explicit narrow JSON declarations, YAML values, schema/standalone selection, absence and requiredness, source/output evolution, conservative comparison and propagation boundaries. [Research 0053](../../research/0053-project-attribute-design-cases.md) supplies valid/invalid worked cases and future verification obligations. TC-1303–1308 are indexed successors; only TC-1303 is Ready. JSON/YAML example syntax and planning consistency were checked; no attribute implementation, operational trials or external fidelity results are claimed.
