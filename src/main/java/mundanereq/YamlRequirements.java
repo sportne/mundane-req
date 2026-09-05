@@ -1,5 +1,8 @@
 package mundanereq;
 
+import mundanereq.source.SourceSpan;
+import mundanereq.source.SourcePosition;
+
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -106,12 +109,14 @@ final class YamlRequirements {
                 }
                 Set<String> targets = new HashSet<>();
                 List<Interpreter.RelationshipLocation> locations = new ArrayList<>();
+                Map<String, SourceSpan> referenceSpans = new LinkedHashMap<>();
                 if (item.containsKey("decomposes")) {
                     for (Node target : sequence(item.get("decomposes"))) {
                         String value = id(target);
                         if (value == null) continue;
                         if (!targets.add(value)) error(target, "yaml-duplicate-target", "duplicate decomposes target " + value);
                         var mark = target.getStartMark().orElseThrow();
+                        referenceSpans.put(value, span(target));
                         locations.add(new Interpreter.RelationshipLocation(value, mark.getLine() + 1, mark.getColumn() + 1));
                     }
                 }
@@ -119,7 +124,8 @@ final class YamlRequirements {
                     var mark = item.get("id").getStartMark().orElseThrow();
                     records.add(new Interpreter.ParsedRequirement(
                             new Interpreter.Requirement(id, title, allocation, statement, rationale, origin, targets),
-                            new Interpreter.Location(file, mark.getLine() + 1, mark.getColumn() + 1), locations));
+                            new Interpreter.Location(file, mark.getLine() + 1, mark.getColumn() + 1), locations,
+                            new Interpreter.RequirementOrigin(id, span(node), fieldSpans(item), referenceSpans)));
                 }
             }
         } catch (LimitReached ignored) {
@@ -130,6 +136,19 @@ final class YamlRequirements {
             error(Optional.empty(), "yaml-syntax", exception.getMessage());
         }
         return records;
+    }
+
+    private SourceSpan span(Node node) {
+        var start = node.getStartMark().orElseThrow();
+        var end = node.getEndMark().orElseThrow();
+        return new SourceSpan(new SourcePosition(file, start.getLine() + 1, start.getColumn() + 1),
+                new SourcePosition(file, end.getLine() + 1, end.getColumn() + 1));
+    }
+
+    private Map<String, List<SourceSpan>> fieldSpans(Map<String, Node> item) {
+        Map<String, List<SourceSpan>> spans = new LinkedHashMap<>();
+        item.forEach((name, node) -> spans.put(name, List.of(span(node))));
+        return spans;
     }
 
     private List<Interpreter.ContentBlock> statement(Node value) {

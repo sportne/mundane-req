@@ -36,3 +36,7 @@ unchanged comparison basis, not approved/satisfied/passing. A missing target or
 ambiguous reference never becomes an assertion of failed verification. Outputs
 are derived. The experiment does not implement a maintained linker or select
 verification-plan syntax; its private JSON formats may be discarded.
+
+The later maintained compiler implementation is verified by `make compiled-verify`
+and `make verify`. [Captured full-gate results](results/maintained-compiler-verification.txt)
+record that TC-1202 follow-up separately from the experiment's private format.

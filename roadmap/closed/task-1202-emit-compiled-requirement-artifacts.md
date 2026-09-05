@@ -1,6 +1,6 @@
 # Task TC-1202: Emit Compiled Requirement Artifacts
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 12
 
@@ -67,8 +67,12 @@ do not expand this card merely to make implementation classes more uniform.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [TC-1201](closed/task-1201-define-requirement-semantic-output.md)
-- [Formatter entry point](../src/main/java/mundanereq/cli/FormatterMain.java)
-- [SourceDocument](../src/main/java/mundanereq/source/SourceDocument.java)
-- [TC-1402](closed/task-1402-report-cli-output-failures.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [TC-1201](task-1201-define-requirement-semantic-output.md)
+- [Formatter entry point](../../src/main/java/mundanereq/cli/FormatterMain.java)
+- [SourceDocument](../../src/main/java/mundanereq/source/SourceDocument.java)
+- [TC-1402](task-1402-report-cli-output-failures.md)
+
+## Completion evidence
+
+Completed by [Research 0041](../../research/0041-compiled-requirements-verification.md) and the independent mundanereq-compile command. Final `make verify` passed all 13 JVM groups, native/package/schema/version checks, compiled golden and adversarial corpora, independent consumer and rebuild checks. Record/field/reference spans are retained during parsing. Planning refinement: malformed-UTF-8 byte columns are converted only at the compiled boundary; existing CLI diagnostics and the formatter decoding path remain unchanged. TC-1204 remains Conditional pending TC-1203 and TC-0905.

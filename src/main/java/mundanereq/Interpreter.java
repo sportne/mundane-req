@@ -24,6 +24,8 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import mundanereq.source.SourceDocument;
+import mundanereq.source.SourceSpan;
+import mundanereq.source.SourcePosition;
 
 /** Strict interpretation of explicitly selected custom 0.2 or requirements YAML 0.3 source. */
 public final class Interpreter {
@@ -60,8 +62,20 @@ public final class Interpreter {
         }
     }
 
+    /** Retained syntax provenance; independent from semantic requirement values. */
+    public record RequirementOrigin(String id, SourceSpan record,
+            Map<String, List<SourceSpan>> fields, Map<String, SourceSpan> references) {
+        public RequirementOrigin {
+            Map<String, List<SourceSpan>> copied = new HashMap<>();
+            fields.forEach((key, value) -> copied.put(key, List.copyOf(value)));
+            fields = Map.copyOf(copied);
+            references = Map.copyOf(references);
+        }
+    }
+
     record ParsedRequirement(
-            Requirement requirement, Location location, List<RelationshipLocation> relationshipLocations) {}
+            Requirement requirement, Location location, List<RelationshipLocation> relationshipLocations,
+            RequirementOrigin origin) {}
 
     public record Source(String file, byte[] bytes, Object fileKey) {
         public Source(String file, byte[] bytes) { this(file, bytes, null); }
@@ -92,8 +106,14 @@ public final class Interpreter {
             Map<String, Requirement> byId,
             Map<String, Set<String>> outgoing,
             List<Diagnostic> diagnostics,
-            int fileCount) {
+            int fileCount,
+            List<RequirementOrigin> origins) {
+        public Result(List<Requirement> requirements, Map<String, Requirement> byId,
+                Map<String, Set<String>> outgoing, List<Diagnostic> diagnostics, int fileCount) {
+            this(requirements, byId, outgoing, diagnostics, fileCount, List.of());
+        }
         public Result {
+            origins = List.copyOf(origins);
             requirements = List.copyOf(requirements);
             byId = Map.copyOf(byId);
             Map<String, Set<String>> copiedOutgoing = new HashMap<>();
@@ -302,7 +322,8 @@ public final class Interpreter {
             outgoing.put(requirement.id(), requirement.decomposes());
         }
         sortDiagnostics(diagnostics);
-        return new Result(requirements, byId, outgoing, diagnostics, sources.size());
+        return new Result(requirements, byId, outgoing, diagnostics, sources.size(),
+                parsedRequirements.stream().map(ParsedRequirement::origin).toList());
     }
 
     private static Decoded decode(Source source) {
@@ -431,6 +452,7 @@ public final class Interpreter {
         private final String file;
         private final List<String> lines;
         private int index;
+        private Map<String, List<SourceSpan>> fieldSpans;
 
         Parser(SourceDocument document) {
             this.file = document.name();
@@ -469,11 +491,13 @@ public final class Interpreter {
 
         private ParsedRequirement parseRecord() {
             int start = index;
+            fieldSpans = new HashMap<>();
             Matcher opener = OPENER_PATTERN.matcher(line());
             if (!opener.matches() || !ID_PATTERN.matcher(opener.group(1)).matches()) {
                 fail(index, 1, "invalid-id", "requirement opener must contain a valid ID");
             }
             String id = opener.group(1);
+            addSpan("id", span(index, 13, index, 13 + id.length()));
             Set<String> seen = new HashSet<>();
             index++;
             skipComments();
@@ -547,7 +571,32 @@ public final class Interpreter {
                             source,
                             Set.copyOf(decomposes)),
                     new Location(file, start + 1, 13),
-                    List.copyOf(relationshipLocations));
+                    List.copyOf(relationshipLocations),
+                    new RequirementOrigin(id, span(start, 1, index - 1, endColumn(index - 1)),
+                            fieldSpans, referenceSpans(relationshipLocations)));
+        }
+
+        private int endColumn(int lineIndex) {
+            String text = lines.get(lineIndex);
+            return text.codePointCount(0, text.length()) + 1;
+        }
+
+        private SourceSpan span(int startLine, int startColumn, int endLine, int endColumn) {
+            return new SourceSpan(new SourcePosition(file, startLine + 1, startColumn),
+                    new SourcePosition(file, endLine + 1, endColumn));
+        }
+
+        private void addSpan(String name, SourceSpan value) {
+            fieldSpans.computeIfAbsent(name, ignored -> new ArrayList<>()).add(value);
+        }
+
+        private Map<String, SourceSpan> referenceSpans(List<RelationshipLocation> relationships) {
+            Map<String, SourceSpan> result = new HashMap<>();
+            for (var r : relationships) {
+                result.put(r.target(), span(r.line() - 1, r.column(), r.line() - 1,
+                        r.column() + r.target().length()));
+            }
+            return result;
         }
 
         private void requireNext(String expected, Set<String> seen) {
@@ -578,11 +627,13 @@ public final class Interpreter {
                 int column = prefix.codePointCount(0, prefix.length()) + value.codePointCount(0, value.length());
                 fail(index, column, "empty-or-padded-scalar", "%s must contain a nonempty value without leading or trailing whitespace".formatted(name));
             }
+            addSpan(name, span(index, prefix.length() + 1, index, endColumn(index)));
             index++;
             return new Scalar(value);
         }
 
         private Body parseBody(String name, boolean allowMath) {
+            int bodyStart = index;
             if (!((name + ":").equals(lineOrNull()))) {
                 fail(index, 1, "field-form", "%s must occur alone as '%s:'".formatted(name, name));
             }
@@ -605,6 +656,7 @@ public final class Interpreter {
             if (bodyLines.stream().noneMatch(bodyLine -> !bodyLine.text().isEmpty())) {
                 fail(index - bodyLines.size() - 1, 1, "empty-body", "%s must contain at least one nonblank line".formatted(name));
             }
+            addSpan(name, span(bodyStart, 1, index - 1, endColumn(index - 1)));
             return new Body(foldBody(bodyLines, allowMath));
         }
 

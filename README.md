@@ -53,14 +53,20 @@ executed a 57-requirement, two-baseline formal-traceability pilot, retained the
 source model, and selected a bounded verification-plan analyzer investigation.
 `mundanereq-source-0.2` remains the default invocation contract.
 
-The [current roadmap](roadmap/0001-initial-roadmap.md) broadens the planned
-repository scope to an engineering tooling monorepo with requirements as its
-first independently usable component. The next integration experiment compiles
-requirements and verification plans, resolves explicit references, analyzes
-coverage/staleness, and builds a reproducible report. Component layout, public
-artifact contracts, and project-defined attribute schemas remain design work.
-The [backlog](roadmap/0002-task-card-index.md) tracks the completed YAML and safety
-batch and remaining parser-recovery, version-consistency, and CI work.
+The [current roadmap](roadmap/0001-initial-roadmap.md) describes an engineering
+tooling monorepo with requirements as its first independently usable component.
+[Experiment 0027](experiments/0027-compilation-linking/README.md) now demonstrates
+compilation, explicit linking, coverage/review-staleness analysis and reproducible
+rebuilds through independent requirements and plan adapters. Component and fact
+ownership are recorded; current physical paths are retained.
+
+[`mundanereq-compile`](distribution/compile.md) publishes a documented experimental
+JSON artifact with semantic values, retained source ranges, checksums, diagnostics
+and completeness. A consumer can use it without parser implementation classes.
+Maintained imports, verification-plan syntax and project attributes remain design
+work. The [backlog](roadmap/0002-task-card-index.md) tracks these alongside parser
+recovery and CI alignment. [Independent version declarations](versions.properties)
+feed command builds and package metadata.
 
 The first code was a small [deterministic-interpretation
 probe](experiments/0002-deterministic-interpretation/README.md) used to test
@@ -96,7 +102,8 @@ complete command. YAML verification adds 120 equivalent requirements across thre
 migration corpora, authoring fixtures, negative cases and JVM/native command checks.
 
 The first build needs curl/network access to obtain a checksummed parser jar.
-Full verification also needs Python 3 with venv support for the pinned independent
+Builds use Python 3 to generate version declarations. Full verification needs
+venv support for the pinned independent
 schema check; these packages are not runtime dependencies. Cached dependencies
 permit subsequent offline checks.
 

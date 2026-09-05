@@ -27,9 +27,10 @@ superseded prospective roadmap sequence does not undo their completed work.
 
 ## Dependency shape and priority
 
-The YAML specification, implementation, migration and two safety cards are complete.
-Start TC-1101 and independent cards TC-1403, TC-1502 and TC-1503. They address
-current uncertainty or observable gaps, rather than waiting for the entire ecosystem.
+The YAML/safety and compiled-requirements batches are complete. Start TC-1203
+(import/reference contracts), TC-1301 (attribute use cases), TC-1403 (parser recovery)
+and TC-1503 (CI alignment). The graph retains completed prerequisites for context;
+the active tables below contain only remaining work.
 
 ```text
 TC-1101 -> TC-1102 -> TC-1103 -> TC-1201 -> TC-1203 -> TC-0905
@@ -48,14 +49,15 @@ TC-1104?     TC-1301           TC-1202 ---------------------+
 TC-1105 (complete) -> TC-1103
 Completed YAML chain: TC-1105 -> TC-1106 -> TC-1107 -> TC-1108 -> TC-1109
 TC-1106 -> TC-1302
-TC-1502 -> TC-1201
+TC-1502 (complete) -> TC-1201 (complete)
 TC-1201 + TC-1402 + TC-1403 -> TC-1504
-TC-1401 and TC-1503 are independent; TC-0902? remains conditional.
+TC-1401 is complete; TC-1503 is independent; TC-0902? remains conditional.
 ```
 
 Question marks mark conditional work. Tables include all prerequisites, including
 completed evidence. TC-1104 is optional layout work, not a gate for fixes in the
-current layout. Implementations include their own tests; TC-1501 extends the
+current layout. TC-1101–1103, TC-1201/1202 and TC-1502 in the graph are complete.
+Implementations include their own tests; TC-1501 extends the
 integrated corpus afterward. If a conditional card is superseded, revise its
 consumers' dependencies explicitly before proceeding.
 
@@ -63,17 +65,12 @@ consumers' dependencies explicitly before proceeding.
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-1101](closed/task-1101-define-monorepo-component-boundaries.md) | Define Monorepo Component Boundaries | Complete | — |
-| [TC-1102](closed/task-1102-define-requirement-and-assertion-ownership.md) | Define Requirement and Assertion Ownership | Complete | TC-1101 |
-| [TC-1103](closed/task-1103-test-compilation-linking-and-rebuilds.md) | Test Compilation, Linking, and Rebuilds | Complete | TC-1102, TC-1105 |
 | [TC-1104](task-1104-establish-monorepo-component-layout.md) | Establish the Monorepo Component Layout | Conditional | TC-1101 |
 
 ## Stage 12: Compilation, imports, and linking
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-1201](closed/task-1201-define-requirement-semantic-output.md) | Define Requirement Semantic Output | Complete | TC-1103, TC-1502 |
-| [TC-1202](task-1202-emit-compiled-requirement-artifacts.md) | Emit Compiled Requirement Artifacts | Ready | TC-1201 |
 | [TC-1203](task-1203-define-import-and-reference-contracts.md) | Define Import and Reference Contracts | Ready | TC-1201 |
 | [TC-1204](task-1204-implement-bounded-artifact-linking.md) | Implement Bounded Artifact Linking | Conditional | TC-1202, TC-1203, TC-0905 |
 
@@ -111,7 +108,6 @@ explicit compatibility behavior. Contextual assessments keep their own authority
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
 | [TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md) | Extend Artifact Workflow Regression Corpora | Planned | TC-0903 |
-| [TC-1502](closed/task-1502-centralize-version-declarations.md) | Centralize Independent Version Declarations | Complete | — |
 | [TC-1503](task-1503-align-ci-with-authoritative-verification.md) | Align CI with Authoritative Verification | Ready | — |
 | [TC-1504](task-1504-emit-sarif-validation-diagnostics.md) | Emit SARIF Validation Diagnostics | Planned | TC-1201, TC-1402, TC-1403 |
 
@@ -182,6 +178,13 @@ superseded by Stages 11–15. Their filenames and evidence are preserved.
 | [TC-1401](closed/task-1401-protect-formatter-write-back.md) | Protect Formatter Write-Back | Complete | — |
 | [TC-1402](closed/task-1402-report-cli-output-failures.md) | Report CLI Output Failures Consistently | Complete | — |
 
+| [TC-1101](closed/task-1101-define-monorepo-component-boundaries.md) | Define Monorepo Component Boundaries | Complete | — |
+| [TC-1102](closed/task-1102-define-requirement-and-assertion-ownership.md) | Define Requirement and Assertion Ownership | Complete | TC-1101 |
+| [TC-1103](closed/task-1103-test-compilation-linking-and-rebuilds.md) | Test Compilation, Linking, and Rebuilds | Complete | TC-1102, TC-1105 |
+| [TC-1502](closed/task-1502-centralize-version-declarations.md) | Centralize Independent Version Declarations | Complete | — |
+| [TC-1201](closed/task-1201-define-requirement-semantic-output.md) | Define Requirement Semantic Output | Complete | TC-1103, TC-1502 |
+| [TC-1202](closed/task-1202-emit-compiled-requirement-artifacts.md) | Emit Compiled Requirement Artifacts | Complete | TC-1201 |
+
 ## Planning reconciliation
 
 The initial monorepo reconciliation added 17 Stage 11–15 cards and changed these
@@ -251,6 +254,17 @@ TC-1302 and TC-1504 retain their other incomplete prerequisites. TC-1403 still
 concerns the legacy parser; the YAML diagnostics do not complete it. TC-1502's
 build description now reflects the pinned Java YAML parser dependency.
 
+## Completed compiled-requirements batch
+
+TC-1101–1103, TC-1502 and TC-1201–1202 are Complete and filed under closed/.
+[Research 0041](../research/0041-compiled-requirements-verification.md) records the
+maintained compiler and final full verification. Research 0036–0040 record logical
+boundaries, ownership, the 13-case serialized experiment, independent version
+declarations and the selected output contract. Existing physical paths are retained;
+TC-1104 stays Conditional until a move has a demonstrated consumer benefit.
+TC-1203 and TC-1301 are Ready. TC-0905 still needs TC-1203; TC-1302 needs TC-1301
+and TC-1203. TC-1504 still needs parser recovery. TC-1204 remains Conditional.
+
 ## Updating cards
 
 When beginning a card, change its status here and in the card together. When
@@ -260,7 +274,9 @@ completing it:
 2. update affected contracts, experiments, or roadmap text;
 3. mark the card complete, retain its ID, and link its result under closed/;
 4. make newly unblocked cards Ready only when their conditions are satisfied;
-5. revise or supersede dependencies when evidence selects a smaller scope.
+5. revise or supersede dependencies when evidence selects a smaller scope;
+6. make a separate commit for each completed task card, including its evidence and
+   necessary index/dependency updates.
 
 Use the [template](task-card-template.md). Explain material scope/status/dependency
 changes in a Planning refinement section. Do not renumber existing cards or turn

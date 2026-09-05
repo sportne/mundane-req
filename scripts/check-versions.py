@@ -21,7 +21,7 @@ check_metadata(metadata)
 if len(sys.argv) > 1:
     assert sys.argv[1] == values['SUITE_VERSION'], 'Make package version overrides authoritative declaration'
 cp = str(ROOT/'build/maintained/classes')+':'+str(ROOT/'build/dependencies/snakeyaml-engine-3.1.1.jar')
-for tool, main in [('VALIDATE','Validator'),('FORMAT','Formatter'),('TRACE','Trace'),('MIGRATE','Migrate')]:
+for tool, main in [('VALIDATE','Validator'),('FORMAT','Formatter'),('TRACE','Trace'),('MIGRATE','Migrate'),('COMPILE','Compile')]:
     actual = subprocess.check_output(['java','-cp',cp,'mundanereq.cli.'+main+'Main','--version'], text=True)
     assert values[tool+'_VERSION'] in actual and values['SOURCE_CUSTOM'] in actual
     if tool == 'MIGRATE': assert values['SOURCE_YAML'] in actual

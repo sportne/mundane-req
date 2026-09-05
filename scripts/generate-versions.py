@@ -14,7 +14,7 @@ def read(path):
         if not match or match[1] in values:
             raise ValueError('invalid or duplicate version declaration: ' + line)
         values[match[1]] = match[2]
-    required = {'SOURCE_CUSTOM', 'SOURCE_YAML', 'SUITE_VERSION'} | {tool+suffix for tool in ['VALIDATE','FORMAT','TRACE','MIGRATE'] for suffix in ['_VERSION','_CONTRACT']}
+    required = {'SOURCE_CUSTOM', 'SOURCE_YAML', 'SUITE_VERSION', 'REQUIREMENT_ARTIFACT'} | {tool+suffix for tool in ['VALIDATE','FORMAT','TRACE','MIGRATE','COMPILE'] for suffix in ['_VERSION','_CONTRACT']}
     if not required <= values.keys():
         raise ValueError('missing declarations: '+str(sorted(required-values.keys())))
     return values

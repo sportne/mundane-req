@@ -206,3 +206,19 @@ version-verify: test
 	python3 scripts/check-versions.py "$(SUITE_VERSION)"
 
 verify: version-verify
+
+.PHONY: native-compile compiled-verify
+native-compile: test
+	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASSPATH) -o $(abspath $(BUILD_ROOT)/mundanereq-compile) mundanereq.cli.CompileMain
+	$(BUILD_ROOT)/mundanereq-compile --version
+
+compiled-verify: native-compile
+	python3 scripts/check-compiled-artifacts.py $(BUILD_ROOT)/mundanereq-compile
+
+verify: compiled-verify
+
+.PHONY: compilation-experiment-verify
+compilation-experiment-verify: test
+	python3 experiments/0027-compilation-linking/run.py
+
+verify: compilation-experiment-verify
