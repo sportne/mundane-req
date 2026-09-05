@@ -97,3 +97,5 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 - [Research 0049: SARIF diagnostics](0049-sarif-diagnostics-verification.md)
 
 - [Research 0050: Workflow regression corpus](0050-workflow-regression-corpus.md)
+
+- [Research 0051: Project attribute use cases](0051-project-attribute-use-case-decision.md)

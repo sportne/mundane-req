@@ -1,6 +1,6 @@
 # Task TC-1301: Classify Project Attribute Use Cases
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 13
 
@@ -63,7 +63,11 @@ the requirement object. Stop types whose sole justification is hypothetical brea
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [TC-1102](closed/task-1102-define-requirement-and-assertion-ownership.md)
-- [Safety ownership](../research/0025-safety-classification-ownership-decision.md)
-- [Allocation decision](../research/0027-allocation-model-decision.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [TC-1102](task-1102-define-requirement-and-assertion-ownership.md)
+- [Safety ownership](../../research/0025-safety-classification-ownership-decision.md)
+- [Allocation decision](../../research/0027-allocation-model-decision.md)
+
+## Completion evidence
+
+Completed 2026-09-05. [Research 0051](../../research/0051-project-attribute-use-case-decision.md) records the ownership/use-case matrix, text and enumeration scope, required/optional single values, rejected defaults and deferred lists/references, and valid/invalid conceptual examples. This is a design assessment against repository evidence, not implementation or user-trial evidence. TC-1302 is now Ready.

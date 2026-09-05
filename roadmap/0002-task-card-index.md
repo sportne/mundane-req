@@ -28,8 +28,8 @@ superseded prospective roadmap sequence does not undo their completed work.
 ## Dependency shape and priority
 
 The YAML/safety, compiled-requirements, verification-workflow, and diagnostics
-batches are complete. Ready work is TC-1301 (attribute use cases), which unlocks
-TC-1302 (project attribute schemas). The graph retains completed prerequisites
+batches are complete. TC-1301 has selected the initial attribute use cases;
+TC-1302 (project attribute schemas) is Ready. The graph retains completed prerequisites
 for context; active tables contain only remaining work.
 
 ```text
@@ -75,8 +75,7 @@ inventory below; TC-1501 extends that integrated workflow.
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-1301](task-1301-classify-project-attribute-use-cases.md) | Classify Project Attribute Use Cases | Ready | TC-1102 |
-| [TC-1302](task-1302-decide-project-attribute-schemas.md) | Decide Project Attribute Schemas | Planned | TC-1301, TC-1203, TC-1106 |
+| [TC-1302](task-1302-decide-project-attribute-schemas.md) | Decide Project Attribute Schemas | Ready | TC-1301, TC-1203, TC-1106 |
 
 Attribute implementation and propagation cards are created only after these
 decisions select intrinsic/descriptive use cases, checked-in typed schemas, and
@@ -162,6 +161,7 @@ superseded by Stages 11–15. Their filenames and evidence are preserved.
 | [TC-1403](closed/task-1403-recover-parser-diagnostics-safely.md) | Recover Parser Diagnostics Safely | Complete | — |
 | [TC-1501](closed/task-1501-extend-artifact-workflow-regression-corpora.md) | Extend Artifact Workflow Regression Corpora | Complete | TC-0903 |
 | [TC-1504](closed/task-1504-emit-sarif-validation-diagnostics.md) | Emit SARIF Validation Diagnostics | Complete | TC-1201, TC-1402, TC-1403 |
+| [TC-1301](closed/task-1301-classify-project-attribute-use-cases.md) | Classify Project Attribute Use Cases | Complete | TC-1102 |
 
 ## Planning reconciliation
 

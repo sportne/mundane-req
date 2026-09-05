@@ -1,6 +1,6 @@
 # Task TC-1302: Decide Project Attribute Schemas
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 13
 
@@ -77,7 +77,7 @@ ambiguous, narrow it before creating implementation work.
 ## References
 
 - [Roadmap](0001-initial-roadmap.md)
-- [TC-1301](task-1301-classify-project-attribute-use-cases.md)
+- [TC-1301](closed/task-1301-classify-project-attribute-use-cases.md)
 - [TC-1203](closed/task-1203-define-import-and-reference-contracts.md)
 - [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md)
 - [Source language](../specification/0005-mundanereq-source-language-0.2.md)

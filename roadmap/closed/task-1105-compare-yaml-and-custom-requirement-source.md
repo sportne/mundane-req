@@ -114,7 +114,7 @@ normative specification changes require the resulting successor work.
 - [Source language](../../specification/0005-mundanereq-source-language-0.2.md)
 - [Source representation](../../research/0012-shared-source-representation.md)
 - [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md)
-- [TC-1301](../task-1301-classify-project-attribute-use-cases.md)
+- [TC-1301](task-1301-classify-project-attribute-use-cases.md)
 - [TC-1302](../task-1302-decide-project-attribute-schemas.md)
 - [YAML specification](https://yaml.org/spec/1.2.2/)
 

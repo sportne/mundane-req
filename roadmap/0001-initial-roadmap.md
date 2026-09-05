@@ -158,8 +158,11 @@ IDs remain identity and digests do not enter authored requirement records.
 
 ## Stage 13 — Decide project-defined attributes
 
-[TC-1301](task-1301-classify-project-attribute-use-cases.md) applies the ownership
-decision to representative metadata and selects a bounded initial type set.
+[TC-1301](closed/task-1301-classify-project-attribute-use-cases.md) applies the ownership
+decision to representative metadata and has selected text and enumeration with
+required/optional single values and no defaults. Its
+[decision record](../research/0051-project-attribute-use-case-decision.md) keeps
+contextual assessments independently owned.
 [TC-1302](task-1302-decide-project-attribute-schemas.md) then decides checked-in
 schema source, naming, types, cardinality, defaults, discovery, standalone-file
 behavior, and compatibility.
@@ -254,7 +257,7 @@ TC-1104?     TC-1301           TC-1202 ---------------------+
                                                        v
                                                    TC-0807?
 
-Ready: TC-1301 (then TC-1302)
+Ready: TC-1302; TC-1301 is complete
 Complete: TC-1101, TC-1102, TC-1103, TC-1502, TC-1201, TC-1202,
           TC-1203, TC-0905, TC-1204, TC-0904, TC-0903, TC-1503,
           TC-1403, TC-1504, TC-1501
