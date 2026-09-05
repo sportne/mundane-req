@@ -85,3 +85,5 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 - [Research 0043: Verification plan contract](0043-verification-plan-contract-decision.md)
 
 - [Research 0044: Bounded linker verification](0044-bounded-linker-verification.md)
+
+- [Research 0045: Verification analyzer implementation](0045-verification-analyzer-implementation.md)

@@ -138,7 +138,7 @@ without presenting it as fully analyzed.
 verification-plan contract and staleness decisions after those designs.
 [TC-1204](closed/task-1204-implement-bounded-artifact-linking.md) implements only the
 shared resolution capability justified by that workflow.
-[TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) implements the
+[TC-0904](closed/task-0904-implement-the-selected-ecosystem-tool.md) implements the
 focused verification consumer.
 
 The experiment compared exact Git tree binding with per-requirement semantic values.

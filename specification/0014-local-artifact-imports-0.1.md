@@ -85,7 +85,8 @@ Help/version are standalone options. Unknown/duplicate options, absent arguments
 and invalid root are invocation errors (stderr, exit 2, no artifact).
 
 Normal output is one sorted-key compact UTF-8 JSON object plus LF:
-`{format, complete, context, plans, imports, planArtifact, edges, inverse, diagnostics}`.
+`{format, complete, context, linker, plans, imports, planArtifact, edges, inverse, diagnostics}`.
+`linker` identifies `{name:"mundane-link",version:"experimental-0.1",contract:"link-cli-0.1"}`.
 Imports are scope-sorted records `{scope,path,sha256,artifact}` containing validated
 compiled snapshots. planArtifact is `{path,sha256,artifact}`. Plans list selected
 plan IDs sorted. Edges are sorted by planId/activityId/requirementId; each contains
@@ -125,3 +126,7 @@ or meanings require new identifiers and explicit migration notes. Unknown keys i
 this narrow authored manifest fail, while informational additions in requirement
 artifacts follow their existing output contract. No public per-requirement digest
 is selected: the first consumer compares semantic values under TC-0905's policy.
+
+Implementation refinement: linked output now includes explicit linker provenance
+alongside imported compiler metadata. This informational field does not change
+reference meanings or the requirements/plan source contracts.

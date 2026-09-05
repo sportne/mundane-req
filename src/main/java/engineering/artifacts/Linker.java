@@ -19,6 +19,7 @@ public final class Linker {
     public static Result link(Path root,String manifest,String planFile,String context,Runnable beforeRecheck) {
         Snapshots snapshots=new Snapshots(root);
         Map<String,Object> output=Json.object("format",Versions.LINK_ARTIFACT,"complete",false,"context",context,
+                "linker",Json.object("name","mundane-link","version",Versions.LINK_VERSION,"contract",Versions.LINK_CONTRACT),
                 "plans",List.of(),"imports",List.of(),"planArtifact",null,"edges",List.of(),"inverse",Map.of(),"diagnostics",List.of());
         String current=manifest;
         try {

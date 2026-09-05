@@ -232,3 +232,17 @@ link-verify: native-link native-compile
 	python3 scripts/check-artifact-linking.py $(BUILD_ROOT)/mundane-link
 
 verify: link-verify
+
+.PHONY: native-plan native-verification verification-verify
+native-plan: test
+	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASS_DIR) -o $(abspath $(BUILD_ROOT)/mundane-plan) engineering.verification.PlanMain
+	$(BUILD_ROOT)/mundane-plan --version
+
+native-verification: test
+	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASS_DIR) -o $(abspath $(BUILD_ROOT)/mundane-verify) engineering.verification.VerifyMain
+	$(BUILD_ROOT)/mundane-verify --version
+
+verification-verify: native-plan native-verification native-compile
+	python3 scripts/check-verification-workflow.py $(BUILD_ROOT)/mundane-plan $(BUILD_ROOT)/mundane-verify
+
+verify: verification-verify

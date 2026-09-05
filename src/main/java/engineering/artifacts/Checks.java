@@ -19,7 +19,7 @@ public final class Checks {
     public static String digest(Object value) { String text=text(value); if(!text.matches("[0-9a-f]{64}")) throw new IllegalArgumentException("invalid SHA-256"); return text; }
     public static String path(Object value) {
         String text=text(value);
-        if(text.startsWith("/")||text.contains("\\")||text.contains(":")) throw new IllegalArgumentException("invalid relative path");
+        if(java.nio.file.Path.of(text).isAbsolute()||text.startsWith("/")||text.contains("\\")) throw new IllegalArgumentException("invalid relative path");
         for(String part:text.split("/",-1)) if(part.isEmpty()||part.equals(".")||part.equals("..")) throw new IllegalArgumentException("invalid relative path");
         if(text.codePoints().anyMatch(c->c<32)) throw new IllegalArgumentException("control in path");
         return text;

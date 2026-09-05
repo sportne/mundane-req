@@ -102,9 +102,10 @@ cross-domain impact or test execution is implemented.
 
 ```text
 {format:"mundane-verification-0.1",complete:BOOLEAN,context:STRING_OR_NULL,
- linked:LINKED_RESULT,coverage:[...],uncovered:[...],diagnostics:[...]}
+ analyzer:{name,version,contract},linked:LINKED_RESULT,coverage:[...],uncovered:[...],diagnostics:[...]}
 ```
 
+Analyzer identity is mundane-verify / experimental-0.1 / verification-cli-0.1.
 Coverage rows contain all linked edge fields plus `state`, `changedFields` (sorted
 field names) and `possibleImpact` (true iff changedFields is nonempty). Uncovered
 rows are `{planId,context,scope,requirementId,location}` with a current requirement

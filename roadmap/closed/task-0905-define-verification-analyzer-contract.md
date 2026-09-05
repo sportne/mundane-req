@@ -88,7 +88,7 @@ not ready.
 - [Experiment 0024](../../experiments/0024-vaccine-monitoring-pilot/assessment.md)
 - [Verification companion decision](../../research/0024-verification-companion-decision.md)
 - [Pilot decision](../../research/0032-end-to-end-pilot-decision.md)
-- [TC-0904](../task-0904-implement-the-selected-ecosystem-tool.md)
+- [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md)
 
 ## Compatibility and affected components
 

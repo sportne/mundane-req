@@ -41,6 +41,7 @@ public final class MaintainedTestSuite {
         mundanereq.cli.YamlWorkflowTest.run();
         mundanereq.cli.CompileMainTest.run();
         engineering.artifacts.ArtifactBoundaryTest.run();
-        System.out.println("Passed 14 maintained test groups.");
+        engineering.verification.VerificationBoundaryTest.run();
+        System.out.println("Passed 15 maintained test groups.");
     }
 }

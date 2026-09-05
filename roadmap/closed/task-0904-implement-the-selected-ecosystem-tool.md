@@ -1,6 +1,6 @@
 # Task TC-0904: Implement the Selected Ecosystem Tool
 
-Status: Ready
+Status: Complete
 
 Current disposition: Experiment 0024 supplied the repeated workflow evidence
 that TC-0901 required and selected a focused verification-plan analyzer. TC-0905
@@ -61,12 +61,12 @@ storage, or satisfaction semantics enter the implementation.
 
 ## References
 
-- [TC-0901](closed/task-0901-prioritize-the-next-ecosystem-tool.md)
-- [TC-0905](closed/task-0905-define-verification-analyzer-contract.md)
-- [TC-1204](closed/task-1204-implement-bounded-artifact-linking.md)
-- [TC-0903](task-0903-run-a-derived-presentation-experiment.md)
-- [Pilot decision](../research/0032-end-to-end-pilot-decision.md)
-- [Roadmap product direction](0001-initial-roadmap.md#product-direction)
+- [TC-0901](task-0901-prioritize-the-next-ecosystem-tool.md)
+- [TC-0905](task-0905-define-verification-analyzer-contract.md)
+- [TC-1204](task-1204-implement-bounded-artifact-linking.md)
+- [TC-0903](../task-0903-run-a-derived-presentation-experiment.md)
+- [Pilot decision](../../research/0032-end-to-end-pilot-decision.md)
+- [Roadmap product direction](../0001-initial-roadmap.md#product-direction)
 
 ## Compatibility and affected components
 
@@ -81,3 +81,7 @@ Reconciled on 2026-09-04: retain the selected analyzer implementation and add th
 bounded linker dependency. Replace the obsolete TC-1001 unlock with the concrete
 report experiment. This card implements the chosen workflow, not an umbrella
 engineering platform; removing it must leave requirements tools usable.
+
+## Completion evidence
+
+Completed by [Research 0045](../../research/0045-verification-analyzer-implementation.md), mundane-plan and mundane-verify. `make verification-verify link-verify version-verify` passed with 15 JVM groups, native/JVM parity, the preimplementation plan fixture, 57 assertions, 13 invalid TSV cases, edit/rebuild and output-failure checks. Independent linker/analyzer version provenance was added explicitly to the output contracts. TC-0903 is Ready.

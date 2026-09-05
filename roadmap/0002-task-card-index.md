@@ -79,8 +79,8 @@ consumers' dependencies explicitly before proceeding.
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
 | [TC-0905](closed/task-0905-define-verification-analyzer-contract.md) | Define the Verification Analyzer Contract | Complete | TC-0802, TC-1003, TC-1103, TC-1203 |
-| [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) | Implement the Selected Ecosystem Tool | Ready | TC-0905, TC-1204 |
-| [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Run a Derived Presentation Experiment | Planned | TC-0904 |
+| [TC-0904](closed/task-0904-implement-the-selected-ecosystem-tool.md) | Implement the Selected Ecosystem Tool | Complete | TC-0905, TC-1204 |
+| [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Run a Derived Presentation Experiment | Ready | TC-0904 |
 
 The generic import contract precedes the domain plan contract; the plan contract
 provides fixtures for the maintained linker, then the analyzer consumes that
@@ -196,7 +196,7 @@ existing planning files. The YAML comparison follow-up below adds TC-1105.
 | [This index](0002-task-card-index.md) | Current dependencies/statuses and separate completed evidence inventory |
 | [Task template](task-card-template.md) | Compatibility/components, present problem, risks, and explicit refinement instructions |
 | [TC-0905](closed/task-0905-define-verification-analyzer-contract.md) | Ready becomes Planned; add compilation/import decisions and compiled plan fixture obligations |
-| [TC-0904](task-0904-implement-the-selected-ecosystem-tool.md) | Add bounded linking dependency and compiled consumer evidence; unlock report instead of historical audit |
+| [TC-0904](closed/task-0904-implement-the-selected-ecosystem-tool.md) | Add bounded linking dependency and compiled consumer evidence; unlock report instead of historical audit |
 | [TC-0903](task-0903-run-a-derived-presentation-experiment.md) | Conditional becomes Planned; select verification report and make composition a possible successor |
 | [TC-0807](task-0807-test-authored-views-and-specifications.md) | Reverse the old report prerequisite; retain conditional composition scope |
 | [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md) | Clarify that the decision concerns a maintained interchange capability; external-tool prerequisite remains |
