@@ -1,6 +1,6 @@
 # Task TC-1102: Define Requirement and Assertion Ownership
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 11
 
@@ -65,7 +65,7 @@ universal inheritance, behavior, or implicit cross-domain approval semantics.
 ## References
 
 - [Roadmap](0001-initial-roadmap.md)
-- [TC-1101](task-1101-define-monorepo-component-boundaries.md)
+- [TC-1101](closed/task-1101-define-monorepo-component-boundaries.md)
 - [Verification ownership](../research/0024-verification-companion-decision.md)
 - [Safety ownership](../research/0025-safety-classification-ownership-decision.md)
 - [Allocation decision](../research/0027-allocation-model-decision.md)

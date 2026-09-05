@@ -61,6 +61,6 @@ supersede this card rather than manufacture file movement.
 ## References
 
 - [Roadmap](0001-initial-roadmap.md)
-- [TC-1101](task-1101-define-monorepo-component-boundaries.md)
+- [TC-1101](closed/task-1101-define-monorepo-component-boundaries.md)
 - [Native packaging evidence](../research/0017-native-suite-packaging.md)
 - [Integrated trial](closed/task-0603-run-the-integrated-toolchain-trial.md)

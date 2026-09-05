@@ -106,7 +106,7 @@ unresolved. This roadmap does not change normative language or CLI contracts.
 
 ## Stage 11 — Establish monorepo and ownership boundaries
 
-[TC-1101](task-1101-define-monorepo-component-boundaries.md) identifies component
+[TC-1101](closed/task-1101-define-monorepo-component-boundaries.md) identifies component
 ownership, permitted dependencies, and the smallest useful layout.
 [TC-1102](task-1102-define-requirement-and-assertion-ownership.md) separates
 obligations, descriptive attributes, relationships, and contextual assertions.

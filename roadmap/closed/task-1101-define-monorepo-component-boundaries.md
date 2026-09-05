@@ -1,6 +1,6 @@
 # Task TC-1101: Define Monorepo Component Boundaries
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 11
 
@@ -75,12 +75,16 @@ requirements.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [Project foundation](../specification/0001-project-foundation.md)
-- [Implementation lineage](../research/0011-maintained-implementation-lineage.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [Project foundation](../../specification/0001-project-foundation.md)
+- [Implementation lineage](../../research/0011-maintained-implementation-lineage.md)
 
 ## Planning refinement
 
 Clarify that component boundaries do not select a common authoring notation.
 The requirements YAML decision has requirements-only scope. Status and
 dependencies remain unchanged.
+
+## Completion evidence
+
+Completed by [Research 0036](../../research/0036-monorepo-component-boundaries.md): dependency diagram, path/contract ownership map, executable independence scenarios and alternatives. Retain current paths; TC-1104 remains Conditional because no physical move currently has a demonstrated benefit. TC-1102 is now Ready.

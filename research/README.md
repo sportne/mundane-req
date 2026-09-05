@@ -67,3 +67,5 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 | [0033 — YAML source representation](0033-yaml-source-representation-decision.md) | Selects a constrained YAML successor direction; preserves current contracts pending specification and implementation. |
 | [0034 — Requirements YAML contract](0034-yaml-requirements-contract-decision.md) | Selects the requirements-only YAML profile, rule authority and explicit migration contract. |
 | [0035 — Requirements YAML batch verification](0035-yaml-requirements-batch-verification.md) | Records maintained YAML tooling, migration and safety verification. |
+
+- [Research 0036: Monorepo component boundaries](0036-monorepo-component-boundaries.md)

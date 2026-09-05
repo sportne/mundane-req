@@ -63,8 +63,8 @@ consumers' dependencies explicitly before proceeding.
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-1101](task-1101-define-monorepo-component-boundaries.md) | Define Monorepo Component Boundaries | Ready | — |
-| [TC-1102](task-1102-define-requirement-and-assertion-ownership.md) | Define Requirement and Assertion Ownership | Planned | TC-1101 |
+| [TC-1101](closed/task-1101-define-monorepo-component-boundaries.md) | Define Monorepo Component Boundaries | Complete | — |
+| [TC-1102](task-1102-define-requirement-and-assertion-ownership.md) | Define Requirement and Assertion Ownership | Ready | TC-1101 |
 | [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md) | Test Compilation, Linking, and Rebuilds | Planned | TC-1102, TC-1105 |
 | [TC-1104](task-1104-establish-monorepo-component-layout.md) | Establish the Monorepo Component Layout | Conditional | TC-1101 |
 
@@ -230,7 +230,7 @@ dependencies change in this refinement, and no additional cards are needed.
 
 | Card | Clarification |
 | --- | --- |
-| [TC-1101](task-1101-define-monorepo-component-boundaries.md) | Record source-format decisions separately from shared component interfaces |
+| [TC-1101](closed/task-1101-define-monorepo-component-boundaries.md) | Record source-format decisions separately from shared component interfaces |
 | [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md) | Exercise provisional YAML requirements with the existing TSV plan adapter; remove shared-notation comparison |
 | [TC-1106](closed/task-1106-specify-yaml-requirement-source-profile.md) | Specify the requirements model, YAML mapping, structural schema and semantic rules with explicit authority and scope |
 | [TC-1203](task-1203-define-import-and-reference-contracts.md) | Separate common linking meanings from each artifact's authored encoding |
