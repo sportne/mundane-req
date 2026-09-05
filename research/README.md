@@ -75,3 +75,5 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 - [Research 0038: Compilation and linking experiment](0038-compilation-linking-experiment.md)
 
 - [Research 0039: Independent version declarations](0039-independent-version-declarations.md)
+
+- [Research 0040: Semantic output decision](0040-requirement-semantic-output-decision.md)

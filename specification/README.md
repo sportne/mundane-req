@@ -55,3 +55,6 @@ explicit contract update and applicable compatibility notes.
   implementation, or GraalVM.
 - Research and experiments are evidence and decisions. They change a contract
   only when the applicable specification is updated explicitly.
+
+- [Requirement semantic output 0.1](0012-requirement-semantic-output-0.1.md)
+- [Compiled diagnostic rule catalog](0013-compiled-diagnostic-rules.md)

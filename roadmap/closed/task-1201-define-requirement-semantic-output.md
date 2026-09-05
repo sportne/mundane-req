@@ -1,6 +1,6 @@
 # Task TC-1201: Define Requirement Semantic Output
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 12
 
@@ -68,8 +68,12 @@ revise any proposal that mixes source trivia with normative requirement content.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [TC-1103](closed/task-1103-test-compilation-linking-and-rebuilds.md)
-- [TC-1502](closed/task-1502-centralize-version-declarations.md)
-- [Interpreter](../src/main/java/mundanereq/Interpreter.java)
-- [Shared source representation](../research/0012-shared-source-representation.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md)
+- [TC-1502](task-1502-centralize-version-declarations.md)
+- [Interpreter](../../src/main/java/mundanereq/Interpreter.java)
+- [Shared source representation](../../research/0012-shared-source-representation.md)
+
+## Completion evidence
+
+Completed by [Research 0040](../../research/0040-requirement-semantic-output-decision.md), [semantic output 0.1](../../specification/0012-requirement-semantic-output-0.1.md), the diagnostic rule catalog and worked JSON/source fixtures. A parser-independent consumer accepted the valid multi-file case and rejected invalid, duplicate, dangling and unknown-format cases. TC-1202 must now verify exact emitter bytes and retained spans; TC-1202 and TC-1203 are Ready.

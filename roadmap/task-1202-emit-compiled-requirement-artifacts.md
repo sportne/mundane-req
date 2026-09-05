@@ -1,6 +1,6 @@
 # Task TC-1202: Emit Compiled Requirement Artifacts
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 12
 
@@ -68,7 +68,7 @@ do not expand this card merely to make implementation classes more uniform.
 ## References
 
 - [Roadmap](0001-initial-roadmap.md)
-- [TC-1201](task-1201-define-requirement-semantic-output.md)
+- [TC-1201](closed/task-1201-define-requirement-semantic-output.md)
 - [Formatter entry point](../src/main/java/mundanereq/cli/FormatterMain.java)
 - [SourceDocument](../src/main/java/mundanereq/source/SourceDocument.java)
 - [TC-1402](closed/task-1402-report-cli-output-failures.md)

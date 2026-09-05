@@ -1,6 +1,6 @@
 # Task TC-1203: Define Import and Reference Contracts
 
-Status: Planned
+Status: Ready
 
 Roadmap stage: 12
 
@@ -79,7 +79,7 @@ systems model merely to resolve references.
 ## References
 
 - [Roadmap](0001-initial-roadmap.md)
-- [TC-1201](task-1201-define-requirement-semantic-output.md)
+- [TC-1201](closed/task-1201-define-requirement-semantic-output.md)
 - [Identity decision](../research/0023-identity-continuity-decision.md)
 - [TC-0905](task-0905-define-verification-analyzer-contract.md)
 

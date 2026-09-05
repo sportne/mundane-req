@@ -69,4 +69,4 @@ and profile before optimizing them.
 - [Roadmap](0001-initial-roadmap.md)
 - [Interpreter](../src/main/java/mundanereq/Interpreter.java)
 - [Source representation decision](../research/0012-shared-source-representation.md)
-- [TC-1201](task-1201-define-requirement-semantic-output.md)
+- [TC-1201](closed/task-1201-define-requirement-semantic-output.md)

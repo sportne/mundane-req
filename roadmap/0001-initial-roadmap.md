@@ -134,7 +134,7 @@ information, and rebuilds. It is not a mandate to standardize every artifact.
 
 ## Stage 12 — Publish bounded compiler and import interfaces
 
-[TC-1201](task-1201-define-requirement-semantic-output.md) defines versioned
+[TC-1201](closed/task-1201-define-requirement-semantic-output.md) defines versioned
 requirement semantics, source ranges, diagnostic meanings, provenance, ordering,
 and completeness; [TC-1202](task-1202-emit-compiled-requirement-artifacts.md)
 implements the selected interface.

@@ -72,9 +72,9 @@ consumers' dependencies explicitly before proceeding.
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-1201](task-1201-define-requirement-semantic-output.md) | Define Requirement Semantic Output | Ready | TC-1103, TC-1502 |
-| [TC-1202](task-1202-emit-compiled-requirement-artifacts.md) | Emit Compiled Requirement Artifacts | Planned | TC-1201 |
-| [TC-1203](task-1203-define-import-and-reference-contracts.md) | Define Import and Reference Contracts | Planned | TC-1201 |
+| [TC-1201](closed/task-1201-define-requirement-semantic-output.md) | Define Requirement Semantic Output | Complete | TC-1103, TC-1502 |
+| [TC-1202](task-1202-emit-compiled-requirement-artifacts.md) | Emit Compiled Requirement Artifacts | Ready | TC-1201 |
+| [TC-1203](task-1203-define-import-and-reference-contracts.md) | Define Import and Reference Contracts | Ready | TC-1201 |
 | [TC-1204](task-1204-implement-bounded-artifact-linking.md) | Implement Bounded Artifact Linking | Conditional | TC-1202, TC-1203, TC-0905 |
 
 ## First verification consumer and report
