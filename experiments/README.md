@@ -63,3 +63,5 @@ not expected to remain navigable.
 - [Experiment 0030: Complete CI verification](0030-ci-verification/README.md)
 
 - [Experiment 0031: Parser recovery](0031-parser-recovery/README.md)
+
+- [Experiment 0032: SARIF diagnostics](0032-sarif-diagnostics/README.md)

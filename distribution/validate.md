@@ -24,3 +24,18 @@ source contract and safety addendum are included under docs/contracts in the
 native package and under specification in the repository. Output delivery failure
 returns non-success, including diagnostic-only paths. See examples/yaml/README.md
 in the repository for validated authoring and migration commands.
+
+## SARIF diagnostics
+
+The current validator adds an explicit machine-readable mode:
+
+```sh
+mundanereq-validate --source=yaml-0.3 --output=sarif --root . requirements/ > validation.sarif.json
+```
+
+Retain the process exit status: 0 means valid source, 1 means nonconformance,
+and 2 means invocation/input/output failure. Valid JSON does not imply valid
+requirements. A consumer supplies the same source root for relative artifact URIs.
+Diagnostics use Unicode code-point start positions; no unmeasured end range is
+invented. The package includes `docs/contracts/0017-sarif-validation-output.md`;
+the source checkout keeps that contract under `specification/`. Default text output remains available without the selector.

@@ -207,7 +207,7 @@ The first report loop is complete.
 [TC-1501](task-1501-extend-artifact-workflow-regression-corpora.md) broadens its
 bounded golden/change corpus, seeded generation, targeted mutation checks, and
 compatibility fixtures. Every implementation card still supplies its own tests.
-[TC-1504](task-1504-emit-sarif-validation-diagnostics.md) provides a concrete
+[TC-1504](closed/task-1504-emit-sarif-validation-diagnostics.md) provides a concrete
 code-review/editor diagnostic interface after diagnostic contracts and recovery.
 
 Reproduce existing package checks rather than commissioning new packaging work

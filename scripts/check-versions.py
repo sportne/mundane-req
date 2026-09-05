@@ -49,3 +49,8 @@ with tempfile.TemporaryDirectory() as directory:
     except ValueError: pass
     else: raise AssertionError('duplicate declaration accepted')
 print('PASS independent version declarations, actual CLI metadata, stale metadata and isolated version-domain mutation')
+
+sarif=json.loads(subprocess.check_output(['java','-cp',cp,'mundanereq.cli.ValidatorMain','--output=sarif','--root','conformance/0.2/valid','conformance/0.2/valid'],cwd=ROOT))
+assert sarif['version']==values['SARIF_VERSION']
+assert sarif['runs'][0]['properties']['commandContract']==values['VALIDATE_CONTRACT']
+print('PASS SARIF format and validator command metadata consume authoritative declarations')

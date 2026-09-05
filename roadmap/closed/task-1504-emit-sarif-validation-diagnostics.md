@@ -1,6 +1,6 @@
 # Task TC-1504: Emit SARIF Validation Diagnostics
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 15
 
@@ -63,9 +63,21 @@ temporarily with an explicit contract decision instead of inventing spans.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [TC-1201](closed/task-1201-define-requirement-semantic-output.md)
-- [TC-1402](closed/task-1402-report-cli-output-failures.md)
-- [TC-1403](closed/task-1403-recover-parser-diagnostics-safely.md)
-- [Validator](../src/main/java/mundanereq/cli/ValidatorMain.java)
-- [Source positions](../src/main/java/mundanereq/source/SourcePosition.java)
+- [Roadmap](../0001-initial-roadmap.md)
+- [TC-1201](task-1201-define-requirement-semantic-output.md)
+- [TC-1402](task-1402-report-cli-output-failures.md)
+- [TC-1403](task-1403-recover-parser-diagnostics-safely.md)
+- [Validator](../../src/main/java/mundanereq/cli/ValidatorMain.java)
+- [Source positions](../../src/main/java/mundanereq/source/SourcePosition.java)
+
+## Planning refinement
+
+Cover YAML 0.3 and retained custom source. The parser supplies accurate points,
+so the selected contract uses start positions without invented end ranges. Test
+OS stderr closure on an actual diagnostic write; quiet SARIF emission does not
+write that descriptor. Closed Java streams and output-prefix/flush failures have
+separate checks. The OASIS schema is a checked-in test dependency only.
+
+## Completion evidence
+
+Implemented the explicit SARIF mode under [Contract 0017](../../specification/0017-sarif-validation-output.md). [Research 0049](../../research/0049-sarif-diagnostics-verification.md) records six OASIS-schema goldens, exact Unicode/path navigation, JVM/native agreement, stream-failure behavior, version metadata, and native package verification. Seventeen JVM groups passed. Point regions preserve truthful locations; no end spans or external-editor compatibility are invented.

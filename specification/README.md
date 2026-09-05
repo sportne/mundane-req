@@ -64,3 +64,5 @@ explicit contract update and applicable compatibility notes.
 - [Verification planning 0.1](0015-verification-planning-0.1.md)
 
 - [Diagnostic recovery and incomplete interpretation](0016-diagnostic-recovery.md)
+
+- [SARIF validation output](0017-sarif-validation-output.md)

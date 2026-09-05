@@ -1,0 +1,6 @@
+requirement C
+title: Semantic
+statement:
+  Shall respond.
+decomposes: ABSENT
+end requirement

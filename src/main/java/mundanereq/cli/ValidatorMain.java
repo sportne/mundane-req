@@ -3,6 +3,8 @@ package mundanereq.cli;
 import java.io.PrintStream;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
+import java.nio.file.Files;
+import mundanereq.diagnostics.Sarif;
 import java.util.ArrayList;
 import java.util.List;
 import mundanereq.Interpreter;
@@ -43,10 +45,19 @@ public final class ValidatorMain {
 
         List<Path> inputs = new ArrayList<>();
         boolean optionsEnded = false;
+        boolean sarif = false;
+        Path root = null;
         try {
-            for (String argument : arguments) {
+            for (int index=0; index<arguments.length; index++) {
+                String argument=arguments[index];
                 if (!optionsEnded && argument.equals("--")) {
                     optionsEnded = true;
+                } else if (!optionsEnded && argument.equals("--output=sarif")) {
+                    if (sarif) throw new IllegalArgumentException("duplicate --output option");
+                    sarif=true;
+                } else if (!optionsEnded && argument.equals("--root")) {
+                    if (root!=null || index+1==arguments.length) throw new IllegalArgumentException("supply --root once with a directory");
+                    root=Path.of(arguments[++index]).toAbsolutePath().normalize();
                 } else if (!optionsEnded && argument.startsWith("-")) {
                     err.println("unknown option: " + argument);
                     err.print(usage());
@@ -65,6 +76,19 @@ public final class ValidatorMain {
             return 2;
         }
 
+        if (sarif) {
+            if (root==null || !Files.isDirectory(root)) throw new IllegalArgumentException("SARIF requires --root DIR");
+            for (Path input:inputs) if (!input.toAbsolutePath().normalize().startsWith(root)) {
+                throw new IllegalArgumentException("input is outside --root: "+input);
+            }
+            Interpreter.Selection selected=Interpreter.selectInputs(inputs,sourceFormat);
+            Interpreter.Result result=selected.valid() ? Interpreter.interpretSources(selected.sources(),sourceFormat)
+                    : new Interpreter.Result(List.of(),java.util.Map.of(),java.util.Map.of(),selected.diagnostics(),selected.sources().size());
+            int status=result.diagnostics().stream().anyMatch(ValidatorMain::isOperational) ? 2 : result.valid() ? 0 : 1;
+            out.writeBytes(Sarif.emit(root,selected.sources(),result,sourceFormat,status));
+            return status;
+        }
+        if (root!=null) throw new IllegalArgumentException("--root requires --output=sarif");
         Interpreter.Result result = Interpreter.interpretInputs(inputs, sourceFormat);
         if (!result.diagnostics().isEmpty()) {
             result.diagnostics().forEach(diagnostic -> err.println(render(diagnostic)));
@@ -97,6 +121,7 @@ public final class ValidatorMain {
 
     private static String usage() {
         return "Usage: mundanereq-validate [--] FILE_OR_DIRECTORY...\n"
+                + "       mundanereq-validate --output=sarif --root DIR [--] FILE_OR_DIRECTORY...\n"
                 + "       mundanereq-validate --help\n"
                 + "       mundanereq-validate --version\n";
     }

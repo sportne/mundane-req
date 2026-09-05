@@ -93,3 +93,5 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 - [Research 0047: Complete CI verification](0047-complete-ci-verification.md)
 
 - [Research 0048: Parser recovery](0048-parser-recovery-verification.md)
+
+- [Research 0049: SARIF diagnostics](0049-sarif-diagnostics-verification.md)

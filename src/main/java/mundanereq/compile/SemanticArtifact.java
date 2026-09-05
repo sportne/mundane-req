@@ -9,6 +9,8 @@ import java.util.HexFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import mundanereq.output.JsonOutput;
+import static mundanereq.output.JsonOutput.object;
 import mundanereq.Interpreter;
 import mundanereq.SourceFormat;
 import mundanereq.Versions;
@@ -53,14 +55,12 @@ public final class SemanticArtifact {
                 .map(d -> object("ruleId", d.code(), "severity", "error", "phase", operational(d) ? "input" : "source",
                         "message", d.message(), "location", object("path", d.file(),
                                 "start", object("line", d.line(), "column", diagnosticColumn(d, sources)), "end", null))).toList());
-        StringBuilder output = new StringBuilder();
-        json(output, envelope);
-        return output.append('\n').toString().getBytes(StandardCharsets.UTF_8);
+        return JsonOutput.encode(envelope);
     }
 
     // Legacy invalid-UTF-8 diagnostics use raw-byte columns. Convert the known-valid
     // prefix only, keeping existing CLI coordinates and avoiding a second parse.
-    private static int diagnosticColumn(Interpreter.Diagnostic diagnostic, List<Interpreter.Source> sources) {
+    public static int diagnosticColumn(Interpreter.Diagnostic diagnostic, List<Interpreter.Source> sources) {
         if (!diagnostic.code().equals("invalid-utf8")) return diagnostic.column();
         var source = sources.stream().filter(s -> s.file().equals(diagnostic.file())).findFirst();
         if (source.isEmpty()) throw new IllegalArgumentException("missing bytes for UTF-8 diagnostic");
@@ -107,43 +107,4 @@ public final class SemanticArtifact {
         }
     }
 
-    private static Map<String, Object> object(Object... pairs) {
-        Map<String, Object> result = new TreeMap<>();
-        for (int i = 0; i < pairs.length; i += 2) result.put((String) pairs[i], pairs[i + 1]);
-        return result;
-    }
-
-    private static void json(StringBuilder output, Object value) {
-        if (value == null) output.append("null");
-        else if (value instanceof String string) quote(output, string);
-        else if (value instanceof Boolean || value instanceof Integer) output.append(value);
-        else if (value instanceof Map<?, ?> map) {
-            output.append('{');
-            boolean first = true;
-            for (var entry : map.entrySet()) {
-                if (!first) output.append(',');
-                first = false;
-                quote(output, (String) entry.getKey()); output.append(':'); json(output, entry.getValue());
-            }
-            output.append('}');
-        } else if (value instanceof List<?> list) {
-            output.append('[');
-            for (int i = 0; i < list.size(); i++) {
-                if (i != 0) output.append(',');
-                json(output, list.get(i));
-            }
-            output.append(']');
-        } else throw new IllegalArgumentException("unsupported serialization value");
-    }
-
-    private static void quote(StringBuilder output, String value) {
-        output.append('"');
-        value.codePoints().forEach(c -> {
-            if (c >= 0xd800 && c <= 0xdfff) throw new IllegalArgumentException("unpaired surrogate in output");
-            if (c == '"' || c == '\\') output.append('\\').appendCodePoint(c);
-            else if (c < 32) output.append(String.format(java.util.Locale.ROOT, "\\u%04x", c));
-            else output.appendCodePoint(c);
-        });
-        output.append('"');
-    }
 }

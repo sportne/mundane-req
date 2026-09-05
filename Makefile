@@ -91,6 +91,7 @@ package-native-suite: native-suite
 	install -m 644 LICENSE "$(PACKAGE_STAGE)/LICENSES/mundanereq-BSD-3-Clause.txt"
 	install -m 644 dependencies/SnakeYAML-Engine-LICENSE.txt "$(PACKAGE_STAGE)/LICENSES/"
 	install -m 644 dependencies/README.md "$(PACKAGE_STAGE)/LICENSES/YAML-DEPENDENCY.md"
+	install -m 644 specification/0013-compiled-diagnostic-rules.md specification/0016-diagnostic-recovery.md specification/0017-sarif-validation-output.md "$(PACKAGE_STAGE)/docs/contracts/"
 	install -m 644 specification/0010-requirements-yaml-0.3.md specification/0011-tool-safety-and-yaml-commands.md "$(PACKAGE_STAGE)/docs/contracts/"
 	mkdir -p "$(PACKAGE_STAGE)/docs/contracts/schema"
 	install -m 644 specification/schema/requirements-yaml-0.3.json "$(PACKAGE_STAGE)/docs/contracts/schema/"
@@ -258,3 +259,9 @@ recovery-verify: native-validator native-formatter native-compile
 	python3 scripts/check-parser-recovery.py $(BUILD_ROOT)
 
 verify: recovery-verify
+
+.PHONY: sarif-verify
+sarif-verify: native-validator yaml-schema-verify
+	build/schema-check-venv/bin/python scripts/check-sarif.py $(VALIDATE_NATIVE)
+
+verify: sarif-verify
