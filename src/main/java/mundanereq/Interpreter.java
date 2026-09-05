@@ -25,7 +25,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import mundanereq.source.SourceDocument;
 
-/** Shared strict interpreter for the provisional 0.2 source language. */
+/** Strict interpretation of explicitly selected custom 0.2 or requirements YAML 0.3 source. */
 public final class Interpreter {
     private static final Pattern ID_PATTERN = Pattern.compile("[A-Za-z0-9][A-Za-z0-9._-]*");
     private static final Pattern OPENER_PATTERN = Pattern.compile("requirement (.+)");
@@ -43,7 +43,7 @@ public final class Interpreter {
 
     public record MathBlock(String language, String payload) implements ContentBlock {}
 
-    private record RelationshipLocation(String target, int line, int column) {}
+    record RelationshipLocation(String target, int line, int column) {}
 
     public record Requirement(
             String id,
@@ -60,10 +60,11 @@ public final class Interpreter {
         }
     }
 
-    private record ParsedRequirement(
+    record ParsedRequirement(
             Requirement requirement, Location location, List<RelationshipLocation> relationshipLocations) {}
 
-    public record Source(String file, byte[] bytes) {
+    public record Source(String file, byte[] bytes, Object fileKey) {
+        public Source(String file, byte[] bytes) { this(file, bytes, null); }
         public Source {
             bytes = bytes.clone();
         }
@@ -125,18 +126,26 @@ public final class Interpreter {
     }
 
     public static Result interpretInputs(List<Path> inputs) {
-        Selection selection = selectInputs(inputs);
+        return interpretInputs(inputs, SourceFormat.CUSTOM_02);
+    }
+
+    public static Result interpretInputs(List<Path> inputs, SourceFormat format) {
+        Selection selection = selectInputs(inputs, format);
         if (!selection.valid()) {
             return emptyResult(selection.diagnostics(), selection.sources().size());
         }
-        return interpretSources(selection.sources());
+        return interpretSources(selection.sources(), format);
     }
 
     public static Selection selectInputs(List<Path> inputs) {
+        return selectInputs(inputs, SourceFormat.CUSTOM_02);
+    }
+
+    public static Selection selectInputs(List<Path> inputs, SourceFormat format) {
         List<Diagnostic> diagnostics = new ArrayList<>();
         TreeSet<Path> files = new TreeSet<>();
         for (Path input : inputs) {
-            discover(input.toAbsolutePath().normalize(), true, files, diagnostics);
+            discover(input.toAbsolutePath().normalize(), true, files, diagnostics, format);
         }
         sortDiagnostics(diagnostics);
         if (!diagnostics.isEmpty()) return new Selection(List.of(), diagnostics);
@@ -144,13 +153,22 @@ public final class Interpreter {
             String input = inputs.isEmpty() ? "." : inputs.getFirst().toString();
             return new Selection(
                     List.of(),
-                    List.of(diagnostic(input, 1, 1, "no-source-files", "no .mreq source files were selected")));
+                    List.of(diagnostic(input, 1, 1, "no-source-files", "no " + format.suffix + " source files were selected")));
         }
 
         List<Source> sources = new ArrayList<>();
         for (Path file : files) {
             try {
-                sources.add(new Source(file.toString(), Files.readAllBytes(file)));
+                var attributes = Files.readAttributes(file, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+                byte[] bytes;
+                if (format == SourceFormat.YAML_03) {
+                    try (var input = Files.newInputStream(file)) {
+                        bytes = input.readNBytes(YamlRequirements.MAX_BYTES + 1);
+                    }
+                } else {
+                    bytes = Files.readAllBytes(file);
+                }
+                sources.add(new Source(file.toString(), bytes, attributes.fileKey()));
             } catch (IOException exception) {
                 diagnostics.add(diagnostic(file.toString(), 1, 1, "input-unavailable", exception.getMessage()));
             }
@@ -163,7 +181,7 @@ public final class Interpreter {
     }
 
     private static void discover(
-            Path input, boolean explicit, Set<Path> files, List<Diagnostic> diagnostics) {
+            Path input, boolean explicit, Set<Path> files, List<Diagnostic> diagnostics, SourceFormat format) {
         BasicFileAttributes attributes;
         try {
             attributes = Files.readAttributes(input, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
@@ -174,7 +192,7 @@ public final class Interpreter {
 
         if (attributes.isSymbolicLink()) return;
         if (attributes.isRegularFile()) {
-            if (explicit || input.getFileName().toString().endsWith(".mreq")) files.add(input);
+            if (explicit || input.getFileName().toString().endsWith(format.suffix)) files.add(input);
             return;
         }
         if (!attributes.isDirectory()) return;
@@ -191,7 +209,7 @@ public final class Interpreter {
 
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes fileAttributes) {
-                    if (fileAttributes.isRegularFile() && file.getFileName().toString().endsWith(".mreq")) {
+                    if (fileAttributes.isRegularFile() && file.getFileName().toString().endsWith(format.suffix)) {
                         files.add(file.toAbsolutePath().normalize());
                     }
                     return FileVisitResult.CONTINUE;
@@ -209,9 +227,13 @@ public final class Interpreter {
     }
 
     public static Result interpretSources(List<Source> inputSources) {
+        return interpretSources(inputSources, SourceFormat.CUSTOM_02);
+    }
+
+    public static Result interpretSources(List<Source> inputSources, SourceFormat format) {
         if (inputSources.isEmpty()) {
             return emptyResult(
-                    List.of(diagnostic(".", 1, 1, "no-source-files", "no .mreq source files were selected")),
+                    List.of(diagnostic(".", 1, 1, "no-source-files", "no " + format.suffix + " source files were selected")),
                     0);
         }
         List<Source> sources = inputSources.stream()
@@ -221,9 +243,17 @@ public final class Interpreter {
         List<Diagnostic> diagnostics = new ArrayList<>();
 
         for (Source source : sources) {
+            if (format == SourceFormat.YAML_03 && source.bytes().length > YamlRequirements.MAX_BYTES) {
+                diagnostics.add(diagnostic(source.file(), 1, 1, "yaml-limit", "source exceeds 8 MiB"));
+                continue;
+            }
             Decoded decoded = decode(source);
             diagnostics.addAll(decoded.diagnostics());
             if (decoded.document() == null) continue;
+            if (format == SourceFormat.YAML_03) {
+                parsedRequirements.addAll(YamlRequirements.parse(source, diagnostics));
+                continue;
+            }
             try {
                 parsedRequirements.addAll(new Parser(decoded.document()).parse());
             } catch (ParseFailure failure) {
@@ -231,6 +261,7 @@ public final class Interpreter {
             }
         }
 
+        boolean incomplete = !diagnostics.isEmpty();
         Map<String, Requirement> byId = new HashMap<>();
         Map<String, Location> firstLocationById = new HashMap<>();
         for (ParsedRequirement parsed : parsedRequirements) {
@@ -252,7 +283,8 @@ public final class Interpreter {
 
         for (ParsedRequirement parsed : parsedRequirements) {
             for (RelationshipLocation relationship : parsed.relationshipLocations()) {
-                if (!byId.containsKey(relationship.target())) {
+                if (!byId.containsKey(relationship.target())
+                        && !(format == SourceFormat.YAML_03 && incomplete)) {
                     diagnostics.add(diagnostic(
                             parsed.location().file(),
                             relationship.line(),

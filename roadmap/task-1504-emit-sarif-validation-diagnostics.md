@@ -65,7 +65,7 @@ temporarily with an explicit contract decision instead of inventing spans.
 
 - [Roadmap](0001-initial-roadmap.md)
 - [TC-1201](task-1201-define-requirement-semantic-output.md)
-- [TC-1402](task-1402-report-cli-output-failures.md)
+- [TC-1402](closed/task-1402-report-cli-output-failures.md)
 - [TC-1403](task-1403-recover-parser-diagnostics-safely.md)
 - [Validator](../src/main/java/mundanereq/cli/ValidatorMain.java)
 - [Source positions](../src/main/java/mundanereq/source/SourcePosition.java)

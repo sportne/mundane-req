@@ -14,8 +14,9 @@ workflow engine. Install only the executables a team needs, for example:
     install -m 755 bin/mundanereq-validate "$HOME/.local/bin/"
 
 Each executable reports its own tool and source-contract versions with
-`--version`. All three currently report tool `trial-0.1` and source contract
-`mundanereq-source-0.2`; those version surfaces remain independent even when
+`--version`. All three default to tool `trial-0.1` and source contract
+`mundanereq-source-0.2`; a leading `--source=yaml-0.3` selects and reports
+`mundanereq-yaml-0.3`. Those version surfaces remain independent even when
 their values happen to match.
 
 ## Independent use

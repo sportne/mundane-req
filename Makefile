@@ -27,35 +27,42 @@ EXPECTED_PACKAGE_DIR := $(abspath build/maintained/package)
 MAIN_SOURCES := $(shell find src/main/java -type f -name '*.java' -print | LC_ALL=C sort)
 TEST_SOURCES := $(shell find src/test/java -type f -name '*.java' -print | LC_ALL=C sort)
 
-test:
+YAML_JAR := build/dependencies/snakeyaml-engine-3.1.1.jar
+CLASSPATH := $(CLASS_DIR):$(YAML_JAR)
+
+.PHONY: yaml-dependency
+yaml-dependency:
+	scripts/fetch-yaml-parser.sh
+
+test: yaml-dependency
 	mkdir -p $(CLASS_DIR)
-	javac --release 21 -Xlint:all -Werror -d $(CLASS_DIR) $(MAIN_SOURCES) $(TEST_SOURCES)
-	java -ea -cp $(CLASS_DIR) mundanereq.test.MaintainedTestSuite
+	javac -cp $(YAML_JAR) --release 21 -Xlint:all -Werror -d $(CLASS_DIR) $(MAIN_SOURCES) $(TEST_SOURCES)
+	java -ea -cp $(CLASSPATH) mundanereq.test.MaintainedTestSuite
 
 native-smoke: test
-	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASS_DIR) -o $(abspath $(NATIVE_SMOKE)) mundanereq.smoke.MaintainedBuildTest
+	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASSPATH) -o $(abspath $(NATIVE_SMOKE)) mundanereq.smoke.MaintainedBuildTest
 	$(NATIVE_SMOKE)
 
 native-validator: test
-	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASS_DIR) -o $(abspath $(VALIDATE_NATIVE)) mundanereq.cli.ValidatorMain
+	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASSPATH) -o $(abspath $(VALIDATE_NATIVE)) mundanereq.cli.ValidatorMain
 	$(VALIDATE_NATIVE) --version
 
 validator-verify: native-validator
-	java -ea -cp $(CLASS_DIR) mundanereq.cli.ValidatorVerificationTest $(VALIDATE_NATIVE)
+	java -ea -cp $(CLASSPATH) mundanereq.cli.ValidatorVerificationTest $(VALIDATE_NATIVE)
 
 native-formatter: test
-	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASS_DIR) -o $(abspath $(FORMAT_NATIVE)) mundanereq.cli.FormatterMain
+	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASSPATH) -o $(abspath $(FORMAT_NATIVE)) mundanereq.cli.FormatterMain
 	$(FORMAT_NATIVE) --version
 
 formatter-verify: native-formatter
-	java -ea -cp $(CLASS_DIR) mundanereq.cli.FormatterVerificationTest $(FORMAT_NATIVE)
+	java -ea -cp $(CLASSPATH) mundanereq.cli.FormatterVerificationTest $(FORMAT_NATIVE)
 
 native-trace: test
-	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASS_DIR) -o $(abspath $(TRACE_NATIVE)) mundanereq.cli.TraceMain
+	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASSPATH) -o $(abspath $(TRACE_NATIVE)) mundanereq.cli.TraceMain
 	$(TRACE_NATIVE) --version
 
 trace-verify: native-trace
-	java -ea -cp $(CLASS_DIR) mundanereq.cli.TraceVerificationTest $(TRACE_NATIVE)
+	java -ea -cp $(CLASSPATH) mundanereq.cli.TraceVerificationTest $(TRACE_NATIVE)
 
 native-boundaries: native-validator native-formatter native-trace
 
@@ -81,6 +88,11 @@ package-native-suite: native-suite
 	install -m 644 distribution/validate.md distribution/format.md distribution/trace.md distribution/THIRD-PARTY-NOTICES.md "$(PACKAGE_STAGE)/docs/"
 	install -m 644 specification/0007-validator-trial-contract-0.1.md specification/0008-formatter-trial-contract-0.1.md specification/0009-trace-trial-contract-0.1.md "$(PACKAGE_STAGE)/docs/contracts/"
 	install -m 644 LICENSE "$(PACKAGE_STAGE)/LICENSES/mundanereq-BSD-3-Clause.txt"
+	install -m 644 dependencies/SnakeYAML-Engine-LICENSE.txt "$(PACKAGE_STAGE)/LICENSES/"
+	install -m 644 dependencies/README.md "$(PACKAGE_STAGE)/LICENSES/YAML-DEPENDENCY.md"
+	install -m 644 specification/0010-requirements-yaml-0.3.md specification/0011-tool-safety-and-yaml-commands.md "$(PACKAGE_STAGE)/docs/contracts/"
+	mkdir -p "$(PACKAGE_STAGE)/docs/contracts/schema"
+	install -m 644 specification/schema/requirements-yaml-0.3.json "$(PACKAGE_STAGE)/docs/contracts/schema/"
 	install -m 644 "$(GRAALVM_HOME)/LICENSE_NATIVEIMAGE.txt" "$(PACKAGE_STAGE)/LICENSES/GraalVM-Native-Image.txt"
 	cp -R "$(GRAALVM_HOME)/legal/." "$(PACKAGE_STAGE)/LICENSES/GraalVM-JDK/"
 	$(NATIVE_IMAGE) --version > "$(PACKAGE_STAGE)/BUILD-ENVIRONMENT.txt"
@@ -100,24 +112,24 @@ package-native-suite: native-suite
 	sha256sum "$(PACKAGE_ARCHIVE)" | sed 's#  .*/#  #' > "$(PACKAGE_ARCHIVE_CHECKSUM)"
 
 native-suite-verify: package-native-suite
-	java -ea -cp $(CLASS_DIR) mundanereq.distribution.NativeSuiteVerificationTest "$(PACKAGE_STAGE)" "$(PACKAGE_ARCHIVE)" "$(PACKAGE_ARCHIVE_CHECKSUM)" "$(GRAALVM_HOME)"
+	java -ea -cp $(CLASSPATH) mundanereq.distribution.NativeSuiteVerificationTest "$(PACKAGE_STAGE)" "$(PACKAGE_ARCHIVE)" "$(PACKAGE_ARCHIVE_CHECKSUM)" "$(GRAALVM_HOME)"
 
 boundary-isolation: native-boundaries
-	java -ea -cp $(CLASS_DIR) mundanereq.boundary.NativeBoundaryIsolationTest \
+	java -ea -cp $(CLASSPATH) mundanereq.boundary.NativeBoundaryIsolationTest \
 		$(VALIDATE_NATIVE) $(FORMAT_NATIVE) $(TRACE_NATIVE)
 
 ci-workflow-evidence:
-	java -ea -cp $(CLASS_DIR) mundanereq.ci.CiWorkflowVerificationTest \
+	java -ea -cp $(CLASSPATH) mundanereq.ci.CiWorkflowVerificationTest \
 		$(FORMAT_NATIVE) $(VALIDATE_NATIVE) $(TRACE_NATIVE)
 
 ci-workflow-verify: native-suite ci-workflow-evidence
 
 integrated-toolchain-trial: native-suite
-	java -ea -cp $(CLASS_DIR) mundanereq.trial.IntegratedToolchainTrialTest \
+	java -ea -cp $(CLASSPATH) mundanereq.trial.IntegratedToolchainTrialTest \
 		$(FORMAT_NATIVE) $(VALIDATE_NATIVE) $(TRACE_NATIVE)
 
 multi-author-layout-trial: native-suite
-	java -ea -cp $(CLASS_DIR) mundanereq.trial.MultiAuthorLayoutTrialTest \
+	java -ea -cp $(CLASSPATH) mundanereq.trial.MultiAuthorLayoutTrialTest \
 		$(FORMAT_NATIVE) $(VALIDATE_NATIVE) $(TRACE_NATIVE)
 
 operational-scale-trial: native-suite
@@ -167,3 +179,19 @@ trace-policy-trial: native-validator native-trace
 		$(VALIDATE_NATIVE) $(TRACE_NATIVE) $(BUILD_ROOT)/trace-policies
 
 verify: test native-smoke boundary-isolation validator-verify formatter-verify trace-verify native-suite-verify ci-workflow-verify integrated-toolchain-trial multi-author-layout-trial independent-conformance-compare
+
+.PHONY: native-migrate yaml-verify
+native-migrate: test
+	$(NATIVE_IMAGE) $(NATIVE_IMAGE_FLAGS) -cp $(CLASSPATH) -o $(abspath $(BUILD_ROOT)/mundanereq-migrate) mundanereq.cli.MigrateMain
+	$(BUILD_ROOT)/mundanereq-migrate --version
+
+yaml-verify: native-suite native-migrate
+	java -ea -cp $(CLASSPATH) mundanereq.cli.YamlVerificationTest $(VALIDATE_NATIVE) $(FORMAT_NATIVE) $(TRACE_NATIVE) $(BUILD_ROOT)/mundanereq-migrate
+
+verify: yaml-verify
+
+.PHONY: yaml-schema-verify
+yaml-schema-verify:
+	scripts/check-yaml-schema.sh
+
+verify: yaml-schema-verify

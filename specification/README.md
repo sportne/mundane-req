@@ -4,8 +4,9 @@ This directory separates normative source-language standards, provisional
 contract and compatibility policy, nonnormative design rationale, and
 separately versioned tool interfaces.
 
-The current authoritative source contract is `mundanereq-source-0.2`. It is
-provisional. The [current roadmap](../roadmap/0001-initial-roadmap.md) plans
+The default source contract is `mundanereq-source-0.2`; explicit YAML requirements
+use `mundanereq-yaml-0.3`. Each has its own normative specification and selection
+rules. Both remain experimental. The [current roadmap](../roadmap/0001-initial-roadmap.md) plans
 incremental monorepo, compilation, linking, and tooling work. Those cards do not
 change normative syntax or existing CLI contracts; adopted changes require an
 explicit contract update and applicable compatibility notes.
@@ -36,8 +37,13 @@ explicit contract update and applicable compatibility notes.
 | [0008 — Formatter Trial Contract 0.1](0008-formatter-trial-contract-0.1.md) | `mundanereq-format` CLI and policy | Maintained trial; not stable CLI or policy |
 | [0009 — Trace Trial Contract 0.1](0009-trace-trial-contract-0.1.md) | `mundanereq-trace` CLI and output | Maintained trial; not stable CLI or output protocol |
 
+| [0010 — Requirements YAML 0.3](0010-requirements-yaml-0.3.md) | YAML mapping, schema and requirement semantics | Normative experimental contract |
+| [0011 — Tool safety and YAML commands](0011-tool-safety-and-yaml-commands.md) | Explicit selectors, output/snapshot safety and migration | Normative additive command contract |
+
 ## Authority boundaries
 
+- Specification 0010 and its linked structural schema control YAML 0.3; 0011
+  defines current command additions and safety behavior.
 - Specification 0005 controls 0.2 syntax, semantics, validity, conformance,
   and semantic equivalence.
 - Specification 0006 controls the provisional 0.2 compatibility promise and

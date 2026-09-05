@@ -1,6 +1,6 @@
 # Task TC-1402: Report CLI Output Failures Consistently
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 14
 
@@ -61,7 +61,26 @@ stream proves all native behavior.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [Validator](../src/main/java/mundanereq/cli/ValidatorMain.java)
-- [Formatter output tests](../src/test/java/mundanereq/cli/FormatterMainTest.java)
-- [Trace output tests](../src/test/java/mundanereq/cli/TraceMainTest.java)
+- [Roadmap](../0001-initial-roadmap.md)
+- [Validator](../../src/main/java/mundanereq/cli/ValidatorMain.java)
+- [Formatter output tests](../../src/test/java/mundanereq/cli/FormatterMainTest.java)
+- [Trace output tests](../../src/test/java/mundanereq/cli/TraceMainTest.java)
+
+
+## Completion evidence and decision
+
+Completed 2026-09-05 in the requirements YAML batch.
+
+All four maintained commands check stdout/stderr completion, including early
+returns and source diagnostics. Partial, flush, closed and both-stream failures
+return non-success; JVM/native descriptor and broken-pipe checks pass. The recorded
+pre-fix validator false-success case now returns operational failure.
+
+The [batch verification](../../research/0035-yaml-requirements-batch-verification.md)
+records full make verify, golden/native checks and limitations. The
+[contract decision](../../research/0034-yaml-requirements-contract-decision.md),
+[source contract](../../specification/0010-requirements-yaml-0.3.md),
+[command addendum](../../specification/0011-tool-safety-and-yaml-commands.md), and
+[reproducible regression evidence](../../experiments/0026-yaml-requirements-batch/README.md)
+provide the acceptance artifacts. Historical contracts remain preserved; other
+artifact authoring formats and future attribute scope remain independent decisions.

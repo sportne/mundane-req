@@ -1,6 +1,6 @@
 # Task TC-1109: Migrate YAML Examples and Conformance Material
 
-Status: Planned
+Status: Complete
 
 Roadmap stage: 11
 
@@ -60,8 +60,27 @@ conversion reviewable and preserve originals until verified.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [Representation decision](../research/0033-yaml-source-representation-decision.md)
-- [Comparison and specification outline](../experiments/0025-yaml-source-comparison/README.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [Representation decision](../../research/0033-yaml-source-representation-decision.md)
+- [Comparison and specification outline](../../experiments/0025-yaml-source-comparison/README.md)
 - [TC-1107](task-1107-interpret-and-validate-yaml-requirement-source.md)
 - [TC-1108](task-1108-format-yaml-source-without-content-loss.md)
+
+
+## Completion evidence and decision
+
+Completed 2026-09-05 in the requirements YAML batch.
+
+Implemented the separately built native migration utility with dry-run and new-
+directory output, whole-set equality before writes, documented header comment
+relocation and no-overwrite/recovery behavior. Converted 120 requirements across
+three corpora with 11 files; authoring/migration docs and conformance are maintained.
+
+The [batch verification](../../research/0035-yaml-requirements-batch-verification.md)
+records full make verify, golden/native checks and limitations. The
+[contract decision](../../research/0034-yaml-requirements-contract-decision.md),
+[source contract](../../specification/0010-requirements-yaml-0.3.md),
+[command addendum](../../specification/0011-tool-safety-and-yaml-commands.md), and
+[reproducible regression evidence](../../experiments/0026-yaml-requirements-batch/README.md)
+provide the acceptance artifacts. Historical contracts remain preserved; other
+artifact authoring formats and future attribute scope remain independent decisions.

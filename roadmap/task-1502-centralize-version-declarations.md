@@ -24,7 +24,7 @@ preserving distinct version domains and documenting experimental change policy.
 
 - Inventory duplicated TOOL_VERSION/SOURCE_CONTRACT constants, SUITE_VERSION,
   package metadata, documentation claims, and compatibility checks.
-- Select one declaration mechanism that works with the dependency-free Java/Make
+- Select one declaration mechanism that works with the Java/Make
   build; keep source contract, individual CLI contracts, package, and compiled
   formats separately identified.
 - Make current CLI output/build metadata/checks consume it; document how TC-1201's

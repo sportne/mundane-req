@@ -1,6 +1,6 @@
 # Task TC-1106: Specify the YAML Requirement Source Profile
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 11
 
@@ -71,10 +71,10 @@ case cannot be represented without loss; revise the profile/decision explicitly.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [Representation decision](../research/0033-yaml-source-representation-decision.md)
-- [Comparison and specification outline](../experiments/0025-yaml-source-comparison/README.md)
-- [TC-1105](closed/task-1105-compare-yaml-and-custom-requirement-source.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [Representation decision](../../research/0033-yaml-source-representation-decision.md)
+- [Comparison and specification outline](../../experiments/0025-yaml-source-comparison/README.md)
+- [TC-1105](task-1105-compare-yaml-and-custom-requirement-source.md)
 
 ## Planning refinement
 
@@ -82,3 +82,21 @@ Make the requirements model, representation, structural schema and semantic rule
 explicit deliverables, with one authoritative home per rule. Scope these decisions
 to requirements; integration with other artifacts uses their separately selected
 contracts. Status and dependencies remain unchanged.
+
+
+## Completion evidence and decision
+
+Completed 2026-09-05 in the requirements YAML batch.
+
+Selected mundanereq-yaml-0.3 with normative structural schema, explicit YAML
+profile/domain rules, selectors, migration policy and source 0.2 clause disposition.
+The independent schema check verifies consistency with maintained conformance cases.
+
+The [batch verification](../../research/0035-yaml-requirements-batch-verification.md)
+records full make verify, golden/native checks and limitations. The
+[contract decision](../../research/0034-yaml-requirements-contract-decision.md),
+[source contract](../../specification/0010-requirements-yaml-0.3.md),
+[command addendum](../../specification/0011-tool-safety-and-yaml-commands.md), and
+[reproducible regression evidence](../../experiments/0026-yaml-requirements-batch/README.md)
+provide the acceptance artifacts. Historical contracts remain preserved; other
+artifact authoring formats and future attribute scope remain independent decisions.

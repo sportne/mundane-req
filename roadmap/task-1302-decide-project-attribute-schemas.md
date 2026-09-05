@@ -82,7 +82,7 @@ ambiguous, narrow it before creating implementation work.
 - [TC-0902](task-0902-run-an-independent-reqif-roundtrip.md)
 - [Source language](../specification/0005-mundanereq-source-language-0.2.md)
 - [TC-1105](closed/task-1105-compare-yaml-and-custom-requirement-source.md)
-- [TC-1106](task-1106-specify-yaml-requirement-source-profile.md)
+- [TC-1106](closed/task-1106-specify-yaml-requirement-source-profile.md)
 
 ## Planning refinement
 

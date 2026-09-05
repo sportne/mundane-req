@@ -1,0 +1,23 @@
+---
+format: "mundanereq-yaml-0.3"
+# Author-written example of folded prose and literal math.
+requirements:
+  - id: 'TOP'
+    title: "Retain data" # This inline comment must survive formatting.
+    statement: >-
+      The logger shall retain
+      measurements for review.
+    rationale: ["Review uses recorded data.", 'A second paragraph.']
+  - id: "CHILD"
+    title: "Measurement identity"
+    statement:
+      - prose: "Each sample shall have an index."
+      - math:
+          language: "latex"
+          payload: |-
+            i = 1
+
+            j = i + 1
+      - prose: "The order shall be retained."
+    decomposes: ["TOP"]
+...

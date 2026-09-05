@@ -1,6 +1,6 @@
 # Task TC-1107: Interpret and Validate YAML Requirement Source
 
-Status: Planned
+Status: Complete
 
 Roadmap stage: 11
 
@@ -57,7 +57,25 @@ source provenance; do not change the selected contract to conceal a library gap.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [Representation decision](../research/0033-yaml-source-representation-decision.md)
-- [Comparison and specification outline](../experiments/0025-yaml-source-comparison/README.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [Representation decision](../../research/0033-yaml-source-representation-decision.md)
+- [Comparison and specification outline](../../experiments/0025-yaml-source-comparison/README.md)
 - [TC-1106](task-1106-specify-yaml-requirement-source-profile.md)
+
+
+## Completion evidence and decision
+
+Completed 2026-09-05 in the requirements YAML batch.
+
+Implemented explicit YAML selection in validator, formatter and trace, ordinary
+SnakeYAML node parsing, source locations, limits, structural/domain validation and
+partial-input rejection. JVM/native command and conformance checks pass.
+
+The [batch verification](../../research/0035-yaml-requirements-batch-verification.md)
+records full make verify, golden/native checks and limitations. The
+[contract decision](../../research/0034-yaml-requirements-contract-decision.md),
+[source contract](../../specification/0010-requirements-yaml-0.3.md),
+[command addendum](../../specification/0011-tool-safety-and-yaml-commands.md), and
+[reproducible regression evidence](../../experiments/0026-yaml-requirements-batch/README.md)
+provide the acceptance artifacts. Historical contracts remain preserved; other
+artifact authoring formats and future attribute scope remain independent decisions.

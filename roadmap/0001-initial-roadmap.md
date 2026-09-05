@@ -2,7 +2,7 @@
 
 Status: Draft living roadmap
 
-Last reconciled: 2026-09-04 for the compiled-artifact ecosystem direction
+Last reconciled: 2026-09-05 after the requirements YAML and safety batch
 
 Execution is decomposed into the [task-card index](0002-task-card-index.md).
 This remains the single strategic roadmap; cards describe bounded work and
@@ -68,8 +68,9 @@ integrations need concrete workflows before acquiring implementations.
 
 ## Current evidence and gaps
 
-The maintained source contract is provisional 0.2, with prior 0.1 conformance
-fixtures. Java 21/GraalVM supplies three independent native tools. The existing
+Default invocation retains source 0.2 with prior 0.1 conformance fixtures. Explicit
+requirements YAML 0.3 has a normative schema and semantic contract. Java 21/GraalVM
+supplies three independent native tools and a separate migration utility. The existing
 lossless source representation preserves comments; normalizedInventory is a
 testing utility rather than a public compiled-artifact contract.
 
@@ -83,9 +84,9 @@ testing utility rather than a public compiled-artifact contract.
 - Existing tests already cover formatter idempotence, semantic preservation,
   comment retention, and selected output/replacement failures. New work extends
   those checks rather than reopening completed cards.
-- Formatter write-back currently replaces a selected snapshot without checking
-  intervening edits; later-file failures can follow earlier successful writes.
-  Validator output lacks the completion checks already used by formatter/trace.
+- Formatter write-back now checks snapshot bytes and available file identity;
+  detected external edits survive. Partial failures identify completed and remaining
+  paths. All commands check stdout/stderr delivery; a rename race remains documented.
 - Interpreter still combines decoding, parsing, semantic construction, and
   source-set validation. One parse failure can discard a file's parsed records;
   source decoding is repeated in the formatter path.
@@ -98,7 +99,8 @@ testing utility rather than a public compiled-artifact contract.
   conditional on availability. Human usability and broader operational evidence
   remain unestablished; their absence is not a dependency for this backlog.
 
-These are findings from source and recorded evidence, not new test results.
+The [completed YAML batch](../research/0035-yaml-requirements-batch-verification.md)
+records current source, migration, safety and verification evidence.
 The current compilation, linking, schema, and monorepo-layout decisions remain
 unresolved. This roadmap does not change normative language or CLI contracts.
 
@@ -116,18 +118,18 @@ conditionally implements justified layout changes.
 [TC-1105](closed/task-1105-compare-yaml-and-custom-requirement-source.md) is complete.
 Its [decision](../research/0033-yaml-source-representation-decision.md) selects a
 constrained YAML target, preserving authored IDs and the requirement semantic
-model. Current source 0.2 remains authoritative until successor work is completed.
-[TC-1106](task-1106-specify-yaml-requirement-source-profile.md) settles the profile
-and specification; [TC-1107](task-1107-interpret-and-validate-yaml-requirement-source.md)
-implements interpretation; [TC-1108](task-1108-format-yaml-source-without-content-loss.md)
-provides safe formatting; [TC-1109](task-1109-migrate-yaml-examples-and-conformance-material.md)
-provides verified migration and examples. The bounded compilation experiment may
-use the provisional adapter without waiting for maintained source conversion.
+model. The explicit source 0.3 contract is implemented; default 0.2 behavior remains.
+[TC-1106](closed/task-1106-specify-yaml-requirement-source-profile.md) completed the profile
+and specification; [TC-1107](closed/task-1107-interpret-and-validate-yaml-requirement-source.md)
+implemented interpretation; [TC-1108](closed/task-1108-format-yaml-source-without-content-loss.md)
+implemented safe formatting; [TC-1109](closed/task-1109-migrate-yaml-examples-and-conformance-material.md)
+delivered verified migration and examples. TC-1103 still awaits the ownership
+decision before beginning its bounded compilation experiment.
 
-The compilation experiment uses the provisional requirements YAML adapter and
-existing experimental TSV plan carrier to exercise distinct source representations.
-TC-0905 independently selects the maintained plan format. The experiment tests
-a serialized consumer boundary, missing/ambiguous references, context, revisions, partial
+The compilation experiment can use maintained YAML requirements and the existing
+experimental TSV plan carrier to exercise distinct source representations. TC-0905
+independently selects the maintained plan format. The experiment tests a serialized
+consumer boundary, missing/ambiguous references, context, revisions, partial
 information, and rebuilds. It is not a mandate to standardize every artifact.
 
 ## Stage 12 — Publish bounded compiler and import interfaces
@@ -182,11 +184,11 @@ by this roadmap.
 
 ## Stage 14 — Address current correctness independently
 
-Begin these alongside architecture design:
+TC-1401 and TC-1402 are complete; TC-1403 can begin alongside architecture design:
 
-- [TC-1401](task-1401-protect-formatter-write-back.md): detect intervening edits
+- [TC-1401](closed/task-1401-protect-formatter-write-back.md): detect intervening edits
   and document recoverable multi-file outcomes, including remaining filesystem races.
-- [TC-1402](task-1402-report-cli-output-failures.md): avoid false success on
+- [TC-1402](closed/task-1402-report-cli-output-failures.md): avoid false success on
   stdout/stderr failures and retain focused existing command behavior.
 - [TC-1403](task-1403-recover-parser-diagnostics-safely.md): recover independent
   errors without inventing complete valid models or misleading cross-file findings.
@@ -251,9 +253,9 @@ TC-1104?     TC-1301           TC-1202 ---------------------+
                                                        v
                                                    TC-0807?
 
-Start independently: TC-1106, TC-1401, TC-1402, TC-1403, TC-1502, TC-1503
+Start independently: TC-1403, TC-1502, TC-1503
 TC-1105 (complete) -> TC-1103
-TC-1105 (complete) -> TC-1106 -> TC-1107 -> TC-1108 -> TC-1109
+Completed YAML chain: TC-1105 -> TC-1106 -> TC-1107 -> TC-1108 -> TC-1109
 TC-1106 -> TC-1302
 TC-1502 -> TC-1201
 TC-1201 + TC-1402 + TC-1403 -> TC-1504

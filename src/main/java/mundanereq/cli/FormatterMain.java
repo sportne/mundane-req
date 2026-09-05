@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import mundanereq.Interpreter;
+import mundanereq.SourceFormat;
 import mundanereq.format.SourceFormatter;
 import mundanereq.source.SourceDocument;
 
@@ -38,24 +39,35 @@ public final class FormatterMain {
     }
 
     static int run(String[] arguments, PrintStream out, PrintStream err) {
+        try {
+            SourceInvocation selected = SourceInvocation.parse(arguments);
+            return CommandOutput.finish(out, err, runSelected(selected.arguments(), out, err, selected.format()));
+        } catch (IllegalArgumentException exception) {
+            err.println(exception.getMessage());
+            return CommandOutput.finish(out, err, 2);
+        }
+    }
+
+    private static int runSelected(String[] arguments, PrintStream out, PrintStream err, SourceFormat sourceFormat) {
         if (arguments.length == 1 && arguments[0].equals("--help")) {
             out.print(usage());
-            return finishOutput(out, err, 0);
+            out.println("Optional leading selector: --source=custom-0.2 or --source=yaml-0.3");
+            return 0;
         }
         if (arguments.length == 1 && arguments[0].equals("--version")) {
-            out.printf("mundanereq-format %s; source contract %s%n", TOOL_VERSION, SOURCE_CONTRACT);
-            return finishOutput(out, err, 0);
+            out.printf("mundanereq-format %s; source contract %s%n", TOOL_VERSION, sourceFormat.contract);
+            return 0;
         }
 
         Invocation invocation = parseInvocation(arguments, err);
         if (invocation == null) return 2;
 
-        Interpreter.Selection selection = Interpreter.selectInputs(invocation.inputs());
+        Interpreter.Selection selection = Interpreter.selectInputs(invocation.inputs(), sourceFormat);
         if (!selection.valid()) {
             renderDiagnostics(selection.diagnostics(), err);
             return 2;
         }
-        Interpreter.Result semantics = Interpreter.interpretSources(selection.sources());
+        Interpreter.Result semantics = Interpreter.interpretSources(selection.sources(), sourceFormat);
         if (!semantics.valid()) {
             renderDiagnostics(semantics.diagnostics(), err);
             return 2;
@@ -63,7 +75,7 @@ public final class FormatterMain {
 
         Map<Path, byte[]> formatted;
         try {
-            formatted = format(selection.sources());
+            formatted = format(selection.sources(), sourceFormat);
         } catch (RuntimeException exception) {
             err.println("formatter-internal: " + exception.getMessage());
             return 2;
@@ -121,12 +133,15 @@ public final class FormatterMain {
         return new Invocation(mode, output, List.copyOf(paths));
     }
 
-    private static Map<Path, byte[]> format(List<Interpreter.Source> sources) {
+    private static Map<Path, byte[]> format(List<Interpreter.Source> sources, SourceFormat sourceFormat) {
         Map<Path, byte[]> formatted = new LinkedHashMap<>();
         for (Interpreter.Source source : sources) {
             try {
                 SourceDocument document = SourceDocument.read(source.file(), source.bytes());
-                formatted.put(Path.of(source.file()), SourceFormatter.format(document));
+                formatted.put(Path.of(source.file()), sourceFormat == SourceFormat.YAML_03
+                        ? new String(source.bytes(), java.nio.charset.StandardCharsets.UTF_8).replace("\r\n", "\n")
+                            .getBytes(java.nio.charset.StandardCharsets.UTF_8)
+                        : SourceFormatter.format(document));
             } catch (java.nio.charset.CharacterCodingException exception) {
                 throw new IllegalStateException("validated source could not be decoded", exception);
             }
@@ -141,7 +156,7 @@ public final class FormatterMain {
             return 2;
         }
         out.write(bytes, 0, bytes.length);
-        return finishOutput(out, err, 0);
+        return 0;
     }
 
     private static int check(
@@ -154,41 +169,45 @@ public final class FormatterMain {
                 changes++;
             }
         }
-        return finishOutput(out, err, changes == 0 ? 0 : 1);
+        return changes == 0 ? 0 : 1;
     }
 
-    private static int writeFiles(
+    static int writeFiles(
             List<Interpreter.Source> sources, Map<Path, byte[]> formatted, PrintStream out, PrintStream err) {
         int changes = 0;
-        for (Interpreter.Source source : sources) {
+        for (int index = 0; index < sources.size(); index++) {
+            Interpreter.Source source = sources.get(index);
             Path path = Path.of(source.file());
             byte[] bytes = formatted.get(path);
             if (java.util.Arrays.equals(source.bytes(), bytes)) continue;
             try {
-                replace(path, bytes);
+                replace(source, bytes);
                 changes++;
             } catch (IOException exception) {
                 err.printf("%s:1:1: write-failed: %s%n", path, exception.getMessage());
+                for (int prior = 0; prior < index; prior++) {
+                    Interpreter.Source done = sources.get(prior);
+                    err.println((java.util.Arrays.equals(done.bytes(), formatted.get(Path.of(done.file())))
+                            ? "Unchanged: " : "Changed: ") + done.file());
+                }
+                for (int later = index + 1; later < sources.size(); later++) {
+                    err.println("Unprocessed: " + sources.get(later).file());
+                }
                 return 2;
             }
         }
         out.printf("Formatted %d %s.%n", changes, changes == 1 ? "file" : "files");
-        return finishOutput(out, err, 0);
+        return 0;
     }
 
-    private static int finishOutput(PrintStream out, PrintStream err, int successStatus) {
-        out.flush();
-        if (!out.checkError()) return successStatus;
-        err.println("standard-output:1:1: output-failed: unable to write command output");
-        return 2;
-    }
-
-    private static void replace(Path path, byte[] bytes) throws IOException {
+    private static void replace(Interpreter.Source source, byte[] bytes) throws IOException {
+        Path path = Path.of(source.file());
         Path parent = path.toAbsolutePath().normalize().getParent();
         Path temporary = Files.createTempFile(parent, "." + path.getFileName() + ".", ".tmp");
         try {
             Files.write(temporary, bytes);
             copyPosixPermissions(path, temporary);
+            verifySnapshot(source);
             try {
                 Files.move(
                         temporary,
@@ -196,10 +215,22 @@ public final class FormatterMain {
                         StandardCopyOption.ATOMIC_MOVE,
                         StandardCopyOption.REPLACE_EXISTING);
             } catch (AtomicMoveNotSupportedException exception) {
+                verifySnapshot(source);
                 Files.move(temporary, path, StandardCopyOption.REPLACE_EXISTING);
             }
         } finally {
             Files.deleteIfExists(temporary);
+        }
+    }
+
+    private static void verifySnapshot(Interpreter.Source source) throws IOException {
+        Path path = Path.of(source.file());
+        var current = Files.readAttributes(path, java.nio.file.attribute.BasicFileAttributes.class,
+                LinkOption.NOFOLLOW_LINKS);
+        if (!current.isRegularFile()
+                || (source.fileKey() != null && !java.util.Objects.equals(source.fileKey(), current.fileKey()))
+                || !java.util.Arrays.equals(source.bytes(), Files.readAllBytes(path))) {
+            throw new IOException("source-changed: selected file changed since reading; refresh selection and retry");
         }
     }
 

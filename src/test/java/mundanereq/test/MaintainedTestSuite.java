@@ -38,6 +38,7 @@ public final class MaintainedTestSuite {
         System.out.println("PASS trace command interface");
         OperationalCorpusVerificationTest.run();
         System.out.println("PASS frozen operational corpus profile");
-        System.out.println("Passed 11 maintained test groups.");
+        mundanereq.cli.YamlWorkflowTest.run();
+        System.out.println("Passed 12 maintained test groups.");
     }
 }

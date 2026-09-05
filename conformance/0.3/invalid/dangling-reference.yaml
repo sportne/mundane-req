@@ -1,0 +1,6 @@
+format: "mundanereq-yaml-0.3"
+requirements:
+  - id: "A"
+    title: "Title"
+    statement: "Text."
+    decomposes: ["B"]

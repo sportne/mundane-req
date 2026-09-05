@@ -27,8 +27,8 @@ superseded prospective roadmap sequence does not undo their completed work.
 
 ## Dependency shape and priority
 
-Start TC-1101, the YAML specification TC-1106, and the independent correctness and
-contributor cards TC-1401, TC-1402, TC-1403, TC-1502, and TC-1503. They address
+The YAML specification, implementation, migration and two safety cards are complete.
+Start TC-1101 and independent cards TC-1403, TC-1502 and TC-1503. They address
 current uncertainty or observable gaps, rather than waiting for the entire ecosystem.
 
 ```text
@@ -46,7 +46,7 @@ TC-1104?     TC-1301           TC-1202 ---------------------+
                                                    TC-0807?
 
 TC-1105 (complete) -> TC-1103
-TC-1105 (complete) -> TC-1106 -> TC-1107 -> TC-1108 -> TC-1109
+Completed YAML chain: TC-1105 -> TC-1106 -> TC-1107 -> TC-1108 -> TC-1109
 TC-1106 -> TC-1302
 TC-1502 -> TC-1201
 TC-1201 + TC-1402 + TC-1403 -> TC-1504
@@ -67,10 +67,6 @@ consumers' dependencies explicitly before proceeding.
 | [TC-1102](task-1102-define-requirement-and-assertion-ownership.md) | Define Requirement and Assertion Ownership | Planned | TC-1101 |
 | [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md) | Test Compilation, Linking, and Rebuilds | Planned | TC-1102, TC-1105 |
 | [TC-1104](task-1104-establish-monorepo-component-layout.md) | Establish the Monorepo Component Layout | Conditional | TC-1101 |
-| [TC-1106](task-1106-specify-yaml-requirement-source-profile.md) | Specify the YAML Requirement Source Profile | Ready | TC-1105 |
-| [TC-1107](task-1107-interpret-and-validate-yaml-requirement-source.md) | Interpret and Validate YAML Requirement Source | Planned | TC-1106 |
-| [TC-1108](task-1108-format-yaml-source-without-content-loss.md) | Format YAML Source Without Content Loss | Planned | TC-1107 |
-| [TC-1109](task-1109-migrate-yaml-examples-and-conformance-material.md) | Migrate YAML Examples and Conformance Material | Planned | TC-1107, TC-1108 |
 
 ## Stage 12: Compilation, imports, and linking
 
@@ -108,8 +104,6 @@ explicit compatibility behavior. Contextual assessments keep their own authority
 
 | Card | Outcome | Status | Depends on |
 | --- | --- | --- | --- |
-| [TC-1401](task-1401-protect-formatter-write-back.md) | Protect Formatter Write-Back | Ready | — |
-| [TC-1402](task-1402-report-cli-output-failures.md) | Report CLI Output Failures Consistently | Ready | — |
 | [TC-1403](task-1403-recover-parser-diagnostics-safely.md) | Recover Parser Diagnostics Safely | Ready | — |
 
 ## Stage 15: Repeatable verification and contributor integration
@@ -180,8 +174,13 @@ superseded by Stages 11–15. Their filenames and evidence are preserved.
 | [TC-1001](closed/task-1001-audit-readiness-for-1.0.md) | Historical audit; prospective sequence superseded | Complete | Historical evidence prerequisites retained in card |
 | [TC-1002](closed/task-1002-define-compatibility-and-publish-or-defer-1.0.md) | Historical decision; prospective sequence superseded | Complete | TC-1001 |
 | [TC-1003](closed/task-1003-execute-vaccine-monitoring-requirements-pilot.md) | End-to-end formal-traceability pilot | Complete | TC-1002 |
-
 | [TC-1105](closed/task-1105-compare-yaml-and-custom-requirement-source.md) | Compare YAML and Custom Requirement Source | Complete | — |
+| [TC-1106](closed/task-1106-specify-yaml-requirement-source-profile.md) | Specify the YAML Requirement Source Profile | Complete | TC-1105 |
+| [TC-1107](closed/task-1107-interpret-and-validate-yaml-requirement-source.md) | Interpret and Validate YAML Requirement Source | Complete | TC-1106 |
+| [TC-1108](closed/task-1108-format-yaml-source-without-content-loss.md) | Format YAML Source Without Content Loss | Complete | TC-1107 |
+| [TC-1109](closed/task-1109-migrate-yaml-examples-and-conformance-material.md) | Migrate YAML Examples and Conformance Material | Complete | TC-1107, TC-1108 |
+| [TC-1401](closed/task-1401-protect-formatter-write-back.md) | Protect Formatter Write-Back | Complete | — |
+| [TC-1402](closed/task-1402-report-cli-output-failures.md) | Report CLI Output Failures Consistently | Complete | — |
 
 ## Planning reconciliation
 
@@ -211,15 +210,15 @@ this reconciliation.
 
 [TC-1105](closed/task-1105-compare-yaml-and-custom-requirement-source.md) is complete.
 [Research 0033](../research/0033-yaml-source-representation-decision.md) selects a
-constrained YAML target for a future requirements specification, with unchanged
-current source/CLI contracts. [Experiment 0025](../experiments/0025-yaml-source-comparison/README.md)
+constrained YAML direction, now implemented through the explicit source 0.3
+contract and command safety addendum. Default source 0.2 invocation is retained. [Experiment 0025](../experiments/0025-yaml-source-comparison/README.md)
 records the corpus, failures, replay and clause-level outline.
 
-TC-1106–TC-1109 add specification, interpretation, safe formatting and migration
-work. TC-1106 is Ready; the other successors are Planned. TC-1103 still depends
-on TC-1102 and may use the provisional experiment adapter. TC-1302 gains TC-1106
-as an explicit prerequisite so unresolved YAML profile choices do not become
-accidental attribute rules. The roadmap records the selected direction while
+TC-1106–TC-1109 completed specification, interpretation, safe formatting and
+migration, together with TC-1401 and TC-1402 safety fixes. TC-1103 still depends
+on TC-1102; maintained YAML requirements are now available for the experiment.
+TC-1302 retains the completed profile as a prerequisite alongside the unresolved
+ownership and import decisions. The roadmap records the selected direction while
 retaining independent correctness, ownership and integration work.
 
 ## Requirements-only YAML scope refinement
@@ -233,7 +232,7 @@ dependencies change in this refinement, and no additional cards are needed.
 | --- | --- |
 | [TC-1101](task-1101-define-monorepo-component-boundaries.md) | Record source-format decisions separately from shared component interfaces |
 | [TC-1103](task-1103-test-compilation-linking-and-rebuilds.md) | Exercise provisional YAML requirements with the existing TSV plan adapter; remove shared-notation comparison |
-| [TC-1106](task-1106-specify-yaml-requirement-source-profile.md) | Specify the requirements model, YAML mapping, structural schema and semantic rules with explicit authority and scope |
+| [TC-1106](closed/task-1106-specify-yaml-requirement-source-profile.md) | Specify the requirements model, YAML mapping, structural schema and semantic rules with explicit authority and scope |
 | [TC-1203](task-1203-define-import-and-reference-contracts.md) | Separate common linking meanings from each artifact's authored encoding |
 | [TC-0905](task-0905-define-verification-analyzer-contract.md) | Select plan notation independently and consume published compiled interfaces |
 | [TC-1302](task-1302-decide-project-attribute-schemas.md) | Keep project declaration format a decision distinct from YAML requirement values |
@@ -241,6 +240,16 @@ dependencies change in this refinement, and no additional cards are needed.
 The [roadmap product direction](0001-initial-roadmap.md#product-direction) records
 this boundary. Existing requirements-only implementation and migration cards
 inherit TC-1106's scope; other artifact implementations inherit their own contracts.
+
+## Completed requirements YAML batch
+
+TC-1106–TC-1109, TC-1401 and TC-1402 are Complete and filed under closed/.
+[Research 0035](../research/0035-yaml-requirements-batch-verification.md) records the
+source/schema decision, maintained YAML commands, separate migration executable,
+120 equivalent migrated requirement values, safety regressions and full verification.
+TC-1302 and TC-1504 retain their other incomplete prerequisites. TC-1403 still
+concerns the legacy parser; the YAML diagnostics do not complete it. TC-1502's
+build description now reflects the pinned Java YAML parser dependency.
 
 ## Updating cards
 

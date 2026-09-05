@@ -48,6 +48,7 @@ decision or specification states the durable disposition when one exists.
 | [0022 — Trace policies](0022-trace-policies/README.md) | Keeps scoped coverage and acyclicity policy separate from source validity. |
 | [0024 — Vaccine monitoring pilot](0024-vaccine-monitoring-pilot/README.md) | Executes the model and separate tools through a realistic, self-run formal-traceability workflow. |
 | [0025 — YAML source comparison](0025-yaml-source-comparison/README.md) | Selects a constrained YAML target using paired semantics, edits, diagnostics and JVM/native parser evidence. |
+| [0026 — Requirements YAML batch](0026-yaml-requirements-batch/README.md) | Reproduces old safety failures and records the maintained YAML batch evidence. |
 
 Raw participant logs and reviewer transcripts are evidence captures. Paths to
 temporary workspaces inside those captures are historical observations and are

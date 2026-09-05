@@ -1,0 +1,63 @@
+format: "mundanereq-yaml-0.3"
+# Original fictional watershed-monitoring corpus for operational trials.
+requirements:
+  - id: "OPS-MONITOR-001"
+    title: "Monitor watershed conditions"
+    statement:
+      - prose: "The monitoring service shall provide current watershed conditions for every deployed station."
+    rationale:
+      - "Operators need a common operational picture before deciding whether intervention is required."
+  - id: "SYS-MONITOR-SAMPLE-001"
+    title: "Sample field sensors"
+    statement:
+      - prose: "Each station shall acquire water-level, flow-rate, and precipitation samples at least once every 60 seconds."
+    decomposes:
+      - "OPS-MONITOR-001"
+  - id: "SENSOR-LEVEL-001"
+    title: "Measure water level"
+    statement:
+      - prose: "The level-sensing unit shall provide a water-level measurement with each station sample."
+    decomposes:
+      - "SYS-MONITOR-SAMPLE-001"
+  - id: "SENSOR-WEATHER-001"
+    title: "Measure precipitation"
+    statement:
+      - prose: "The weather-sensing unit shall provide accumulated precipitation with each station sample."
+    decomposes:
+      - "SYS-MONITOR-SAMPLE-001"
+  - id: "SYS-MONITOR-QUALIFY-001"
+    title: "Qualify sampled data"
+    statement:
+      - prose: "Each station shall identify sampled values that are unavailable, stale, or outside configured physical limits."
+    decomposes:
+      - "OPS-MONITOR-001"
+  - id: "EDGE-RANGE-001"
+    title: "Check physical limits"
+    statement:
+      - prose: "The station processor shall compare each sampled value with its configured physical limits."
+    decomposes:
+      - "SYS-MONITOR-QUALIFY-001"
+  - id: "EDGE-STALE-001"
+    title: "Detect stale samples"
+    statement:
+      - prose: "The station processor shall mark a sensor value stale when no new sample is available for three sampling periods."
+    decomposes:
+      - "SYS-MONITOR-QUALIFY-001"
+  - id: "SYS-MONITOR-PUBLISH-001"
+    title: "Publish station status"
+    statement:
+      - prose: "The service shall make the latest qualified sample and station status available within 90 seconds of acquisition."
+    decomposes:
+      - "OPS-MONITOR-001"
+  - id: "GATEWAY-INGEST-001"
+    title: "Ingest station samples"
+    statement:
+      - prose: "The gateway shall ingest qualified samples from every configured station."
+    decomposes:
+      - "SYS-MONITOR-PUBLISH-001"
+  - id: "API-STATUS-001"
+    title: "Serve current status"
+    statement:
+      - prose: "The status interface shall return the latest qualified sample and its acquisition time for a requested station."
+    decomposes:
+      - "SYS-MONITOR-PUBLISH-001"

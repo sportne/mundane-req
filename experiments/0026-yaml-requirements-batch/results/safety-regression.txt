@@ -1,0 +1,3 @@
+validator failed-output status=0; formatter changed-source status=0; external edit preserved=false
+validator failed-output status=2; formatter changed-source status=2; external edit preserved=true
+PASS reproduced safety regressions and observed corrected behavior

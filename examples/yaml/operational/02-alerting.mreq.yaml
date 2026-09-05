@@ -1,0 +1,63 @@
+format: "mundanereq-yaml-0.3"
+# Original fictional watershed-monitoring corpus for operational trials.
+requirements:
+  - id: "OPS-ALERT-001"
+    title: "Alert operators to hazards"
+    statement:
+      - prose: "The monitoring service shall alert operators when observed watershed conditions indicate a configured hazard."
+    rationale:
+      - "Timely warning supports evacuation and field-response decisions."
+  - id: "SYS-ALERT-DETECT-001"
+    title: "Detect hazard thresholds"
+    statement:
+      - prose: "The service shall detect a hazard when a qualified measurement crosses its configured threshold."
+    decomposes:
+      - "OPS-ALERT-001"
+  - id: "EDGE-THRESHOLD-001"
+    title: "Evaluate local thresholds"
+    statement:
+      - prose: "The station processor shall evaluate each qualified measurement against locally stored hazard thresholds."
+    decomposes:
+      - "SYS-ALERT-DETECT-001"
+  - id: "SERVER-THRESHOLD-001"
+    title: "Evaluate watershed thresholds"
+    statement:
+      - prose: "The central service shall evaluate configured combinations of measurements from multiple stations."
+    decomposes:
+      - "SYS-ALERT-DETECT-001"
+  - id: "SYS-ALERT-CLASSIFY-001"
+    title: "Classify detected hazards"
+    statement:
+      - prose: "The service shall assign each detected hazard a configured severity and affected watershed area."
+    decomposes:
+      - "OPS-ALERT-001"
+  - id: "SERVER-SEVERITY-001"
+    title: "Assign hazard severity"
+    statement:
+      - prose: "The alert processor shall assign severity using the rule that detected the hazard."
+    decomposes:
+      - "SYS-ALERT-CLASSIFY-001"
+  - id: "SERVER-AREA-001"
+    title: "Identify affected area"
+    statement:
+      - prose: "The alert processor shall associate each hazard with every configured area affected by its source stations."
+    decomposes:
+      - "SYS-ALERT-CLASSIFY-001"
+  - id: "SYS-ALERT-NOTIFY-001"
+    title: "Notify designated operators"
+    statement:
+      - prose: "The service shall issue an initial operator notification within 60 seconds after detecting a hazard and escalate unacknowledged notifications according to configured time bounds."
+    decomposes:
+      - "OPS-ALERT-001"
+  - id: "NOTIFY-PRIMARY-001"
+    title: "Send primary notification"
+    statement:
+      - prose: "The notification service shall send each hazard notification through the configured primary channel."
+    decomposes:
+      - "SYS-ALERT-NOTIFY-001"
+  - id: "NOTIFY-ESCALATE-001"
+    title: "Escalate unacknowledged hazards"
+    statement:
+      - prose: "The notification service shall use the configured escalation channel when a hazard remains unacknowledged for five minutes."
+    decomposes:
+      - "SYS-ALERT-NOTIFY-001"

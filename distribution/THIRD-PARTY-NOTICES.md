@@ -1,6 +1,8 @@
 # Third-Party and Platform Notices
 
-The mundanereq application source has no third-party Java library dependency.
+The maintained YAML reader uses SnakeYAML Engine 3.1.1 under Apache-2.0,
+including Google escaping code (Copyright (c) 2008 Google Inc.). Packages include
+LICENSES/SnakeYAML-Engine-LICENSE.txt and dependency provenance.
 The packaged executables are nevertheless GraalVM Native Image outputs: they
 include reachable standard-library classes, language runtime code, and
 statically linked native code from the selected JDK.

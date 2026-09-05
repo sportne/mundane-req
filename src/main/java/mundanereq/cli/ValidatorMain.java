@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import mundanereq.Interpreter;
+import mundanereq.SourceFormat;
 
 /** Focused command-line validator for the provisional 0.2 source contract. */
 public final class ValidatorMain {
@@ -19,12 +20,23 @@ public final class ValidatorMain {
     }
 
     static int run(String[] arguments, PrintStream out, PrintStream err) {
+        try {
+            SourceInvocation selected = SourceInvocation.parse(arguments);
+            return CommandOutput.finish(out, err, runSelected(selected.arguments(), out, err, selected.format()));
+        } catch (IllegalArgumentException exception) {
+            err.println(exception.getMessage());
+            return CommandOutput.finish(out, err, 2);
+        }
+    }
+
+    private static int runSelected(String[] arguments, PrintStream out, PrintStream err, SourceFormat sourceFormat) {
         if (arguments.length == 1 && arguments[0].equals("--help")) {
             out.print(usage());
+            out.println("Optional leading selector: --source=custom-0.2 or --source=yaml-0.3");
             return 0;
         }
         if (arguments.length == 1 && arguments[0].equals("--version")) {
-            out.printf("mundanereq-validate %s; source contract %s%n", TOOL_VERSION, SOURCE_CONTRACT);
+            out.printf("mundanereq-validate %s; source contract %s%n", TOOL_VERSION, sourceFormat.contract);
             return 0;
         }
 
@@ -52,7 +64,7 @@ public final class ValidatorMain {
             return 2;
         }
 
-        Interpreter.Result result = Interpreter.interpretInputs(inputs);
+        Interpreter.Result result = Interpreter.interpretInputs(inputs, sourceFormat);
         if (!result.diagnostics().isEmpty()) {
             result.diagnostics().forEach(diagnostic -> err.println(render(diagnostic)));
             return result.diagnostics().stream().anyMatch(ValidatorMain::isOperational) ? 2 : 1;
@@ -65,7 +77,7 @@ public final class ValidatorMain {
                 relationships,
                 result.fileCount(),
                 result.fileCount() == 1 ? "file" : "files",
-                SOURCE_CONTRACT);
+                sourceFormat.contract);
         return 0;
     }
 

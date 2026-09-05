@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import mundanereq.Interpreter;
+import mundanereq.SourceFormat;
 import mundanereq.trace.TraceAnalyzer;
 
 /** Focused decomposition trace command selected by Research 0016. */
@@ -42,13 +43,24 @@ public final class TraceMain {
     }
 
     static int run(String[] arguments, PrintStream out, PrintStream err) {
+        try {
+            SourceInvocation selected = SourceInvocation.parse(arguments);
+            return CommandOutput.finish(out, err, runSelected(selected.arguments(), out, err, selected.format()));
+        } catch (IllegalArgumentException exception) {
+            err.println(exception.getMessage());
+            return CommandOutput.finish(out, err, 2);
+        }
+    }
+
+    private static int runSelected(String[] arguments, PrintStream out, PrintStream err, SourceFormat sourceFormat) {
         if (arguments.length == 1 && arguments[0].equals("--help")) {
             out.print(usage());
-            return finishOutput(out, err, 0);
+            out.println("Optional leading selector: --source=custom-0.2 or --source=yaml-0.3");
+            return 0;
         }
         if (arguments.length == 1 && arguments[0].equals("--version")) {
-            out.printf("mundanereq-trace %s; source contract %s%n", TOOL_VERSION, SOURCE_CONTRACT);
-            return finishOutput(out, err, 0);
+            out.printf("mundanereq-trace %s; source contract %s%n", TOOL_VERSION, sourceFormat.contract);
+            return 0;
         }
         if (arguments.length < 3) {
             err.print(usage());
@@ -75,12 +87,12 @@ public final class TraceMain {
             return 2;
         }
 
-        Interpreter.Selection selection = Interpreter.selectInputs(inputs);
+        Interpreter.Selection selection = Interpreter.selectInputs(inputs, sourceFormat);
         if (!selection.valid()) {
             renderDiagnostics(selection.diagnostics(), err);
             return 2;
         }
-        Interpreter.Result result = Interpreter.interpretSources(selection.sources());
+        Interpreter.Result result = Interpreter.interpretSources(selection.sources(), sourceFormat);
         if (!result.valid()) {
             renderDiagnostics(result.diagnostics(), err);
             return 2;
@@ -100,7 +112,7 @@ public final class TraceMain {
             case HIGHER -> renderTransitive(analyzer.higher(queryId), out);
             case IMPACT -> renderTransitive(analyzer.impact(queryId), out);
         }
-        return finishOutput(out, err, 0);
+        return 0;
     }
 
     private static void renderDirect(List<String> ids, PrintStream out) {
@@ -129,13 +141,6 @@ public final class TraceMain {
                 diagnostic.column(),
                 diagnostic.code(),
                 diagnostic.message()));
-    }
-
-    private static int finishOutput(PrintStream out, PrintStream err, int successStatus) {
-        out.flush();
-        if (!out.checkError()) return successStatus;
-        err.println("standard-output:1:1: output-failed: unable to write command output");
-        return 2;
     }
 
     private static String usage() {

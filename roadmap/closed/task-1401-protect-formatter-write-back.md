@@ -1,6 +1,6 @@
 # Task TC-1401: Protect Formatter Write-Back
 
-Status: Ready
+Status: Complete
 
 Roadmap stage: 14
 
@@ -64,7 +64,25 @@ substitute a timestamp-only comparison or claim that atomic rename detects edits
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [Formatter write-back](../src/main/java/mundanereq/cli/FormatterMain.java)
-- [Formatter contract](../specification/0008-formatter-trial-contract-0.1.md)
-- [Existing safety evidence](closed/task-0403-verify-formatter-safety-properties.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [Formatter write-back](../../src/main/java/mundanereq/cli/FormatterMain.java)
+- [Formatter contract](../../specification/0008-formatter-trial-contract-0.1.md)
+- [Existing safety evidence](task-0403-verify-formatter-safety-properties.md)
+
+
+## Completion evidence and decision
+
+Completed 2026-09-05 in the requirements YAML batch.
+
+Added byte/file-key snapshot checks before replacement and fallback, stop-on-
+failure reporting, deterministic external-edit/deletion/replacement tests, retry
+and temporary cleanup evidence. The remaining check-to-rename race is documented.
+
+The [batch verification](../../research/0035-yaml-requirements-batch-verification.md)
+records full make verify, golden/native checks and limitations. The
+[contract decision](../../research/0034-yaml-requirements-contract-decision.md),
+[source contract](../../specification/0010-requirements-yaml-0.3.md),
+[command addendum](../../specification/0011-tool-safety-and-yaml-commands.md), and
+[reproducible regression evidence](../../experiments/0026-yaml-requirements-batch/README.md)
+provide the acceptance artifacts. Historical contracts remain preserved; other
+artifact authoring formats and future attribute scope remain independent decisions.

@@ -1,6 +1,6 @@
 # Task TC-1108: Format YAML Source Without Content Loss
 
-Status: Planned
+Status: Complete
 
 Roadmap stage: 11
 
@@ -56,7 +56,25 @@ fidelity cannot be demonstrated; a narrower formatter is an acceptable outcome.
 
 ## References
 
-- [Roadmap](0001-initial-roadmap.md)
-- [Representation decision](../research/0033-yaml-source-representation-decision.md)
-- [Comparison and specification outline](../experiments/0025-yaml-source-comparison/README.md)
+- [Roadmap](../0001-initial-roadmap.md)
+- [Representation decision](../../research/0033-yaml-source-representation-decision.md)
+- [Comparison and specification outline](../../experiments/0025-yaml-source-comparison/README.md)
 - [TC-1107](task-1107-interpret-and-validate-yaml-requirement-source.md)
+
+
+## Completion evidence and decision
+
+Completed 2026-09-05 in the requirements YAML batch.
+
+Implemented text-preserving CRLF normalization under YAML mode with complete
+source-set validation and the shared snapshot/output safety behavior. Hand-authored
+comments, folded prose, literal math and idempotence pass on JVM/native.
+
+The [batch verification](../../research/0035-yaml-requirements-batch-verification.md)
+records full make verify, golden/native checks and limitations. The
+[contract decision](../../research/0034-yaml-requirements-contract-decision.md),
+[source contract](../../specification/0010-requirements-yaml-0.3.md),
+[command addendum](../../specification/0011-tool-safety-and-yaml-commands.md), and
+[reproducible regression evidence](../../experiments/0026-yaml-requirements-batch/README.md)
+provide the acceptance artifacts. Historical contracts remain preserved; other
+artifact authoring formats and future attribute scope remain independent decisions.

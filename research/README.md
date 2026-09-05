@@ -65,3 +65,5 @@ decision](0032-end-to-end-pilot-decision.md), then follow its evidence links.
 | [0031 — Source 1.0 readiness audit](0031-source-1.0-readiness-audit.md) | Recommends a conditional source-only stability decision, identifies evidence gaps, and records the resolved verification blocker. |
 | [0032 — End-to-end pilot decision](0032-end-to-end-pilot-decision.md) | Retains the requirement model, keeps 1.0 deferred, and selects a bounded verification-analyzer experiment. |
 | [0033 — YAML source representation](0033-yaml-source-representation-decision.md) | Selects a constrained YAML successor direction; preserves current contracts pending specification and implementation. |
+| [0034 — Requirements YAML contract](0034-yaml-requirements-contract-decision.md) | Selects the requirements-only YAML profile, rule authority and explicit migration contract. |
+| [0035 — Requirements YAML batch verification](0035-yaml-requirements-batch-verification.md) | Records maintained YAML tooling, migration and safety verification. |

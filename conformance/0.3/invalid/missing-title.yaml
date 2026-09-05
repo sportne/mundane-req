@@ -1,0 +1,4 @@
+format: "mundanereq-yaml-0.3"
+requirements:
+  - id: "A"
+    statement: "Text."

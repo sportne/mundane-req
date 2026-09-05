@@ -14,3 +14,13 @@ Run `mundanereq-validate --help` for the concise invocation summary and
 `mundanereq-validate --version` for its independent tool/source versions. The
 complete interface is packaged as
 `docs/contracts/0007-validator-trial-contract-0.1.md`.
+
+
+## Explicit YAML requirements mode
+
+A leading `--source=yaml-0.3` selects Requirements YAML 0.3; the default remains
+custom source 0.2. The selector precedes other modes/operations. The current
+source contract and safety addendum are included under docs/contracts in the
+native package and under specification in the repository. Output delivery failure
+returns non-success, including diagnostic-only paths. See examples/yaml/README.md
+in the repository for validated authoring and migration commands.

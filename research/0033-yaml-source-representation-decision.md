@@ -67,15 +67,15 @@ derived; neither YAML serialization nor a digest introduces another ID system.
 
 ## Work enabled
 
-1. [TC-1106](../roadmap/task-1106-specify-yaml-requirement-source-profile.md):
+1. [TC-1106](../roadmap/closed/task-1106-specify-yaml-requirement-source-profile.md):
    settle the normative profile, scalar styles, version/discovery and migration
    contract using the [clause outline](../experiments/0025-yaml-source-comparison/specification-outline.md).
-2. [TC-1107](../roadmap/task-1107-interpret-and-validate-yaml-requirement-source.md):
+2. [TC-1107](../roadmap/closed/task-1107-interpret-and-validate-yaml-requirement-source.md):
    implement selected parsing/profile/domain behavior with source locations and
    Java/native evidence.
-3. [TC-1108](../roadmap/task-1108-format-yaml-source-without-content-loss.md):
+3. [TC-1108](../roadmap/closed/task-1108-format-yaml-source-without-content-loss.md):
    implement bounded source-preserving formatting; retain write/output safeguards.
-4. [TC-1109](../roadmap/task-1109-migrate-yaml-examples-and-conformance-material.md):
+4. [TC-1109](../roadmap/closed/task-1109-migrate-yaml-examples-and-conformance-material.md):
    provide reviewed migration, conformance material and maintained examples/docs.
 
 TC-1103 can use the experimental adapter after its other prerequisite, TC-1102,

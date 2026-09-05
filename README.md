@@ -35,25 +35,23 @@ The source representation is the foundation. A requirements file should be under
 
 ## Current status
 
-The current source interface consists of the [provisional 0.2
-contract](specification/0006-provisional-0.2-contract.md) and the normative
-[mundanereq Source Language Specification
-0.2](specification/0005-mundanereq-source-language-0.2.md). Version 0.2 adds
-only [nonsemantic full-line author
-comments](research/0009-nonsemantic-source-comments.md) to the 0.1 language.
-The 0.1 contract and standard remain available as the prior version. These are
-evidence-backed provisional contracts, not stable release promises.
+Requirements now have an explicitly selected [YAML 0.3 source
+contract](specification/0010-requirements-yaml-0.3.md), with a normative structural
+schema and separate semantic rules. The [authoring and migration
+guide](examples/yaml/README.md) provides executable examples. The YAML decision
+applies only to requirements; other artifact formats remain independent decisions.
 
-Three maintained GraalVM native command-line tools operate independently over
-that source: `mundanereq-validate`, `mundanereq-format`, and
-`mundanereq-trace`. Each has its own `trial-0.1` interface contract. Their
-shared implementation does not make the Java packages a public API or turn the
-three commands into one application.
+The default source mode remains [custom 0.2](specification/0005-mundanereq-source-language-0.2.md).
+Historical 0.1/0.2 contracts and fixtures are preserved. Three independent native
+tools validate, format and trace either explicitly selected source contract;
+`mundanereq-migrate` provides checked conversion into a new output directory.
+The [command addendum](specification/0011-tool-safety-and-yaml-commands.md)
+defines the source selector, output failure behavior and formatter snapshot checks.
 
 [Experiment 0024](experiments/0024-vaccine-monitoring-pilot/assessment.md)
 executed a 57-requirement, two-baseline formal-traceability pilot, retained the
 source model, and selected a bounded verification-plan analyzer investigation.
-`mundanereq-source-0.2` remains the current provisional contract.
+`mundanereq-source-0.2` remains the default invocation contract.
 
 The [current roadmap](roadmap/0001-initial-roadmap.md) broadens the planned
 repository scope to an engineering tooling monorepo with requirements as its
@@ -61,17 +59,16 @@ first independently usable component. The next integration experiment compiles
 requirements and verification plans, resolves explicit references, analyzes
 coverage/staleness, and builds a reproducible report. Component layout, public
 artifact contracts, and project-defined attribute schemas remain design work.
-The [backlog](roadmap/0002-task-card-index.md) also prioritizes current formatter,
-diagnostic-output, parser-recovery, version-consistency, and CI gaps. This direction
-does not change the existing implementation or language contract.
+The [backlog](roadmap/0002-task-card-index.md) tracks the completed YAML and safety
+batch and remaining parser-recovery, version-consistency, and CI work.
 
 The first code was a small [deterministic-interpretation
 probe](experiments/0002-deterministic-interpretation/README.md) used to test
 the provisional source language. It remains historical evidence rather than
 production architecture. The [maintained implementation
-lineage](research/0011-maintained-implementation-lineage.md) now provides a
-dependency-free Java 21 source area containing a lossless concrete source
-representation, shared semantic interpreter, and three focused product tools.
+lineage](research/0011-maintained-implementation-lineage.md) provides a Java 21
+source area with lossless source handling and focused tools. The YAML reader adds
+the pinned [SnakeYAML Engine dependency](dependencies/README.md).
 Earlier experiments [transfer the minimum
 model](experiments/0004-transferability/README.md) to a licensed NASA FRET
 case-study corpus and add one [focused incoming trace
@@ -95,7 +92,13 @@ The recorded formatter verification repair expanded coverage to every maintained
 valid corpus; Experiment 0024 extends that inventory to 30 source sets and 64
 files. The complete `make verify` gate is the authoritative repository check.
 The hosted workflow currently runs a subset; TC-1503 plans to align it with the
-complete command. These are recorded results and planned work, not a new build run.
+complete command. YAML verification adds 120 equivalent requirements across three
+migration corpora, authoring fixtures, negative cases and JVM/native command checks.
+
+The first build needs curl/network access to obtain a checksummed parser jar.
+Full verification also needs Python 3 with venv support for the pinned independent
+schema check; these packages are not runtime dependencies. Cached dependencies
+permit subsequent offline checks.
 
 `make test` runs the maintained JVM regression suite. `make native-smoke` builds and runs a
 test-only executable with `--no-fallback`. Generated classes and native output
@@ -123,7 +126,7 @@ interface. The command performs no project-policy, formatting, trace, or ReqIF
 work.
 
 The [validator trial contract](specification/0007-validator-trial-contract-0.1.md)
-defines the complete `trial-0.1` interface, installation procedure,
+defines the historical `trial-0.1` interface, installation procedure,
 compatibility boundaries, and known omissions. The Git tag
 `validator-trial-0.1` identifies its reproducible source baseline. This is a
 maintained, separately versioned trial interface.
@@ -161,7 +164,7 @@ against its wider source context:
 
 Formatting validates the complete selected source set before producing output
 or replacing files. The [formatter trial contract](specification/0008-formatter-trial-contract-0.1.md)
-defines the complete `trial-0.1` interface, formatting behavior, safety
+defines the historical `trial-0.1` interface, formatting behavior, safety
 boundary, and deliberate omissions. The Git tag `formatter-trial-0.1`
 identifies its reproducible source baseline. This is a maintained trial
 interface with its own version and compatibility boundary.

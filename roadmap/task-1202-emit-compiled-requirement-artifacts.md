@@ -71,4 +71,4 @@ do not expand this card merely to make implementation classes more uniform.
 - [TC-1201](task-1201-define-requirement-semantic-output.md)
 - [Formatter entry point](../src/main/java/mundanereq/cli/FormatterMain.java)
 - [SourceDocument](../src/main/java/mundanereq/source/SourceDocument.java)
-- [TC-1402](task-1402-report-cli-output-failures.md)
+- [TC-1402](closed/task-1402-report-cli-output-failures.md)

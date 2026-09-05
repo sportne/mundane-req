@@ -1,0 +1,63 @@
+format: "mundanereq-yaml-0.3"
+# Original fictional watershed-monitoring corpus for operational trials.
+requirements:
+  - id: "OPS-SECURE-001"
+    title: "Protect monitoring operations"
+    statement:
+      - prose: "The monitoring service shall protect operator actions and monitoring data from unauthorized use or alteration."
+    rationale:
+      - "False observations or unauthorized commands could cause unsafe public decisions."
+  - id: "SYS-SECURE-AUTHN-001"
+    title: "Authenticate actors and stations"
+    statement:
+      - prose: "The service shall authenticate each operator, gateway, and station before accepting protected interactions."
+    decomposes:
+      - "OPS-SECURE-001"
+  - id: "ID-OPERATOR-001"
+    title: "Authenticate operators"
+    statement:
+      - prose: "The identity service shall authenticate each operator using two configured authentication factors."
+    decomposes:
+      - "SYS-SECURE-AUTHN-001"
+  - id: "ID-STATION-001"
+    title: "Authenticate stations"
+    statement:
+      - prose: "The gateway shall authenticate each station using a station-specific credential."
+    decomposes:
+      - "SYS-SECURE-AUTHN-001"
+  - id: "SYS-SECURE-AUTHZ-001"
+    title: "Authorize protected actions"
+    statement:
+      - prose: "The service shall permit a protected action only when the authenticated actor holds its configured role."
+    decomposes:
+      - "OPS-SECURE-001"
+  - id: "ACCESS-ROLE-001"
+    title: "Enforce operator roles"
+    statement:
+      - prose: "The access service shall evaluate the operator role before changing thresholds, recipients, or station configuration."
+    decomposes:
+      - "SYS-SECURE-AUTHZ-001"
+  - id: "ACCESS-STATION-001"
+    title: "Restrict station operations"
+    statement:
+      - prose: "The gateway shall accept from a station only data and status operations assigned to that station identity."
+    decomposes:
+      - "SYS-SECURE-AUTHZ-001"
+  - id: "SYS-SECURE-AUDIT-001"
+    title: "Audit protected activity"
+    statement:
+      - prose: "The service shall record protected interactions and make authorized audit history available for investigation."
+    decomposes:
+      - "OPS-SECURE-001"
+  - id: "AUDIT-WRITE-001"
+    title: "Write audit events"
+    statement:
+      - prose: "The audit service shall append each protected interaction to tamper-evident storage."
+    decomposes:
+      - "SYS-SECURE-AUDIT-001"
+  - id: "AUDIT-QUERY-001"
+    title: "Query audit history"
+    statement:
+      - prose: "The audit interface shall return protected-interaction records selected by time, actor, action, or target."
+    decomposes:
+      - "SYS-SECURE-AUDIT-001"

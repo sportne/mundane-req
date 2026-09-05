@@ -66,6 +66,8 @@ public final class NativeSuiteVerificationTest {
             assertRegular(packageRoot.resolve("docs/contracts").resolve(contract));
         }
         assertRegular(packageRoot.resolve("LICENSES/mundanereq-BSD-3-Clause.txt"));
+        assertRegular(packageRoot.resolve("LICENSES/SnakeYAML-Engine-LICENSE.txt"));
+        assertRegular(packageRoot.resolve("docs/contracts/schema/requirements-yaml-0.3.json"));
         assertRegular(packageRoot.resolve("LICENSES/GraalVM-Native-Image.txt"));
         assertRegular(packageRoot.resolve("LICENSES/GraalVM-JDK/java.base/LICENSE"));
         assertRegular(archive);
